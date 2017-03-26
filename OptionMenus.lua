@@ -348,7 +348,7 @@ if WolfHUD then
 		desc_id = "wolfhud_options_help",
 		position = 3,
 		options = {
-			{
+			{	--General HUD
 				type = "menu",
 				menu_id = "wolfhud_customhud_options_menu",
 				name_id = "wolfhud_panels_options_name",
@@ -365,7 +365,7 @@ if WolfHUD then
 						type = "divider",
 						size = 8,
 					},
-					{
+					{	--CustomHUD Player
 						type = "menu",
 						menu_id = "wolfhud_customhud_player_options_menu",
 						name_id = "wolfhud_playerpanel_options_name",
@@ -584,7 +584,7 @@ if WolfHUD then
 							}
 						},
 					},
-					{
+					{	--CustomHUD Teammate
 						type = "menu",
 						menu_id = "wolfhud_customhud_team_options_menu",
 						name_id = "wolfhud_teampanels_options_name",
@@ -861,7 +861,7 @@ if WolfHUD then
 						type = "divider",
 						size = 8
 					},
-					{
+					{	--KillCounter
 						type = "menu",
 						menu_id = "wolfhud_killcounter_options_menu",
 						name_id = "wolfhud_killcounter_options_name",
@@ -980,7 +980,7 @@ if WolfHUD then
 						type = "divider",
 						size = 16,
 					},
-					{
+					{	--Chat
 						type = "menu",
 						menu_id = "wolfhud_hudchat_options_menu",
 						name_id = "wolfhud_chat_options_name",
@@ -1470,7 +1470,7 @@ if WolfHUD then
 					},
 				},
 			},
-			{
+			{	--HUDList
 				type = "menu",
 				menu_id = "wolfhud_hudlist_options_menu",
 				name_id = "wolfhud_infopanels_options_name",
@@ -1603,7 +1603,7 @@ if WolfHUD then
 						type ="divider",
 						size = 8,
 					},
-					{
+					{	--HUDList Left List
 						type = "menu",
 						menu_id = "wolfhud_hudlist_left_options_menu",
 						name_id = "wolfhud_infopanels_left_options_name",
@@ -1701,6 +1701,16 @@ if WolfHUD then
 							},
 							{
 								type = "toggle",
+								name_id = "wolfhud_hudlist_show_own_minions_only_title",
+								desc_id = "wolfhud_hudlist_show_own_minions_only_desc",
+								value = {"HUDList", "LEFT_LIST", "show_minions"},
+								visible_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "LEFT_LIST", "show_minions" }, invert = false },
+								},
+							},
+							{
+								type = "toggle",
 								name_id = "wolfhud_hudlist_show_pagers_title",
 								desc_id = "wolfhud_hudlist_show_pagers_desc",
 								value = {"HUDList", "LEFT_LIST", "show_pagers"},
@@ -1719,7 +1729,7 @@ if WolfHUD then
 							},
 						},
 					},
-					{
+					{	--HUDList Right List
 						type = "menu",
 						menu_id = "wolfhud_hudlist_right_options_menu",
 						name_id = "wolfhud_infopanels_right_options_name",
@@ -1875,7 +1885,7 @@ if WolfHUD then
 							},
 						},
 					},
-					{
+					{	--HUDList Buff List
 						type = "menu",
 						menu_id = "wolfhud_hudlist_buffs_options_menu",
 						name_id = "wolfhud_infopanels_buff_options_name",
