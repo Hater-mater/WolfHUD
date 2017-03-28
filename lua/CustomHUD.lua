@@ -4,6 +4,45 @@
 print_info = print_info or function(...) WolfHUD:print_log(string.format(...), "info") end
 print_warning = print_warning or function(...) WolfHUD:print_log(string.format(...), "warning") end
 
+if RequiredScript == "lib/managers/hudmanagerpd2" then
+	local set_player_condition_original = HUDManager.set_player_condition
+	local set_mugshot_custody_original = HUDManager.set_mugshot_custody
+	local set_mugshot_normal_original = HUDManager.set_mugshot_normal
+
+	function HUDManager:_mugshot_id_to_panel_id(id)
+		for _, data in pairs(managers.criminals:characters()) do
+			if data.data.mugshot_id == id then
+				return data.data.panel_id
+			end
+		end
+	end
+
+	function HUDManager:set_player_condition(icon_data, text)
+		set_player_condition_original(self, icon_data, text)
+		if icon_data == "mugshot_in_custody" then
+			self._teammate_panels[self.PLAYER_PANEL]:set_player_in_custody(true)
+		elseif icon_data == "mugshot_normal" then
+			self._teammate_panels[self.PLAYER_PANEL]:set_player_in_custody(false)
+		end
+	end
+
+	function HUDManager:set_mugshot_custody(id, ...)
+		local panel_id = self:_mugshot_id_to_panel_id(id)
+		if panel_id then
+			self._teammate_panels[panel_id]:set_player_in_custody(true)
+		end
+		return set_mugshot_custody_original(self, id, ...)
+	end
+
+	function HUDManager:set_mugshot_normal(id, ...)
+		local panel_id = self:_mugshot_id_to_panel_id(id)
+		if panel_id then
+			self._teammate_panels[panel_id]:set_player_in_custody(false)
+		end
+		return set_mugshot_normal_original(self, id, ...)
+	end
+end
+
 if not WolfHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
 	if RequiredScript == "lib/managers/hudmanagerpd2" then
 
@@ -123,12 +162,25 @@ if not WolfHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
 
 		function HUDTeammate:set_current_stamina(value)
 			self._stamina_bar:set_color(Color(1, value/self._max_stamina, 0, 0))
-			local visible = WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true)
-			if self._stamina_bar:visible() ~= visible then
-				self._stamina_bar:set_visible(visible)
-				self._stamina_line:set_visible(visible)
+			self:set_stamina_meter_visibility(WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
+		end
+
+		function HUDTeammate:set_stamina_meter_visibility(value)
+			if self._stamina_bar and self._stamina_bar:visible() ~= value then
+				self._stamina_bar:set_visible(value)
+				self._stamina_line:set_visible(value)
 			end
 		end
+
+		function HUDTeammate:set_player_in_custody(value)
+			self:set_stamina_meter_visibility(not value and WolfHUD:getSetting({"CustomHUD", "PLAYER", "STAMINA"}, true))
+			if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter and self._detection_counter then
+				local disabled = value or not WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "DOWNCOUNTER"}, true) or self._ai
+				self._downs_counter:set_visible(not disabled and not managers.groupai:state():whisper_mode() or self:down_amount() > 0)
+				self._detection_counter:set_visible(not disabled and not self._downs_counter:visible())
+			end
+		end
+
 	end
 	return
 end
@@ -858,6 +910,15 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 
 	function HUDTeammateCustom:_damage_taken()
 		self:call_listeners("damage_taken")
+	end
+
+	function HUDTeammateCustom:set_player_in_custody(value)
+		self._player_status._stamina_radial:set_visible(not value and self._player_status._is_local_player and self._settings.STAMINA)
+		if HUDManager.DOWNS_COUNTER_PLUGIN and self._downs_counter and self._detection_counter then
+			local disabled = value or not self._settings.DOWNCOUNTER
+			self._player_status._downs_counter:set_visible(not disabled and (not managers.groupai:state():whisper_mode() or self._player_status:down_amount() > 0))
+			self._player_status._detection_counter:set_visible(not disabled and not self._player_status._downs_counter:visible())
+		end
 	end
 
 	--Failsafe for unhandled functions
