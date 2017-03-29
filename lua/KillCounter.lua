@@ -327,6 +327,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammate" then
 			self._kills_text:set_text(kill_string)
 			local _, _, w, _ = self._kills_text:text_rect()
 			self._kill_icon:set_right(self._kills_panel:w() - w - self._kill_icon:w() * 0.15)
+
 			if self._main_player and not WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) then
 				self._max_name_panel_width = (self._kills_panel:x() + self._kill_icon:x() - 4)
 				self:_truncate_name()
