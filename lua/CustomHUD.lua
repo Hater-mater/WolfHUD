@@ -64,10 +64,11 @@ if not WolfHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
 		local init_original = HUDTeammate.init
 		local set_name_original = HUDTeammate.set_name
 
-		function HUDTeammate:init(i, ...)
-			init_original(self, i, ...)
-
-			if i == HUDManager.PLAYER_PANEL and not HUDManager.CUSTOM_TEAMMATE_PANELS then
+		function HUDTeammate:init(...)
+			init_original(self, ...)
+			self._setting_prefix = self._main_player and "PLAYER" or "TEAMMATE"
+			self._panel:child("condition_icon"):set_color(WolfHUD:getColorSetting({"CustomHUD", self._setting_prefix, "CONDITION_ICON_COLOR"}, Color.white))
+			if self._main_player and not HUDManager.CUSTOM_TEAMMATE_PANELS then
 				self:_create_stamina_circle()
 			end
 			self._max_name_panel_width = self._panel:w()
@@ -75,10 +76,10 @@ if not WolfHUD:getSetting({"CustomHUD", "ENABLED"}, true) then
 
 		function HUDTeammate:set_name(name, ...)
 			if not self._ai then
-				if (self._main_player and WolfHUD:getSetting({"CustomHUD", "PLAYER", "TRUNCATE_TAGS"}, true) or self:peer_id() and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "TRUNCATE_TAGS"}, true)) then
+				if WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "TRUNCATE_TAGS"}, true) then
 					name = WolfHUD:truncateNameTag(name)
 				end
-				if (self._main_player and WolfHUD:getSetting({"CustomHUD", "PLAYER", "RANK"}, true) or self:peer_id() and WolfHUD:getSetting({"CustomHUD", "TEAMMATE", "RANK"}, true)) then
+				if WolfHUD:getSetting({"CustomHUD", self._setting_prefix, "RANK"}, true) then
 					local peer = self:peer_id() and managers.network:session():peer(self:peer_id())
 					local infamy, level = peer and peer:rank() or managers.experience:current_rank(), peer and peer:level() or managers.experience:current_level()
 					local level_str = string.format("%s%s ",
