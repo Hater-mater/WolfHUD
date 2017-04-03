@@ -635,7 +635,7 @@ if not _G.WolfHUD then
 
 	function WolfHUD:createOverrides(data)
 		self:print_log("Creating Dummy for: " .. data["display_name"], "info")
-		if file.DirectoryExists("./" .. data["install_dir"] .. data["install_folder"]) then
+		if not file.DirectoryExists("./" .. data["install_dir"] .. data["install_folder"]) then
 			WolfHUD:print_log("[WolfHUD] mod_override folder '" .. data["install_folder"] .. "' is missing!", "warning")
 			WolfHUD:createDirectory("./" .. data["install_dir"] .. data["install_folder"])
 		end
@@ -882,7 +882,11 @@ if not _G.WolfHUD then
 				for _, req in ipairs(data.visible_reqs) do
 					if type(req) == "table" then
 						local a = WolfHUD:getSetting(req.setting, nil)
-						if type(a) == "boolean" then
+						if req.equal then
+							if a ~= b then
+								return false
+							end
+						elseif type(a) == "boolean" then
 							local b = req.invert and true or false
 							if a == b then
 								return false
