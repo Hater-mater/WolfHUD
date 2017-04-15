@@ -62,6 +62,8 @@
 	"wolfhud_preplanning_msg_deleted_failed" : "Произошла ошибка при удалении сохраненного планирования.",
 
 	"wolfhud_inv_tab_rename_hint" : "Дважды щелкните вкладку инвентаря, чтобы переименовать ее.",
+	
+	"wolfhud_loadout_hours_played" : "$HOURS ч.",
 
 	"victory_most_damage" : "Наибольший урон:",
 	"victory_session_damage" : "Общий урон:",
@@ -150,12 +152,15 @@
 	"wolfhud_enemy_bank_manager" : "Менеджер банка",
 	"wolfhud_enemy_inside_man" : "Крот",
 	"wolfhud_enemy_escort_undercover" : "Налогосборщик",
+	"wolfhud_enemy_escort_heatstreet" : "Мэтт",
+	"wolfhud_enemy_escort_chinese_prisoner" : "Казо",
 	"wolfhud_enemy_drunk_pilot" : "Пьяный пилот",
 	"wolfhud_enemy_escort" : "Сопровождающий",
 	"wolfhud_enemy_boris" : "Борис",
 	"wolfhud_enemy_spa_vip" : "Харон",
 	"wolfhud_enemy_spa_vip_hurt" : "Харон (раненый)",
-	"wolfhud_enemy_old_hoxton_mission" : "Хокcтон / Лок",
+	"wolfhud_enemy_old_hoxton_mission" : "Хокcтон",
+	"wolfhud_enemy_locke_mission" : "Лок",
 	"wolfhud_enemy_hector_boss" : "Бронированный Гектор",
 	"wolfhud_enemy_hector_boss_no_armor" : "Гектор",
 	"wolfhud_enemy_crew" : "Член Команды",
@@ -477,6 +482,8 @@
 	"wolfhud_infopanels_buff_fugitive_options_help" : "Включение или отключение визуальные индикаторы Навыков Беглеца.\n(Необходимо сменить карту для принятия изменений...)",
 	"wolfhud_infopanels_buff_perkdecks_options_name" : "Перки",
 	"wolfhud_infopanels_buff_perkdecks_options_help" : "Включение или отключение визуальные индикаторы Перков.\n(Необходимо сменить карту для принятия изменений...)",
+	"wolfhud_infopanels_buff_gageboosts_options_name" : "Бонусы Гейджа",
+	"wolfhud_infopanels_buff_gageboosts_options_help" : "Включение или отключение визуальных индикаторов бонусов Гейджа.\n(Необходимо сменить карту для принятия изменений...)",
 
 	"wolfhud_hudlist_show_buffs_title" : "Показать баффы",
 	"wolfhud_hudlist_show_buffs_desc" : "Отображает активный баффы в центральной части экрана.",
@@ -592,6 +599,10 @@
 	"wolfhud_hudlist_crew_chief_teambuff_desc" : "Часть составных баффов.",
 	"wolfhud_hudlist_forced_friendship_teambuff_title" : "Навязанная дружба командный бафф",
 	"wolfhud_hudlist_forced_friendship_teambuff_desc" : "",
+	"wolfhud_hudlist_life_steal_gage_debuff_title" : "Сам себе врач",
+	"wolfhud_hudlist_life_steal_gage_debuff_desc" : "",
+	"wolfhud_hudlist_invulnerable_gage_buff_title" : "Почти неуязвимость",
+	"wolfhud_hudlist_invulnerable_gage_buff_desc" : "",
 
 	"wolfhud_waypoints_options_name" : "Настройки пользовательских вэйпоинтов",
 	"wolfhud_waypoints_options_help" : "Настройки управления пользовательскими вэйпоинтами.",
@@ -641,6 +652,18 @@
 	"wolfhud_tabstats_actual_mask_desc" : "Использует фактическую маску вместо вашего изображения персонажа на экране TAB.\n(Необходимо сменить карту для принятия изменений...)",
 	"wolfhud_tabstats_numberic_loot_title" : "Числовой счетчик добычи",
 	"wolfhud_tabstats_numberic_loot_desc" : "Отключает миниигру подсчета добычи и отображает кол-во сразу же.",
+
+	"wolfhud_crewloadout_options_name" : "Настройки экипировки команды",
+	"wolfhud_crewloadout_options_help" : "Выберите, где вы хотите видеть информацию о том, какая экипировка и навыки используют ваши напарники.",
+
+	"wolfhud_crewloadout_lobby_title" : "Показывать в лобби",
+	"wolfhud_crewloadout_lobby_desc" : "Добавляет кнопку на экран вашего лобби, которая отображает экипировку вас и напарников.",
+	"wolfhud_crewloadout_cs_lobby_title" : "Показывать в лобби серии ограблений",
+	"wolfhud_crewloadout_cs_lobby_desc" : "Добавляет новую вкладку рядом с модификаторами и наградами в лобби серии ограблений.",
+	"wolfhud_crewloadout_briefing_title" : "Заменить в брифинге",
+	"wolfhud_crewloadout_briefing_desc" : "Заменяет панель экипировки команды по умолчанию в брифинге миссии.",
+	"wolfhud_crewloadout_tabscreen_title" : "Показывать на экране TAB",
+	"wolfhud_crewloadout_tabscreen_desc" : "Показывает навыки, перки и текущий пинг игроков в вашем лобби. \n(Отключено если вы используете данную функцию в Lobby Player Info)",
 
 	"wolfhud_dmgindicator_options_name" : "Индикатор попадания",
 	"wolfhud_dmgindicator_options_help" : "Установите время исчезания, размер и цвета для индикаторов попадания.",

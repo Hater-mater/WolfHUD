@@ -186,6 +186,8 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			safe_loot_pickup = 					"_special_equipment_interaction_handler",	-- Small loot
 			press_pick_up =						"_special_equipment_interaction_handler",	-- Biker Bottle
 			hold_take_missing_animal_poster = 	"_special_equipment_interaction_handler",	-- Heat Streat Posters
+			hold_pick_up_turtle = 				"_special_equipment_interaction_handler",	-- Heat Street Tutle
+			glc_hold_take_handcuffs = 			"_special_equipment_interaction_handler",	-- Green Bridge Handcuffs
 			pickup_tablet = 					"_special_equipment_interaction_handler",	-- Stealing Xmas Tablet
 			pickup_phone = 						"_special_equipment_interaction_handler",	-- Stealing Xmas Phone
 			firstaid_box =						"_deployable_interaction_handler",
@@ -194,6 +196,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			first_aid_kit = 					"_deployable_interaction_handler",
 			bodybags_bag =						"_deployable_interaction_handler",
 			grenade_crate =						"_deployable_interaction_handler",
+			
+			pku_scubagear_vest = 				"_special_equipment_interaction_handler",	--TMP: Where is this used...?
+			pku_scubagear_tank = 				"_special_equipment_interaction_handler",	--TMP: Where is this used...?
 		},
 		INTERACTION_TO_CARRY = {
 			weapon_case =				"weapon",
@@ -404,6 +409,13 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				[137888] = "armory_ammo",
 			},
 		},
+	}
+	
+	GameInfoManager._UNITS = {
+		TWEAK_ID_BY_NAME = {
+			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic"))] = "mechanic",
+			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic_husk"))] = "mechanic"
+		}
 	}
 
 	GameInfoManager._BUFFS = {
@@ -715,7 +727,8 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 	function GameInfoManager:_unit_event(event, key, data)
 		if event == "add" then
 			if not self._units[key] then
-				local unit_type = data.unit:base()._tweak_table
+				local lookup = GameInfoManager._UNITS.TWEAK_ID_BY_NAME
+				local unit_type = lookup[tostring(data.unit:name())] or data.unit:base()._tweak_table
 				self._units[key] = { unit = data.unit, type = unit_type }
 				self:_listener_callback("unit", event, key, self._units[key])
 				self:_unit_count_event("change", unit_type, 1)
@@ -865,7 +878,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				if is_drone then
 					self._cameras[key].enabled = true
 				end
-				--self._cameras[key].enabled = data.enabled or false
+				--self._cameras[key].active = data.active or Network:is_client()
 				self:_listener_callback("camera", event, key, self._cameras[key])
 
 				if not type then
@@ -1479,11 +1492,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		local count = 0
 
 		for key, cam_data in pairs(self._cameras) do
-			if cam_data.enabled then
-				print_info("Camera (%s): D:%s E:%s A:%s B:%s T:%s", key, tostring(cam_data.is_drone and true or false), tostring(cam_data.enabled and true or false), tostring(cam_data.active and true or false), tostring(cam_data.broken and true or false), tostring(cam_data.tape_loop_expire_t and true or false))
+			if cam_data.enabled ~= false and (cam_data.active or Network:is_client()) then	-- Ukrainian Job never sets cams 'enabled', only 'active' if guard in front of console. GO Bank sets both flags.
+				print_info("Camera (%s): Drone:%s Enabled:%s Active:%s Broken:%s Loop:%s", key, tostring(cam_data.is_drone), tostring(cam_data.enabled), tostring(cam_data.active), tostring(cam_data.brokene), tostring(cam_data.tape_loop_expire_t and cam_data.tape_loop_expire_t > Application:time() and true or false))
 			end
 
-			if cam_data.enabled and not cam_data.broken and (cam_data.active or cam_data.tape_loop_expire_t) then
+			if cam_data.enabled ~= false and (cam_data.active or Network:is_client()) and not cam_data.broken then
 				count = count + 1
 			end
 		end
@@ -1748,7 +1761,9 @@ if string.lower(RequiredScript) == "lib/managers/enemymanager" then
 	end
 
 	function EnemyManager:register_civilian(unit, ...)
-		managers.gameinfo:event("unit", "add", tostring(unit:key()), { unit = unit })
+		--if not unit:character_damage().immortal then
+			managers.gameinfo:event("unit", "add", tostring(unit:key()), { unit = unit })
+		--end
 		return register_civilian_original(self, unit, ...)
 	end
 
@@ -2074,15 +2089,7 @@ if string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
 			managers.interaction:add_unit_clbk(self._unit)
 		end
 	end
-	--[[
-	function SecurityCameraInteractionExt:set_active(active, ...)
-		if self:active() ~= active then
-			managers.gameinfo:event("camera", "set_active", tostring(self._unit:key()), { active = active and true or false } )
-		end
-
-		return SecurityCameraInteractionExt_set_active_original(self, active, ...)
-	end
-	]]
+	
 end
 
 if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase" then
@@ -2300,7 +2307,7 @@ if string.lower(RequiredScript) == "lib/units/equipment/ammo_bag/ammobagbase" th
 	function AmmoBagBase:sync_setup(ammo_upgrade_lvl, peer_id, bullet_storm_level, ...)
 		local key = tostring(self._unit:key())
 		managers.gameinfo:event("ammo_bag", "set_owner", key, { owner = peer_id })
-		managers.gameinfo:event("ammo_bag", "set_upgrades", key, { upgrades = { bullet_storm_level = bullet_storm_level } })
+		managers.gameinfo:event("ammo_bag", "set_upgrades", key, { upgrades = { bullet_storm = bullet_storm_level } })
 		return sync_setup_original(self, ammo_upgrade_lvl, peer_id, bullet_storm_level, ...)
 	end
 
@@ -2967,6 +2974,40 @@ if string.lower(RequiredScript) == "lib/utils/temporarypropertymanager" then
 
 end
 
+if string.lower(RequiredScript) == "lib/modifiers/boosts/gagemodifiermeleeinvincibility" then
+
+	local OnPlayerManagerKillshot_original = GageModifierMeleeInvincibility.OnPlayerManagerKillshot
+
+	function GageModifierMeleeInvincibility:OnPlayerManagerKillshot(...)
+		local last_kill_t = self._special_kill_t or 0
+
+		OnPlayerManagerKillshot_original(self, ...)
+
+		if self._special_kill_t > last_kill_t then
+			managers.gameinfo:event("buff", "activate", "invulnerable_buff")
+			managers.gameinfo:event("buff", "set_duration", "invulnerable_buff", { duration = self:value() })
+		end
+	end
+
+end
+
+if string.lower(RequiredScript) == "lib/modifiers/boosts/gagemodifierlifesteal" then
+
+	local OnPlayerManagerKillshot_original = GageModifierLifeSteal.OnPlayerManagerKillshot
+
+	function GageModifierLifeSteal:OnPlayerManagerKillshot(...)
+		local last_kill_t = self._last_killshot_t or 0
+		
+		OnPlayerManagerKillshot_original(self, ...)
+
+		if self._last_killshot_t > last_kill_t then
+			managers.gameinfo:event("buff", "activate", "life_steal_debuff")
+			managers.gameinfo:event("buff", "set_duration", "life_steal_debuff", { duration = self:value("cooldown") })
+		end
+	end
+
+end
+
 if string.lower(RequiredScript) == "lib/units/beings/player/playermovement" then
 
 	local update_original = PlayerMovement.update
@@ -3476,6 +3517,8 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 
 	function PlayerDamage:_custom_on_enter_bleedout_clbk()
 		if self:is_downed() then
+			ARMOR_GRIND_ACTIVE = false
+			managers.gameinfo:event("player_action", "deactivate", "anarchist_armor_regeneration")
 			managers.gameinfo:event("player_action", "deactivate", "standard_armor_regeneration")
 		end
 	end
