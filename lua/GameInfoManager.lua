@@ -57,9 +57,10 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			end,
 
 			--General functions
-			update = function(timers, key, t, timer)
+			update = function(timers, key, t, timer, timer_ratio)
 				if timers[key] then
 					timers[key].timer_value = timer
+					timers[key].timer_ratio = timer_ratio
 					managers.gameinfo:_listener_callback("timer", "update", key, timers[key])
 				end
 			end,
@@ -1014,6 +1015,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					self._ecms[key].jammer_battery = data.jammer_battery
 					self:_listener_callback("ecm", event, key, self._ecms[key])
 				end
+			elseif event == "set_battery_low" then
+				if self._ecms[key].battery_low ~= data.battery_low then
+					self._ecms[key].battery_low = data.battery_low
+					self:_listener_callback("ecm", event, key, self._ecms[key])
+				end
 			elseif event == "set_retrigger_delay" then
 				if self._ecms[key].retrigger_active then
 					self._ecms[key].retrigger_delay = data.retrigger_delay
@@ -1025,6 +1031,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 					self._ecms[key].feedback_expire_t = data.feedback_expire_t
 					self:_listener_callback("ecm", event, key, self._ecms[key])
 				end
+			elseif event == "set_feedback_low" then
+				if self._ecms[key].feedback_low ~= data.feedback_low then
+					self._ecms[key].feedback_low = data.feedback_low
+					self:_listener_callback("ecm", event, key, self._ecms[key])
+				end
 			elseif event == "set_jammer_active" then
 				if self._ecms[key].jammer_active ~= data.jammer_active then
 					self._ecms[key].jammer_active = data.jammer_active
@@ -1033,6 +1044,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			elseif event == "set_retrigger_active" then
 				if self._ecms[key].retrigger_active ~= data.retrigger_active then
 					self._ecms[key].retrigger_active = data.retrigger_active
+					self._ecms[key].feedback_low = data.retrigger_active
 					self:_listener_callback("ecm", event, key, self._ecms[key])
 				end
 			elseif event == "set_feedback_active" then
@@ -1531,7 +1543,8 @@ if string.lower(RequiredScript) == "lib/units/props/digitalgui" then
 
 	function DigitalGui:update(unit, t, ...)
 		update_original(self, unit, t, ...)
-		self:_do_timer_callback("update", t, self._timer)
+		self._max_timer = self._max_timer or self._timer
+		self:_do_timer_callback("update", t, self._timer, self._timer / self._max_timer)
 	end
 
 	function DigitalGui:timer_set(timer, ...)
@@ -1665,7 +1678,7 @@ if string.lower(RequiredScript) == "lib/units/props/timergui" then
 
 	function TimerGui:update(unit, t, dt, ...)
 		update_original(self, unit, t, dt, ...)
-		managers.gameinfo:event("timer", "update", self._info_key, t, self._time_left)
+		managers.gameinfo:event("timer", "update", self._info_key, t, self._time_left, self._current_timer / self._timer)
 	end
 
 	function TimerGui:_start(...)
@@ -1713,7 +1726,7 @@ if string.lower(RequiredScript) == "lib/units/props/securitylockgui" then
 
 	function SecurityLockGui:update(unit, t, ...)
 		update_original(self, unit, t, ...)
-		managers.gameinfo:event("timer", "update", self._info_key, t, self._current_timer)
+		managers.gameinfo:event("timer", "update", self._info_key, t, self._current_timer, self._current_timer / self._timer)
 	end
 
 	function SecurityLockGui:_start(...)
@@ -2107,6 +2120,9 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 	local sync_setup_original = ECMJammerBase.sync_setup
 	local set_active_original = ECMJammerBase.set_active
 	local _set_feedback_active_original = ECMJammerBase._set_feedback_active
+	local clbk_feedback_original = ECMJammerBase.clbk_feedback
+	local sync_net_event_original = ECMJammerBase.sync_net_event
+	local _set_battery_low_original = ECMJammerBase._set_battery_low
 	local update_original = ECMJammerBase.update
 	local contour_interaction_original = ECMJammerBase.contour_interaction
 	local destroy_original = ECMJammerBase.destroy
@@ -2118,9 +2134,10 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 	end
 
 	function ECMJammerBase:setup(upgrade_lvl, owner, ...)
-		managers.gameinfo:event("ecm", "set_owner", self._ecm_unit_key, { owner = owner })
+		setup_original(self, upgrade_lvl, owner, ...)
+
+		managers.gameinfo:event("ecm", "set_owner", self._ecm_unit_key, { owner = self._owner_id })
 		managers.gameinfo:event("ecm", "set_upgrade_level", self._ecm_unit_key, { upgrade_level = upgrade_lvl })
-		return setup_original(self, upgrade_lvl, owner, ...)
 	end
 
 	function ECMJammerBase:sync_setup(upgrade_lvl, peer_id, ...)
@@ -2153,6 +2170,21 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 		end
 		return val
 	end
+	
+	function ECMJammerBase:clbk_feedback(...)
+		clbk_feedback_original(self, ...)
+		if self._feedback_expire_t - TimerManager:game():time() < self._feedback_duration * 0.1 then
+			managers.gameinfo:event("ecm", "set_feedback_low", self._ecm_unit_key, { feedback_low = true })
+		end
+	end
+
+	function ECMJammerBase:sync_net_event(event_id, ...)
+		sync_net_event_original(self, event_id, ...)
+		
+		if self._NET_EVENTS and event_id == self._NET_EVENTS.feedback_flash then
+			managers.gameinfo:event("ecm", "set_feedback_low", self._ecm_unit_key, { feedback_low = true })
+		end
+	end
 
 	function ECMJammerBase:update(unit, t, dt, ...)
 		update_original(self, unit, t, dt, ...)
@@ -2174,6 +2206,11 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 		end
 	end
 
+	function ECMJammerBase:_set_battery_low(...)
+		_set_battery_low_original(self, ...)
+		managers.gameinfo:event("ecm", "set_battery_low", self._ecm_unit_key, { battery_low = true })
+	end
+
 	function ECMJammerBase:contour_interaction(...)
 		local owner_unit = self:owner()
 		local player_unit = managers.player:player_unit()
@@ -2181,6 +2218,7 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 			self._retrigger_delay = nil
 			managers.gameinfo:event("ecm", "set_retrigger_active", self._ecm_unit_key, { retrigger_active = false })
 		end
+		managers.gameinfo:event("ecm", "set_feedback_low", self._ecm_unit_key, { feedback_low = false })
 
 		return contour_interaction_original(self, ...)
 	end
@@ -2198,6 +2236,7 @@ if string.lower(RequiredScript) == "lib/units/equipment/doctor_bag/doctorbagbase
 
 	local spawn_original = DoctorBagBase.spawn
 	local init_original = DoctorBagBase.init
+	local setup_original = DoctorBagBase.setup
 	local sync_setup_original = DoctorBagBase.sync_setup
 	local _set_visual_stage_original = DoctorBagBase._set_visual_stage
 	local _get_upgrade_levels_original = DoctorBagBase._get_upgrade_levels
@@ -2214,10 +2253,14 @@ if string.lower(RequiredScript) == "lib/units/equipment/doctor_bag/doctorbagbase
 	end
 
 	function DoctorBagBase:init(unit, ...)
-		local key = tostring(unit:key())
-		managers.gameinfo:event("doc_bag", "create", key, { unit = unit })
+		managers.gameinfo:event("doc_bag", "create", tostring(unit:key()), { unit = unit })
 		init_original(self, unit, ...)
-		managers.gameinfo:event("doc_bag", "set_max_amount", key, { max_amount = self._max_amount })
+	end
+
+	function DoctorBagBase:setup(...)
+		local value = setup_original(self, ...)
+		managers.gameinfo:event("doc_bag", "set_max_amount", tostring(self._unit:key()), { max_amount = self._amount })
+		return value
 	end
 
 	function DoctorBagBase:sync_setup(amount_upgrade_lvl, peer_id, ...)
@@ -2290,6 +2333,7 @@ if string.lower(RequiredScript) == "lib/units/equipment/ammo_bag/ammobagbase" th
 
 	local spawn_original = AmmoBagBase.spawn
 	local init_original = AmmoBagBase.init
+	local setup_original = AmmoBagBase.setup
 	local sync_setup_original = AmmoBagBase.sync_setup
 	local _set_visual_stage_original = AmmoBagBase._set_visual_stage
 	local destroy_original = AmmoBagBase.destroy
@@ -2309,7 +2353,12 @@ if string.lower(RequiredScript) == "lib/units/equipment/ammo_bag/ammobagbase" th
 		local key = tostring(unit:key())
 		managers.gameinfo:event("ammo_bag", "create", key, { unit = unit })
 		init_original(self, unit, ...)
-		managers.gameinfo:event("ammo_bag", "set_max_amount", key, { max_amount = self._max_ammo_amount })
+	end
+
+	function AmmoBagBase:setup(...)
+		local value = setup_original(self, ...)
+		managers.gameinfo:event("ammo_bag", "set_max_amount", tostring(self._unit:key()), { max_amount = self._ammo_amount })
+		return value
 	end
 
 	function AmmoBagBase:sync_setup(ammo_upgrade_lvl, peer_id, bullet_storm_level, ...)
@@ -3421,7 +3470,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 			end
 		end
 
-		if health_ratio < 1 then
+		if not self:full_health() then
 			if managers.player:has_category_upgrade("player", "passive_health_regen") then
 				managers.gameinfo:event("buff", "activate", "muscle_regen")
 			end
@@ -3436,7 +3485,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 		local result = _upd_health_regen_original(self, t, ...)
 
 		if self._health_regen_update_timer then
-			if self._health_regen_update_timer > (old_timer or 0) and self:health_ratio() < 1 then
+			if self._health_regen_update_timer > (old_timer or 0) and not self:full_health() then
 				managers.gameinfo:event("buff", "set_duration", "muscle_regen", { duration = self._health_regen_update_timer })
 				managers.gameinfo:event("buff", "set_duration", "hostage_taker", { duration = self._health_regen_update_timer })
 			end
