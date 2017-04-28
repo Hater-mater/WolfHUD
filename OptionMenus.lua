@@ -1539,6 +1539,10 @@ if WolfHUD then
 					},
 				},
 			},
+			{
+				type ="divider",
+				size = 8,
+			},
 			{	--HUDList
 				type = "menu",
 				menu_id = "wolfhud_hudlist_options_menu",
@@ -1688,6 +1692,10 @@ if WolfHUD then
 								},
 							},
 							{
+								type = "divider",
+								size = 8,
+							},
+							{
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_ammo_bags_title",
 								desc_id = "wolfhud_hudlist_show_equipment_desc",
@@ -1742,6 +1750,10 @@ if WolfHUD then
 								},
 							},
 							{
+								type = "divider",
+								size = 8,
+							},
+							{
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_ecms_title",
 								desc_id = "wolfhud_hudlist_show_ecms_desc",
@@ -1758,6 +1770,10 @@ if WolfHUD then
 								visible_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
 								},
+							},
+							{
+								type = "divider",
+								size = 8,
 							},
 							{
 								type = "toggle",
@@ -1779,6 +1795,10 @@ if WolfHUD then
 								},
 							},
 							{
+								type = "divider",
+								size = 8,
+							},
+							{
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_pagers_title",
 								desc_id = "wolfhud_hudlist_show_pagers_desc",
@@ -1786,6 +1806,10 @@ if WolfHUD then
 								visible_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
 								},
+							},
+							{
+								type = "divider",
+								size = 8,
 							},
 							{
 								type = "toggle",
@@ -1870,6 +1894,10 @@ if WolfHUD then
 								},
 							},
 							{
+								type = "divider",
+								size = 8,
+							},
+							{
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_pager_count_title",
 								desc_id = "wolfhud_hudlist_show_pager_count_desc",
@@ -1904,6 +1932,10 @@ if WolfHUD then
 								visible_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
 								},
+							},
+							{
+								type = "divider",
+								size = 8,
 							},
 							{
 								type = "toggle",
@@ -1944,12 +1976,46 @@ if WolfHUD then
 								},
 							},
 							{
+								type = "divider",
+								size = 8,
+							},
+							{
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_special_pickups_title",
 								desc_id = "wolfhud_hudlist_show_special_pickups_desc",
 								value = {"HUDList", "RIGHT_LIST", "show_special_pickups"},
 								visible_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_hudlist_show_mission_pickups_title",
+								desc_id = "wolfhud_hudlist_show_mission_pickups_desc",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"},
+								visible_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
+								},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_hudlist_show_collectables_pickups_title",
+								desc_id = "wolfhud_hudlist_show_collectables_pickups_desc",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"},
+								visible_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
+								},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfhud_hudlist_show_valuables_pickups_title",
+								desc_id = "wolfhud_hudlist_show_valuables_pickups_desc",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"},
+								visible_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_special_pickups" }, invert = false },
 								},
 							},
 						},
@@ -2747,125 +2813,9 @@ if WolfHUD then
 					},
 				},
 			},
-			{ --TabStats
-				type = "menu",
-				menu_id = "wolfhud_tabstats_options_menu",
-				name_id = "wolfhud_tabstats_options_name",
-				desc_id = "wolfhud_tabstats_options_help",
-				options = {
-					{
-						type = "multi_choice",
-						name_id = "wolfhud_tabstats_clock_mode_title",
-						desc_id = "wolfhud_tabstats_clock_mode_desc",
-						options = {
-							"wolfhud_multiselect_disabled",
-							"wolfhud_tabstats_clock_mode_a",
-							"wolfhud_tabstats_clock_mode_b",
-							"wolfhud_tabstats_clock_mode_c"
-						},
-						visible_reqs = {},
-						value = {"TabStats", "CLOCK_MODE"},
-					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_use_tabstats_title",
-						desc_id = "wolfhud_use_tabstats_desc",
-						value = {"TabStats", "ENABLED"},
-						visible_reqs = {},
-					},
-					{
-						type = "slider",
-						name_id = "wolfhud_tabstats_font_size_title",
-						desc_id = "wolfhud_tabstats_font_size_desc",
-						value = {"TabStats", "FONT_SIZE"},
-						visible_reqs = {
-							{ setting = { "TabStats", "ENABLED" }, invert = false },
-						},
-						min_value = 10,
-						max_value = 24,
-						step_size = 1,
-					},
-					{
-						type = "multi_choice",
-						name_id = "wolfhud_tabstats_color_title",
-						desc_id = "wolfhud_tabstats_color_desc",
-						value = {"TabStats", "COLOR"},
-						visible_reqs = {
-							{ setting = { "TabStats", "ENABLED" }, invert = false },
-						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = true,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_tabstats_actual_mask_title",
-						desc_id = "wolfhud_tabstats_actual_mask_desc",
-						value = {"TabStats", "SHOW_MASK"},
-						visible_reqs = {
-							{ setting = { "TabStats", "ENABLED" }, inverted = false }
-						},
-					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_tabstats_numberic_loot_title",
-						desc_id = "wolfhud_tabstats_numberic_loot_desc",
-						value = {"TabStats", "SHOW_LOOT_NUMBERS"},
-						visible_reqs = {},
-					},
-				},
-			},
-			{ --CrewLoadout
-				type = "menu",
-				menu_id = "wolfhud_crewloadout_options_menu",
-				name_id = "wolfhud_crewloadout_options_name",
-				desc_id = "wolfhud_crewloadout_options_help",
-				options = {
-					{
-						type = "toggle",
-						name_id = "wolfhud_crewloadout_lobby_title",
-						desc_id = "wolfhud_crewloadout_lobby_desc",
-						value = {"CrewLoadout", "SHOW_IN_LOBBY"},
-						visible_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_crewloadout_cs_lobby_title",
-						desc_id = "wolfhud_crewloadout_cs_lobby_desc",
-						value = {"CrewLoadout", "SHOW_IN_CS_LOBBY"},
-						visible_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_crewloadout_briefing_title",
-						desc_id = "wolfhud_crewloadout_briefing_desc",
-						value = {"CrewLoadout", "REPLACE_IN_BRIEFING"},
-						visible_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 16,
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_crewloadout_tabscreen_title",
-						desc_id = "wolfhud_crewloadout_tabscreen_desc",
-						value = {"CrewLoadout", "SHOW_ON_STATS_PANEL"},
-						visible_reqs = {},
-					},
-				},
+			{
+				type ="divider",
+				size = 8,
 			},
 			{ --INTERACTION
 				type = "menu",
@@ -3151,6 +3101,134 @@ if WolfHUD then
 					},
 				},
 			},
+			{
+				type ="divider",
+				size = 8,
+			},
+			{ --TabStats
+				type = "menu",
+				menu_id = "wolfhud_tabstats_options_menu",
+				name_id = "wolfhud_tabstats_options_name",
+				desc_id = "wolfhud_tabstats_options_help",
+				options = {
+					{
+						type = "multi_choice",
+						name_id = "wolfhud_tabstats_clock_mode_title",
+						desc_id = "wolfhud_tabstats_clock_mode_desc",
+						options = {
+							"wolfhud_multiselect_disabled",
+							"wolfhud_tabstats_clock_mode_a",
+							"wolfhud_tabstats_clock_mode_b",
+							"wolfhud_tabstats_clock_mode_c"
+						},
+						visible_reqs = {},
+						value = {"TabStats", "CLOCK_MODE"},
+					},
+					{
+						type = "divider",
+						size = 16,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_use_tabstats_title",
+						desc_id = "wolfhud_use_tabstats_desc",
+						value = {"TabStats", "ENABLED"},
+						visible_reqs = {},
+					},
+					{
+						type = "slider",
+						name_id = "wolfhud_tabstats_font_size_title",
+						desc_id = "wolfhud_tabstats_font_size_desc",
+						value = {"TabStats", "FONT_SIZE"},
+						visible_reqs = {
+							{ setting = { "TabStats", "ENABLED" }, invert = false },
+						},
+						min_value = 10,
+						max_value = 24,
+						step_size = 1,
+					},
+					{
+						type = "multi_choice",
+						name_id = "wolfhud_tabstats_color_title",
+						desc_id = "wolfhud_tabstats_color_desc",
+						value = {"TabStats", "COLOR"},
+						visible_reqs = {
+							{ setting = { "TabStats", "ENABLED" }, invert = false },
+						},
+						options = {},
+						add_color_options = true,
+						add_rainbow = true,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_tabstats_actual_mask_title",
+						desc_id = "wolfhud_tabstats_actual_mask_desc",
+						value = {"TabStats", "SHOW_MASK"},
+						visible_reqs = {
+							{ setting = { "TabStats", "ENABLED" }, inverted = false }
+						},
+					},
+					{
+						type = "divider",
+						size = 16,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_tabstats_numberic_loot_title",
+						desc_id = "wolfhud_tabstats_numberic_loot_desc",
+						value = {"TabStats", "SHOW_LOOT_NUMBERS"},
+						visible_reqs = {},
+					},
+				},
+			},
+			{ --CrewLoadout
+				type = "menu",
+				menu_id = "wolfhud_crewloadout_options_menu",
+				name_id = "wolfhud_crewloadout_options_name",
+				desc_id = "wolfhud_crewloadout_options_help",
+				options = {
+					{
+						type = "toggle",
+						name_id = "wolfhud_crewloadout_lobby_title",
+						desc_id = "wolfhud_crewloadout_lobby_desc",
+						value = {"CrewLoadout", "SHOW_IN_LOBBY"},
+						visible_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_crewloadout_cs_lobby_title",
+						desc_id = "wolfhud_crewloadout_cs_lobby_desc",
+						value = {"CrewLoadout", "SHOW_IN_CS_LOBBY"},
+						visible_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 16,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_crewloadout_briefing_title",
+						desc_id = "wolfhud_crewloadout_briefing_desc",
+						value = {"CrewLoadout", "REPLACE_IN_BRIEFING"},
+						visible_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 16,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_crewloadout_tabscreen_title",
+						desc_id = "wolfhud_crewloadout_tabscreen_desc",
+						value = {"CrewLoadout", "SHOW_ON_STATS_PANEL"},
+						visible_reqs = {},
+					},
+				},
+			},
+			{
+				type ="divider",
+				size = 16,
+			},
 			--INVENTORY & EQUIPMENT
 			{
 				type = "menu",
@@ -3219,6 +3297,10 @@ if WolfHUD then
 						visible_reqs = {},
 					},
 				},
+			},
+			{
+				type ="divider",
+				size = 16,
 			},
 			--SkipIt
 			{
@@ -3302,7 +3384,7 @@ if WolfHUD then
 			},
 			{
 				type = "divider",
-				size = 24,
+				size = 32,
 			},
 			{
 				type = "button",
