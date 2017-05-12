@@ -48,38 +48,38 @@ function WolfHUDTweakData:init()
 		deployable 				-> The equipped deployable
 		secondary_deployable 	-> The eqipped secondary deployable (in case of Jack of all trades)
 --]]
-	self.STD_LOBBY_LOADOUT_LAYOUT = { 
-										{ "playtime", "ping" }, 
-										{ "name" }, 
-										{ "character" }, 
-										{ "skills" }, 
-										{ "perk" }, 
-										{ "primary" }, 
-										{ "secondary" }, 
-										{ "melee_weapon" }, 
-										{ "grenade", "armor" }, 
-										{ "deployable", "secondary_deployable" } 
-									}
-	self.CS_LOBBY_LOADOUT_LAYOUT = { 
-										{ "playtime", "ping" }, 
-										{ "name" }, 
-										{ "skills" }, 
-										{ "perk" }, 
-										{ "primary", "secondary" }, 
-										{ "grenade", "armor" }, 
-										{ "deployable", "secondary_deployable" } 
-									}
-	self.BRIEFING_LOADOUT_LAYOUT = 	{ 
-										{ "perk" }, 
-										{ "skills" }, 
-										{ "primary" }, 
-										{ "secondary" }, 
-										{ "melee_weapon", "grenade" }, 
-										{ "armor", "mask" }, 
+	self.STD_LOBBY_LOADOUT_LAYOUT = {
+										{ "playtime", "ping" },
+										{ "name" },
+										{ "character" },
+										{ "skills" },
+										{ "perk" },
+										{ "primary" },
+										{ "secondary" },
+										{ "melee_weapon" },
+										{ "grenade", "armor" },
 										{ "deployable", "secondary_deployable" }
 									}
-	self.TAB_LOADOUT_LAYOUT = 		{ 
-										{ "name", "ping" }, 
+	self.CS_LOBBY_LOADOUT_LAYOUT = {
+										{ "playtime", "ping" },
+										{ "name" },
+										{ "skills" },
+										{ "perk" },
+										{ "primary", "secondary" },
+										{ "grenade", "armor" },
+										{ "deployable", "secondary_deployable" }
+									}
+	self.BRIEFING_LOADOUT_LAYOUT = 	{
+										{ "perk" },
+										{ "skills" },
+										{ "primary" },
+										{ "secondary" },
+										{ "melee_weapon", "grenade" },
+										{ "armor", "mask" },
+										{ "deployable", "secondary_deployable" }
+									}
+	self.TAB_LOADOUT_LAYOUT = 		{
+										{ "name", "ping" },
 										{ "skills", "perk" },
 									}
 
