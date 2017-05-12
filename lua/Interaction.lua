@@ -28,14 +28,16 @@ if string.lower(RequiredScript) == "lib/units/beings/player/states/playerstandar
 		PlayerStandard.MIN_TIMER_DURATION = WolfHUD:getSetting({"INTERACTION", "MIN_TIMER_DURATION"}, 5)			--Min interaction duration (in seconds) for the toggle behavior to activate	
 		local is_locked = false
 		if self._interact_params ~= nil then
+			local tweak_data = self._interact_params.tweak_data or ""
+			local total_timer = self._interact_params.timer or 0
 			if PlayerStandard.LOCK_MODE >= 5 then
-				is_locked = self._interact_params ~= nil and self._interact_params.tweak_data == "corpse_alarm_pager"
+				is_locked = tweak_data == "corpse_alarm_pager"
 			elseif PlayerStandard.LOCK_MODE >= 4 then
-				is_locked = self._interact_params ~= nil and (self._interact_params.tweak_data == "corpse_alarm_pager" or string.match(self._interact_params.tweak_data,"pick_lock"))
+				is_locked = (tweak_data == "corpse_alarm_pager" or string.match(tweak_data, "pick_lock"))
 			elseif PlayerStandard.LOCK_MODE >= 3 then
 				is_locked = self._interact_params and (self._interact_params.timer >= PlayerStandard.MIN_TIMER_DURATION) -- lock interaction, when total timer time is longer then given time
 			elseif PlayerStandard.LOCK_MODE >= 2 then
-				is_locked = t - (self._interact_expire_t - self._interact_params.timer) >= PlayerStandard.MIN_TIMER_DURATION --lock interaction, when interacting longer then given time
+				is_locked = (total_timer  - self._interact_expire_t) >= PlayerStandard.MIN_TIMER_DURATION --lock interaction, when interacting longer then given time
 			end
 		end
 
@@ -263,21 +265,13 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 	function HUDInteraction:set_interaction_bar_width(current, total)
 		set_interaction_bar_width_original(self, current, total)
-		local color_end = HUDInteraction.GRADIENT_COLOR_START
-		if not HUDInteraction.GRADIENT_COLOR then
-			local t = Application:time()
-			local r, g, b = math.sin(135 * t + 0) / 2 + 0.5, math.sin(140 * t + 60) / 2 + 0.5, math.sin(145 * t + 120) / 2 + 0.5
-			color_end = Color(r, g, b)
-		else
-			color_end = HUDInteraction.GRADIENT_COLOR
-		end
 
 		if HUDInteraction.SHOW_TIME_REMAINING then
 			local text = string.format("%.1fs", math.max(total - current, 0))
 			self._interact_time:set_text(text)
 			local perc = current/total
 			local show = perc < 1
-			local color = math.lerp(HUDInteraction.GRADIENT_COLOR_START, color_end, perc)
+			local color = math.lerp(HUDInteraction.GRADIENT_COLOR_START, WolfHUD:getColor(HUDInteraction.GRADIENT_COLOR_NAME, 0.4), perc)
 			self._interact_time:set_color(color)
 			self._interact_time:set_alpha(1)
 			self._interact_time:set_visible(show)
@@ -301,7 +295,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		HUDInteraction.SHOW_TIME_REMAINING_OUTLINE = WolfHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING_OUTLINE"}, false)
 		HUDInteraction.SHOW_CIRCLE 	= WolfHUD:getSetting({"INTERACTION", "SHOW_CIRCLE"}, true)
 		HUDInteraction.LOCK_MODE = PlayerStandard.LOCK_MODE or 1
-		HUDInteraction.GRADIENT_COLOR = not (WolfHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green") == "rainbow") and WolfHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green") or false
+		HUDInteraction.GRADIENT_COLOR_NAME = WolfHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "light_green")
 		HUDInteraction.GRADIENT_COLOR_START = WolfHUD:getColorSetting({"INTERACTION", "GRADIENT_COLOR_START"}, "white")
 		if HUDInteraction.SHOW_CIRCLE then
 			if HUDInteraction.LOCK_MODE > 1 and HUDInteraction.SHOW_LOCK_INDICATOR then

@@ -48,38 +48,38 @@ function WolfHUDTweakData:init()
 		deployable 				-> The equipped deployable
 		secondary_deployable 	-> The eqipped secondary deployable (in case of Jack of all trades)
 --]]
-	self.STD_LOBBY_LOADOUT_LAYOUT = {
-										{ "playtime", "ping" },
-										{ "name" },
-										{ "character" },
-										{ "skills" },
-										{ "perk" },
-										{ "primary" },
-										{ "secondary" },
-										{ "melee_weapon" },
-										{ "grenade", "armor" },
+	self.STD_LOBBY_LOADOUT_LAYOUT = { 
+										{ "playtime", "ping" }, 
+										{ "name" }, 
+										{ "character" }, 
+										{ "skills" }, 
+										{ "perk" }, 
+										{ "primary" }, 
+										{ "secondary" }, 
+										{ "melee_weapon" }, 
+										{ "grenade", "armor" }, 
+										{ "deployable", "secondary_deployable" } 
+									}
+	self.CS_LOBBY_LOADOUT_LAYOUT = { 
+										{ "playtime", "ping" }, 
+										{ "name" }, 
+										{ "skills" }, 
+										{ "perk" }, 
+										{ "primary", "secondary" }, 
+										{ "grenade", "armor" }, 
+										{ "deployable", "secondary_deployable" } 
+									}
+	self.BRIEFING_LOADOUT_LAYOUT = 	{ 
+										{ "perk" }, 
+										{ "skills" }, 
+										{ "primary" }, 
+										{ "secondary" }, 
+										{ "melee_weapon", "grenade" }, 
+										{ "armor", "mask" }, 
 										{ "deployable", "secondary_deployable" }
 									}
-	self.CS_LOBBY_LOADOUT_LAYOUT = {
-										{ "playtime", "ping" },
-										{ "name" },
-										{ "skills" },
-										{ "perk" },
-										{ "primary", "secondary" },
-										{ "grenade", "armor" },
-										{ "deployable", "secondary_deployable" }
-									}
-	self.BRIEFING_LOADOUT_LAYOUT = 	{
-										{ "perk" },
-										{ "skills" },
-										{ "primary" },
-										{ "secondary" },
-										{ "melee_weapon", "grenade" },
-										{ "armor", "mask" },
-										{"deployable", "secondary_deployable"}
-									}
-	self.TAB_LOADOUT_LAYOUT = 		{
-										{ "name", "ping" },
+	self.TAB_LOADOUT_LAYOUT = 		{ 
+										{ "name", "ping" }, 
 										{ "skills", "perk" },
 									}
 
@@ -104,7 +104,7 @@ function WolfHUDTweakData:init()
 		{ color = '0000FF', name = "blue" 			},
 		{ color = '808080', name = "gray" 			},
 		{ color = '000000', name = "black" 			},
-		{ color = nil, 		name = "rainbow" 		},
+		{ color = nil, name = "rainbow" 			},
 	}
 
 	self:post_init()
@@ -113,4 +113,13 @@ end
 ----------------------------------------- DONT EDIT BELOW THIS LINE!!! ----------------------------------------- DONT EDIT BELOW THIS LINE!!! ----------------------------------------- DONT EDIT BELOW THIS LINE!!! -----------------------------------------
 
 function WolfHUDTweakData:post_init()
+	for _, data in ipairs(self.color_table) do
+		if data.name == "rainbow" then
+			data.color_func = function(frequency)
+				local r = Application:time() * 360 * (frequency or 1)
+				local r, g, b = (1 + math.sin(r + 0)) / 2, (1 + math.sin(r + 120)) / 2, (1 + math.sin(r + 240)) / 2
+				return Color(r, g, b)
+			end
+		end
+	end
 end
