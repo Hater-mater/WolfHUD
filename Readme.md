@@ -2,7 +2,7 @@
 ####Development Version
 
 This is a Mod collection of several useful HUD altering mods.
-I've modified them and added features, I felt were needed or useful.+
+I've modified them and added features, I felt were needed or useful.
 It was originally a recreated and updated version of GageHUD, since it was really painful to maintain with all the mixxed up files.
 Over time I added more and more useful Scripts and currently it becomes kind of an All-in-One solution...
 Not sure if I want it to become that, but at least I added ingame Options to turn off functions you don't like. ;)
