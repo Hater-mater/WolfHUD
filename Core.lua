@@ -168,8 +168,8 @@ if not _G.WolfHUD then
 						DURATION					= 15,
 					},
 					AI_COLOR = {
-						USE							= false,
-						COLOR						= "orange",
+						USE							= true,
+						COLOR						= "white",
 					},
 					WEAPON = {
 						ICON						= 1,
