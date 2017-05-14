@@ -114,65 +114,65 @@ if not _G.WolfHUD then
 	function WolfHUD:Reset()
 		WolfHUD.settings = {
 			CustomHUD = {
-				ENABLED 							= true,
+				ENABLED 							= false,
 				PLAYER = {
 					POSITION						= 2,		-- left (1), center (2) or right (3)
 					SCALE 							= 1,		--Size of local Player HUD Panel
-					OPACITY							= 0.85,
-					NAME							= false,
-					RANK							= false,
-					TRUNCATE_TAGS					= false,
+					OPACITY							= 1,
+					NAME							= true,
+					RANK							= true,
+					TRUNCATE_TAGS					= true,
 					CHARACTER						= false,
 					STATUS							= true,
 					EQUIPMENT						= true,
 					SPECIAL_EQUIPMENT				= true,
 					SPECIAL_EQUIPMENT_ROWS			= 3,
-					CALLSIGN						= false,
+					CALLSIGN						= true,
 					STAMINA							= true,
 					DOWNCOUNTER						= true,
 					CARRY							= true,
-					CONDITION_ICON_COLOR			= "white",
+					CONDITION_ICON_COLOR			= "orange",
 					WEAPON = {
 						ICON						= 4,
-						NAME						= 1,
+						NAME						= 4,
 						AMMO						= 4,
-						FIREMODE					= 2,
+						FIREMODE					= 4,
 					},
 					KILLCOUNTER = {
 						HIDE						= false,
 						SHOW_SPECIAL_KILLS 			= true,
 						SHOW_HEADSHOT_KILLS			= true,
-						COLOR						= "yellow",
+						COLOR						= "orange",
 					},
 					SHOW_ACCURACY					= true,
 				},
 				TEAMMATE = {
 					POSITION						= 1,		-- left (1), center (2) or right (3)
 					SCALE 							= 0.8,		--Size of Teammates/AI's HUD Panels
-					OPACITY							= 0.85,
+					OPACITY							= 1,
 					NAME							= true,
 					RANK							= true,
-					TRUNCATE_TAGS					= false,
+					TRUNCATE_TAGS					= true,
 					CHARACTER						= false,
 					LATENCY							= true,
 					STATUS							= true,
 					EQUIPMENT						= true,
 					SPECIAL_EQUIPMENT				= true,
 					SPECIAL_EQUIPMENT_ROWS			= 3,
-					CALLSIGN						= false,
+					CALLSIGN						= true,
 					DOWNCOUNTER						= true,
 					CARRY							= true,
-					CONDITION_ICON_COLOR			= "white",
+					CONDITION_ICON_COLOR			= "orange",
 					BUILD = {
 						HIDE						= false,
 						DURATION					= 15,
 					},
 					AI_COLOR = {
 						USE							= false,
-						COLOR						= "white",
+						COLOR						= "orange",
 					},
 					WEAPON = {
-						ICON						= 4,
+						ICON						= 1,
 						NAME						= 1,
 						AMMO						= 4,
 						FIREMODE					= 1,
@@ -181,13 +181,13 @@ if not _G.WolfHUD then
 						HIDE					= false,		-- Show Interaction
 						NUMBER					= true,
 						TEXT					= true,
-						MIN_DURATION			= 1,
+						MIN_DURATION			= 0,
 					},
 					KILLCOUNTER = {
 						HIDE						= false,
 						SHOW_SPECIAL_KILLS 			= true,
 						SHOW_HEADSHOT_KILLS			= true,
-						COLOR						= "yellow",
+						COLOR						= "orange",
 						SHOW_BOT_KILLS 				= true,
 					},
 				},
@@ -201,7 +201,7 @@ if not _G.WolfHUD then
 			},
 			EnemyHealthbar = {
 				ENABLED 								= true,		--Show healthbars
-				SHOW_CIVILIAN 							= false,	--Show Healthbars for Civilians and TeamAI
+				SHOW_CIVILIAN 							= true,		--Show Healthbars for Civilians and TeamAI
 				SHOW_VEHICLE							= true,		--Show Healthbar for vehicles
 				SHOW_POINTER		 					= false,	--Show pointer near the Healthbar, pointing at Healthbar owner
 			},
@@ -217,11 +217,11 @@ if not _G.WolfHUD then
 				FRIENDLY_FIRE_COLOR						= "orange",
 			},
 			DamagePopup = {
-				DISPLAY_MODE							= 2,
-				DURATION	 							= 3,
-				SCALE									= 1,
-				SKULL_SCALE								= 1.2,
-				SKULL_ALIGN								= 1,			-- left (1) or right (2)
+				DISPLAY_MODE							= 3,
+				DURATION	 							= 2,
+				SCALE									= 0.6,
+				SKULL_SCALE								= 0.9,
+				SKULL_ALIGN								= 2,			-- left (1) or right (2)
 				COLOR									= "yellow",
 				HEADSHOT_COLOR							= "red",
 			},
@@ -230,7 +230,7 @@ if not _G.WolfHUD then
 				USE_ADV_ASSAULT							= true,
 			},
 			HUDSuspicion = {
-				SCALE									= 0.8,
+				SCALE									= 1,
 				SHOW_PERCENTAGE							= true,
 				SHOW_PERCENTAGE_OUTLINE					= true,
 				SHOW_BARS								= true,
@@ -252,8 +252,8 @@ if not _G.WolfHUD then
 			TabStats = {
 				ENABLED									= true,
 				CLOCK_MODE								= 3,		-- 1 = disabled, 2 = 12h, 3 = 24h
-				COLOR		 							= "rainbow",
-				FONT_SIZE		 						= 18,
+				COLOR		 							= "white",
+				FONT_SIZE		 						= 12,
 				SHOW_MASK								= true,
 				SHOW_LOOT_NUMBERS						= true,
 			},
@@ -273,15 +273,15 @@ if not _G.WolfHUD then
 				buff_list_progress_alpha 				= 1.0,
 				list_color	 							= "white",		--Left and Right List font color
 				list_color_bg	 						= "black",		--Left and Right List BG color
-				civilian_color 							= "white", 		--EnemyCounter Civillian and Hostage icon color
-				thug_color 								= "white",		--EnemyCounter Thug and Mobster icon color
-				enemy_color 							= "white",		--EnemyCounter Cop and Specials icon color
-				special_color 							= "white",
+				civilian_color 							= "green", 		--EnemyCounter Civillian and Hostage icon color
+				thug_color 								= "orange",		--EnemyCounter Thug and Mobster icon color
+				enemy_color 							= "orange",		--EnemyCounter Cop and Specials icon color
+				special_color 							= "red",
 				LEFT_LIST = {
 					show_timers 							= true,     --Drills, time locks, hacking etc.
 					show_ammo_bags							= true,  	--Deployables (ammo)
 					show_doc_bags							= true,  	--Deployables (doc bags)
-					show_first_aid_kits						= false,	--Deployables (first_aid_kits)
+					show_first_aid_kits						= true,		--Deployables (first_aid_kits)
 					show_body_bags							= true,  	--Deployables (body bags)
 					show_grenade_crates						= true,  	--Deployables (grenades)
 					show_sentries 							= true,   	--Deployable sentries
@@ -307,7 +307,7 @@ if not _G.WolfHUD then
 					show_loot 								= true,     --Show spawned and active loot bags/piles (may not be shown if certain mission parameters has not been met)
 						aggregate_loot		 				= false, 	--Don't split loot on type; use a single entry for all
 						separate_bagged_loot		 		= true,     --Show bagged loot as a separate value
-						show_potential_loot					= false,
+						show_potential_loot					= true,
 					show_special_pickups 					= true,    	--Show number of special equipment/items
 					SHOW_PICKUP_CATEGORIES = {
 						mission_pickups 					= true,
@@ -402,42 +402,42 @@ if not _G.WolfHUD then
 				},
 			},
 			CustomWaypoints = {
-				WAYPOINTS_COLOR							= "white",
+				WAYPOINTS_COLOR							= "orange",
 				SHOW_AMMO_BAG 							= true,
 				SHOW_DOC_BAG		 					= true,
-				SHOW_FIRST_AID_KIT						= false,
+				SHOW_FIRST_AID_KIT						= true,
 				SHOW_BODY_BAG			 				= true,
 				SHOW_GRENADE_CRATE			 			= true,
-				SHOW_SENTRIES			 				= false,
-				SHOW_ECMS								= false,
-				SHOW_TIMERS			 					= false,
+				SHOW_SENTRIES			 				= true,
+				SHOW_ECMS								= true,
+				SHOW_TIMERS			 					= true,
 				SHOW_MINIONS							= true,
-				SHOW_PAGER								= false,
-				SHOW_SPECIAL_EQUIPMENT					= false,
+				SHOW_PAGER								= true,
+				SHOW_SPECIAL_EQUIPMENT					= true,
 				LOOT = {
 					SHOW								= true,
-					ICON								= true,
+					ICON								= false,
 					OFFSET								= 15,
-					BAGGED_OFFSET						= 30,
-					ANGLE								= 25,
+					BAGGED_OFFSET						= 15,
+					ANGLE								= 15,
 				},
 			},
 			INTERACTION = {
 				LOCK_MODE 								= 3,			--Disabled (1, Lock interaction, if MIN_TIMER_DURATION is longer then total interaction time (2), or current interaction time(3)
-				MIN_TIMER_DURATION 						= 5, 			--Min interaction duration (in seconds) for the toggle behavior to activate
+				MIN_TIMER_DURATION 						= 0, 			--Min interaction duration (in seconds) for the toggle behavior to activate
 				EQUIPMENT_PRESS_INTERRUPT 				= true, 		--Use the equipment key ('G') to toggle off active interactions
-				SHOW_LOCK_INDICATOR						= true,
-				SHOW_CIRCLE								= true,
-				CIRCLE_SCALE							= 0.8,
-				TEXT_SCALE								= 0.8,
+				SHOW_LOCK_INDICATOR						= false,
+				SHOW_CIRCLE								= false,
+				CIRCLE_SCALE							= 1,
+				TEXT_SCALE								= 1,
 				SHOW_INTERRUPT_HINT						= true,
 				SHOW_TIME_REMAINING 					= true,			--Show remaining Time in the Interaction-Circle
-				SHOW_TIME_REMAINING_OUTLINE				= false,		--Show black outline around remaining Time text
-				GRADIENT_COLOR_START					= "white",		--Color, which the timer starts with
-				GRADIENT_COLOR							= "light_green",--Color, which the timer reaches on completition
+				SHOW_TIME_REMAINING_OUTLINE				= true,			--Show black outline around remaining Time text
+				GRADIENT_COLOR_START					= "orange",		--Color, which the timer starts with
+				GRADIENT_COLOR							= "white",		--Color, which the timer reaches on completition
 				TIMER_SCALE								= 1,			--Timer scale (also takes CIRCLE_SCALE into account)
-				SHOW_RELOAD								= false,
-				SHOW_MELEE								= false,
+				SHOW_RELOAD								= true,
+				SHOW_MELEE								= true,
 				SUPRESS_NADES_STEALTH					= true,
 				HOLD2PICK								= true,
 			},
@@ -445,11 +445,11 @@ if not _G.WolfHUD then
 				LASER_AUTO_ON 							= true,
 				laser = {
 					player = {
-						beam 							= { r = 0, g = 1, b = 0, a = 0.15 },
-						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
+						beam 							= { r = 0, g = 1, b = 0, a = 0.5 },
+						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.05 },
 						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
 						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						rainbow 						= { enabled = true, frequency = 0.3 },
 					},
 					team = {
 						beam 							= { r = 0, g = 1, b = 0, a = 0.05 },
@@ -513,13 +513,13 @@ if not _G.WolfHUD then
 						rainbow 						= { enabled = false, frequency = 0.25 },
 					},
 				},
-				SHOW_ANGELED_SIGHT						= true,
+				SHOW_ANGELED_SIGHT						= false,
 			},
 			EQUIPMENT = {
 				SENTRY_AUTO_AP 							= true,
 				ECM_FEEDBACK_STEALTH_DISABLED			= true,
 				SHAPED_CHARGE_STEALTH_DISABLED			= true,
-				ENABLE_BURSTMODE						= true,
+				ENABLE_BURSTMODE						= false,
 			},
 			INVENTORY = {
 				SHOW_WEAPON_NAMES 						= true,
@@ -536,14 +536,14 @@ if not _G.WolfHUD then
 			SkipIt = {
 				SKIP_BLACKSCREEN 						= true,		--Skip the blackscreen on mission start
 				INSTANT_RESTART							= false,
-				STAT_SCREEN_SPEEDUP						= false,
+				STAT_SCREEN_SPEEDUP						= true,
 				STAT_SCREEN_DELAY 						= 5,		--Skip the experience screen after X seconds
 				AUTOPICK_CARD 							= true,		--Automatically pick a card on lootscreen
 				LOOT_SCREEN_DELAY 						= 3,		--Skip the loot screen after X seconds
 				NO_SLOWMOTION 							= true,		--Disable mask-up and downed slow motion
 			},
 			MOD_OVERRIDES = {
-				fed_inv									= true,
+				fed_inv									= false,
 			},
 		}
 	end
