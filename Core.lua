@@ -552,13 +552,13 @@ if not _G.WolfHUD then
 			LOBBY_SETTINGS = {
 				job_plan = -1,
 				kick_option = 1,
-				permission = "public",
+				permission = "friends_only",
 				reputation_permission = 0,
-				drop_in_option = 1,
+				drop_in_option = 3,
 				team_ai = true,
 				team_ai_option = 1,
 				auto_kick = true,
-				difficulty = "normal",
+				difficulty = "sm_wish",
 			},
 		}
 	end
