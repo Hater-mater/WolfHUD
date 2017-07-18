@@ -631,12 +631,17 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/stageendscreengui" the
 elseif string.lower(RequiredScript) == "lib/managers/menu/lootdropscreengui" then
 	local SKIP_LOOT_SCREEN_DELAY = WolfHUD:getSetting({"SkipIt", "LOOT_SCREEN_DELAY"}, 3)
 	local AUTO_PICK_CARD = WolfHUD:getSetting({"SkipIt", "AUTOPICK_CARD"}, true)
+	local AUTO_PICK_SPECIFIC_CARD = WolfHUD:getSetting({"SkipIt", "AUTOPICK_CARD_SPECIFIC"}, 0)
 	local update_original = LootDropScreenGui.update
 	function LootDropScreenGui:update(t, ...)
 		update_original(self, t, ...)
 
 		if not self._card_chosen and AUTO_PICK_CARD then
-			self:_set_selected_and_sync(math.random(3))
+			local autopicked_card = math.random(3)
+			if AUTO_PICK_SPECIFIC_CARD > 0 and AUTO_PICK_SPECIFIC_CARD < 4 then
+				autopicked_card = AUTO_PICK_SPECIFIC_CARD
+			end
+			self:_set_selected_and_sync(autopicked_card)
 			self:confirm_pressed()
 		end
 
