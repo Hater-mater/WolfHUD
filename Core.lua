@@ -224,13 +224,13 @@ if not _G.WolfHUD then
 			DamagePopup = {
 				DISPLAY_MODE							= 3,
 				DURATION	 							= 2,
-				HEIGHT	 								= 20,
 				SCALE									= 0.6,
 				SKULL_SCALE								= 0.9,
 				SKULL_ALIGN								= 2,			-- left (1) or right (2)
+				HEIGHT	 								= 20,
+				ALPHA	 								= 1,
 				COLOR									= "yellow",
 				HEADSHOT_COLOR							= "red",
-				ALPHA	 								= 1,
 			},
 			AssaultBanner = {
 				POSITION								= 2,			-- left (1), center (2) or right (3)

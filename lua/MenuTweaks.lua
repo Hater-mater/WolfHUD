@@ -637,9 +637,9 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/lootdropscreengui" the
 		update_original(self, t, ...)
 
 		if not self._card_chosen and AUTO_PICK_CARD then
-			local autopicked_card = math.random(3)
-			if AUTO_PICK_SPECIFIC_CARD > 0 and AUTO_PICK_SPECIFIC_CARD < 4 then
-				autopicked_card = AUTO_PICK_SPECIFIC_CARD
+			local autopicked_card = AUTO_PICK_SPECIFIC_CARD
+			if autopicked_card == 0 then
+				autopicked_card = math.random(3)
 			end
 			self:_set_selected_and_sync(autopicked_card)
 			self:confirm_pressed()
