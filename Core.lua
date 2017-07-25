@@ -201,8 +201,11 @@ if not _G.WolfHUD then
 			HUDChat = {
 				CHAT_WAIT_TIME							= 10,		--Time before chat fades out, 0 = never
 				LINE_HEIGHT								= 15,		--Chat font Size
+				WIDTH									= 380,		--Width of the chat window
 				MAX_OUTPUT_LINES						= 8,		--Chat Output lines
-				SPAM_FILTER								= true,		--Filter PocoHud and NGBTO Chat Spam messages.
+				MAX_INPUT_LINES							= 5,		--Number of lines of text you can type
+				COLORED_BG								= false,	--Colorize the line bg based on the message source
+				SPAM_FILTER								= false,	--Filter PocoHud and NGBTO Chat Spam messages.
 			},
 			EnemyHealthbar = {
 				ENABLED 								= true,		--Show healthbars
