@@ -279,8 +279,8 @@ if not _G.WolfHUD then
 				right_list_scale						= 1,
 				left_list_scale							= 1,
 				buff_list_scale							= 1,
-				right_list_progress_alpha 				= 0.4,
-				left_list_progress_alpha 				= 0.4,
+				right_list_progress_alpha 				= 1,
+				left_list_progress_alpha 				= 1,
 				buff_list_progress_alpha 				= 1.0,
 				list_color	 							= "white",		--Left and Right List font color
 				list_color_bg	 						= "black",		--Left and Right List BG color
@@ -563,7 +563,7 @@ if not _G.WolfHUD then
 				kick_option = 1,
 				permission = "friends_only",
 				reputation_permission = 0,
-				drop_in_option = 3,
+				drop_in_option = 2,
 				team_ai = true,
 				team_ai_option = 1,
 				auto_kick = true,
