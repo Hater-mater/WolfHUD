@@ -3574,10 +3574,10 @@ if WolfHUD then
 						name_id = "wolfhud_loot_screen_pick_specific_card_title",
 						desc_id = "wolfhud_loot_screen_pick_specific_card_desc",
 						options = {
-							"wolfhud_multiselect_random",
 							"wolfhud_multiselect_left",
 							"wolfhud_multiselect_center",
 							"wolfhud_multiselect_right",
+							"wolfhud_multiselect_random",
 						},
 						visible_reqs = {
 							{ setting = {"SkipIt", "AUTOPICK_CARD"}, invert = false },

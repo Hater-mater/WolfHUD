@@ -227,8 +227,8 @@ if not _G.WolfHUD then
 				SCALE									= 0.6,
 				SKULL_SCALE								= 0.9,
 				SKULL_ALIGN								= 2,			-- left (1) or right (2)
-				HEIGHT	 								= 20,
-				ALPHA	 								= 1,
+				HEIGHT	 								= 30,
+				ALPHA	 								= 0.8,
 				COLOR									= "yellow",
 				HEADSHOT_COLOR							= "red",
 			},
@@ -548,7 +548,7 @@ if not _G.WolfHUD then
 				STAT_SCREEN_SPEEDUP						= true,
 				STAT_SCREEN_DELAY 						= 5,		--Skip the experience screen after X seconds
 				AUTOPICK_CARD 							= true,		--Automatically pick a card on lootscreen
-				AUTOPICK_CARD_SPECIFIC 					= 0,
+				AUTOPICK_CARD_SPECIFIC 					= 4,		--left, center, right, random
 				LOOT_SCREEN_DELAY 						= 3,		--Skip the loot screen after X seconds
 				NO_SLOWMOTION 							= true,		--Disable mask-up and downed slow motion
 			},
