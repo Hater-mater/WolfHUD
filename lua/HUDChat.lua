@@ -19,6 +19,7 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 	HUDChat.MAX_INPUT_LINES = WolfHUD:getSetting({"HUDChat", "MAX_INPUT_LINES"}, 5)		--Number of lines of text you can type
 	HUDChat.MOUSE_SUPPORT = false														--For scolling and stuff. Experimental, you have been warned
 	HUDChat.COLORED_BG = WolfHUD:getSetting({"HUDChat", "COLORED_BG"}, true)			--Colorize the line bg based on the message source
+	HUDChat.SCROLLBAR_ALIGN = WolfHUD:getSetting({"HUDChat", "SCROLLBAR_ALIGN"}, 2)		--Alignment of the scroll bar (1 = left, 2 = right)
 
 	local enter_key_callback_original = HUDChat.enter_key_callback
 	local esc_key_callback_original = HUDChat.esc_key_callback
@@ -154,6 +155,7 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			w = self._panel:w(),
 			layer = 1,
 		})
+
 		local scroll_bar_bg = output_panel:rect({
 			name = "scroll_bar_bg",
 			color = Color.black,
@@ -164,8 +166,6 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			w = 8,
 			h = HUDChat.LINE_HEIGHT * HUDChat.MAX_OUTPUT_LINES,
 		})
-		scroll_bar_bg:set_right(output_panel:w())
-
 		local scroll_bar_up = output_panel:bitmap({
 			name = "scroll_bar_up",
 			texture = "guis/textures/pd2/scrollbar_arrows",
@@ -176,8 +176,6 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			blend_mode = "add",
 			color = Color.white,
 		})
-		scroll_bar_up:set_right(output_panel:w())
-
 		local scroll_bar_down = output_panel:bitmap({
 			name = "scroll_bar_down",
 			texture = "guis/textures/pd2/scrollbar_arrows",
@@ -189,7 +187,11 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			color = Color.white,
 			rotation = 180,
 		})
-		scroll_bar_down:set_right(output_panel:w())
+		if HUDChat.SCROLLBAR_ALIGN == 2 then
+			scroll_bar_bg:set_right(output_panel:w())
+			scroll_bar_up:set_right(output_panel:w())
+			scroll_bar_down:set_right(output_panel:w())
+		end
 		scroll_bar_down:set_bottom(output_panel:h())
 
 		local scroll_bar_position = output_panel:rect({
@@ -214,6 +216,9 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 				blend_mode = "sub",
 				w = output_panel:w() - scroll_bar_bg:w() ,
 			})
+			if HUDChat.SCROLLBAR_ALIGN == 1 then
+				output_panel:set_left(scroll_bar_bg:w())
+			end
 		end
 
 		output_panel:set_bottom(self._panel:h())
@@ -258,6 +263,9 @@ if RequiredScript == "lib/managers/hud/hudchat" then
 			name = "msg_" .. tostring(#self._messages),
 			w = output_panel:w() - scroll_bar_bg:w(),
 		})
+		if HUDChat.SCROLLBAR_ALIGN == 1 then
+			msg_panel:set_left(scroll_bar_bg:w())
+		end
 		local msg_panel_bg
 		if HUDChat.COLORED_BG then
 			msg_panel_bg = msg_panel:rect({

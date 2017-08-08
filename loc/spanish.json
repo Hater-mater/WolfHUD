@@ -348,6 +348,8 @@
 	"wolfhud_chat_inputlines_desc" : "Number of lines of text you can type",
 	"wolfhud_chat_colored_bg_title" : "Colored Background",
 	"wolfhud_chat_colored_bg_desc" : "Colorize the line bg based on the message source",
+	"wolfhud_chat_scrollbar_align_title" : "Scrollbar Align",
+	"wolfhud_chat_scrollbar_align_desc" : "Alignment of the scroll bar",
 
 	"wolfhud_suspicion_options_name" : "Suspicion options",
 	"wolfhud_suspicion_options_help" : "Options for the size of the suspicion panel, as well as its visible components.",

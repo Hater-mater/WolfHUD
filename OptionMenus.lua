@@ -1104,6 +1104,17 @@ if WolfHUD then
 								value = {"HUDChat", "COLORED_BG"},
 							},
 							{
+								type = "multi_choice",
+								name_id = "wolfhud_chat_scrollbar_align_title",
+								desc_id = "wolfhud_chat_scrollbar_align_desc",
+								value = {"HUDChat", "SCROLLBAR_ALIGN"},
+								visible_reqs = {},
+								options = {
+									"wolfhud_multiselect_left",
+									"wolfhud_multiselect_right",
+								},
+							},
+							{
 								type = "divider",
 								size = 8,
 							},

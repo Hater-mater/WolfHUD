@@ -205,6 +205,7 @@ if not _G.WolfHUD then
 				MAX_OUTPUT_LINES						= 8,		--Chat Output lines
 				MAX_INPUT_LINES							= 5,		--Number of lines of text you can type
 				COLORED_BG								= false,	--Colorize the line bg based on the message source
+				SCROLLBAR_ALIGN							= 2,		--Alignment of the scroll bar (1 = left, 2 = right)
 				SPAM_FILTER								= false,	--Filter PocoHud and NGBTO Chat Spam messages.
 			},
 			EnemyHealthbar = {
