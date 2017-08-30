@@ -710,7 +710,8 @@ if not _G.WolfHUD then
 			end
 		end
 
-		if SystemInfo:platform() ~= Idstring("WIN32") then -- Abort here while Linux doesn't support 'mod_overrides', TODO: Linux seems to return WIN32 as well...
+		--if SystemInfo:platform() ~= Idstring("WIN32") then -- Abort here while Linux doesn't support 'mod_overrides', TODO: Linux seems to return WIN32 as well...
+		if not SystemFS then -- The Linux binary of PD2 does not have SystemFS, so that's one way to see if running on Linux for now. Dirty, but working.
 			return
 		end
 
