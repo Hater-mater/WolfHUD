@@ -5,6 +5,7 @@
 	"contact" : "https://github.com/Kamikaze94/WolfHUD",
 	"version" : "2.40",
 	"priority" : 1,
+	"blt_version" : 2,
 	"hooks" : [
 		{ "hook_id" : "lib/setups/setup", 										"script_path" : "Core.lua" },
 		{ "hook_id" : "lib/managers/menumanager", 								"script_path" : "Core.lua" },
