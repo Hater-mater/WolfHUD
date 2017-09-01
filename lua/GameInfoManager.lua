@@ -473,7 +473,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			loose_ammo_give_team = "ammo_give_out_debuff",
 			armor_break_invulnerable = "armor_break_invulnerable_debuff",
 			single_shot_fast_reload = "aggressive_reload_aced",
-			unseen_strike = "unseen_strike",
+            unseen_strike = "unseen_strike",
 
 			--"properties"
 			bloodthirst_reload_speed = "bloodthirst_aced",
@@ -1883,7 +1883,7 @@ if string.lower(RequiredScript) == "lib/managers/group_ai_states/groupaistatebas
 
 	function GroupAIStateBase:_update_hostage_count()
         managers.player:update_hostage_situation(self._hostage_headcount)
-    
+
 		local police_hostages = 0
 		local security_hostages = 0
 		local civilian_hostages = self._hostage_headcount
@@ -3803,16 +3803,12 @@ if string.lower(RequiredScript) == "lib/player_actions/skills/playeractionunseen
 
 	function PlayerAction.UnseenStrike.Function(player_manager, min_time, ...)
 		local function on_damage_taken()
-			managers.gameinfo:event("buff", "activate", "unseen_strike_debuff")
-			managers.gameinfo:event("buff", "set_duration", "unseen_strike_debuff", { duration = min_time })
+			managers.gameinfo:event("timed_buff", "activate", "unseen_strike_debuff", { duration = min_time })
 		end
 
-		managers.player:register_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener", on_damage_taken)
-		managers.gameinfo:event("buff", "activate", "unseen_strike_debuff")
-		on_damage_taken()
+		player_manager:register_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener", on_damage_taken)
 		unseenstrike_original(player_manager, min_time, ...)
-		managers.player:unregister_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener")
-		managers.gameinfo:event("buff", "deactivate", "unseen_strike_debuff")
+		player_manager:unregister_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener")
 	end
 
 end
