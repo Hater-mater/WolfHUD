@@ -1258,7 +1258,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 		if event == "activate" then
 			self:_buff_event("set_duration", id, { t = data.t, duration = data.duration, expire_t = data.expire_t })
-			self:_add_player_timer_expiration(id, id, self._buffs[id].expire_t, self._timed_buff_expire_clbk)
+            if data.expire_t or (data.t and data.duration) then
+                self:_add_player_timer_expiration(id, id, data.expire_t or (data.t + data.duration), self._timed_buff_expire_clbk)
+            end
 		elseif event == "deactivate" then
 			self:_remove_player_timer_expiration(id)
 		end
