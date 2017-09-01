@@ -473,6 +473,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			loose_ammo_give_team = "ammo_give_out_debuff",
 			armor_break_invulnerable = "armor_break_invulnerable_debuff",
 			single_shot_fast_reload = "aggressive_reload_aced",
+			unseen_strike = "unseen_strike",
 
 			--"properties"
 			bloodthirst_reload_speed = "bloodthirst_aced",
@@ -3799,7 +3800,6 @@ end
 if string.lower(RequiredScript) == "lib/player_actions/skills/playeractionunseenstrike" then
 
 	local unseenstrike_original = PlayerAction.UnseenStrike.Function
-	local unseenstrike_start_original = PlayerAction.UnseenStrikeStart.Function
 
 	function PlayerAction.UnseenStrike.Function(player_manager, min_time, ...)
 		local function on_damage_taken()
@@ -3813,21 +3813,6 @@ if string.lower(RequiredScript) == "lib/player_actions/skills/playeractionunseen
 		unseenstrike_original(player_manager, min_time, ...)
 		managers.player:unregister_message(Message.OnPlayerDamage, "unseen_strike_debuff_listener")
 		managers.gameinfo:event("buff", "deactivate", "unseen_strike_debuff")
-	end
-
-	function PlayerAction.UnseenStrikeStart.Function(player_manager, max_duration, ...)
-		managers.gameinfo:event("buff", "deactivate", "unseen_strike_debuff")
-
-		local function on_damage_taken()
-			managers.gameinfo:event("buff", "deactivate", "unseen_strike")
-		end
-
-		managers.player:register_message(Message.OnPlayerDamage, "unseen_strike_buff_listener", on_damage_taken)
-		managers.gameinfo:event("buff", "activate", "unseen_strike")
-		managers.gameinfo:event("buff", "set_duration", "unseen_strike", { duration = max_duration })
-		unseenstrike_start_original(player_manager, max_duration, ...)
-		managers.player:unregister_message(Message.OnPlayerDamage, "unseen_strike_buff_listener")
-		managers.gameinfo:event("buff", "deactivate", "unseen_strike")
 	end
 
 end
