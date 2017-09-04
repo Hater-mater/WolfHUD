@@ -674,15 +674,6 @@ if not _G.WolfHUD then
 		return res
 	end
 
-	function WolfHUD:SafeTableConcat(tbl, str)
-		local res
-		for i = 1, #tbl do
-			local val = tbl[i] and tostring(tbl[i]) or "[nil]"
-			res = res and res .. str .. val or val
-		end
-		return res
-	end
-
 	function WolfHUD:getSetting(id_table, default)
 		if type(id_table) == "table" then
 			local entry = self.settings
