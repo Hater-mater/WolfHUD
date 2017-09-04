@@ -5,7 +5,7 @@ if not _G.WolfHUD then
 	WolfHUD.settings_path = WolfHUD.save_path .. "WolfHUD_v2.json"
 	WolfHUD.tweak_file = "WolfHUDTweakData.lua"
 	WolfHUD.LOG_MODE = { error = true, warning = true, info = false }		-- error, info, warning or all
-	WolfHUD.version = nil
+	WolfHUD.identifier = string.match(WolfHUD.mod_path, "(%w+)[\\/]$") or "WolfHUD"
 
 	WolfHUD.settings = {}
 	WolfHUD.tweak_data = {}
@@ -652,91 +652,6 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:AskOverride(data, setting, notif_id)
-		local menu_options = {
-			[1] = {
-				text = managers.localization:text("dialog_yes"),
-				callback = function(self, item)
-					WolfHUD.settings["MOD_OVERRIDES"][setting] = true
-					WolfHUD:Save()
-					WolfHUD:createOverrides(data)
-					if notif_id and NotificationsManager:NotificationExists( notif_id ) then
-						NotificationsManager:UpdateNotification( notif_id,
-							managers.localization:text("woldhud_notification_restart_override_title", { NAME = data.display_name }),
-							managers.localization:text("woldhud_notification_restart_override_desc"), 20, function() end
-						)
-					end
-				end,
-			},
-			[2] = {
-				text = managers.localization:text("dialog_no"),
-				callback = function(self, item)
-					WolfHUD.settings["MOD_OVERRIDES"][setting] = false
-					WolfHUD:Save()
-					WolfHUD:createOverrideNotification(data, setting)
-				end,
-			},
-			[3] = {
-				text = managers.localization:text("wolfhud_dialog_remind_later"),
-				is_cancel_button = true,
-			},
-		}
-		return QuickMenu:new( managers.localization:text("wolfhud_dialog_install_title", { NAME = data["display_name"] }),
-				string.format("%s\n\n%s", managers.localization:text(string.format("wolfhud_dialog_install_%s_desc", data["identifier"])), managers.localization:text("wolfhud_dialog_install_desc", { NAME = data["display_name"]})) ,
-				menu_options, true )
-	end
-
-	function WolfHUD:getVersion()    
-        local mod = BLT.Mods:GetMod("WolfHUD")
-		return tostring(mod and mod:GetVersion() or "(n/a)")
-	end
-
-	function WolfHUD:checkOverrides()
-        do return end   -- TODO: Needs to be redone with new BLT system!
-		local updates = {}
-		for k, v in pairs(LuaModManager.Mods) do
-			local info = v.definition
-			if info["name"] == "WolfHUD" then
-				updates = info["updates"] or {}
-				break
-			end
-		end
-
-		if SystemInfo:platform() ~= Idstring("WIN32") then -- Abort here while Linux doesn't support 'mod_overrides', TODO: Linux seems to return WIN32 as well...
-			return
-		end
-
-		for k, v in pairs(updates) do
-			if type(v["revision"]) == "string" and not io.file_is_readable( v["revision"] ) then
-				local setting = v["identifier"]
-				if WolfHUD.settings["MOD_OVERRIDES"][setting] then
-					WolfHUD:AskOverride(v, setting)
-				elseif WolfHUD.settings["MOD_OVERRIDES"][setting] == nil then
-					WolfHUD:createOverrides(v)
-				else
-					WolfHUD:createOverrideNotification(v, setting)
-				end
-			end
-		end
-	end
-
-	function WolfHUD:createOverrides(data)
-		self:print_log("Creating Dummy for: " .. data["display_name"], "info")
-		if not file.DirectoryExists("./" .. data["install_dir"]) then
-			WolfHUD:print_log("[WolfHUD] 'mod_overrides' folder is missing!", "warning")
-			WolfHUD:createDirectory("./" .. data["install_dir"])
-		end
-		if not file.DirectoryExists("./" .. data["install_dir"] .. data["install_folder"]) then
-			WolfHUD:print_log("[WolfHUD] mod_override folder '" .. data["install_folder"] .. "' is missing!", "warning")
-			WolfHUD:createDirectory("./" .. data["install_dir"] .. data["install_folder"])
-		end
-		local file = io.open(data["revision"], "w+")
-		if file then
-			file:write("0")
-			file:close()
-		end
-	end
-
 	function WolfHUD:createDirectory(path)
 		if SystemFS and SystemFS.make_dir then
 			SystemFS:make_dir(path)
@@ -745,17 +660,18 @@ if not _G.WolfHUD then
 		end
 	end
 
-	function WolfHUD:createOverrideNotification(data, setting)
-		local id = string.format("wolfhud_disabled_override_%s", data.identifier)
-		if not NotificationsManager:NotificationExists( id ) then
-			NotificationsManager:AddNotification( id,
-				managers.localization:text("woldhud_notification_disabled_override_title", { NAME = data.display_name }),
-				managers.localization:text("woldhud_notification_disabled_override_desc"),
-				20, function()
-					WolfHUD:AskOverride(data, setting, id)
-				end
-			)
+	function WolfHUD:getVersion()
+        local mod = BLT.Mods:GetMod(WolfHUD.identifier or "")
+		return tostring(mod and mod:GetVersion() or "(n/a)")
+	end
+
+	function WolfHUD:SafeTableConcat(tbl, str)
+		local res
+		for i = 1, #tbl do
+			local val = tbl[i] and tostring(tbl[i]) or "[nil]"
+			res = res and res .. str .. val or val
 		end
+		return res
 	end
 
 	function WolfHUD:SafeTableConcat(tbl, str)
@@ -899,6 +815,27 @@ if not _G.WolfHUD then
 			WolfHUD.tweak_data = WolfHUDTweakData:new()
 		else
 			WolfHUD:print_log(string.format("Tweak Data file couldn't be found! (%s)", tweak_path), "error")
+		end
+	end
+
+	function WolfHUD:checkOverrides()
+		if SystemInfo:platform() ~= Idstring("WIN32") then -- Abort here while Linux doesn't support 'mod_overrides', TODO: Linux seems to return WIN32 as well...
+			return
+		end
+
+		local mod = BLT.Mods:GetMod(WolfHUD.identifier or "WolfHUD")
+		local updates = mod and mod:GetUpdates() or {}
+
+		local directory = Application:nice_path( "./assets/mod_overrides/", true )
+		if table.size(updates) > 0 and not file.DirectoryExists(directory) then
+			WolfHUD:createDirectory("./" .. directory)
+		end
+
+		for _, override in ipairs(updates) do
+			local directory = Application:nice_path( override:GetInstallDirectory() .. "/" .. override:GetInstallFolder(), true )
+			if not file.DirectoryExists(directory) then
+				WolfHUD:createDirectory("./" .. directory)
+			end
 		end
 	end
 
@@ -1354,15 +1291,14 @@ if not _G.WolfHUD then
 
 	--Add localiszation strings
 	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_WolfHUD", function(loc)
-		local loc_path = WolfHUD.mod_path .. "loc/"
+        local loc_path = WolfHUD.mod_path .. "loc/"
 		if file.DirectoryExists( loc_path ) then
 			local custom_lang
 			if _G.PD2KR then
 				custom_lang = "korean"
 			else
-				for k, v in pairs(LuaModManager.Mods) do
-					local info = v.definition
-					if info["name"] == "ChnMod" then
+				for _, mod in pairs(BLT.Mods:Mods()) do
+					if mod:GetName() == "ChnMod" then
 						custom_lang = "chinese"
 						break
 					end
@@ -1419,7 +1355,7 @@ if not _G.WolfHUD then
 end
 
 if MenuNodeMainGui then
-	Hooks:PostHook( MenuNodeMainGui , "_setup_item_rows" , "MenuNodeMainGuiPostAddVersionString_WolfHUD" , function( self, node )
+	Hooks:PostHook( MenuNodeMainGui , "_setup_item_rows" , "MenuNodeMainGuiPostSetupItemRows_WolfHUD" , function( self, node )
 		WolfHUD:checkOverrides()
 	end)
 
