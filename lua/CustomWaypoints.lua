@@ -4,13 +4,14 @@ if RequiredScript == "lib/managers/hudmanager" then
 
 	function HUDManager:add_waypoint(id, data, ...)
 		add_waypoint_original(self, id, data, ...)
-
-		local wp = self._hud.waypoints[id]
-		if wp and wp.bitmap and wp.distance and wp.arrow and data.distance then
-			local color = WolfHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
-			wp.bitmap:set_color(color)
-			wp.distance:set_color(color)
-			wp.arrow:set_color(color:with_alpha(0.75))
+		if WolfHUD:getSetting({"CustomWaypoints", "WAYPOINTS_COLOR_ENABLE"}) and id and self._hud and self._hud.waypoints and self._hud.waypoints[id] then
+			local wp = self._hud.waypoints[id]
+			if wp and wp.bitmap and wp.distance and wp.arrow and data.distance then
+				local color = WolfHUD:getColorSetting({"CustomWaypoints", "WAYPOINTS_COLOR"}, "white")
+				wp.bitmap:set_color(color)
+				wp.distance:set_color(color)
+				wp.arrow:set_color(color:with_alpha(0.75))
+			end
 		end
 	end
 
