@@ -2,6 +2,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 	HUDManager.CharacterData = {
 		[ "civilian" ] 						= { default = "wolfhud_enemy_civilian" },
 		[ "civilian_female" ] 				= { default = "wolfhud_enemy_civilian" },
+		[ "captain" ] 						= { default = "wolfhud_enemy_civilian" },
 		[ "gangster" ] 						= { default = "wolfhud_enemy_gangster" },
 		[ "biker" ] 						= { default = "wolfhud_enemy_biker" },
 		[ "biker_escape" ] 					= { default = "wolfhud_enemy_biker" },
@@ -56,14 +57,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 		[ "robbers_safehouse" ]				= { default = "wolfhud_enemy_crew" },
 		[ "butler" ]						= { default = "wolfhud_enemy_butler" },
 		[ "vlad" ]							= { default = "wolfhud_enemy_vlad" },
-		[ "boom" ]					 = { default = "wolfhud_enemy_boom" },
-		[ "omnia_lpf" ]					 = { default = "wolfhud_enemy_omnia_lpf" },
-		[ "summers" ]					 = { default = "wolfhud_enemy_summers" },
+		[ "boom" ]					 		= { default = "wolfhud_enemy_boom" },
+		[ "omnia_lpf" ]						= { default = "wolfhud_enemy_omnia_lpf" },
+		[ "summers" ]					 	= { default = "wolfhud_enemy_summers" },
 		[ "boom_summers" ]					= { default = "wolfhud_enemy_boom_summers" },
-		[ "taser_summers" ]					 = { default = "wolfhud_enemy_taser_summers" },
-		[ "medic_summers" ]					 = { default = "wolfhud_enemy_medic_summers" },
-		[ "spring" ]					 = { default = "wolfhud_enemy_spring" },
-		[ "fbi_vet" ]					 = { default = "wolfhud_enemy_fbi_vet" },
+		[ "taser_summers" ]					= { default = "wolfhud_enemy_taser_summers" },
+		[ "medic_summers" ]					= { default = "wolfhud_enemy_medic_summers" },
+		[ "spring" ]						= { default = "wolfhud_enemy_spring" },
+		[ "fbi_vet" ]					 	= { default = "wolfhud_enemy_fbi_vet" },
 		[ "russian" ] 						= { default = "menu_russian" },
 		[ "german" ] 						= { default = "menu_german" },
 		[ "spanish" ] 						= { default = "menu_spanish" },
@@ -84,6 +85,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
 		[ "chico" ]							= { default = "menu_chico" },
 		[ "terry" ]							= { default = "menu_chico" },
 		[ "max" ]							= { default = "menu_max" },
+		[ "myh" ]							= { default = "menu_myh" },
 	}
 
 	Hooks:PostHook( HUDManager , "_player_hud_layout" , "WolfHUDPostHUDManagerPlayerInfoHUDLayout" , function( self )
