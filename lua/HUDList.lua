@@ -246,6 +246,27 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		help = {
 			[400003] = { ignore = true },	--Prison Nightmare Big Loot timer
 		},
+		hvh = {
+			[100007] = { ignore = true },	--Cursed kill room timer
+			[100888] = { ignore = true },	--Cursed kill room timer
+			[100889] = { ignore = true },	--Cursed kill room timer
+			[100891] = { ignore = true },	--Cursed kill room timer
+			[100892] = { ignore = true },	--Cursed kill room timer
+			[100878] = { ignore = true },	--Cursed kill room timer
+			[100176] = { ignore = true },	--Cursed kill room timer
+			[100177] = { ignore = true },	--Cursed kill room timer
+			[100029] = { ignore = true },	--Cursed kill room timer
+			[141821] = { ignore = true },	--Cursed kill room safe 1 timer
+			[141822] = { ignore = true },	--Cursed kill room safe 1 timer
+			[140321] = { ignore = true },	--Cursed kill room safe 2 timer
+			[140322] = { ignore = true },	--Cursed kill room safe 2 timer
+			[139821] = { ignore = true },	--Cursed kill room safe 3 timer
+			[139822] = { ignore = true },	--Cursed kill room safe 3 timer
+			[141321] = { ignore = true },	--Cursed kill room safe 4 timer
+			[141322] = { ignore = true },	--Cursed kill room safe 4 timer
+			[140821] = { ignore = true },	--Cursed kill room safe 5 timer
+			[140822] = { ignore = true },	--Cursed kill room safe 5 timer
+		}
 	}
 
 	HUDListManager.UNIT_TYPES = {
@@ -345,11 +366,13 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		cas_chips_pile = 					"small_loot",
 		diamond_pickup = 					"small_loot",
 		diamond_pickup_pal = 				"small_loot",
+		diamond_pickup_axis = 				"small_loot",
 		safe_loot_pickup = 					"small_loot",
 		pickup_tablet = 					"small_loot",
 		pickup_phone = 						"small_loot",
 		press_pick_up =						"secret_item",
 		hold_pick_up_turtle = 				"secret_item",
+		diamond_single_pickup_axis = 		"secret_item",
 		ring_band = 						"rings",
 		glc_hold_take_handcuffs = 			"handcuffs",
 		hold_take_missing_animal_poster = 	"poster",
@@ -382,6 +405,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		goat = 						"goat",
 		gold =						"gold",
 		hope_diamond =				"diamond",
+		diamonds_dah = 				"diamonds",
+		red_diamond = 				"diamond",
 		lost_artifact = 			"artifact",
 		mad_master_server_value_1 =	"server",
 		mad_master_server_value_2 =	"server",
@@ -422,6 +447,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		crate = 					"crate",
 		xmas_present = 				"xmas_present",
 		shopping_bag = 				"shopping_bag",
+		showcase = 					"showcase",
 	}
 
 	HUDListManager.LOOT_TYPES_CONDITIONS = {
@@ -438,6 +464,13 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				"election_day_3_skip2",
 				"mia_1",		 		-- Hotline Miami Day 1
 				"pal" 					-- Counterfeit
+			}
+			return not (level_id and table.contains(disabled_lvls, level_id))
+		end,
+		showcase = function(id, data)
+			local level_id = managers.job:current_level_id()
+			local disabled_lvls = {
+				"mus", 		-- The Diamond
 			}
 			return not (level_id and table.contains(disabled_lvls, level_id))
 		end,
@@ -493,6 +526,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			armor_break_invulnerable_debuff = "armor_break_invulnerable",
 			grinder_debuff = "grinder",
 			chico_injector_debuff = "chico_injector",
+			delayed_damage_debuff = "delayed_damage",
 			maniac_debuff = "maniac",
 			sicario_dodge_debuff = "sicario_dodge",
 			smoke_screen_grenade_debuff = "smoke_screen_grenade",
@@ -3072,7 +3106,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		bomb =			{ text = "wolfhud_hudlist_loot_bomb", 		priority = 1 },	-- Bomb Forest & Dockyard, Murky Station EMP
 		coke =			{ text = "hud_carry_coke", 					priority = 1 },
 		dentist =		{ text = "???", no_localize = true, 		priority = 1 },	-- Golden Grin
-		diamond =		{ text = "wolfhud_hudlist_loot_diamond", 	priority = 1 },	-- The Diamond
+		diamond = 		{ text = "wolfhud_hudlist_loot_diamond", 	priority = 1 },	-- The Diamond/Diamond Heist Red Diamond
+		diamonds =		{ text = "hud_carry_diamonds_dah", 			priority = 1 },	-- The Diamond Heist
 		drone_ctrl = 	{ text = "hud_carry_helmet", 				priority = 1 },	-- Biker Heist
 		evidence =		{ text = "wolfhud_hudlist_loot_evidence", 	priority = 1 },	-- Hoxton revenge
 		goat =			{ text = "hud_carry_goat", 					priority = 1 },	-- Goat Simulator
@@ -3100,6 +3135,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		crate = 		{ text = "wolfhud_hudlist_loot_crate", 		priority = 2, no_separate = true },
 		xmas_present = 	{ text = "hud_carry_present", 				priority = 2, no_separate = true },	-- White Xmas
 		shopping_bag = 	{ text = "wolfhud_hudlist_loot_bag", 		priority = 2, no_separate = true },	-- White Xmas
+		showcase = 		{ text = "wolfhud_hudlist_showcase", 		priority = 2, no_separate = true },	-- Diamond heist + Diamond Museum
 	}
 	function HUDList.LootItem:init(parent, name, id, members)
 		local loot_data = HUDList.LootItem.MAP[id]
@@ -4866,6 +4902,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "ENFORCER_BUFFS", "bullet_storm"}, true),
 		},
+		chico_injector = {
+			perks = {0, 0},
+			texture_bundle_folder = "chico",
+			class = "TimedBuffItem",
+			priority = 4,
+			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
+			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"}, false) and (WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or WolfHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
+		},
 		close_contact = {
 			perks = {5, 4},
 			class = "TimedBuffItem",
@@ -4886,6 +4930,15 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 4,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "combat_medic_passive"}, false),
+		},
+		delayed_damage = {
+			perks = {3, 0},
+			texture_bundle_folder = "myh",
+			class = "TimedBuffItem",
+			priority = 4,
+			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
+			show_value = "-%.0f",
+			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "delayed_damage"}, true),
 		},
 		desperado = {
 			skills_new = tweak_data.skilltree.skills.expert_handling.icon_xy,
@@ -4937,14 +4990,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
 			invert_timers = true,
 			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "MASTERMIND_BUFFS", "hostage_taker"}, false),
-		},
-		chico_injector = {
-			perks = {0, 0},
-			texture_bundle_folder = "chico",
-			class = "TimedBuffItem",
-			priority = 4,
-			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
-			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "chico_injector"}, false) and (WolfHUD:getSetting({"CustomHUD", "PLAYER", "STATUS"}, true) or WolfHUD:getSetting({"CustomHUD", "ENABLED"}, false)),
 		},
 		inspire = {
 			skills_new = tweak_data.skilltree.skills.inspire.icon_xy,
@@ -5161,12 +5206,20 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ignore = true,	--Composite debuff
 		},
 		chico_injector_debuff = {
-			perks = {0,0},
+			perks = {0, 0},
 			texture_bundle_folder = "chico",
 			class = "TimedBuffItem",
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
 			ignore = true,	--Composite debuff
+		},
+		delayed_damage_debuff = {
+			perks = {3, 0},
+			texture_bundle_folder = "myh",
+			class = "TimedBuffItem",
+			priority = 8,
+			show_value = "-%.1f",
+			ignore = true, 	--Coposite debuff
 		},
 		inspire_debuff = {
 			skills_new = tweak_data.skilltree.skills.inspire.icon_xy,
@@ -5231,6 +5284,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			priority = 8,
 			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
 			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "sociopath_debuff"}, true),
+		},
+		damage_control_debuff = {
+			perks = {2, 0},
+			texture_bundle_folder = "myh",
+			class = "TimedBuffItem",
+			priority = 8,
+			color = HUDList.BuffItemBase.ICON_COLOR.DEBUFF,
+			ignore = not WolfHUD:getSetting({"HUDList", "BUFF_LIST", "PERK_BUFFS", "damage_control_debuff"}, false),
 		},
 		unseen_strike_debuff = {
 			skills_new = tweak_data.skilltree.skills.unseen_strike.icon_xy,
@@ -6182,7 +6243,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				local player_damage = alive(player) and player:character_damage()
 				if player_damage then
 					if player_damage:get_real_armor() > 0 then
-						new_value = value / (player_damage:_total_armor() * 10)
+						new_value = value / (player_damage:_max_armor() * 10)
 					else
 						new_value = value / (player_damage:_max_health() * 10)
 					end

@@ -142,7 +142,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			[130322] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_loud_pause(...) end },	--Train heist vaults
 			[130422] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_loud_pause(...) end },	--Train heist vaults
 			[130522] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_loud_pause(...) end },	--Train heist vaults
-			[145557] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end } -- Safehouse Killhouse Timer
+			[145557] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end }, -- Safehouse Killhouse Timer
 			--[130320] = { },	--The Diamond outer time lock
 			--[130395] = { },	--The Diamond inner time lock
 			--[101457] = { },	--Big Bank time lock door #1
@@ -152,6 +152,21 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			--[135076] = { },	--Lab rats cloaker safe 2
 			--[135246] = { },	--Lab rats cloaker safe 3
 			--[135247] = { },	--Lab rats cloaker safe 4
+			[141821] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 1 timer
+			[141822] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 1 timer
+			[141823] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 1 timer
+			[140321] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 2 timer
+			[140322] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 2 timer
+			[140323] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 2 timer
+			[139821] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 3 timer
+			[139822] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 3 timer
+			[139823] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 3 timer
+			[141321] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 4 timer
+			[141322] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 4 timer
+			[141323] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 4 timer
+			[140821] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 5 timer
+			[140822] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 5 timer
+			[140823] = { pause = function(...) GameInfoManager._TIMER_CALLBACKS.overrides.stop_on_pause(...) end },	--Cursed kill room safe 5 timer
 		}
 	}
 
@@ -191,9 +206,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			diamond_pickup_pal = 				"_special_equipment_interaction_handler",	-- Small loot
 			ring_band = 						"_special_equipment_interaction_handler",	-- BoS Rings
 			safe_loot_pickup = 					"_special_equipment_interaction_handler",	-- Small loot
+			diamond_pickup_axis = 				"_special_equipment_interaction_handler",	-- Small loot, Diamond heist
 			press_pick_up =						"_special_equipment_interaction_handler",	-- Biker Bottle
 			hold_take_missing_animal_poster = 	"_special_equipment_interaction_handler",	-- Heat Streat Posters
 			hold_pick_up_turtle = 				"_special_equipment_interaction_handler",	-- Heat Street Tutle
+			diamond_single_pickup_axis = 		"_special_equipment_interaction_handler",
 			glc_hold_take_handcuffs = 			"_special_equipment_interaction_handler",	-- Green Bridge Handcuffs
 			pickup_tablet = 					"_special_equipment_interaction_handler",	-- Stealing Xmas Tablet
 			pickup_phone = 						"_special_equipment_interaction_handler",	-- Stealing Xmas Phone
@@ -211,17 +228,22 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			pku_scubagear_tank = 				"_special_equipment_interaction_handler",	--TMP: Where is this used...?
 		},
 		INTERACTION_TO_CARRY = {
-			weapon_case =				"weapon",
-			weapon_case_axis_z =		"weapon",
-			samurai_armor =				"samurai_suit",
-			gen_pku_warhead_box =		"warhead",
-			pku_toothbrush = 			"toothbrush",
-			corpse_dispose =			"person",
-			crate_loot = 				"crate",
-			crate_loot_crowbar = 		"crate",
-			crate_weapon_crowbar = 		"crate",
-			hold_open_xmas_present = 	"xmas_present",
-			hold_open_case =			"drone_control_helmet",	--May be reused in future heists for other loot
+			weapon_case =					"weapon",
+			weapon_case_axis_z =			"weapon",
+			samurai_armor =					"samurai_suit",
+			gen_pku_warhead_box =			"warhead",
+			pku_toothbrush = 				"toothbrush",
+			corpse_dispose =				"person",
+			crate_loot = 					"crate",
+			crate_loot_crowbar = 			"crate",
+			crate_weapon_crowbar = 			"crate",
+			hold_open_xmas_present = 		"xmas_present",
+			hold_open_case =				"drone_control_helmet",	--May be reused in future heists for other loot
+
+			cut_glass = 					"showcase",
+			diamonds_pickup = 				"diamonds_dah",
+			red_diamond_pickup = 			"red_diamond",
+			red_diamond_pickup_no_axis = 	"red_diamond",
 
 			hold_open_shopping_bag = 		"shopping_bag",
 			hold_take_toy = 				"robot_toy",
@@ -355,6 +377,9 @@ lounge		100421		100448			102049
 			fish = {	--Yacht (1x artifact painting)
 				[500533] = true,
 			},
+			dah = {	-- The Diamond Heist (1x Red Diamond Showcase)
+				[100952] = true,
+			}
 		},
 	}
 	GameInfoManager._INTERACTIONS.IGNORE_IDS.watchdogs_2_day = table.deep_map_copy(GameInfoManager._INTERACTIONS.IGNORE_IDS.watchdogs_2)
@@ -1916,7 +1941,7 @@ if string.lower(RequiredScript) == "lib/managers/group_ai_states/groupaistatebas
 	end
 
 	function GroupAIStateBase:_update_hostage_count()
-        managers.player:update_hostage_situation(self._hostage_headcount)
+		managers.player:update_hostage_situation(self._hostage_headcount)
 
 		local police_hostages = 0
 		local security_hostages = 0
@@ -2705,7 +2730,8 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 	local stop_ability_timer_original = PlayerManager.stop_ability_timer
 	local speed_up_ability_timer_original = PlayerManager.speed_up_ability_timer
 	local _dodge_shot_gain_original = PlayerManager._dodge_shot_gain
-	local start_timer_original = PlayerManager.start_timer
+	local replenish_grenades_original = PlayerManager.replenish_grenades
+	local _on_grenade_cooldown_end_original = PlayerManager._on_grenade_cooldown_end
 	local speed_up_grenade_cooldown_original = PlayerManager.speed_up_grenade_cooldown
 	local _set_body_bags_amount_original = PlayerManager._set_body_bags_amount
 
@@ -3056,20 +3082,35 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 		return _dodge_shot_gain_original(self, gain_value, ...)
 	end
 
-	function PlayerManager:start_timer(key, duration, ...)
-		start_timer_original(self, key, duration, ...)
-		if key == "replenish_grenades" then
-			key = managers.blackmarket:equipped_grenade()
+	function PlayerManager:replenish_grenades(cooldown, ...)
+		if not self:has_active_timer("replenish_grenades") then
+			local id = managers.blackmarket:equipped_grenade()
+
+			if id then
+				managers.gameinfo:event("buff", "activate", id .. "_debuff")
+				managers.gameinfo:event("buff", "set_duration", id .. "_debuff", { duration = cooldown })
+			end
 		end
-		managers.gameinfo:event("timed_buff", "activate", tostring(key) .. "_debuff", { duration = duration })
+
+		return replenish_grenades_original(self, cooldown, ...)
+ 	end
+
+	function PlayerManager:_on_grenade_cooldown_end(...)
+		local id = managers.blackmarket:equipped_grenade()
+
+		if id then
+			managers.gameinfo:event("buff", "deactivate", id .. "_debuff")
+		end
+
+		return _on_grenade_cooldown_end_original(self, ...)
 	end
-	
+
 	function PlayerManager:speed_up_grenade_cooldown(time, ...)
-		if self._timers.replenish_grenades then
+		if self:has_active_timer("replenish_grenades") then
 			local equipped_grenade = managers.blackmarket:equipped_grenade()
 			managers.gameinfo:event("timed_buff", "change_expire", equipped_grenade .. "_debuff", { difference = -time })
 		end
-		
+
 		return speed_up_grenade_cooldown_original(self, time, ...)
 	end
 
@@ -3077,7 +3118,7 @@ if string.lower(RequiredScript) == "lib/managers/playermanager" then
 		managers.gameinfo:event("bodybags", "set", nil, body_bags_amount)
 		_set_body_bags_amount_original(self, body_bags_amount)
 	end
-	
+
 	function PlayerManager:got_ability()
 		local equipped_grenade = managers.blackmarket:equipped_grenade()
 		return tweak_data.blackmarket.projectiles[equipped_grenade].ability
@@ -3543,6 +3584,9 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 	local _on_damage_event_original = PlayerDamage._on_damage_event
 	local set_armor_original = PlayerDamage.set_armor
 	local _check_bleed_out_original = PlayerDamage._check_bleed_out
+	local _update_delayed_damage_original = PlayerDamage._update_delayed_damage
+	local delay_damage_original = PlayerDamage.delay_damage
+	local clear_delayed_damage_original = PlayerDamage.clear_delayed_damage
 
 	local HEALTH_RATIO_BONUSES = {
 		melee_damage_health_ratio_multiplier 			= { category = "melee", buff_id = "berserker" },
@@ -3660,7 +3704,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 		change_regenerate_speed_original(self, ...)
 		self:_check_armor_regen_timer()
 	end
-	
+
 	function PlayerDamage:_on_damage_event(...)
 		_on_damage_event_original(self, ...)
 		self:_check_armor_regen_timer(true)
@@ -3682,7 +3726,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 				managers.gameinfo:event("player_action", "set_duration", "anarchist_armor_regeneration", { t = t_start, expire_t = expire_t })
 			end
 		end
-		
+
 		return set_armor_original(self, armor, ...)
 	end
 
@@ -3695,20 +3739,20 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 			managers.gameinfo:event("timed_buff", "activate", "uppers_debuff", { duration = self._UPPERS_COOLDOWN })
 		end
 	end
-	
+
 	local REGEN_EXPIRE_T = 0
 	function PlayerDamage:_check_armor_regen_timer(reset)
 		if not self._armor_grinding and not self:is_downed() and self._regenerate_timer and self:get_real_armor() < self:_max_armor() then
 			local t = managers.player:player_timer():time()
 			local armor_regen_delay = self._regenerate_timer / (self._regenerate_speed or 1)
 			local suppression_delay = 0
-			
+
 			if self._supperssion_data.decay_start_t and self._supperssion_data.value == tweak_data.player.suppression.max_value then
 				suppression_delay = self._supperssion_data.decay_start_t - t
 			end
-			
+
 			local expire_t = t + armor_regen_delay + suppression_delay
-			
+
 			if expire_t ~= REGEN_EXPIRE_T then
 				REGEN_EXPIRE_T = expire_t
 				managers.gameinfo:event("player_action", "activate", "standard_armor_regeneration")
@@ -3716,7 +3760,7 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 			end
 		end
 	end
-	
+
 	function PlayerDamage:_custom_on_enter_bleedout_clbk()
 		if self:is_downed() then
 			ARMOR_GRIND_ACTIVE = false
@@ -3728,7 +3772,47 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playerdamage" then
 					managers.gameinfo:event("buff", "deactivate", buff_id)
 				end
 			end
+
+			managers.gameinfo:event("buff", "deactivate", "delayed_damage")
 		end
+	end
+
+	function PlayerDamage:_update_delayed_damage(t, ...)
+		local result = _update_delayed_damage_original(self, t, ...)
+
+		if self._delayed_damage.next_tick then
+			managers.gameinfo:event("buff", "set_value", "delayed_damage", { value = math.round((self:remaining_delayed_damage()) * 10) })
+		end
+
+		return result
+	end
+
+	local DELAYED_DAMAGE_DURATION = math.round(1 / (tweak_data.upgrades.values.player.damage_control_passive[1][2] * 0.01))
+	function PlayerDamage:delay_damage(damage, seconds, ...)
+		local has_calm = managers.player:has_category_upgrade("player", "damage_control_auto_shrug")
+		if not self._delayed_damage.next_tick then
+			if has_calm then
+				managers.gameinfo:event("buff", "activate", "delayed_damage")
+			end
+			managers.gameinfo:event("buff", "activate", "delayed_damage_debuff")
+		end
+
+		local t = TimerManager:game():time()
+		if has_calm then
+			managers.gameinfo:event("buff", "set_duration", "delayed_damage", { t = t, duration = managers.player:upgrade_value("player", "damage_control_auto_shrug") })
+		end
+
+		managers.gameinfo:event("buff", "set_duration", "delayed_damage_debuff", { t = t, duration = DELAYED_DAMAGE_DURATION })
+		managers.gameinfo:event("buff", "set_value", "delayed_damage", { value = math.round((self:remaining_delayed_damage() + damage) * 10) })
+
+		return delay_damage_original(self, damage, seconds, ...)
+	end
+
+	function PlayerDamage:clear_delayed_damage(...)
+		managers.gameinfo:event("buff", "deactivate", "delayed_damage_debuff")
+		managers.gameinfo:event("buff", "deactivate", "delayed_damage")
+
+		return clear_delayed_damage_original(self, ...)
 	end
 end
 
