@@ -477,7 +477,7 @@ if not _G.WolfHUD then
 						glow 							= { match_beam = true, r = 0, g = 1, b = 0, a = 0.02 },
 						dot 							= { match_beam = true, r = 0, g = 1, b = 0, a = 1 },
 						pulse 							= { enabled = false, min = 0.5, max = 2, frequency = 0.25 },
-						rainbow 						= { enabled = false, frequency = 0.25 },
+						rainbow 						= { enabled = true, frequency = 0.25 },
 					},
 					team_sentry = {
 						beam 							= { enabled = true, r = 0, g = 1, b = 0, a = 0.05 },
