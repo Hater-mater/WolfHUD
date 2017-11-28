@@ -9,7 +9,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 	local tiny_font_size = tweak_data.menu.pd2_tiny_font_size
 	local objective_font = tweak_data.hud_stats.objective_desc_font
 	local objective_font_size = tweak_data.hud.active_objective_title_font_size
-	
+
 
 	local update_original = HUDStatsScreen.update
 	local recreate_left_original = HUDStatsScreen.recreate_left
@@ -308,11 +308,15 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			daily_data.rewarded = false
 			daily_data.timestamp = current_daily.timestamp
 			daily_data.interval = managers.custom_safehouse:interval_til_new_daily()
+			if current_daily.trophy and current_daily.trophy.objectives then
+				daily_data.objectives = deep_clone(current_daily.trophy.objectives) -- Fix missing objective progress for safehouse daily
+			end
+
 			local safehouse_challenge = {
 				id = current_daily.id,
 				data = daily_data
 			}
-			
+
 			if self:is_challenge_completable(safehouse_challenge) then
 				table.insert(challenges.safehouse_daily, safehouse_challenge)
 			end
@@ -383,7 +387,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			return not challenge.data.rewarded
 		end
 
-		local objectives = challenge.data.objectives
+		local objectives = challenge.data and challenge.data.objectives
 		for _, obj_data in ipairs(objectives or {}) do
 			if obj_data and not obj_data.completed then
 				local requirements = {}
@@ -403,6 +407,11 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 					--log(json.encode(requirements))
 					if (requirements.need_full_job or not requirements.is_dropin) and managers.statistics:is_dropin()then
 						is_completeable = false
+					end
+					if is_completeable and requirements.crime_spree and managers.crime_spree and not managers.crime_spree:is_active() then
+						if type(requirements.crime_spree) ~= "number" or requirements.crime_spree > managers.crime_spree:spree_level() then
+							is_completeable = false
+						end
 					end
 					if is_completeable and requirements.difficulty then
 						local difficulty_stars = managers.job:current_difficulty_stars()
@@ -510,6 +519,14 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			texture = "guis/dlcs/myh/textures/pd2/blackmarket/icons/characters/myh",
 			color = Color(1, 0.05, 0.65, 0.02)
 		},
+		ecp_male = {
+			texture = "guis/dlcs/ecp/textures/pd2/blackmarket/icons/characters/ecp_male",
+			color = Color(1, 0.02, 0.05, 0.65)
+		},
+		ecp_female = {
+			texture = "guis/dlcs/ecp/textures/pd2/blackmarket/icons/characters/ecp_female",
+			color = Color(1, 0.65, 0.02, 0.05)
+		},
 	}
 
 	HUDStatsScreen.STAT_ITEMS = {
@@ -556,7 +573,6 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		local placer = UiPlacer:new(10, 10, 0, 0)
 		local difficulty_text, difficulty_color = "", Color.white
 		local is_crime_spree = managers.crime_spree:is_active()
-		add_bg = false
 
 		if is_crime_spree then
 			local level_data = managers.job:current_level_data()
@@ -647,33 +663,33 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		local list_w = panel:w() - 3 * self._rightpos[2]
 		local small_list_w = list_w --* 0.6
 		placer:new_row(0, 12)
-		local _, paygrade_text = self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "paygrade", 
-			{ text = managers.localization:to_upper_text("menu_lobby_difficulty_title"), font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+		local _, paygrade_text = self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "paygrade",
+			{ text = managers.localization:to_upper_text("menu_lobby_difficulty_title"), font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18, color = difficulty_color }, nil, false)
 		placer:new_row()
 		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "offshore_payout",
-			{ text = managers.localization:to_upper_text("hud_offshore_account") .. ":", font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+			{ text = managers.localization:to_upper_text("hud_offshore_account") .. ":", font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18 }, nil, nil)
 		placer:new_row()
-		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "spending_cash", 
-			{ text = managers.localization:to_upper_text("menu_cash_spending"), font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "spending_cash",
+			{ text = managers.localization:to_upper_text("menu_cash_spending"), font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18 }, nil, nil)
 		placer:new_row()
-		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "cleaner_costs", 
-			{ text = managers.localization:to_upper_text("victory_civilians_killed_penalty"), font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "cleaner_costs",
+			{ text = managers.localization:to_upper_text("victory_civilians_killed_penalty"), font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18 }, nil, nil)
 		placer:new_row(0, 12)
-		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "bag_amount", 
-			{ text = managers.localization:to_upper_text("hud_stats_bags_secured") .. ":", font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+		self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "bag_amount",
+			{ text = managers.localization:to_upper_text("hud_stats_bags_secured") .. ":", font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18 }, nil, nil)
 		if not is_crime_spree then
 			placer:new_row()
-			self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "bag_cash", 
-			{ text = utf8.to_upper("Secured Bags value:"), font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+			self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "bag_cash",
+			{ text = utf8.to_upper("Secured Bags value:"), font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18 }, nil, nil)
 			placer:new_row()
-			self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "instant_cash", 
-			{ text = managers.localization:to_upper_text("hud_instant_cash") .. ":", font_size = self._tabstats_settings.FONT_SIZE or 18 }, 
+			self:_create_stat_list_entry(placer, panel, self._rightpos[2], list_w, "instant_cash",
+			{ text = managers.localization:to_upper_text("hud_instant_cash") .. ":", font_size = self._tabstats_settings.FONT_SIZE or 18 },
 			{ text = difficulty_text, font_size = self._tabstats_settings.FONT_SIZE or 18 }, nil, nil)
 		end
 		placer:new_row(0, 12)
@@ -718,7 +734,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			if force_bg_state ~= nil then
 				add_bg = force_bg_state
 			end
-			
+
 			local title = placer:add_right(panel:text({
 				name = name and string.format("%s_title", name) or nil,
 				color = title_params.color or tweak_data.screen_colors.text,
@@ -796,7 +812,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			self._last_heist_time = math.abs(time)
 		end
 	end
-	
+
 	function HUDStatsScreen:modify_heist_time(time)
 		if time and time ~= 0 then
 			self._last_heist_time = (self._last_heist_time or 0) + time
@@ -889,7 +905,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		local completed = self._info.completed
 		local placer = self:placer()
 		placer:new_row(0, 0)
-		
+
 		local title = placer:add_bottom(self:fine_text({
 			text_id = self._info.name_id or "N/A",
 			font = medium_font,
@@ -931,7 +947,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			})
 		end
 		placer:add_right(nil, 0)
-		
+
 		if self._objectives then
 			for i, objective in ipairs(self._objectives or {}) do
 				if objective.display ~= false then
@@ -957,10 +973,6 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 						font_size = 12,
 						font = tiny_font
 					}, objective.progress))
-
-					if objective.progress_id then
-						self._progress_ids[objective.progress_id] = bar
-					end
 				end
 			end
 		end
@@ -984,9 +996,6 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				local remaining_str = self:_create_time_string(expire_time)
 				self._timer:set_text(remaining_str)
 			end
-		end
-		for progress_id, progress_bar in pairs(self._progress_ids or {}) do
-			-- Update progress?
 		end
 	end
 
@@ -1042,24 +1051,22 @@ elseif string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 		return count
 	end
 
+	local TANK_IDs = { "tank", "tank_green", "tank_black", "tank_skull", "tank_medic", "tank_mini", "tank_hw" }
+
 	function StatisticsManager:session_total_tanks_killed()
-		return self:session_enemy_killed_by_type("tank", "count")
-				+ self:session_enemy_killed_by_type("tank_green", "count")
-				+ self:session_enemy_killed_by_type("tank_black", "count")
-				+ self:session_enemy_killed_by_type("tank_skull", "count")
-				+ self:session_enemy_killed_by_type("tank_medic", "count")
-				+ self:session_enemy_killed_by_type("tank_mini", "count")
-				+ self:session_enemy_killed_by_type("tank_hw", "count")
+		local count = 0
+		for _, unit_id in ipairs(TANK_IDs) do
+			count = count + self:session_enemy_killed_by_type(unit_id, "count")
+		end
+		return count
 	end
 
 	function StatisticsManager:total_tanks_killed()
-		return self:enemy_killed_by_type("tank", "count")
-				+ self:enemy_killed_by_type("tank_green", "count")
-				+ self:enemy_killed_by_type("tank_black", "count")
-				+ self:enemy_killed_by_type("tank_skull", "count")
-				+ self:enemy_killed_by_type("tank_medic", "count")
-				+ self:enemy_killed_by_type("tank_mini", "count")
-				+ self:enemy_killed_by_type("tank_hw", "count")
+		local count = 0
+		for _, unit_id in ipairs(TANK_IDs) do
+			count = count + self:enemy_killed_by_type(unit_id, "count")
+		end
+		return count
 	end
 
 	function StatisticsManager:total_downed_alltime()
@@ -1269,7 +1276,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanager" then
 			self._hud_statsscreen:feed_heist_time(time)
 		end
 	end
-	
+
 	function HUDHeistTimer:modify_heist_time(time)
 		HUDManager_modify_heist_time_original(self, time)
 		if self._hud_statsscreen and self._hud_statsscreen.modify_heist_time then

@@ -2,9 +2,9 @@ if not _G.WolfHUD then
 	_G.WolfHUD = {}
 	WolfHUD.mod_path = ModPath
 	WolfHUD.save_path = SavePath
+	WolfHUD.assets_path = "./assets/mod_overrides/"
 	WolfHUD.settings_path = WolfHUD.save_path .. "WolfHUD_v2.json"
 	WolfHUD.tweak_file = "WolfHUDTweakData.lua"
-	WolfHUD.LOG_MODE = { error = true, warning = true, info = false }		-- error, info, warning or all
 	WolfHUD.identifier = string.match(WolfHUD.mod_path, "(%w+)[\\/]$") or "WolfHUD"
 
 	WolfHUD.settings = {}
@@ -110,7 +110,7 @@ if not _G.WolfHUD then
 		["core/lib/managers/subtitle/coresubtitlepresenter"] 		= { "EnhancedObjective.lua" },
 
 		--Utils and custom classes...
-		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua" },
+		["lib/entry"]												= { "Utils/QuickInputMenu.lua", "Utils/LoadoutPanel.lua", "Utils/OutlinedText.lua" },
 		["lib/managers/systemmenumanager"] 							= { "Utils/InputDialog.lua" },
 		["lib/managers/dialogs/specializationdialog"] 				= { "Utils/InputDialog.lua" },
 		["lib/managers/menu/specializationboxgui"] 					= { "Utils/InputDialog.lua" },
@@ -235,6 +235,7 @@ if not _G.WolfHUD then
 				ALPHA	 								= 0.8,
 				COLOR									= "yellow",
 				HEADSHOT_COLOR							= "red",
+				CRITICAL_COLOR 							= "light_purple",
 			},
 			AssaultBanner = {
 				POSITION								= 2,			-- left (1), center (2) or right (3)
@@ -576,9 +577,10 @@ if not _G.WolfHUD then
 	end
 
 	function WolfHUD:print_log(...)
+		local LOG_MODES = self:getTweakEntry("LOG_MODE", "table", {})
 		local params = {...}
 		local msg_type, text = table.remove(params, #params), table.remove(params, 1)
-		if msg_type and self.LOG_MODE[tostring(msg_type)] then
+		if msg_type and LOG_MODES[tostring(msg_type)] then
 			if type(text) == "table" or type(text) == "userdata" then
 				local function log_table(userdata)
 					local text = ""
@@ -607,7 +609,17 @@ if not _G.WolfHUD then
 			elseif type(text) == "string" then
 				text = string.format(text, unpack(params or {}))
 			end
-			log(string.format("[WolfHUD] %s: %s", string.upper(msg_type), text))
+			text = string.format("[WolfHUD] %s: %s", string.upper(msg_type), text)
+			log(text)
+			if LOG_MODES.to_console and con and con.print and con.error then
+				local t = Application:time()
+				text = string.format("%02d:%06.3f\t>\t%s", math.floor(t/60), t%60, text)
+				if tostring(msg_type) == "info" then
+					con:print(text)
+				else
+					con:error(text)
+				end
+			end
 		end
 	end
 
@@ -760,7 +772,6 @@ if not _G.WolfHUD then
 		if value ~= nil and (not val_type or type(value) == val_type) then
 			return value
 		else
-			self:print_log("Requested tweak_entry doesn't exists!  (id='" .. id .. "', type='" .. tostring(val_type) .. "') ", "error")
 			if default == nil then
 				if val_type == "number" then -- Try to prevent crash by giving default value
 					default = 1
@@ -772,45 +783,9 @@ if not _G.WolfHUD then
 					default = {}
 				end
 			end
+			self.tweak_data[id] = default
+			self:print_log("Requested tweak_entry doesn't exists!  (id='" .. id .. "', type='" .. tostring(val_type) .. "') ", "error")
 			return default
-		end
-	end
-
-	function WolfHUD:makeOutlineText(panel, bg, txt)
-		bg.name = nil
-		local bgs = {}
-		for i = 1, 4 do
-			table.insert(bgs, panel:text(bg))
-		end
-		WolfHUD:refreshOutlinePos(bgs, txt)
-		return bgs
-	end
-
-	function WolfHUD:refreshOutlinePos(bgs, txt)
-		bgs[1]:set_x(txt:x() - 1)
-		bgs[1]:set_y(txt:y() - 1)
-		bgs[2]:set_x(txt:x() + 1)
-		bgs[2]:set_y(txt:y() - 1)
-		bgs[3]:set_x(txt:x() - 1)
-		bgs[3]:set_y(txt:y() + 1)
-		bgs[4]:set_x(txt:x() + 1)
-		bgs[4]:set_y(txt:y() + 1)
-	end
-
-	function WolfHUD:setOutlineText(bgs, text, show)
-		for _, bg in pairs(bgs) do
-			bg:set_text(text)
-			if show then
-				bg:show()
-			else
-				bg:set_visible(false)
-			end
-		end
-	end
-
-	function WolfHUD:setOutlineFontSize(bgs, size)
-		for _, bg in pairs(bgs) do
-			bg:set_font_size(size)
 		end
 	end
 
@@ -848,13 +823,17 @@ if not _G.WolfHUD then
 				end
 			end,
 			["HUDList"] = function(setting, value)
-				if managers.hud and HUDListManager then
-					if setting[1] == "BUFF_LIST" and setting[2] ~= "show_buffs" then
-						managers.hud:change_bufflist_setting(tostring(setting[#setting]), WolfHUD:getColor(value) or value)
-					elseif setting[1] == "RIGHT_LIST" and setting[2] == "SHOW_PICKUP_CATEGORIES" then
-						managers.hud:change_pickuplist_setting(tostring(setting[#setting]), WolfHUD:getColor(value) or value)
+				if managers.hud and HUDListManager and setting then
+					local list = tostring(setting[1])
+					local category = tostring(setting[2])
+					local option = tostring(setting[#setting])
+
+					if list == "BUFF_LIST" and category ~= "show_buffs" then
+						managers.hud:change_bufflist_setting(option, WolfHUD:getColor(value) or value)
+					elseif list == "RIGHT_LIST" and category == "SHOW_PICKUP_CATEGORIES" then
+						managers.hud:change_pickuplist_setting(option, WolfHUD:getColor(value) or value)
 					else
-						managers.hud:change_list_setting(tostring(setting[#setting]), WolfHUD:getColor(value) or value)
+						managers.hud:change_list_setting(option, WolfHUD:getColor(value) or value)
 					end
 				end
 			end,
@@ -873,11 +852,27 @@ if not _G.WolfHUD then
 					WeaponGadgetBase.update_theme_setting(setting[1], setting[2], setting[3], setting[4], WolfHUD:getColor(value) or value)
 				end
 			end,
+			["MOD_OVERRIDES"] = function(setting, value)
+				local update_id = setting[#setting]
+				local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
+				if mod and update_id then
+					local update = mod:GetUpdate(update_id)
+					if update then
+						update:SetEnabled(value)
+						BLT.Mods:Save()
+					end
+				end
+			end,
 		}
+	end
+
+	if not WolfHUD:DirectoryExists(WolfHUD.assets_path) then
+		WolfHUD:print_log("Folder '%s' doesn't exist, creating....\t%s", WolfHUD.assets_path, tostring(WolfHUD:createDirectory(WolfHUD.assets_path)), "warining")
 	end
 
 	WolfHUD:Reset()	-- Populate settings table
 	WolfHUD:Load()	-- Load user settings
+
 
 	-- Create Ingame Menus
 	dofile(WolfHUD.mod_path .. "OptionMenus.lua")	-- Menu structure table in seperate file, in order to not bloat the Core file too much.

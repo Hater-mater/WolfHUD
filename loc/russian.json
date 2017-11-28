@@ -163,7 +163,7 @@
 	"wolfhud_enemy_druglord_boss_stealth" : "Босс Соса",
 	"wolfhud_enemy_biker_boss" : "Босс байкеров",
 	"wolfhud_enemy_bank_manager" : "Менеджер банка",
-	"wolfhud_enemy_dah_ralph" : "Ralph Garnet",
+	"wolfhud_enemy_dah_ralph" : "Ральф Гарнет",
 	"wolfhud_enemy_inside_man" : "Крот",
 	"wolfhud_enemy_escort_undercover" : "Налогосборщик",
 	"wolfhud_enemy_escort_heatstreet" : "Мэтт",
@@ -791,6 +791,8 @@
 	"wolfhud_dmg_popup_alpha_desc" : "Задайте непрозрачность всплывающей информации.",
 	"wolfhud_dmg_popup_color_title" : "Цвет выстрела в тело",
 	"wolfhud_dmg_popup_color_desc" : "Задайте цвет всплывающей информации о выстреле в тело",
+	"wolfhud_dmg_popup_critical_color_title" : "Цвет критического урона",
+	"wolfhud_dmg_popup_critical_color_desc" : "Задайте цвет всплывающей информации о критических попаданиях.",
 	"wolfhud_dmg_popup_headshot_color_title" : "Цвет выстрела в голову",
 	"wolfhud_dmg_popup_headshot_color_desc" : "Задайте цвет всплывающей информации о выстреле в голову.",
 
