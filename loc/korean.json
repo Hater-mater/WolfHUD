@@ -7,7 +7,6 @@
 	"wolfhud_dialog_install_title" : "설치: $NAME",
 	"wolfhud_dialog_install_desc" : "'$NAME' 를(을) 설치하고 싶습니까?",
 	"wolfhud_dialog_remind_later" : "다중에 다시 물어보기",
-	"wolfhud_dialog_install_fed_inv_desc" : "Federal Inventory 는 인벤토리 아이템, 마스크 등을 풀 컬러 로 바꿔주는 모드입니다.\n 오버라이드 모드 이며, BLT 업데이터를 통해 자동으로 최신버젼을 다운로드합니다.",
 	"wolfhud_dialog_rename_inv_tab" : "인벤토리 이름 바꾸기",
 	"wolfhud_dialog_rename_inv_tab_desc" : "이 페이지의 인벤토리 이름을 정해주세요.",
 	"wolfhud_dialog_save" : "저장",

@@ -7,7 +7,6 @@
 	"wolfhud_dialog_install_title" : "Install: $NAME",
 	"wolfhud_dialog_install_desc" : "Do you want to install '$NAME'?",
 	"wolfhud_dialog_remind_later" : "Ask me later",
-	"wolfhud_dialog_install_fed_inv_desc" : "Federal Inventory is an override mod, that gives you colorized icons for your weapons masks and deployables.\nIt looks great in when used with CustomHUD and will use BLTs Updater.",
 	"wolfhud_dialog_rename_inv_tab" : "Rename Inventory Page",
 	"wolfhud_dialog_rename_inv_tab_desc" : "Please enter the new name for this Inventory page.",
 	"wolfhud_dialog_save" : "Save",

@@ -9,7 +9,6 @@
 	"wolfhud_dialog_install_title" : "Installiere: $NAME",
 	"wolfhud_dialog_install_desc" : "Möchtest du, dass wir '$NAME' installieren?\nWir werden die notwendigen Ordner erstellen, sodass BLT dich nach dem Neustart des Spiels auf ein Update hinweisen wird.\n(Das Erstellen der Ordner kann zur Minimierung des Spiels führen.)",
 	"wolfhud_dialog_remind_later" : "Erinnere mich später",
-	"wolfhud_dialog_install_fed_inv_desc" : "Federal Inventory ist ein override mod für bunte Waffen-, Masken- und Equipment-Bilder.\nEs passt hevorragend zu CustomHUD und unterstützt automatische Updates durch BLT.",
 	"wolfhud_dialog_rename_inv_tab" : "Benenne Inventar Seite",
 	"wolfhud_dialog_rename_inv_tab_desc" : "Bitte gib einen neuen Namen für die aktuelle Inventarseite ein.",
 	"wolfhud_dialog_save" : "Speichern",

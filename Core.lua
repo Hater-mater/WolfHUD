@@ -563,9 +563,6 @@ if not _G.WolfHUD then
 				LOOT_SCREEN_DELAY 						= 3,		--Skip the loot screen after X seconds
 				NO_SLOWMOTION 							= true,		--Disable mask-up and downed slow motion
 			},
-			MOD_OVERRIDES = {
-				fed_inv									= false,
-			},
 			LOBBY_SETTINGS = {
 				job_plan = -1,
 				kick_option = 1,
@@ -868,17 +865,6 @@ if not _G.WolfHUD then
 			["GADGETS"] = function(setting, value)
 				if managers.hud and managers.hud.change_hud_setting and #setting >= 4 then
 					WeaponGadgetBase.update_theme_setting(setting[1], setting[2], setting[3], setting[4], WolfHUD:getColor(value) or value)
-				end
-			end,
-			["MOD_OVERRIDES"] = function(setting, value)
-				local update_id = setting[#setting]
-				local mod = BLT and BLT.Mods:GetMod(WolfHUD.identifier or "")
-				if mod and update_id then
-					local update = mod:GetUpdate(update_id)
-					if update then
-						update:SetEnabled(value)
-						BLT.Mods:Save()
-					end
 				end
 			end,
 		}

@@ -28,10 +28,7 @@ To make this mod work you will need to install either [Better Lua injecTor](http
 2. Open the downloaded archive, using WinRAR or 7Zip
 3. Extract the **WolfHUD-master** folder into your 'PAYDAY 2/mods' folder
 4. Rename the folder **WolfHUD-master** to **WolfHUD** (if you want to)
-5. Start the game once. It will prompt you to update Federal Inventory and WolfHUD_Textures. Update both.
-
-## If you don't want/like Inventory Icons
-To remove "Federal Inventory" go to your **PAYDAY 2/assets/mod_overrides/Federal Inventory** folder and delete the **guis** folder. Then open **revision.txt** and change the number to a higher one, to prevent future updates.
+5. Start the game once. It will prompt you to update WolfHUD_Textures.
 
 ## Bug reports
 If you encounter any bugs, feel free to post about it on the issues tab!
@@ -72,7 +69,6 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
   * Show Skill Names made by **me**
   * [Skillset Info](http://modworkshop.net/mydownloads.php?action=view_down&did=15294) made by **Fooksie**
   * Increased the maximum chars of custom Weapon/Mask/Skillset names
-  * Federal Inventory (Mod Override), made by **Nervatel Hanging Closet Monster** and **Luffy**, updated by **me**
     * [Weapon Icons](https://modworkshop.net/mydownloads.php?action=view_down&did=14240), [Melee Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13910) and [Mask Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13911) made by **Nervatel Hanging Closet Monster**
     * [Throwables, Equipment, Armor and Heister Portraits](http://modworkshop.net/mydownloads.php?action=view_down&did=13916) made by **Luffy**
 
