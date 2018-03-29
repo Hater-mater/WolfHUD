@@ -573,6 +573,7 @@ if not _G.WolfHUD then
 				team_ai_option = 1,
 				auto_kick = true,
 				difficulty = "sm_wish",
+				one_down = true,
 			},
 		}
 	end
@@ -1362,7 +1363,7 @@ if not _G.WolfHUD then
 				custom_lang = "korean"
 			else
 				for _, mod in pairs(BLT and BLT.Mods:Mods() or {}) do
-					if mod:GetName() == "ChnMod" and mod:IsEnabled() then
+					if mod:GetName() == "ChnMod (Patch)" and mod:IsEnabled() then
 						custom_lang = "chinese"
 						break
 					end
