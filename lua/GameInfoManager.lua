@@ -379,7 +379,15 @@ lounge		100421		100448			102049
 				[400513] = true,
 				[400515] = true,
 				[400617] = true,
-			}
+			},
+			tag = {	-- Breakin' Feds (1x evidence)
+				[134563] = true,
+			},
+			sah = {	-- Shacklethorne Auction (2x artifact, 1x grenades)
+				[400791] = true,
+				[400792] = true,
+				[400178] = true,
+			},
 		},
 	}
 	GameInfoManager._INTERACTIONS.IGNORE_IDS.watchdogs_2_day = table.deep_map_copy(GameInfoManager._INTERACTIONS.IGNORE_IDS.watchdogs_2)
@@ -463,7 +471,15 @@ lounge		100421		100448			102049
 	GameInfoManager._UNITS = {
 		TWEAK_ID_BY_NAME = {
 			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic"))] = "mechanic",
-			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic_husk"))] = "mechanic"
+			[tostring(Idstring("units/pd2_dlc_born/characters/npc_male_mechanic/npc_male_mechanic_husk"))] = "mechanic",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_bank_manager_hostage/civ_male_bank_manager_hostage"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_bank_manager_hostage/civ_male_bank_manager_hostage_husk"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_museum_curator_hostage/civ_female_museum_curator_hostage"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_museum_curator_hostage/civ_female_museum_curator_hostage_husk"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_drug_lord_hostage/civ_female_drug_lord_hostage"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_female_drug_lord_hostage/civ_female_drug_lord_hostage_husk"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_prisoner_hostage/civ_male_prisoner_hostage"))] = "civ_hostage",
+			[tostring(Idstring("units/pd2_skirmish/characters/civ_male_prisoner_hostage/civ_male_prisoner_hostage_husk"))] = "civ_hostage"
 		}
 	}
 
@@ -515,6 +531,7 @@ lounge		100421		100448			102049
 			armor_break_invulnerable = "armor_break_invulnerable_debuff",
 			single_shot_fast_reload = "aggressive_reload_aced",
             unseen_strike = "unseen_strike",
+			pocket_ecm_kill_dodge =	"pocket_ecm_kill_dodge",
 
 			--"properties"
 			bloodthirst_reload_speed = "bloodthirst_aced",
@@ -1506,22 +1523,27 @@ lounge		100421		100448			102049
 		if self._auto_expire_timers.on_expire[key] then
 			self:_remove_player_timer_expiration(key)
 		end
-
-		local expire_data = { key = key, id = id, expire_t = expire_t }
-		local t_size = #self._auto_expire_timers.expire_t
-
-		if (t_size <= 0) or (expire_t >= self._auto_expire_timers.expire_t[t_size].expire_t) then
-			table.insert(self._auto_expire_timers.expire_t, expire_data)
+		
+		local t = Application:time()
+		if expire_t <= t then
+			expire_clbk(t, key, id)
 		else
-			for i = 1, t_size, 1 do
-				if expire_t < self._auto_expire_timers.expire_t[i].expire_t then
-					table.insert(self._auto_expire_timers.expire_t, i, expire_data)
-					break
+			local expire_data = { key = key, id = id, expire_t = expire_t }
+			local t_size = #self._auto_expire_timers.expire_t
+
+			if (t_size <= 0) or (expire_t >= self._auto_expire_timers.expire_t[t_size].expire_t) then
+				table.insert(self._auto_expire_timers.expire_t, expire_data)
+			else
+				for i = 1, t_size, 1 do
+					if expire_t < self._auto_expire_timers.expire_t[i].expire_t then
+						table.insert(self._auto_expire_timers.expire_t, i, expire_data)
+						break
+					end
 				end
 			end
-		end
 
-		self._auto_expire_timers.on_expire[key] = expire_clbk
+			self._auto_expire_timers.on_expire[key] = expire_clbk
+		end
 	end
 
 	function GameInfoManager:_remove_player_timer_expiration(key)
@@ -3303,6 +3325,56 @@ if string.lower(RequiredScript) == "lib/units/beings/player/playermovement" then
 
 			DODGE_RECHECK_T = t + DODGE_RECHECK_INTERVAL
 		end
+	end
+end
+
+if string.lower(RequiredScript) == "lib/units/beings/player/playerinventory" then
+
+	local _start_jammer_effect_original = PlayerInventory._start_jammer_effect
+	local _stop_jammer_effect_original = PlayerInventory._stop_jammer_effect
+	local _start_feedback_effect_original = PlayerInventory._start_feedback_effect
+	local _stop_feedback_effect_original = PlayerInventory._stop_feedback_effect
+	local get_jammer_time_original = PlayerInventory.get_jammer_time
+
+	function PlayerInventory:_start_jammer_effect(end_time, ...)
+		managers.gameinfo:event("buff", "activate", "pocket_ecm_jammer")
+		managers.gameinfo:event("buff", "set_duration", "pocket_ecm_jammer", { expire_t = end_time or ((self:get_jammer_time() or 0) + (TimerManager:game():time() or 0)) })
+
+		return _start_jammer_effect_original(self, end_time, ...)
+	end
+	
+	function PlayerInventory:_stop_jammer_effect(...)
+		if self._jammer_data and self._jammer_data.effect == "jamming" then
+			managers.gameinfo:event("buff", "deactivate", "pocket_ecm_jammer")
+		end
+
+		return _stop_jammer_effect_original(self, ...)
+	end
+	
+	function PlayerInventory:_start_feedback_effect(end_time, ...)
+		managers.gameinfo:event("buff", "activate", "pocket_ecm_jammer")
+		managers.gameinfo:event("buff", "set_duration", "pocket_ecm_jammer", { expire_t = end_time or ((self:get_jammer_time() or 0) + (TimerManager:game():time() or 0)) })
+
+		return _start_feedback_effect_original(self, end_time, ...)
+	end
+	
+	function PlayerInventory:_stop_feedback_effect(...)
+		if self._jammer_data and self._jammer_data.effect == "feedback" then
+			managers.gameinfo:event("buff", "deactivate", "pocket_ecm_jammer")
+		end
+
+		return _stop_feedback_effect_original(self, ...)
+	end
+
+	function PlayerInventory:get_jammer_time(...)	-- TMP: Fix for non existing upgrade values causing crashes
+		local tweak = tweak_data.upgrades.values.player.pocket_ecm_jammer_base
+		local result
+
+		if self._unit:base():upgrade_value("player", "pocket_ecm_jammer_base") then
+			result = get_jammer_time_original(self, ...)
+		end
+
+		return result or tweak and tweak[1] and tweak[1].duration or 6
 	end
 end
 
