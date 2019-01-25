@@ -22,14 +22,10 @@ if RequiredScript == "lib/managers/platformmanager" then
 					game_state = "private"
 				else
 					-- Handle Steam RP Grouping
-					group_key = tostring(Steam:userid())
-					group_count = "1"
 					if not Global.game_settings.single_player then
+						group_key = managers.network.matchmake.lobby_handler:id()
+
 						local session = managers.network:session()
-						if not Network:is_server() then
-							local peer = session and session:server_peer()
-							group_key = tostring(peer and peer:user_id() or group_key)
-						end
 						group_count = tostring(session and #session:all_peers() or 1)
 					end
 
@@ -46,11 +42,12 @@ if RequiredScript == "lib/managers/platformmanager" then
 					if managers.crime_spree and managers.crime_spree:is_active() then		-- Crime Spree
 						game_mode = "crime_spree"
 						game_heist = self:get_current_level_id()
-						game_difficulty = managers.experience:cash_string(managers.crime_spree:server_spree_level())
+						local spree_lvl = managers.crime_spree:server_spree_level()
+						game_difficulty = spree_lvl and managers.money:add_decimal_marks_to_string(tostring(spree_lvl)) or "(N/A)"
 					elseif managers.skirmish and managers.skirmish:is_skirmish() then		-- Holdout
 						game_mode = "skirmish"
 						game_heist = self:get_current_level_id()
-						game_difficulty = string.format("%i/%i", managers.skirmish:current_wave_number(), tweak_data and #tweak_data.skirmish.ransom_amounts or 9)
+						game_difficulty = string.format("%i/%i", managers.skirmish:current_wave_number() or 1, tweak_data and #tweak_data.skirmish.ransom_amounts or 9)
 					elseif managers.job:has_active_job() then								-- Heists
 						game_heist = self:get_current_job_id()
 
@@ -354,7 +351,7 @@ if RequiredScript == "lib/managers/platformmanager" then
 		end
 
 		s = populate_data(s, tokens, data)
---		WolfHUD:print_log(string.format("Steam RP updated: %s", s), "info")
+		log(string.format("Steam RP updated: %s", s))
 		return s 
 	end
 elseif RequiredScript == "lib/managers/skirmishmanager" then
@@ -363,7 +360,7 @@ elseif RequiredScript == "lib/managers/skirmishmanager" then
 		update_matchmake_attributes_original(self, ...)
 
 		if Global.game_settings.permission ~= "private" then
-			--local game_difficulty = string.format("%i/%i", self:current_wave_number(), tweak_data and #tweak_data.skirmish.ransom_amounts or 9)
+			--local game_difficulty = string.format("%i/%i", self:current_wave_number() or 1, tweak_data and #tweak_data.skirmish.ransom_amounts or 9)
 			--Steam:set_rich_presence("game:difficulty", game_difficulty)
 			if managers.platform then
 				managers.platform:set_rich_presence()
@@ -373,7 +370,7 @@ elseif RequiredScript == "lib/managers/skirmishmanager" then
 end
 
 if Hooks then	-- Basegame doesn't update RP on peer count changes...
-	Hooks:Add("BaseNetworkSessionOnPeerEnteredLobby", "BaseNetworkSessionOnPeerEnteredLobby_RichPresencePP", function(session, peer, peer_id)
+	Hooks:Add("BaseNetworkSessionOnPeerEnteredLobby", "BaseNetworkSessionOnPeerEnteredLobby_WolfHUD_RP", function(session, peer, peer_id)
 		local session = managers.network:session()
 		if session and Global.game_settings.permission ~= "private" then
 			local group_count = tostring(session and #session:all_peers() or 1)
@@ -381,7 +378,7 @@ if Hooks then	-- Basegame doesn't update RP on peer count changes...
 		end
 	end)
 
-	Hooks:Add("BaseNetworkSessionOnPeerRemoved", "BaseNetworkSessionOnPeerRemoved_RichPresencePP", function(session, peer, peer_id, reason)
+	Hooks:Add("BaseNetworkSessionOnPeerRemoved", "BaseNetworkSessionOnPeerRemoved_WolfHUD_RP", function(session, peer, peer_id, reason)
 		local session = managers.network:session()
 		if session and Global.game_settings.permission ~= "private" then
 			local group_count = tostring(session and #session:all_peers() or 1)
