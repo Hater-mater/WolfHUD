@@ -1,17 +1,22 @@
 if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmenuscenemanager" then
 
-	Hooks:PostHook(RaidMenuSceneManager, "show_background", "RaidMenuSceneManager_show_background_WolfgangHUD", function(self)
+	local show_background_original = RaidMenuSceneManager.show_background
+	local hide_background_original = RaidMenuSceneManager.hide_background
+
+	function RaidMenuSceneManager:show_background()
+		show_background_original(self)
 		local bg = self._background_image._panel
 		if alive(bg) and not self._pause_menu_enabled or not WolfgangHUD:getSetting({"MENU", "TRANSPARENT_PAUSE_MENU"}, true) then
 			bg:show()
 		end
-	end)
+	end
 
-	Hooks:PostHook(RaidMenuSceneManager, "hide_background", "RaidMenuSceneManager_hide_background_WolfgangHUD", function(self)
+	function RaidMenuSceneManager:hide_background()
+		hide_background_original(self)
 		local bg = self._background_image._panel
 		if alive(bg) then
 			bg:hide()
 		end
-	end)
+	end
 
 end
