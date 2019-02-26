@@ -35,27 +35,28 @@
 
 	"wolfganghud_options_name" : "WolfgangHUD",
 
-	"wolfganghud_hud_options_name" : "HUD Options",
+	"wolfganghud_hud_options_name" : "Ingame/HUD Options",
 
-	"wolfganghud_player_panel_options_name" : "Player Panel Options",
-	"wolfganghud_player_show_killcount_title" : "Show Killcounter",
-	"wolfganghud_player_killcount_color_title" : "Killcounter Color",
-	"wolfganghud_player_show_special_title" : "Count Special enemy kills",
-	"wolfganghud_player_show_head_title" : "Count Headshots",
-	"wolfganghud_player_show_accuracy_title" : "Show Accuracy",
+	"wolfganghud_no_slowmotion_title" : "No slow motion",
+	"wolfganghud_transparent_pause_menu_title" : "Transparent pause menu",
 
-	"wolfganghud_peer_panels_options_name" : "Teammate Panel Options",
-	"wolfganghud_peer_show_killcount_title" : "Show Killcounter",
-	"wolfganghud_peer_killcount_color_title" : "Killcounter Color",
-	"wolfganghud_peer_show_special_title" : "Count Special enemy kills",
-	"wolfganghud_peer_show_head_title" : "Count Headshots",
+	"wolfganghud_player_panel_options_name" : "Player panel options",
+	"wolfganghud_player_show_killcount_title" : "Show kill counter",
+	"wolfganghud_player_killcount_color_title" : "Kill counter color",
+	"wolfganghud_player_show_special_title" : "Count special enemy kills",
+	"wolfganghud_player_show_head_title" : "Count headshots",
+	"wolfganghud_player_show_accuracy_title" : "Show accuracy",
 
-	"wolfganghud_ai_panels_options_name" : "Bot Panel Options",
-	"wolfganghud_ai_show_killcount_title" : "Show Killcounter",
-	"wolfganghud_ai_killcount_color_title" : "Killcounter Color",
-	"wolfganghud_ai_show_special_title" : "Count Special enemy kills",
-	"wolfganghud_ai_show_head_title" : "Count Headshots",
+	"wolfganghud_peer_panels_options_name" : "Teammate panel options",
+	"wolfganghud_peer_show_killcount_title" : "Show kill counter",
+	"wolfganghud_peer_killcount_color_title" : "Kill counter Color",
+	"wolfganghud_peer_show_special_title" : "Count special enemy kills",
+	"wolfganghud_peer_show_head_title" : "Count headshots",
 
-	"wolfganghud_no_slowmotion_title" : "No Slow Motion"
+	"wolfganghud_ai_panels_options_name" : "Bot panel options",
+	"wolfganghud_ai_show_killcount_title" : "Show kill counter",
+	"wolfganghud_ai_killcount_color_title" : "Kill counter Color",
+	"wolfganghud_ai_show_special_title" : "Count special enemy kills",
+	"wolfganghud_ai_show_head_title" : "Count headshots"
 
 }

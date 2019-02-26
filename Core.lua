@@ -23,6 +23,7 @@ if not _G.WolfgangHUD then
 			LANGUAGE								= default_lang,
 			HUD = {
 				NO_SLOWMOTION						= true,
+				TRANSPARENT_PAUSE_MENU				= true,
 				PLAYER = {
 					SHOW_ACCURACY					= true,
 					KILLCOUNTER = {

@@ -36,7 +36,7 @@ if WolfgangHUD then
 				type = "divider",
 				size = 12,
 			},
-			{	-- HUD
+			{	-- Ingame/HUD
 				type = "menu",
 				menu_id = "wolfganghud_hud_options_menu",
 				name_id = "wolfganghud_hud_options_name",
@@ -45,6 +45,13 @@ if WolfgangHUD then
 						type = "toggle",
 						name_id = "wolfganghud_no_slowmotion_title",
 						value = {"HUD", "NO_SLOWMOTION"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_transparent_pause_menu_title",
+						value = {"HUD", "TRANSPARENT_PAUSE_MENU"},
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
