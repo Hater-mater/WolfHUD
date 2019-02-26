@@ -54,6 +54,7 @@ if not _G.WolfgangHUD then
 			GAMEPLAY = {
 				NO_SLOWMOTION						= true,
 				NO_BOT_BULLET_COLL					= true,
+				AUTO_RELOAD							= true,
 			},
 		}
 		WolfgangHUD.settings = deep_clone(WolfgangHUD.default_settings)

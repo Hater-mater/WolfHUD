@@ -234,6 +234,13 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_auto_reload_title",
+						value = {"GAMEPLAY", "AUTO_RELOAD"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
 				},
 			},
 		},

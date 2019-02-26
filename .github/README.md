@@ -32,10 +32,7 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**
 * [Shoot through AI](https://modworkshop.net/mydownloads.php?action=view_down&did=13463) made by **Rhynne**
 * NoSlowMotion made by **Kamikaze94**
-
-## Localizations
-
-* English made by **Kamikaze** and **me**
+* AutoReload made by **me**
 
 Big credit goes to all of you!
 Without your awesome mods, I would have quitted this game a long time ago!
