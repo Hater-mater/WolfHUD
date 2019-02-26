@@ -236,6 +236,18 @@ function WolfgangHUDMenu:Init(root, args)
 		end,
 	}
 
+	-- Populate title
+	self:Title({
+		text = args.name_id,
+		localize = true,
+	})
+	self:Label({
+		name = string.format("%s_divider_title", args.menu_id),
+		text = nil,
+		localize = false,
+		h = 8,
+	})
+
 	-- Populate menu items
 	local item_amount = #args.options
 	for i, data in ipairs(args.options) do
