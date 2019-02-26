@@ -3,8 +3,6 @@ if WolfgangHUD then
 		type = "menu",
 		menu_id = "wolfganghud_main_options_menu",
 		name_id = "wolfganghud_options_name",
-		desc_id = "wolfganghud_options_help",
-		position = 3,
 		options = {
 			{
 				type = "button",
