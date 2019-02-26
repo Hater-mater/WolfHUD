@@ -22,6 +22,7 @@ if not _G.WolfgangHUD then
 		WolfgangHUD.default_settings = {
 			LANGUAGE								= default_lang,
 			MENU ={
+				STRAIGHT_TO_MAIN_MENU				= true,
 				TRANSPARENT_PAUSE_MENU				= true,
 			},
 			HUD = {

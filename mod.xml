@@ -40,5 +40,9 @@
 		<!-- Auto Reload -->
 		<hook source_file="lib/units/beings/player/states/playerstandard"		file="lua/AutoReload.lua"				/>
 
+		<!-- Straight To Main Menu -->
+		<hook source_file="lib/setups/menusetup"								file="lua/StraightToMainMenu.lua"		/>
+		<hook source_file="lib/states/menutitlescreenstate"						file="lua/StraightToMainMenu.lua"		/>
+
 	</hooks>
 </table>

@@ -45,6 +45,13 @@ if WolfgangHUD then
 				options = {
 					{
 						type = "toggle",
+						name_id = "wolfganghud_straight_to_main_menu_title",
+						value = {"MENU", "STRAIGHT_TO_MAIN_MENU"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
 						name_id = "wolfganghud_transparent_pause_menu_title",
 						value = {"MENU", "TRANSPARENT_PAUSE_MENU"},
 						visible_reqs = {},
