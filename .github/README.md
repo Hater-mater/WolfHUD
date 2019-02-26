@@ -29,6 +29,7 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**
 * [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **me**, ported to RAIDWW2 by **me**
+* NoSlowMotion made by **Kamikaze94**
 
 ## Localizations
 

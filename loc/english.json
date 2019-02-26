@@ -21,12 +21,7 @@
 	"wolfganghud_reset_options_desc" : "Reset all Settings to their default value.",
 	"wolfganghud_reset_options_confirm" : "Are you sure, you want to reset all Settings to their default value?",
 
-	"wolfganghud_options_name" : "WolfgangHUD Settings",
-	"wolfganghud_options_help" : "Customize WolfgangHUD with your personal preferences.",
-
 	"wolfganghud_language_title" : "Language",
-	"wolfganghud_language_desc" : "Select a localization for WolfgangHUD.\n(A Map change is needed to apply...)",
-
 	"wolfganghud_languages_english" : "English",
 	"wolfganghud_languages_german" : "German",
 	"wolfganghud_languages_dutch" : "Dutch",
@@ -38,30 +33,29 @@
 	"wolfganghud_languages_chinese" : "Chinese",
 	"wolfganghud_languages_korean" : "Korean",
 
-	"wolfganghud_panels_options_name" : "HUD Options",
-	"wolfganghud_panels_options_help" : "Options for all the general HUD panels.",
+	"wolfganghud_options_name" : "WolfgangHUD",
 
-	"wolfganghud_killcounter_options_name" : "Killcounter Options",
-	"wolfganghud_killcounter_options_help" : "Options for the appearance of the kill counter",
+	"wolfganghud_hud_options_name" : "HUD Options",
 
-	"wolfganghud_killcounter_player_show_killcount_title" : "Display Player Killcounter",
-	"wolfganghud_killcounter_player_show_killcount_desc" : "Display a killcounter on your HUD.",
-	"wolfganghud_killcounter_player_color_title" : "Player Killcounter Color",
-	"wolfganghud_killcounter_player_color_desc" : "Select the color for your killcounter.",
-	"wolfganghud_killcounter_player_show_special_title" : "Count Player Special enemy kills",
-	"wolfganghud_killcounter_player_show_special_desc" : "Display kills of special enemies separately.",
-	"wolfganghud_killcounter_player_show_head_title" : "Count Player Headshots",
-	"wolfganghud_killcounter_player_show_head_desc" : "Display headshots separately.",
-	"wolfganghud_killcounter_player_show_accuracy_title" : "Show Player Accuracy",
-	"wolfganghud_killcounter_player_show_accuracy_desc" : "Display your current accuracy on your HUD.",
-	"wolfganghud_killcounter_team_show_killcount_title" : "Display Teammate Killcounter",
-	"wolfganghud_killcounter_team_show_killcount_desc" : "Display a killcounter on your teammates HUDs.",
-	"wolfganghud_killcounter_team_color_title" : "Teammate Killcounter Color",
-	"wolfganghud_killcounter_team_color_desc" : "Select the color of the killcounters for your teammates.",
-	"wolfganghud_killcounter_team_show_special_title" : "Count Teammate Special enemy kills",
-	"wolfganghud_killcounter_team_show_special_desc" : "Display kills of special enemies separately.",
-	"wolfganghud_killcounter_team_show_head_title" : "Count Teammate Headshots",
-	"wolfganghud_killcounter_team_show_head_desc" : "Display headshots separately.",
-	"wolfganghud_killcounter_team_show_ai_title" : "Killcounter for AI",
-	"wolfganghud_killcounter_team_show_ai_desc" : "Do Bots get a Killcounter too?"
+	"wolfganghud_player_panel_options_name" : "Player Panel Options",
+	"wolfganghud_player_show_killcount_title" : "Show Killcounter",
+	"wolfganghud_player_killcount_color_title" : "Killcounter Color",
+	"wolfganghud_player_show_special_title" : "Count Special enemy kills",
+	"wolfganghud_player_show_head_title" : "Count Headshots",
+	"wolfganghud_player_show_accuracy_title" : "Show Accuracy",
+
+	"wolfganghud_peer_panels_options_name" : "Teammate Panel Options",
+	"wolfganghud_peer_show_killcount_title" : "Show Killcounter",
+	"wolfganghud_peer_killcount_color_title" : "Killcounter Color",
+	"wolfganghud_peer_show_special_title" : "Count Special enemy kills",
+	"wolfganghud_peer_show_head_title" : "Count Headshots",
+
+	"wolfganghud_ai_panels_options_name" : "Bot Panel Options",
+	"wolfganghud_ai_show_killcount_title" : "Show Killcounter",
+	"wolfganghud_ai_killcount_color_title" : "Killcounter Color",
+	"wolfganghud_ai_show_special_title" : "Count Special enemy kills",
+	"wolfganghud_ai_show_head_title" : "Count Headshots",
+
+	"wolfganghud_no_slowmotion_title" : "No Slow Motion"
+
 }

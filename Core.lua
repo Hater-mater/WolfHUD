@@ -22,6 +22,7 @@ if not _G.WolfgangHUD then
 		WolfgangHUD.default_settings = {
 			LANGUAGE								= default_lang,
 			HUD = {
+				NO_SLOWMOTION						= true,
 				PLAYER = {
 					SHOW_ACCURACY					= true,
 					KILLCOUNTER = {
@@ -31,13 +32,20 @@ if not _G.WolfgangHUD then
 						COLOR						= "orange",
 					},
 				},
-				TEAMMATE = {
+				PEER = {
 					KILLCOUNTER = {
 						HIDE						= false,
 						SHOW_SPECIAL_KILLS			= true,
 						SHOW_HEADSHOT_KILLS			= true,
 						COLOR						= "orange",
-						SHOW_BOT_KILLS				= true,
+					},
+				},
+				AI = {
+					KILLCOUNTER = {
+						HIDE						= false,
+						SHOW_SPECIAL_KILLS			= true,
+						SHOW_HEADSHOT_KILLS			= true,
+						COLOR						= "orange",
 					},
 				},
 			},

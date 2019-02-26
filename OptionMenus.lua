@@ -1,7 +1,7 @@
 if WolfgangHUD then
 	WolfgangHUD.options_menu_data = {
 		type = "menu",
-		menu_id = "wolfganghud_main_options_menu",
+		menu_id = "wolfganghud_options_menu",
 		name_id = "wolfganghud_options_name",
 		options = {
 			{
@@ -39,27 +39,27 @@ if WolfgangHUD then
 			{	-- HUD
 				type = "menu",
 				menu_id = "wolfganghud_hud_options_menu",
-				name_id = "wolfganghud_panels_options_name",
+				name_id = "wolfganghud_hud_options_name",
 				options = {
-					{ -- Accuracy
+					{
 						type = "toggle",
-						name_id = "wolfganghud_killcounter_player_show_accuracy_title",
+						name_id = "wolfganghud_no_slowmotion_title",
+						value = {"HUD", "NO_SLOWMOTION"},
 						visible_reqs = {},
 						enabled_reqs = {},
-						value = {"HUD", "PLAYER", "SHOW_ACCURACY"},
 					},
 					{
 						type = "divider",
 						size = 12,
 					},
-					{	-- KillCounters
+					{	-- Player Panel
 						type = "menu",
-						menu_id = "wolfganghud_killcounter_options_menu",
-						name_id = "wolfganghud_killcounter_options_name",
+						menu_id = "wolfganghud_player_panel_options_menu",
+						name_id = "wolfganghud_player_panel_options_name",
 						options = {
 							{
 								type = "toggle",
-								name_id = "wolfganghud_killcounter_player_show_killcount_title",
+								name_id = "wolfganghud_player_show_killcount_title",
 								visible_reqs = {},
 								enabled_reqs = {},
 								value = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"},
@@ -67,7 +67,7 @@ if WolfgangHUD then
 							},
 							{
 								type = "toggle",
-								name_id = "wolfganghud_killcounter_player_show_special_title",
+								name_id = "wolfganghud_player_show_special_title",
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
@@ -76,7 +76,7 @@ if WolfgangHUD then
 							},
 							{
 								type = "toggle",
-								name_id = "wolfganghud_killcounter_player_show_head_title",
+								name_id = "wolfganghud_player_show_head_title",
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
@@ -85,7 +85,7 @@ if WolfgangHUD then
 							},
 							{
 								type = "multi_choice",
-								name_id = "wolfganghud_killcounter_player_color_title",
+								name_id = "wolfganghud_player_killcount_color_title",
 								value = {"HUD", "PLAYER", "KILLCOUNTER", "COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
@@ -99,48 +99,98 @@ if WolfgangHUD then
 								type = "divider",
 								size = 12,
 							},
-							{
+							{ -- Accuracy
 								type = "toggle",
-								name_id = "wolfganghud_killcounter_team_show_killcount_title",
+								name_id = "wolfganghud_player_show_accuracy_title",
 								visible_reqs = {},
 								enabled_reqs = {},
-								value = {"HUD", "TEAMMATE", "KILLCOUNTER", "HIDE"},
+								value = {"HUD", "PLAYER", "SHOW_ACCURACY"},
+							},
+						},
+					},
+					{	-- Teammate Panels
+						type = "menu",
+						menu_id = "wolfganghud_peer_panels_options_menu",
+						name_id = "wolfganghud_peer_panels_options_name",
+						options = {
+							{
+								type = "toggle",
+								name_id = "wolfganghud_peer_show_killcount_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = {"HUD", "PEER", "KILLCOUNTER", "HIDE"},
 								invert_value = true,
 							},
 							{
 								type = "toggle",
-								name_id = "wolfganghud_killcounter_team_show_special_title",
+								name_id = "wolfganghud_peer_show_special_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+									{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
 								},
-								value = {"HUD", "TEAMMATE", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 							},
 							{
 								type = "toggle",
-								name_id = "wolfganghud_killcounter_team_show_head_title",
+								name_id = "wolfganghud_peer_show_head_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+									{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
 								},
-								value = {"HUD", "TEAMMATE", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
-							},
-							{
-								type = "toggle",
-								name_id = "wolfganghud_killcounter_team_show_ai_title",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"HUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
-								},
-								value = {"HUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"},
+								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 							},
 							{
 								type = "multi_choice",
-								name_id = "wolfganghud_killcounter_team_color_title",
-								value = {"HUD", "TEAMMATE", "KILLCOUNTER", "COLOR"},
+								name_id = "wolfganghud_peer_killcount_color_title",
+								value = {"HUD", "PEER", "KILLCOUNTER", "COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "TEAMMATE", "KILLCOUNTER", "HIDE"}, invert = true }
+									{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+						},
+					},
+					{	-- Bot Panels
+						type = "menu",
+						menu_id = "wolfganghud_ai_panels_options_menu",
+						name_id = "wolfganghud_ai_panels_options_name",
+						options = {
+							{
+								type = "toggle",
+								name_id = "wolfganghud_ai_show_killcount_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = {"HUD", "AI", "KILLCOUNTER", "HIDE"},
+								invert_value = true,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_ai_show_special_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"HUD", "AI", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_ai_show_head_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
+								},
+								value = {"HUD", "AI", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_ai_killcount_color_title",
+								value = {"HUD", "AI", "KILLCOUNTER", "COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
 								},
 								options = {},
 								add_color_options = true,

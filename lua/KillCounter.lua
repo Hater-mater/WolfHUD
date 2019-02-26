@@ -143,8 +143,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 	function HUDTeammateBase:_check_state_change()
 		_check_state_change_original(self)
 		if alive(self._kills_panel) then
-			self._kills_panel:set_visible(not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false) and
-										(not self:is_ai() or WolfgangHUD:getSetting({"HUD", "TEAMMATE", "KILLCOUNTER", "SHOW_BOT_KILLS"}, true)))
+			self._kills_panel:set_visible(not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false))
 		end
 	end
 
@@ -242,7 +241,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatepeer" then
 
 	function HUDTeammatePeer:init(...)
 		init_original(self, ...)
-		self._setting_prefix = "TEAMMATE"
+		self._setting_prefix = "PEER"
 		self:_init_killcount()
 	end
 
@@ -260,7 +259,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateai" then
 
 	function HUDTeammateAI:init(...)
 		init_original(self, ...)
-		self._setting_prefix = "TEAMMATE"
+		self._setting_prefix = "AI"
 		self:_init_killcount()
 	end
 
