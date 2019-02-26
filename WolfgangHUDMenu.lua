@@ -33,7 +33,7 @@ local function change_setting(setting, value, report)
 		local map = WolfgangHUD.enabled_req_maps[key]
 		if map ~= nil and type(map) == 'table' then
 			for _, m in ipairs(map) do
-				m.item._enabled = check_enabled_reqs(m.req, value)
+				m.item:set_enabled(check_enabled_reqs(m.req, value))
 			end
 		end
 		WolfgangHUD.settings_changed = true
@@ -53,7 +53,7 @@ local function add_enabled_reqs(item, data)
 		table.insert(WolfgangHUD.enabled_req_maps[key], {item = item, req = req})
 		local value = WolfgangHUD:getSetting(req.setting, nil)
 		if value ~= nil then
-			item._enabled = check_enabled_reqs(req, value)
+			item:set_enabled(check_enabled_reqs(req, value))
 		end
 	end
 end
