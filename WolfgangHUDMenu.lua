@@ -75,6 +75,7 @@ function WolfgangHUDMenu:Init(root, args)
 				text = data.name_id,
 				localize = true,
 				callback = callback(self, self, clbk_id),
+				x_offset = 20,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				add_enabled_reqs(item, data)
@@ -208,6 +209,7 @@ function WolfgangHUDMenu:Init(root, args)
 				text = data.name_id,
 				localize = true,
 				callback = callback(self, self, clbk_id),
+				x_offset = 20,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				add_enabled_reqs(item, data)
@@ -247,7 +249,17 @@ function WolfgangHUDMenu:Init(root, args)
 				name = id,
 				text = data.text_id,
 				localize = data.text_id ~= nil,
-				h = data.size or 8,
+				h = data.size or 12,
+			})
+		end,
+		header = function(menu_id, offset, data)
+			local id = string.format("%s_header_%d", menu_id, offset)
+			self:SubTitle({
+				name = id,
+				text = data.text_id,
+				localize = data.text_id ~= nil,
+				h = data.size or 24,
+				y_offset = 12,
 			})
 		end,
 	}
