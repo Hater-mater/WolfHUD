@@ -1,0 +1,32 @@
+<table name="WolfgangHUD"
+		description="This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus."
+		merge_global="false"
+		author="BangL"
+		priority="1"
+		version="0.1"
+		cannot_be_disabled="false"
+		early_init="false">
+	<hooks>
+
+		<!-- Core -->
+		<hook source_file="lib/entry" type="pre"							file="Core.lua"/>
+		<hook source_file="lib/managers/menu/menucomponentmanager"			file="WolfgangHUDMenu.lua"/>
+
+		<!-- KillCounter -->
+		<hook source_file="lib/managers/hudmanagerpd2"						file="lua/KillCounter.lua"/>
+		<hook source_file="lib/managers/raidjobmanager"						file="lua/KillCounter.lua"/>
+		<hook source_file="lib/managers/hud/hudteammatebase"				file="lua/KillCounter.lua"/>
+		<hook source_file="lib/managers/hud/hudteammateai"					file="lua/KillCounter.lua"/>
+		<hook source_file="lib/managers/hud/hudteammatepeer"				file="lua/KillCounter.lua"/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"				file="lua/KillCounter.lua"/>
+		<hook source_file="lib/units/enemies/cop/copdamage"					file="lua/KillCounter.lua"/>
+		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"	file="lua/KillCounter.lua"/>
+
+		<!-- Accuracy -->
+		<hook source_file="lib/managers/hudmanagerpd2"						file="lua/Accuracy.lua"/>
+		<hook source_file="lib/managers/raidjobmanager"						file="lua/Accuracy.lua"/>
+		<hook source_file="lib/managers/statisticsmanager"					file="lua/Accuracy.lua"/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"				file="lua/Accuracy.lua"/>
+
+	</hooks>
+</table>

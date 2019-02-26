@@ -1,0 +1,100 @@
+if string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
+
+	local shot_fired_original = StatisticsManager.shot_fired
+
+	function StatisticsManager:shot_fired(data, ...)
+		shot_fired_original(self, data, ...)
+		managers.hud:set_teammate_accuracy(HUDManager.PLAYER_PANEL, self:session_hit_accuracy())
+	end
+
+elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
+
+	function HUDManager:reset_accuracy()
+		local player_panel = self._teammate_panels[HUDManager.PLAYER_PANEL]
+		if player_panel.set_accuracy then
+			player_panel:set_accuracy(0)
+		end
+	end
+
+	function HUDManager:set_teammate_accuracy(i, value)
+		if self._teammate_panels[i].set_accuracy then
+			self._teammate_panels[i]:set_accuracy(value)
+		end
+	end
+
+elseif string.lower(RequiredScript) == "lib/managers/raidjobmanager" then
+
+	local on_mission_started_original = RaidJobManager.on_mission_started
+	local on_mission_ended_original = RaidJobManager.on_mission_ended
+
+	function RaidJobManager:on_mission_started(...)
+		on_mission_started_original(self, ...)
+		if managers.hud then
+			managers.hud:reset_accuracy()
+		end
+	end
+
+	function RaidJobManager:on_mission_ended(...)
+		on_mission_ended_original(self, ...)
+		if managers.hud then
+			managers.hud:reset_accuracy()
+		end
+	end
+
+elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
+
+	local init_original = HUDTeammatePlayer.init
+
+	HUDTeammatePlayer.ACCURACY_FONT_SIZE = 20
+	HUDTeammatePlayer.ACCURACY_FONT = "din_compressed_outlined_22"
+
+	function HUDTeammatePlayer:init(...)
+		init_original(self, ...)
+		self:_init_accuracy()
+	end
+
+	function HUDTeammatePlayer:_init_accuracy()
+		local right_panel = self._right_panel
+		self._accuracy_panel = right_panel:panel({
+			name = "accuracy_panel",
+			visible = WolfgangHUD:getSetting({"HUD", "PLAYER", "SHOW_ACCURACY"}, true),
+			w = 100,
+			h = self.ACCURACY_FONT_SIZE,
+			x = right_panel:w() - 100,
+			y = ((self._kills_panel and self._kills_panel:visible()) and self._kills_panel:top() or right_panel:h()) - self.ACCURACY_FONT_SIZE,
+			halign = "right"
+		})
+		local icon_side_len = self._accuracy_panel:h() * 0.9
+		self._accuracy_icon = self._accuracy_panel:bitmap({
+			texture = "ui/hud/atlas/raid_atlas_waypoints",
+			texture_rect = { 451, 291, 38, 38 },
+			w = icon_side_len,
+			h = icon_side_len,
+			alpha = 1,
+			blend_mode = "normal",
+			layer = 0,
+			color = Color.white
+		})
+		self._accuracy_text = self._accuracy_panel:text({
+			name = "accuracy_text",
+			text = "0%",
+			layer = 1,
+			color = Color.white,
+			x = self._accuracy_icon:w(),
+			w = self._accuracy_panel:w() - self._accuracy_icon:w(),
+			h = self._accuracy_panel:h(),
+			vertical = "center",
+			align = "right",
+			font_size = self.ACCURACY_FONT_SIZE,
+			font = tweak_data.gui.fonts[self.ACCURACY_FONT]
+		})
+		self:set_accuracy(0)
+	end
+
+	function HUDTeammatePlayer:set_accuracy(value)
+		self._accuracy_text:set_text(tostring(value) .. "%")
+		local _, _, w, _ = self._accuracy_text:text_rect()
+		self._accuracy_icon:set_right(self._accuracy_panel:w() - w)
+	end
+
+end
