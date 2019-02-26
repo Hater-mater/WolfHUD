@@ -64,6 +64,22 @@ function WolfgangHUDMenu:Init(root, args)
 
 	-- item create functions by type
 	local create_item_handlers = {
+		menu = function(menu_id, offset, data)
+			local id = string.format("%s_menubutton", data.menu_id)
+			local clbk_id = data.clbk or (id .. "_clbk")
+			self[clbk_id] = self[clbk_id] or function(self, value, item)
+				managers.raid_menu:open_menu(data.menu_id)
+			end
+			local item = self:Button({
+				name = id,
+				text = data.name_id,
+				localize = true,
+				callback = callback(self, self, clbk_id),
+			})
+			if data.visible_reqs or data.enabled_reqs then
+				add_enabled_reqs(item, data)
+			end
+		end,
 		slider = function(menu_id, offset, data, value)
 			--[[
 				local id = string.format("%s_%s_slider", menu_id, data.name_id)
@@ -252,11 +268,7 @@ function WolfgangHUDMenu:Init(root, args)
 	local item_amount = #args.options
 	for i, data in ipairs(args.options) do
 		local value = data.value and WolfgangHUD:getSetting(data.value, nil)
-		local type = data.type
-		local menu_id = data.parent_id or args.menu_id
-		if type ~= "menu" then
-			create_item_handlers[type](menu_id, item_amount - i, data, value)
-		end
+		create_item_handlers[data.type](args.menu_id, item_amount - i, data, value)
 	end
 end
 
@@ -309,7 +321,7 @@ function WolfgangHUDMenu:Close()
 end
 
 Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_WolfgangHUD", function(menu_manager)
-	local function create_menu(menu_table, parent_id)
+	local function create_menu(menu_table, is_root)
 		for i, data in ipairs(menu_table) do
 			if data.type == "menu" then
 				-- Raid BLT needs unique classes for each menu, so lets create them using inheritance. without this, all menus would appear in all menus.
@@ -319,15 +331,15 @@ Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_Wolf
 				RaidMenuHelper:CreateMenu({
 					name = data.menu_id,
 					name_id = data.name_id,
-					inject_menu = parent_id,
+					inject_menu = is_root and "blt_options",
 					class = _G[menu_class],
 					args = data,
 				})
 				-- create sub-menus
-				create_menu(data.options, data.menu_id)
+				create_menu(data.options)
 			end
 		end
 	end
-	-- create menus recursively
-	create_menu({WolfgangHUD.options_menu_data}, "blt_options")
+	-- create menus
+	create_menu({WolfgangHUD.options_menu_data}, true)
 end)

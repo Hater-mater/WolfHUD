@@ -40,6 +40,8 @@ if WolfgangHUD then
 				type = "menu",
 				menu_id = "wolfganghud_menu_options_menu",
 				name_id = "wolfganghud_menu_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
 				options = {
 					{
 						type = "toggle",
@@ -54,11 +56,15 @@ if WolfgangHUD then
 				type = "menu",
 				menu_id = "wolfganghud_hud_options_menu",
 				name_id = "wolfganghud_hud_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
 				options = {
 					{	-- Player Panel
 						type = "menu",
 						menu_id = "wolfganghud_player_panel_options_menu",
 						name_id = "wolfganghud_player_panel_options_name",
+						visible_reqs = {},
+						enabled_reqs = {},
 						options = {
 							{
 								type = "toggle",
@@ -115,6 +121,8 @@ if WolfgangHUD then
 						type = "menu",
 						menu_id = "wolfganghud_peer_panels_options_menu",
 						name_id = "wolfganghud_peer_panels_options_name",
+						visible_reqs = {},
+						enabled_reqs = {},
 						options = {
 							{
 								type = "toggle",
@@ -160,6 +168,8 @@ if WolfgangHUD then
 						type = "menu",
 						menu_id = "wolfganghud_ai_panels_options_menu",
 						name_id = "wolfganghud_ai_panels_options_name",
+						visible_reqs = {},
+						enabled_reqs = {},
 						options = {
 							{
 								type = "toggle",
@@ -207,6 +217,8 @@ if WolfgangHUD then
 				type = "menu",
 				menu_id = "wolfganghud_gameplay_options_menu",
 				name_id = "wolfganghud_gameplay_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
 				options = {
 					{
 						type = "toggle",
