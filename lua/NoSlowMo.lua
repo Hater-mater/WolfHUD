@@ -1,4 +1,3 @@
-
 if string.lower(RequiredScript) == "lib/tweak_data/timespeedeffecttweakdata" then
 
 	local init_original = TimeSpeedEffectTweakData.init
@@ -9,7 +8,7 @@ if string.lower(RequiredScript) == "lib/tweak_data/timespeedeffecttweakdata" the
 
 	function TimeSpeedEffectTweakData:init(...)
 		init_original(self, ...)
-		if WolfgangHUD:getSetting({"HUD", "NO_SLOWMOTION"}, true) then
+		if WolfgangHUD:getSetting({"GAMEPLAY", "NO_SLOWMOTION"}, true) then
 			local function disable_effect(table)
 				for name, data in pairs(table) do
 					if not FORCE_ENABLE[name] then

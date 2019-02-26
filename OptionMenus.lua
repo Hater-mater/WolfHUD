@@ -36,29 +36,25 @@ if WolfgangHUD then
 				type = "divider",
 				size = 12,
 			},
-			{	-- Ingame/HUD
+			{	-- Menu Options
+				type = "menu",
+				menu_id = "wolfganghud_menu_options_menu",
+				name_id = "wolfganghud_menu_options_name",
+				options = {
+					{
+						type = "toggle",
+						name_id = "wolfganghud_transparent_pause_menu_title",
+						value = {"MENU", "TRANSPARENT_PAUSE_MENU"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+				},
+			},
+			{	-- HUD Options
 				type = "menu",
 				menu_id = "wolfganghud_hud_options_menu",
 				name_id = "wolfganghud_hud_options_name",
 				options = {
-					{
-						type = "toggle",
-						name_id = "wolfganghud_no_slowmotion_title",
-						value = {"HUD", "NO_SLOWMOTION"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfganghud_transparent_pause_menu_title",
-						value = {"HUD", "TRANSPARENT_PAUSE_MENU"},
-						visible_reqs = {},
-						enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 12,
-					},
 					{	-- Player Panel
 						type = "menu",
 						menu_id = "wolfganghud_player_panel_options_menu",
@@ -204,6 +200,27 @@ if WolfgangHUD then
 								add_rainbow = false,
 							},
 						},
+					},
+				},
+			},
+			{	-- Gameplay
+				type = "menu",
+				menu_id = "wolfganghud_gameplay_options_menu",
+				name_id = "wolfganghud_gameplay_options_name",
+				options = {
+					{
+						type = "toggle",
+						name_id = "wolfganghud_no_slowmotion_title",
+						value = {"GAMEPLAY", "NO_SLOWMOTION"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_no_bot_bullet_coll_title",
+						value = {"GAMEPLAY", "NO_BOT_BULLET_COLL"},
+						visible_reqs = {},
+						enabled_reqs = {},
 					},
 				},
 			},

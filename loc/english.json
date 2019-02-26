@@ -35,10 +35,11 @@
 
 	"wolfganghud_options_name" : "WolfgangHUD",
 
-	"wolfganghud_hud_options_name" : "Ingame/HUD Options",
+	"wolfganghud_menu_options_name" : "Menu Options",
 
-	"wolfganghud_no_slowmotion_title" : "No slow motion",
 	"wolfganghud_transparent_pause_menu_title" : "Transparent pause menu",
+
+	"wolfganghud_hud_options_name" : "HUD Options",
 
 	"wolfganghud_player_panel_options_name" : "Player panel options",
 	"wolfganghud_player_show_killcount_title" : "Show kill counter",
@@ -57,6 +58,11 @@
 	"wolfganghud_ai_show_killcount_title" : "Show kill counter",
 	"wolfganghud_ai_killcount_color_title" : "Kill counter Color",
 	"wolfganghud_ai_show_special_title" : "Count special enemy kills",
-	"wolfganghud_ai_show_head_title" : "Count headshots"
+	"wolfganghud_ai_show_head_title" : "Count headshots",
+
+	"wolfganghud_gameplay_options_name" : "Gameplay Options",
+
+	"wolfganghud_no_slowmotion_title" : "Disable slow motion effects",
+	"wolfganghud_no_bot_bullet_coll_title" : "Shoot through AI"
 
 }

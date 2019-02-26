@@ -34,5 +34,8 @@
 		<!-- Transparent Pause Menu -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="lua/TransparentPauseMenu.lua"		/>
 
+		<!-- Bot Bullet Collisions -->
+		<hook source_file="lib/units/weapons/raycastweaponbase"					file="lua/BotColl.lua"					/>
+
 	</hooks>
 </table>

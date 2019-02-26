@@ -21,9 +21,10 @@ if not _G.WolfgangHUD then
 		end
 		WolfgangHUD.default_settings = {
 			LANGUAGE								= default_lang,
-			HUD = {
-				NO_SLOWMOTION						= true,
+			MENU ={
 				TRANSPARENT_PAUSE_MENU				= true,
+			},
+			HUD = {
 				PLAYER = {
 					SHOW_ACCURACY					= true,
 					KILLCOUNTER = {
@@ -49,6 +50,10 @@ if not _G.WolfgangHUD then
 						COLOR						= "orange",
 					},
 				},
+			},
+			GAMEPLAY = {
+				NO_SLOWMOTION						= true,
+				NO_BOT_BULLET_COLL					= true,
 			},
 		}
 		WolfgangHUD.settings = deep_clone(WolfgangHUD.default_settings)
