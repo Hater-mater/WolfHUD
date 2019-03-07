@@ -48,6 +48,7 @@
 	"wolfganghud_player_show_accuracy_title" : "Show accuracy",
 	"wolfganghud_peer_panels_options_name" : "Teammate panel options",
 	"wolfganghud_ai_panels_options_name" : "Bot panel options",
+	"wolfganghud_show_in_camp_title" : "Show HUD elements in camp",
 
 	"wolfganghud_gameplay_options_name" : "Gameplay Options",
 	"wolfganghud_no_slowmotion_title" : "Disable slow motion effects",

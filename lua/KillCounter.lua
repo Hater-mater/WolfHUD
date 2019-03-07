@@ -143,7 +143,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 	function HUDTeammateBase:_check_state_change()
 		_check_state_change_original(self)
 		if alive(self._kills_panel) then
-			self._kills_panel:set_visible(not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false))
+			self._kills_panel:set_visible(WolfgangHUD:ShowHudElements() and not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false))
 		end
 	end
 
@@ -158,7 +158,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 		local right_panel = self._right_panel
 		self._kills_panel = right_panel:panel({
 			name = "kills_panel",
-			visible = not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
+			visible = WolfgangHUD:ShowHudElements() and not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
 			w = 150,
 			h = self.KILLCOUNTER_FONT_SIZE,
 			x = right_panel:w() - 150,

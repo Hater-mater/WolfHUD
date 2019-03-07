@@ -26,6 +26,7 @@ if not _G.WolfgangHUD then
 				TRANSPARENT_PAUSE_MENU				= true,
 			},
 			HUD = {
+				SHOW_IN_CAMP						= false,
 				PLAYER = {
 					SHOW_ACCURACY					= true,
 					KILLCOUNTER = {
@@ -277,6 +278,10 @@ if not _G.WolfgangHUD then
 				log(formatting .. tostring(v) .. ',')
 			end
 		end
+	end
+
+	function WolfgangHUD:ShowHudElements()
+		return not managers.raid_job:is_camp_loaded() or self:getSetting({"HUD", "SHOW_IN_CAMP"}, false)
 	end
 
 	if not WolfgangHUD.tweak_path then		-- Populate tweak data

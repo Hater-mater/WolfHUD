@@ -44,6 +44,7 @@ elseif string.lower(RequiredScript) == "lib/managers/raidjobmanager" then
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 
 	local init_original = HUDTeammatePlayer.init
+	local _check_state_change_original = HUDTeammatePlayer._check_state_change
 
 	HUDTeammatePlayer.ACCURACY_FONT_SIZE = 20
 	HUDTeammatePlayer.ACCURACY_FONT = "din_compressed_outlined_22"
@@ -53,11 +54,18 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 		self:_init_accuracy()
 	end
 
+	function HUDTeammatePlayer:_check_state_change()
+		_check_state_change_original(self)
+		if alive(self._accuracy_panel) then
+			self._accuracy_panel:set_visible(WolfgangHUD:ShowHudElements() and WolfgangHUD:getSetting({"HUD", "PLAYER", "SHOW_ACCURACY"}, true))
+		end
+	end
+
 	function HUDTeammatePlayer:_init_accuracy()
 		local right_panel = self._right_panel
 		self._accuracy_panel = right_panel:panel({
 			name = "accuracy_panel",
-			visible = WolfgangHUD:getSetting({"HUD", "PLAYER", "SHOW_ACCURACY"}, true),
+			visible = WolfgangHUD:ShowHudElements() and WolfgangHUD:getSetting({"HUD", "PLAYER", "SHOW_ACCURACY"}, true),
 			w = 100,
 			h = self.ACCURACY_FONT_SIZE,
 			x = right_panel:w() - 100,

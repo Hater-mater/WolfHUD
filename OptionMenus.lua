@@ -196,6 +196,13 @@ if WolfgangHUD then
 					},
 				},
 			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_show_in_camp_title",
+				value = {"HUD", "SHOW_IN_CAMP"},
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
 			{	-- Gameplay
 				type = "header",
 				text_id = "wolfganghud_gameplay_options_name",
