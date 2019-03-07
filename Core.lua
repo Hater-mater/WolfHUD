@@ -58,8 +58,9 @@ if not _G.WolfgangHUD then
 				NO_BOT_BULLET_COLL					= true,
 				AUTO_RELOAD							= true,
 			},
-			RESTART = {
+			HOST = {
 				INSTANT_RESTART						= true,
+				KICK_A_FRIEND						= true,
 			},
 		}
 		WolfgangHUD.settings = deep_clone(WolfgangHUD.default_settings)

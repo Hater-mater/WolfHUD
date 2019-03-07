@@ -228,14 +228,21 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
-			{	---- Restart ----
+			{	---- Hosting ----
 				type = "header",
-				text_id = "wolfganghud_restart_options_name",
+				text_id = "wolfganghud_host_options_name",
+			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_kick_a_friend_title",
+				value = {"HOST", "KICK_A_FRIEND"},
+				visible_reqs = {},
+				enabled_reqs = {},
 			},
 			{
 				type = "toggle",
 				name_id = "wolfganghud_instant_restart_title",
-				value = {"RESTART", "INSTANT_RESTART"},
+				value = {"HOST", "INSTANT_RESTART"},
 				visible_reqs = {},
 				enabled_reqs = {},
 			},

@@ -48,6 +48,9 @@
 		<!-- Instant Restart -->
 		<hook source_file="lib/tweak_data/tweakdata"							file="lua/InstantRestart.lua"			/>
 
+		<!-- Kick a Friend -->
+		<hook source_file="lib/network/base/basenetworksession"					file="lua/KickAFriend.lua"				/>
+
 	</hooks>
 
 	<keybinds>
