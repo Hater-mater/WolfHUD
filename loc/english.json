@@ -55,7 +55,7 @@
 	"wolfganghud_no_bot_bullet_coll_title" : "Shoot through bots",
 	"wolfganghud_auto_reload_title" : "Auto reload auto-fire weapons",
 
-	"wolfganghud_restart_options_name" : "Restart Options",
-	"wolfganghud_instant_restart_title" : "Instant restart",
-	"wolfganghud_restart_hotkey_title" : "Restart hotkey"
+	"wolfganghud_restart_options_name" : "Restarting Options",
+	"wolfganghud_instant_restart_title" : "Instantly restart/return to camp",
+	"wolfganghud_restart_hotkey_title" : "Restart mission hotkey"
 }

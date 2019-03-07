@@ -78,7 +78,6 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
 			texture_rect = { 451, 291, 38, 38 },
 			w = icon_side_len,
 			h = icon_side_len,
-			alpha = 1,
 			blend_mode = "normal",
 			layer = 0,
 			color = Color.white

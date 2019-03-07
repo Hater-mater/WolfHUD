@@ -23,7 +23,7 @@ if WolfgangHUD then
 				enabled_reqs = {},
 				value = {"LANGUAGE"},
 			},
-			{	-- Menu Options
+			{	---- Menu Options ----
 				type = "header",
 				text_id = "wolfganghud_menu_options_name",
 			},
@@ -41,7 +41,7 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
-			{	-- HUD Options
+			{	---- HUD Options ----
 				type = "header",
 				text_id = "wolfganghud_hud_options_name",
 			},
@@ -203,7 +203,7 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
-			{	-- Gameplay
+			{	---- Gameplay ----
 				type = "header",
 				text_id = "wolfganghud_gameplay_options_name",
 			},
@@ -228,7 +228,7 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
-			{	-- Restart
+			{	---- Restart ----
 				type = "header",
 				text_id = "wolfganghud_restart_options_name",
 			},
