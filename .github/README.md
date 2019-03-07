@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a Mod collection of several useful HUD altering mods.  
+This is a Mod collection of several useful HUD altering mods and a few gameplay tweaks.  
 Based on WolfHUD by Kamikaze94, rewritten for RAID WW2 as WolfgangHUD by BangL.  
 Keep in mind that this is a development version.  
 
