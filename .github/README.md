@@ -28,7 +28,7 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 ## Included Mods
 
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**
-* [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **me**, ported to RAIDWW2 by **me**
+* [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, ported to RAIDWW2 by **me**
 * [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**
 * [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20 **, ported to RAIDWW2 by **AdayDr1en**
 * [Shoot through AI](https://modworkshop.net/mydownloads.php?action=view_down&did=13463) made by **Rhynne**
@@ -39,6 +39,6 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * AutoReload made by **me**
 
 Big credit goes to all of you!
-Without your awesome mods, I would have quitted this game a long time ago!
+Without your awesome mods, I would not even have started playing this game at all.
 **If I forgot to mention you, I'm really sorry.
 Please feel free to contact me, so I can credit you, for the awesome stuff you have made :)**
