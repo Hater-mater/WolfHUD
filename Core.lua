@@ -71,13 +71,13 @@ if not _G.WolfgangHUD then
 					local text = ""
 					for id, data in pairs(userdata) do
 						if type(data) == "table" then
-							log( id .. " = {")
+							log(id .. " = {")
 							log_table(data)
 							log("}")
 						elseif type(data) ~= "function" then
-							log( id .. " = " .. tostring(data) .. "")
+							log(id .. " = " .. tostring(data) .. "")
 						else
-							log( "function " .. id .. "(...)")
+							log("function " .. id .. "(...)")
 						end
 					end
 				end
