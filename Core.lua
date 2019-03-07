@@ -57,6 +57,9 @@ if not _G.WolfgangHUD then
 				NO_BOT_BULLET_COLL					= true,
 				AUTO_RELOAD							= true,
 			},
+			RESTART = {
+				INSTANT_RESTART						= true,
+			},
 		}
 		WolfgangHUD.settings = deep_clone(WolfgangHUD.default_settings)
 	end

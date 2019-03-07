@@ -33,6 +33,8 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20 **, ported to RAIDWW2 by **AdayDr1en**
 * [Shoot through AI](https://modworkshop.net/mydownloads.php?action=view_down&did=13463) made by **Rhynne**
 * NoSlowMotion made by **Kamikaze94**
+* InstantRestart made by **Kamikaze94**
+* RestartHotkey made by **me**
 * AutoReload made by **me**
 
 Big credit goes to all of you!

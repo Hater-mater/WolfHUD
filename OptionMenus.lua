@@ -221,6 +221,24 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
+			{	-- Restart
+				type = "header",
+				text_id = "wolfganghud_restart_options_name",
+			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_instant_restart_title",
+				value = {"RESTART", "INSTANT_RESTART"},
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
+			{
+				type = "keybind",
+				name_id = "wolfganghud_restart_hotkey_title",
+				keybind_id = "wolfganghud_restart_hotkey",
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
 			{	-- Reset
 				type = "header",
 				text_id = "wolfganghud_reset_options_title",
