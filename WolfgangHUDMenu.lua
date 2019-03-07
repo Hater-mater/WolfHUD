@@ -75,7 +75,7 @@ function WolfgangHUDMenu:Init(root, args)
 				text = data.name_id,
 				localize = true,
 				callback = callback(self, self, clbk_id),
-				x_offset = 20,
+				x_offset = 24,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				add_enabled_reqs(item, data)
@@ -141,14 +141,14 @@ function WolfgangHUDMenu:Init(root, args)
 			local items = {}
 			for value, text_id in pairs(data.options) do
 				table.insert(items, {
-					text = managers.localization:text(text_id),
+					text = utf8.to_upper(managers.localization:text(text_id)),
 					value = value,
 				})
 			end
 			if data.add_color_options then
 				for k, v in ipairs(WolfgangHUD:getTweakEntry("color_table", "table") or {}) do
 					if data.add_rainbow or v.name ~= "rainbow" then
-						local color_name = managers.localization:text("wolfganghud_colors_" .. v.name)
+						local color_name = utf8.to_upper(managers.localization:text("wolfganghud_colors_" .. v.name))
 						color_name = not color_name:lower():find("error") and color_name or string.upper(v.name)
 						table.insert(items, {
 							text = color_name,
@@ -209,39 +209,20 @@ function WolfgangHUDMenu:Init(root, args)
 				text = data.name_id,
 				localize = true,
 				callback = callback(self, self, clbk_id),
-				x_offset = 20,
+				x_offset = 24,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				add_enabled_reqs(item, data)
 			end
 		end,
 		keybind = function(menu_id, offset, data)
-			--[[
-				local id = string.format("%s_%s_keybind", menu_id, data.name_id)
-				local clbk_id = data.clbk or (id .. "_clbk")
-
-				MenuHelper:AddKeybinding({
-					id = id,
-					title = data.name_id,
-					desc = data.desc_id,
-					connection_name = "",
-					binding = "",
-					button = "",
-					callback = clbk_id,
-					menu_id = menu_id,
-					priority = offset,
-					--disabled_color = Color(0.6, 0.6, 0.6),
-				})
-
-				MenuCallbackHandler[clbk_id] = MenuCallbackHandler[clbk_id] or function(self, item)
-
-				end
-
-				if data.visible_reqs or data.enabled_reqs then
-					add_visible_reqs(menu_id, id, data)
-				end
-			]]
-			WolfgangHUD:print_log(string.format("%s TYPE NOT IMPLEMENTED YET", tostring(data.type), tostring(id), tostring(menu_id)), "error")
+			local item = self:KeyBind({
+				keybind_id = data.keybind_id,
+				text = utf8.to_upper(managers.localization:text(data.name_id)),
+			})
+			if data.visible_reqs or data.enabled_reqs then
+				add_enabled_reqs(item, data)
+			end
 		end,
 		divider = function(menu_id, offset, data)
 			local id = string.format("%s_divider_%d", menu_id, offset)
