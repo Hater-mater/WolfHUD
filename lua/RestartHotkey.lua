@@ -9,7 +9,7 @@ if state == "ingame_waiting_for_players" or
 	do return end
 end
 local job = managers.raid_job
-if not job or job:is_in_tutorial() or job:is_camp_loaded() or not job:current_job() or job:current_job().consumable then
+if not job or job:is_in_tutorial() or job:is_camp_loaded() or (job:current_job() and job:current_job().consumable) then
 	do return end
 end
 
