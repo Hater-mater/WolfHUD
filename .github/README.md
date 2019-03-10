@@ -38,6 +38,7 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * InstantRestart made by **Kamikaze94**
 * RestartHotkey made by **me**
 * AutoReload made by **me**
+* AutoApplyWeaponSkills made by **me**
 
 Big credit goes to all of you!
 Without your awesome mods, I would not even have started playing this game at all.

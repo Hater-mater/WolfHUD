@@ -58,6 +58,9 @@
 		<!-- Kick a Friend -->
 		<hook source_file="lib/network/base/basenetworksession"					file="lua/KickAFriend.lua"				/>
 
+		<!-- Auto Apply Weapon Skills -->
+		<hook source_file="lib/managers/weaponskillsmanager"					file="lua/AutoApplyWeaponSkills.lua"	/>
+
 	</hooks>
 
 	<keybinds>

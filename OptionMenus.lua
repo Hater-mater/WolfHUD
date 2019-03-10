@@ -388,6 +388,13 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_auto_apply_weapon_skills_title",
+				value = {"GAMEPLAY", "AUTO_APPLY_WEAPON_SKILLS"},
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
 			{	---- Hosting ----
 				type = "header",
 				text_id = "wolfganghud_host_options_name",
