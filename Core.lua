@@ -53,6 +53,21 @@ if not _G.WolfgangHUD then
 					},
 				},
 			},
+			HUDList = {
+				ENABLED								= true,
+				unit_count_list_scale					= 1,
+				unit_count_list_progress_alpha			= 1,
+				list_color							= "white",
+				list_color_bg						= "black",
+				enemy_color							= "orange",
+				special_color						= "red",
+				objective_color						= "yellow",
+				UNIT_COUNT_LIST = {
+					show_enemies					= true,
+						aggregate_enemies			= false,
+					show_objectives					= true,
+				},
+			},
 			GAMEPLAY = {
 				NO_SLOWMOTION						= true,
 				NO_BOT_BULLET_COLL					= true,
@@ -301,7 +316,14 @@ if not _G.WolfgangHUD then
 	--callback functions to apply changed settings on the fly
 	if not WolfgangHUD.apply_settings_clbk then
 		WolfgangHUD.apply_settings_clbk = {
-			-- TODO
+			["HUDList"] = function(setting, value)
+				if managers.hud and HUDListManager and setting then
+					local list = tostring(setting[1])
+					local category = tostring(setting[2])
+					local option = tostring(setting[#setting])
+					managers.hud:change_list_setting(option, WolfgangHUD:getColor(value) or value)
+				end
+			end,
 		}
 	end
 

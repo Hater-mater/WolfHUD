@@ -13,6 +13,13 @@
 		<hook source_file="lib/entry"											file="Core.lua"				type="pre"	/>
 		<hook source_file="lib/managers/menu/menucomponentmanager"				file="WolfgangHUDMenu.lua"				/>
 
+		<!-- GameInfoManager -->
+		<hook source_file="lib/setups/setup"									file="lua/GameInfoManager.lua"			/>
+		<hook source_file="lib/managers/enemymanager"							file="lua/GameInfoManager.lua"			/>
+
+		<!-- HUDList -->
+		<hook source_file="lib/managers/hudmanagerpd2"							file="lua/HUDList.lua"					/>
+
 		<!-- KillCounter -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="lua/KillCounter.lua"				/>
 		<hook source_file="lib/managers/raidjobmanager"							file="lua/KillCounter.lua"				/>
