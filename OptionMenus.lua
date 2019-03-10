@@ -45,6 +45,14 @@ if WolfgangHUD then
 				type = "header",
 				text_id = "wolfganghud_hud_options_name",
 			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_hide_in_camp_title",
+				value = {"HUD", "SHOW_IN_CAMP"},
+				visible_reqs = {},
+				enabled_reqs = {},
+				invert_value = true,
+			},
 			{	-- Player Panel
 				type = "menu",
 				menu_id = "wolfganghud_player_panel_options_menu",
@@ -52,6 +60,10 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 				options = {
+					{ -- KillCount
+						type = "header",
+						text_id = "wolfganghud_killcount_name",
+					},
 					{
 						type = "toggle",
 						name_id = "wolfganghud_show_killcount_title",
@@ -90,10 +102,11 @@ if WolfgangHUD then
 						add_color_options = true,
 						add_rainbow = false,
 					},
-					{
-						type = "divider",
-					},
 					{ -- Accuracy
+						type = "header",
+						text_id = "wolfganghud_accuracy_name",
+					},
+					{
 						type = "toggle",
 						name_id = "wolfganghud_player_show_accuracy_title",
 						visible_reqs = {},
@@ -109,6 +122,10 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 				options = {
+					{ -- KillCount
+						type = "header",
+						text_id = "wolfganghud_killcount_name",
+					},
 					{
 						type = "toggle",
 						name_id = "wolfganghud_show_killcount_title",
@@ -156,6 +173,10 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 				options = {
+					{ -- KillCount
+						type = "header",
+						text_id = "wolfganghud_killcount_name",
+					},
 					{
 						type = "toggle",
 						name_id = "wolfganghud_show_killcount_title",
@@ -195,13 +216,6 @@ if WolfgangHUD then
 						add_rainbow = false,
 					},
 				},
-			},
-			{
-				type = "toggle",
-				name_id = "wolfganghud_show_in_camp_title",
-				value = {"HUD", "SHOW_IN_CAMP"},
-				visible_reqs = {},
-				enabled_reqs = {},
 			},
 			{	---- Gameplay ----
 				type = "header",
