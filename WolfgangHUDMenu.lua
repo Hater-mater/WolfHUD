@@ -82,35 +82,24 @@ function WolfgangHUDMenu:Init(root, args)
 			end
 		end,
 		slider = function(menu_id, offset, data, value)
-			--[[
-				local id = string.format("%s_%s_slider", menu_id, data.name_id)
-				local clbk_id = id .. "_clbk"
-
-				MenuHelper:AddSlider({
-					id = id,
-					title = data.name_id,
-					desc = data.desc_id,
-					callback = string.format("%s %s", clbk_id, update_visible_clbks),
-					value = value or 0,
-					min = data.min_value,
-					max = data.max_value,
-					step = data.step_size,
-					show_value = true,
-					menu_id = menu_id,
-					priority = offset,
-					disabled_color = Color(0.6, 0.6, 0.6),
-				})
-
-				--Value changed callback
-				MenuCallbackHandler[clbk_id] = function(self, item)
-					change_setting(clone(data.value), item:value())
-				end
-
-				if data.visible_reqs or data.enabled_reqs then
-					add_visible_reqs(menu_id, id, data)
-				end
-			]]
-			WolfgangHUD:print_log(string.format("%s TYPE NOT IMPLEMENTED YET", tostring(data.type), tostring(id), tostring(menu_id)), "error")
+			local id = string.format("%s_%s_slider", menu_id, data.name_id)
+			local clbk_id = id .. "_clbk"
+			self[clbk_id] = function(self, value, item)
+				change_setting(clone(data.value), value)
+			end
+			local item = self:Slider({
+				name = id,
+				text = data.name_id,
+				localize = true,
+				callback = callback(self, self, clbk_id),
+				value = value or 0,
+				min = data.min_value,
+				max = data.max_value,
+				value_format = "%." .. (data.decimal_places or 2) .. "f",
+			})
+			if data.visible_reqs or data.enabled_reqs then
+				add_enabled_reqs(item, data)
+			end
 		end,
 		toggle = function(menu_id, offset, data, value)
 			local id = string.format("%s_%s_toggle", menu_id, data.name_id)
