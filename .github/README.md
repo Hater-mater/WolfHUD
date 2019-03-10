@@ -21,9 +21,11 @@ To make this mod work you will need to install [Raid BLT](https://modworkshop.ne
 ## Bug reports
 
 If you encounter any bugs, feel free to post about it on the issues tab!
-Please try to provide information from your crashlog and the actions you and your teammates were doing, when you crashed. ;)
-The Crashlog can be found at **%localappdata%/PAYDAY 2/crashlog.txt**.
-The BLT log can be found at **PAYDAY 2/mods/logs/**.
+~~Please try to provide information from your crashlog and the actions you and your teammates were doing, when you crashed. ;)~~
+~~The Crashlog can be found at **%localappdata%/PAYDAY 2/crashlog.txt**.~~
+~~The BLT log can be found at **PAYDAY 2/mods/logs/**.~~
+unfortunately.. raid ww2 does not log lua errors at all, or i missed it.
+a workaround is in the pipeline.
 
 ## Included Mods
 
