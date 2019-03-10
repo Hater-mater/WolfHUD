@@ -68,7 +68,7 @@
 	"wolfganghud_gameplay_options_name" : "Gameplay Options",
 	"wolfganghud_no_slowmotion_title" : "Disable slow motion effects",
 	"wolfganghud_no_bot_bullet_coll_title" : "Shoot through bots",
-	"wolfganghud_auto_reload_title" : "Auto reload auto-fire weapons",
+	"wolfganghud_auto_reload_title" : "Auto reload automatic weapons",
 
 	"wolfganghud_host_options_name" : "Hosting Options",
 	"wolfganghud_kick_a_friend_title" : "Kick steam friends without ban",
