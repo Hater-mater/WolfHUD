@@ -15,8 +15,8 @@ To make this mod work you will need to install [Raid BLT](https://modworkshop.ne
 1. Click on the **Clone or Download** Button at the top of this site
 2. Click on the **Download .ZIP** Button
 3. Open the downloaded archive, using WinRAR or 7Zip
-4. Extract the **WolfgangHUD-master** folder into your 'RAID World War II/mods' folder
-5. Rename the folder **WolfgangHUD-master** to **WolfgangHUD** (if you want to)
+4. Extract the **WolfgangHUD-raidww2** folder into your 'RAID World War II/mods' folder
+5. Rename the folder **WolfgangHUD-raidww2** to **WolfgangHUD** (if you want to)
 
 ## Bug reports
 
