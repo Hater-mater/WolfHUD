@@ -36,6 +36,13 @@ if WolfgangHUD then
 			},
 			{
 				type = "toggle",
+				name_id = "wolfganghud_remove_ad_box_title",
+				value = {"MENU", "REMOVE_AD_BOX"},
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
+			{
+				type = "toggle",
 				name_id = "wolfganghud_transparent_pause_menu_title",
 				value = {"MENU", "TRANSPARENT_PAUSE_MENU"},
 				visible_reqs = {},

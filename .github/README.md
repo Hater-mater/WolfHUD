@@ -41,6 +41,7 @@ a workaround is in the pipeline.
 * RestartHotkey made by **me**
 * AutoReload made by **me**
 * AutoApplyWeaponSkills made by **me**
+* NoAds made by **me**
 
 Big credit goes to all of you!
 Without your awesome mods, I would not even have started playing this game at all.

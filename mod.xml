@@ -36,6 +36,9 @@
 		<hook source_file="lib/managers/statisticsmanager"						file="lua/Accuracy.lua"					/>
 		<hook source_file="lib/managers/hud/hudteammateplayer"					file="lua/Accuracy.lua"					/>
 
+		<!-- NoAds -->
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="lua/NoAds.lua"					/>
+
 		<!-- NoSlowMo -->
 		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="lua/NoSlowMo.lua"					/>
 

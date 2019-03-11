@@ -23,6 +23,7 @@ if not _G.WolfgangHUD then
 			LANGUAGE								= default_lang,
 			MENU ={
 				STRAIGHT_TO_MAIN_MENU				= true,
+				REMOVE_AD_BOX						= true,
 				TRANSPARENT_PAUSE_MENU				= true,
 			},
 			HUD = {
