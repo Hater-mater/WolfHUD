@@ -15,58 +15,62 @@
 
 	<hooks>
 
-		<!-- Core -->
-		<hook source_file="lib/entry"											file="Core.lua"				type="pre"	/>
-		<hook source_file="lib/managers/menu/menucomponentmanager"				file="WolfgangHUDMenu.lua"				/>
-		<hook source_file="lib/setups/setup"									file="lua/GameInfoManager.lua"			/>
-		<hook source_file="lib/managers/enemymanager"							file="lua/GameInfoManager.lua"			/>
+		<!-- WolfgangHUD -->
+		<hook source_file="lib/entry"											file="core/WolfgangHUD.lua"		type="pre"	/>
+
+		<!-- Menu -->
+		<hook source_file="lib/managers/menu/menucomponentmanager"				file="core/WolfgangHUDMenu.lua"				/>
+
+		<!-- GameInfoManager -->
+		<hook source_file="lib/setups/setup"									file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/managers/enemymanager"							file="core/GameInfoManager.lua"				/>
 
 		<!-- HUDList -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="lua/HUDList.lua"					/>
+		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDList.lua"					/>
 
 		<!-- KillCounter -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/managers/raidjobmanager"							file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammatebase"					file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammateai"						file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammatepeer"					file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammateplayer"					file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/units/enemies/cop/copdamage"						file="lua/KillCounter.lua"				/>
-		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"		file="lua/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/raidjobmanager"							file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatebase"					file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammateai"						file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatepeer"					file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"		file="modules/KillCounter.lua"				/>
 
 		<!-- Accuracy -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="lua/Accuracy.lua"					/>
-		<hook source_file="lib/managers/raidjobmanager"							file="lua/Accuracy.lua"					/>
-		<hook source_file="lib/managers/statisticsmanager"						file="lua/Accuracy.lua"					/>
-		<hook source_file="lib/managers/hud/hudteammateplayer"					file="lua/Accuracy.lua"					/>
+		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/raidjobmanager"							file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/statisticsmanager"						file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/Accuracy.lua"					/>
 
 		<!-- NoAds -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="lua/NoAds.lua"					/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
 
 		<!-- NoSlowMo -->
-		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="lua/NoSlowMo.lua"					/>
+		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="modules/NoSlowMo.lua"					/>
 
 		<!-- Transparent Pause Menu -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="lua/TransparentPauseMenu.lua"		/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="modules/TransparentPauseMenu.lua"		/>
 
 		<!-- Bot Bullet Collisions -->
-		<hook source_file="lib/units/weapons/raycastweaponbase"					file="lua/BotColl.lua"					/>
+		<hook source_file="lib/units/weapons/raycastweaponbase"					file="modules/BotColl.lua"					/>
 
 		<!-- Auto Reload -->
-		<hook source_file="lib/units/beings/player/states/playerstandard"		file="lua/AutoReload.lua"				/>
+		<hook source_file="lib/units/beings/player/states/playerstandard"		file="modules/AutoReload.lua"				/>
 
 		<!-- Straight To Main Menu -->
-		<hook source_file="lib/setups/menusetup"								file="lua/StraightToMainMenu.lua"		/>
-		<hook source_file="lib/states/menutitlescreenstate"						file="lua/StraightToMainMenu.lua"		/>
+		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
+		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
 
 		<!-- Instant Restart -->
-		<hook source_file="lib/tweak_data/tweakdata"							file="lua/InstantRestart.lua"			/>
+		<hook source_file="lib/tweak_data/tweakdata"							file="modules/InstantRestart.lua"			/>
 
 		<!-- Kick a Friend -->
-		<hook source_file="lib/network/base/basenetworksession"					file="lua/KickAFriend.lua"				/>
+		<hook source_file="lib/network/base/basenetworksession"					file="modules/KickAFriend.lua"				/>
 
 		<!-- Auto Apply Weapon Skills -->
-		<hook source_file="lib/managers/weaponskillsmanager"					file="lua/AutoApplyWeaponSkills.lua"	/>
+		<hook source_file="lib/managers/weaponskillsmanager"					file="modules/AutoApplyWeaponSkills.lua"	/>
 
 	</hooks>
 
@@ -79,7 +83,7 @@
 				run_in_menu="false"
 				run_in_game="true"
 				run_in_paused_game="true"
-				script_path="lua/RestartHotkey.lua" />
+				script_path="keybinds/RestartHotkey.lua" />
 
 	</keybinds>
 
