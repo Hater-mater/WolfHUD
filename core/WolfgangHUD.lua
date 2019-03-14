@@ -3,7 +3,7 @@ if not _G.WolfgangHUD then
 	WolfgangHUD.mod_path = ModPath
 	WolfgangHUD.save_path = SavePath
 	WolfgangHUD.settings_path = WolfgangHUD.save_path .. "WolfgangHUD.json"
-	WolfgangHUD.tweak_file = "core/WolfgangHUDTweakData.lua"
+	WolfgangHUD.tweak_file = "WolfgangHUDTweakData.lua"
 	WolfgangHUD.identifier = string.match(WolfgangHUD.mod_path, "[\\/]([%w_-]+)[\\/]$") or "WolfgangHUD"
 
 	WolfgangHUD.settings = {}
