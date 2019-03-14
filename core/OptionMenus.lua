@@ -3,6 +3,7 @@ if WolfgangHUD then
 		type = "menu",
 		menu_id = "wolfganghud_options_menu",
 		name_id = "wolfganghud_options_name",
+		is_root = true,
 		options = {
 			{
 				type = "multi_choice",
@@ -426,15 +427,6 @@ if WolfgangHUD then
 				keybind_id = "wolfganghud_restart_hotkey",
 				visible_reqs = {},
 				enabled_reqs = {},
-			},
-			{	-- Reset
-				type = "header",
-				text_id = "wolfganghud_reset_options_title",
-			},
-			{
-				type = "button",
-				name_id = "wolfganghud_reset_options_title",
-				clbk = "Reset",
 			},
 		}
 	}

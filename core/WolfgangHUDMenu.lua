@@ -64,13 +64,14 @@ function WolfgangHUDMenu:Init(root, args)
 
 	-- item create functions by type
 	local create_item_handlers = {
-		menu = function(menu_id, offset, data)
+		menu = function(menu_id, index, data)
 			local id = string.format("%s_menubutton", data.menu_id)
 			local clbk_id = data.clbk or (id .. "_clbk")
 			self[clbk_id] = self[clbk_id] or function(self, value, item)
 				managers.raid_menu:open_menu(data.menu_id)
 			end
 			local item = self:Button({
+				index = index,
 				name = id,
 				text = data.name_id,
 				localize = true,
@@ -81,13 +82,14 @@ function WolfgangHUDMenu:Init(root, args)
 				add_enabled_reqs(item, data)
 			end
 		end,
-		slider = function(menu_id, offset, data, value)
+		slider = function(menu_id, index, data, value)
 			local id = string.format("%s_%s_slider", menu_id, data.name_id)
 			local clbk_id = id .. "_clbk"
 			self[clbk_id] = function(self, value, item)
 				change_setting(clone(data.value), value)
 			end
 			local item = self:Slider({
+				index = index,
 				name = id,
 				text = data.name_id,
 				localize = true,
@@ -101,7 +103,7 @@ function WolfgangHUDMenu:Init(root, args)
 				add_enabled_reqs(item, data)
 			end
 		end,
-		toggle = function(menu_id, offset, data, value)
+		toggle = function(menu_id, index, data, value)
 			local id = string.format("%s_%s_toggle", menu_id, data.name_id)
 			local clbk_id = id .. "_clbk"
 			if data.invert_value then
@@ -114,6 +116,7 @@ function WolfgangHUDMenu:Init(root, args)
 				change_setting(clone(data.value), value)
 			end
 			local item = self:Toggle({
+				index = index,
 				name = id,
 				text = data.name_id,
 				localize = true,
@@ -124,7 +127,7 @@ function WolfgangHUDMenu:Init(root, args)
 				add_enabled_reqs(item, data)
 			end
 		end,
-		multi_choice = function(menu_id, offset, data, value)
+		multi_choice = function(menu_id, index, data, value)
 			local id = string.format("%s_%s_multi", menu_id, data.name_id)
 			local clbk_id = id .. "_clbk"
 			local items = {}
@@ -151,6 +154,7 @@ function WolfgangHUDMenu:Init(root, args)
 					change_setting(clone(data.value), value)
 				end
 				local item = self:MultiChoice({
+					index = index,
 					name = id,
 					text = data.name_id,
 					localize = true,
@@ -163,7 +167,7 @@ function WolfgangHUDMenu:Init(root, args)
 				end
 			end
 		end,
-		input = function(menu_id, offset, data)
+		input = function(menu_id, index, data)
 			--[[
 				local id = string.format("%s_%s_input", menu_id, data.name_id)
 				local clbk_id = id .. "_clbk"
@@ -175,7 +179,7 @@ function WolfgangHUDMenu:Init(root, args)
 					value = tostring(data.value),
 					callback = clbk_id,
 					menu_id = menu_id,
-					priority = offset,
+					priority = index,
 					disabled_color = Color(0.6, 0.6, 0.6),
 				})
 
@@ -189,11 +193,12 @@ function WolfgangHUDMenu:Init(root, args)
 			]]
 			WolfgangHUD:print_log(string.format("%s TYPE NOT IMPLEMENTED YET", tostring(data.type), tostring(id), tostring(menu_id)), "error")
 		end,
-		button = function(menu_id, offset, data)
+		button = function(menu_id, index, data)
 			local id = string.format("%s_%s_button", menu_id, data.name_id)
 			local clbk_id = data.clbk or (id .. "_clbk")
 			self[clbk_id] = self[clbk_id] or function(self, value, item) end
 			local item = self:Button({
+				index = index,
 				name = id,
 				text = data.name_id,
 				localize = true,
@@ -204,8 +209,9 @@ function WolfgangHUDMenu:Init(root, args)
 				add_enabled_reqs(item, data)
 			end
 		end,
-		keybind = function(menu_id, offset, data)
+		keybind = function(menu_id, index, data)
 			local item = self:KeyBind({
+				index = index,
 				keybind_id = data.keybind_id,
 				text = utf8.to_upper(managers.localization:text(data.name_id)),
 			})
@@ -213,18 +219,20 @@ function WolfgangHUDMenu:Init(root, args)
 				add_enabled_reqs(item, data)
 			end
 		end,
-		divider = function(menu_id, offset, data)
-			local id = string.format("%s_divider_%d", menu_id, offset)
+		divider = function(menu_id, index, data)
+			local id = string.format("%s_divider_%d", menu_id, index)
 			self:Label({
+				index = index,
 				name = id,
 				text = data.text_id,
 				localize = data.text_id ~= nil,
 				h = data.size or 12,
 			})
 		end,
-		header = function(menu_id, offset, data)
-			local id = string.format("%s_header_%d", menu_id, offset)
+		header = function(menu_id, index, data)
+			local id = string.format("%s_header_%d", menu_id, index)
 			self:SubTitle({
+				index = index,
 				name = id,
 				text = data.text_id,
 				localize = data.text_id ~= nil,
@@ -234,12 +242,19 @@ function WolfgangHUDMenu:Init(root, args)
 		end,
 	}
 
+	-- Init index
+	local index = 0
+
 	-- Populate title
+	index = index + 1
 	self:Title({
+		index = index,
 		text = args.name_id,
 		localize = true,
 	})
+	index = index + 1
 	self:Label({
+		index = index,
 		name = string.format("%s_divider_title", args.menu_id),
 		text = nil,
 		localize = false,
@@ -248,9 +263,25 @@ function WolfgangHUDMenu:Init(root, args)
 
 	-- Populate menu items
 	local item_amount = #args.options
-	for i, data in ipairs(args.options) do
+	for _, data in ipairs(args.options) do
+		index = index + 1
 		local value = data.value and WolfgangHUD:getSetting(data.value, nil)
-		create_item_handlers[data.type](args.menu_id, item_amount - i, data, value)
+		create_item_handlers[data.type](args.menu_id, index, data, value)
+	end
+
+	if args.is_root then -- only in main menu
+		-- Populate reset button
+		index = index + 1
+		self:LongRoundedButton2({
+			index = index,
+			name = "wolfganghud_reset_options_button",
+			text = "wolfganghud_reset_options_title",
+			localize = true,
+			callback = callback(self, self, "Reset"),
+			ignore_align = true,
+			y = 832,
+			x = 1472,
+		})
 	end
 end
 
@@ -285,7 +316,7 @@ function WolfgangHUDMenu:Reset(value, item)
 					end
 					report_settings_changed(old_settings)
 					self:ReloadMenu()
-					managers.viewport:resolution_changed()
+					--managers.viewport:resolution_changed() -- FIXME: causes crash when going back to main menu (raid-blt bug on every res change)
 					WolfgangHUD:print_log("Settings reset!", "info")
 				end,
 			},
@@ -303,7 +334,7 @@ function WolfgangHUDMenu:Close()
 end
 
 Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_WolfgangHUD", function(menu_manager)
-	local function create_menu(menu_table, is_root)
+	local function create_menu(menu_table)
 		for i, data in ipairs(menu_table) do
 			if data.type == "menu" then
 				-- Raid BLT needs unique classes for each menu, so lets create them using inheritance. without this, all menus would appear in all menus.
@@ -313,7 +344,7 @@ Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_Wolf
 				RaidMenuHelper:CreateMenu({
 					name = data.menu_id,
 					name_id = data.name_id,
-					inject_menu = is_root and "blt_options",
+					inject_menu = data.is_root and "blt_options" or nil,
 					class = _G[menu_class],
 					args = data,
 				})
@@ -323,5 +354,5 @@ Hooks:Add("MenuComponentManagerInitialize", "MenuComponentManagerInitialize_Wolf
 		end
 	end
 	-- create menus
-	create_menu({WolfgangHUD.options_menu_data}, true)
+	create_menu({WolfgangHUD.options_menu_data})
 end)

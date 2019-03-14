@@ -17,9 +17,8 @@
 	"wolfganghud_colors_black" : "Black",
 	"wolfganghud_colors_rainbow" : "Rainbow",
 
-	"wolfganghud_reset_options_title" : "Reset Settings",
-	"wolfganghud_reset_options_desc" : "Reset all Settings to their default value.",
-	"wolfganghud_reset_options_confirm" : "Are you sure, you want to reset all Settings to their default value?",
+	"wolfganghud_reset_options_title" : "Default options",
+	"wolfganghud_reset_options_confirm" : "Are you sure, you want to reset all WolfgangHUD options to their default value?",
 
 	"wolfganghud_language_title" : "Language",
 	"wolfganghud_languages_english" : "English",
