@@ -70,13 +70,12 @@ function WolfgangHUDMenu:Init(root, args)
 			self[clbk_id] = self[clbk_id] or function(self, value, item)
 				managers.raid_menu:open_menu(data.menu_id)
 			end
-			local item = self:Button({
+			local item = self:MenuButton({
 				index = index,
 				name = id,
 				text = data.name_id,
 				localize = true,
 				callback = callback(self, self, clbk_id),
-				x_offset = 24,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				add_enabled_reqs(item, data)
