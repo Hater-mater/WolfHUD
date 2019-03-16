@@ -53,9 +53,6 @@
 		<!-- Transparent Pause Menu -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="modules/TransparentPauseMenu.lua"		/>
 
-		<!-- Bot Bullet Collisions -->
-		<hook source_file="lib/units/weapons/raycastweaponbase"					file="modules/BotColl.lua"					/>
-
 		<!-- Auto Reload -->
 		<hook source_file="lib/units/beings/player/states/playerstandard"		file="modules/AutoReload.lua"				/>
 

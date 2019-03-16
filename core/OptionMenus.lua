@@ -384,13 +384,6 @@ if WolfgangHUD then
 			},
 			{
 				type = "toggle",
-				name_id = "wolfganghud_no_bot_bullet_coll_title",
-				value = {"GAMEPLAY", "NO_BOT_BULLET_COLL"},
-				visible_reqs = {},
-				enabled_reqs = {},
-			},
-			{
-				type = "toggle",
 				name_id = "wolfganghud_auto_reload_title",
 				value = {"GAMEPLAY", "AUTO_RELOAD"},
 				visible_reqs = {},

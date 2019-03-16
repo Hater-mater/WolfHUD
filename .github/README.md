@@ -34,7 +34,6 @@ a workaround is in the pipeline.
 * [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, ported to RAIDWW2 by **me**
 * [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**
 * [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**
-* [Shoot through AI](https://modworkshop.net/mydownloads.php?action=view_down&did=13463) made by **Rhynne**
 * [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**
 * NoSlowMotion made by **Kamikaze94**
 * InstantRestart made by **Kamikaze94**
