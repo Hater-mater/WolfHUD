@@ -2,10 +2,10 @@
 		name="WolfgangHUD"
 		description="This is a Mod Collection of HUD altering scripts, as well as quality of life changes to the game and its menus."
 		merge_global="false"
-		author="BangL"
 		priority="1"
-		min_blt_version="1.32"
+		author="BangL"
 		cannot_be_disabled="false"
+		min_blt_version="1.33"
 		early_init="false">
 
 	<auto_updates
