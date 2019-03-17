@@ -61,6 +61,8 @@
 		<!-- Ready On Num Enter -->
 		<hook source_file="lib/managers/hud/hudchat"							file="modules/ReadyOnNumEnter.lua"			/>
 
+		<!-- Floating Health Bars -->
+		<hook source_file="lib/setups/gamesetup"								file="modules/FloatingHealthBars.lua"		/>
 
 		<!-- NoSlowMo -->
 		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="modules/NoSlowMo.lua"					/>

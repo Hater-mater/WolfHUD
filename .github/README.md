@@ -35,6 +35,7 @@ a workaround is in the pipeline.
 * [HudPanelList](https://bitbucket.org/pjal3urb/hudlist/src/) originally made by **Seven**, modified by **Kamikaze94** in [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901), partially ported as "Enemy Counters" to RAIDWW2 by **me**
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**
 * [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, ported to RAIDWW2 by **me**
+* [Floating Health Bars](https://modworkshop.net/mydownloads.php?action=view_down&did=20330) originally made by **Zenyr** for [PocoHud](https://steamcommunity.com/groups/pocomods), made standalone and then ported to RAIDWW2 by **me**
 * NoSlowMotion made by **Kamikaze94** for WolfHUD (i think)
 * InstantRestart made by **Kamikaze94** for WolfHUD (i think)
 * RestartHotkey made by **me**
