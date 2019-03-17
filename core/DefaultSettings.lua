@@ -61,7 +61,7 @@ if WolfgangHUD then
 		GAMEPLAY = {
 			NO_SLOWMOTION						= true,
 			AUTO_RELOAD							= true,
-			AUTO_APPLY_WEAPON_SKILLS			= true,
+			--AUTO_APPLY_WEAPON_SKILLS			= true,
 		},
 		HOST = {
 			INSTANT_RESTART						= true,

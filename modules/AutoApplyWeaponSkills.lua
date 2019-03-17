@@ -1,4 +1,23 @@
-if string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
+do return end -- disabled for now
+
+if string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
+
+	local shot_fired_original = StatisticsManager.shot_fired
+
+	function StatisticsManager:shot_fired(data, ...)
+		-- workaround: seems like some dead weapons still send data to the stats manager,
+		-- i guess thats happening since we simply replace weapons on the fly, and have no proper garbage collection of some sort,
+		-- so whenever a dead unit still sends events, lets catch it here.
+		if data ~= nil and type(data) == "table" and data.weapon_unit ~= nil then
+			if not alive(data.weapon_unit) then
+				return
+			end
+			WolfgangHUD:print_log(tostring(data.weapon_unit), "info")
+		end
+		shot_fired_original(self, data, ...)
+	end
+
+elseif string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
 
 	local on_weapon_challenge_completed_original = WeaponSkillsManager.on_weapon_challenge_completed
 
@@ -31,9 +50,13 @@ if string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
 			-- reload skills
 			self:update_weapon_skills(weapon_category_id, weapon_id, "activate")
 
+			-- send new data
+			managers.player:sync_upgrades()
+
 			-- store current ammo values
 			local player = managers.player:local_player()
-			local weapon_base = player:movement():current_state()._equipped_unit:base()
+			local player_state = player:movement():current_state()
+			local weapon_base = player_state._equipped_unit:base()
 			local ammo_total = weapon_base:get_ammo_total()
 			local ammo_remaining_in_clip = weapon_base:get_ammo_remaining_in_clip()
 
@@ -50,8 +73,16 @@ if string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
 			inventory:add_unit_by_factory_name(weapon_data.factory_id, true, false, weapon_data.blueprint, weapon_data.cosmetics, texture_switches)
 			inventory:equip_selection(weapon_category_id, true)
 
+			player_state._equipped_unit = inventory:equipped_unit()
+			local weapon = inventory:equipped_unit()
+			player_state._weapon_hold = weapon and weapon:base().weapon_hold and weapon:base():weapon_hold() or weapon:base():get_name_id()
+			player_state:inventory_clbk_listener(player, "equip")
+
+			-- send new data
+			inventory:_send_equipped_weapon()
+
 			-- restore previous ammo values
-			weapon_base = managers.player:local_player():movement():current_state()._equipped_unit:base() -- reload
+			weapon_base = weapon:base() -- reload
 			weapon_base:set_ammo_total(ammo_total)
 			weapon_base:set_ammo_remaining_in_clip(ammo_remaining_in_clip)
 
