@@ -25,6 +25,10 @@
 		<hook source_file="lib/setups/setup"									file="core/GameInfoManager.lua"				/>
 		<hook source_file="lib/managers/enemymanager"							file="core/GameInfoManager.lua"				/>
 
+
+		<!-- NoAds -->
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
+
 		<!-- HUDList -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDList.lua"					/>
 
@@ -44,8 +48,9 @@
 		<hook source_file="lib/managers/statisticsmanager"						file="modules/Accuracy.lua"					/>
 		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/Accuracy.lua"					/>
 
-		<!-- NoAds -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
+		<!-- Ready On Num Enter -->
+		<hook source_file="lib/managers/hud/hudchat"							file="modules/ReadyOnNumEnter.lua"			/>
+
 
 		<!-- NoSlowMo -->
 		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="modules/NoSlowMo.lua"					/>

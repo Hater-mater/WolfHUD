@@ -13,6 +13,7 @@ if WolfgangHUD then
 			STRAIGHT_TO_MAIN_MENU				= true,
 			REMOVE_AD_BOX						= true,
 			TRANSPARENT_PAUSE_MENU				= true,
+			READY_UP_ON_NUM_ENTER				= true,
 		},
 		HUD = {
 			SHOW_IN_CAMP						= false,

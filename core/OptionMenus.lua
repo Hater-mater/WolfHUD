@@ -49,6 +49,13 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_ready_on_num_enter_title",
+				value = {"MENU", "READY_UP_ON_NUM_ENTER"},
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
 			{	---- HUD Options ----
 				type = "header",
 				text_id = "wolfganghud_hud_options_name",
