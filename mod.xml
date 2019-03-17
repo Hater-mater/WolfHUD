@@ -25,9 +25,15 @@
 		<hook source_file="lib/setups/setup"									file="core/GameInfoManager.lua"				/>
 		<hook source_file="lib/managers/enemymanager"							file="core/GameInfoManager.lua"				/>
 
+		<!-- Straight To Main Menu -->
+		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
+		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
 
 		<!-- NoAds -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
+
+		<!-- Transparent Pause Menu -->
+		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="modules/TransparentPauseMenu.lua"		/>
 
 		<!-- HUDList -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDList.lua"					/>
@@ -55,15 +61,8 @@
 		<!-- NoSlowMo -->
 		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="modules/NoSlowMo.lua"					/>
 
-		<!-- Transparent Pause Menu -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="modules/TransparentPauseMenu.lua"		/>
-
 		<!-- Auto Reload -->
 		<hook source_file="lib/units/beings/player/states/playerstandard"		file="modules/AutoReload.lua"				/>
-
-		<!-- Straight To Main Menu -->
-		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
-		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
 
 		<!-- Instant Restart -->
 		<hook source_file="lib/tweak_data/tweakdata"							file="modules/InstantRestart.lua"			/>
