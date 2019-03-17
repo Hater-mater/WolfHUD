@@ -150,7 +150,7 @@ function WolfgangHUDMenu:Init(root, args)
 			end
 			if table.size(items) > 0 then
 				self[clbk_id] = function(self, value, item)
-					change_setting(clone(data.value), value)
+					change_setting(clone(data.value), value.value)
 				end
 				local item = self:MultiChoice({
 					index = index,
