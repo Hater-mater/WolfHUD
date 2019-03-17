@@ -1,14 +1,5 @@
 if WolfgangHUD then
-	local default_lang = "english"
-	for _, filename in pairs(file.GetFiles(WolfgangHUD.mod_path .. "loc/")) do
-		local str = filename:match('^(.*).json$')
-		if str and Idstring(str) and Idstring(str):key() == SystemInfo:language():key() then
-			default_lang = str
-			break
-		end
-	end
 	WolfgangHUD.default_settings = {
-		LANGUAGE								= default_lang,
 		MENU ={
 			STRAIGHT_TO_MAIN_MENU				= true,
 			REMOVE_AD_BOX						= true,

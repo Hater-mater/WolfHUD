@@ -5,25 +5,6 @@ if WolfgangHUD then
 		name_id = "wolfganghud_options_name",
 		is_root = true,
 		options = {
-			{
-				type = "multi_choice",
-				name_id = "wolfganghud_language_title",
-				options = {
-					["english"] = "wolfganghud_languages_english",
-					["german"] = "wolfganghud_languages_german",
-					["dutch"] = "wolfganghud_languages_dutch",
-					["french"] = "wolfganghud_languages_french",
-					["italian"] = "wolfganghud_languages_italian",
-					["spanish"] = "wolfganghud_languages_spanish",
-					["portuguese"] = "wolfganghud_languages_portuguese",
-					["russian"] = "wolfganghud_languages_russian",
-					["chinese"] = "wolfganghud_languages_chinese",
-					["korean"] = "wolfganghud_languages_korean"
-				},
-				visible_reqs = {},
-				enabled_reqs = {},
-				value = {"LANGUAGE"},
-			},
 			{	---- Menu Options ----
 				type = "header",
 				text_id = "wolfganghud_menu_options_name",

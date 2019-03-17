@@ -265,16 +265,4 @@ if not _G.WolfgangHUD then
 
 	-- Create Ingame Menus
 	dofile(WolfgangHUD.mod_path .. "core/OptionMenus.lua")	-- Menu structure table in seperate file, in order to not bloat the Core file too much.
-
-	--Add localization strings
-	Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_WolfgangHUD", function(loc)
-		local loc_path = WolfgangHUD.mod_path .. "loc/"
-		if file.DirectoryExists( loc_path ) then
-			loc:load_localization_file(string.format("%s/%s.json", loc_path, WolfgangHUD:getSetting({"LANGUAGE"}, "english")))
-			loc:load_localization_file(string.format("%s/english.json", loc_path), false)
-		else
-			WolfgangHUD:print_log("Localization folder seems to be missing!", "error")
-		end
-		loc:add_localized_strings(localized_strings)
-	end)
 end

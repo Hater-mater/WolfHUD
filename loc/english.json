@@ -20,18 +20,6 @@
 	"wolfganghud_reset_options_title" : "Default options",
 	"wolfganghud_reset_options_confirm" : "Are you sure, you want to reset all WolfgangHUD options to their default value?",
 
-	"wolfganghud_language_title" : "Language",
-	"wolfganghud_languages_english" : "English",
-	"wolfganghud_languages_german" : "German",
-	"wolfganghud_languages_dutch" : "Dutch",
-	"wolfganghud_languages_french" : "French",
-	"wolfganghud_languages_italian" : "Italian",
-	"wolfganghud_languages_spanish" : "Spanish",
-	"wolfganghud_languages_portuguese" : "Portugese",
-	"wolfganghud_languages_russian" : "Russian",
-	"wolfganghud_languages_chinese" : "Chinese",
-	"wolfganghud_languages_korean" : "Korean",
-
 	"wolfganghud_options_name" : "WolfgangHUD",
 
 	"wolfganghud_menu_options_name" : "Menu Options",
