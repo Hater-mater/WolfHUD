@@ -39,7 +39,8 @@ a workaround is in the pipeline.
 * InstantRestart made by **Kamikaze94**
 * RestartHotkey made by **me**
 * AutoReload made by **me**
-* AutoApplyWeaponSkills made by **me**
+* ReadyUpOnNumEnter made by **me**
+* ~~AutoApplyWeaponSkills made by **me**~~ disabled for now, due to stability issues, needs more testing, and much time, and energy, and tea, and other things that keep my brain running
 * NoAds made by **me**
 
 Big credit goes to all of you!
