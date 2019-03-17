@@ -49,8 +49,8 @@
 		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"		file="modules/KillCounter.lua"				/>
 
 		<!-- Auto Apply Weapon Skills -->
-		<!--hook source_file="lib/managers/statisticsmanager"						file="modules/AutoApplyWeaponSkills.lua"	/-->
-		<!--hook source_file="lib/managers/weaponskillsmanager"					file="modules/AutoApplyWeaponSkills.lua"		/-->
+		<!--hook source_file="lib/managers/statisticsmanager"					file="modules/AutoApplyWeaponSkills.lua"	/-->
+		<!--hook source_file="lib/managers/weaponskillsmanager"					file="modules/AutoApplyWeaponSkills.lua"	/-->
 
 		<!-- Accuracy -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/Accuracy.lua"					/>
