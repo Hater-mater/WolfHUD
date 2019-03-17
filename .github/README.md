@@ -3,7 +3,7 @@
 ## Description
 
 This is a Mod collection of several useful HUD altering mods and a few gameplay tweaks.  
-Based on WolfHUD by Kamikaze94, rewritten for RAID WW2 as WolfgangHUD by BangL.  
+Based on [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901) by Kamikaze94, rewritten for RAID WW2 as WolfgangHUD by BangL.  
 Keep in mind that this is a development version.  
 
 ## Requirements
@@ -29,19 +29,19 @@ a workaround is in the pipeline.
 
 ## Included Mods
 
-* [HudPanelList](https://bitbucket.org/pjal3urb/hudlist/src/) made by **Seven**, modified by **Kamikaze94**, partially ported to RAIDWW2 by **me**
+* [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**, blatantly included by me, because it's awesome
+* [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**, blatantly included by me, because it's awesome
+* [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**, blatantly included by me, because it's awesome
+* [HudPanelList](https://bitbucket.org/pjal3urb/hudlist/src/) originally made by **Seven**, modified by **Kamikaze94** in [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901), partially ported as "Enemy Counters" to RAIDWW2 by **me**
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**
 * [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, ported to RAIDWW2 by **me**
-* [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**
-* [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**
-* [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**
-* NoSlowMotion made by **Kamikaze94**
-* InstantRestart made by **Kamikaze94**
+* NoSlowMotion made by **Kamikaze94** for WolfHUD (i think)
+* InstantRestart made by **Kamikaze94** for WolfHUD (i think)
 * RestartHotkey made by **me**
 * AutoReload made by **me**
 * ReadyUpOnNumEnter made by **me**
-* ~~AutoApplyWeaponSkills made by **me**~~ disabled for now, due to stability issues, needs more testing, and much time, and energy, and tea, and other things that keep my brain running
 * NoAds made by **me**
+* ~~AutoApplyWeaponSkills made by **me**~~ disabled for now, due to stability issues, needs more testing, and much time, and energy, and tea, and other things that keep my brain running
 
 Big credit goes to all of you!
 Without your awesome mods, I would not even have started playing this game at all.
