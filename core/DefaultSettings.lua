@@ -45,8 +45,8 @@ if WolfgangHUD then
 		},
 		HUDList = {
 			ENABLED								= true,
-			unit_count_list_scale					= 1,
-			unit_count_list_progress_alpha			= 1,
+			unit_count_list_scale				= 1,
+			unit_count_list_progress_alpha		= 1,
 			list_color							= "white",
 			list_color_bg						= "black",
 			enemy_color							= "orange",
