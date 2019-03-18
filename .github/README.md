@@ -4,7 +4,7 @@
 
 This is a Mod collection of several useful HUD altering mods and a few gameplay tweaks.  
 Based on [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901) by Kamikaze94, rewritten for RAID WW2 as WolfgangHUD by BangL.  
-Keep in mind that this is a development version.  
+Keep in mind that this github version is a development version, which might contain new and untested changes!  
 
 ## Requirements
 
