@@ -5,7 +5,7 @@
 		priority="1"
 		author="BangL"
 		cannot_be_disabled="false"
-		min_blt_version="1.33"
+		min_blt_version="1.35"
 		early_init="false">
 
 	<auto_updates
