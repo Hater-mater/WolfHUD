@@ -37,6 +37,13 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
+			{
+				type = "toggle",
+				name_id = "wolfganghud_no_debriefing_title",
+				value = {"MENU", "NO_DEBRIEFING"},
+				visible_reqs = {},
+				enabled_reqs = {},
+			},
 			{	---- HUD Options ----
 				type = "header",
 				text_id = "wolfganghud_hud_options_name",

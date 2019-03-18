@@ -5,6 +5,7 @@ if WolfgangHUD then
 			REMOVE_AD_BOX						= true,
 			TRANSPARENT_PAUSE_MENU				= true,
 			READY_UP_ON_NUM_ENTER				= true,
+			NO_DEBRIEFING						= true,
 		},
 		HUD = {
 			SHOW_IN_CAMP						= false,

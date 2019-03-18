@@ -27,11 +27,12 @@ If you encounter any bugs, feel free to post about it on the issues tab!
 unfortunately.. raid ww2 does not log lua errors at all, or i missed it.
 a workaround is in the pipeline.
 
-## Included Mods
+## Included mods / features
 
-* [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**, blatantly included by me, because it's awesome
-* [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**, blatantly included by me, because it's awesome
-* [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**, blatantly included by me, because it's awesome
+* [Transparent Pause Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21088) made by **Luffy**
+* [Straight To Main Menu](https://modworkshop.net/mydownloads.php?action=view_down&did=21405) made by **Snh20**, ported to RAIDWW2 by **AdayDr1en**
+* [NoDebriefing](https://modworkshop.net/mydownloads.php?action=view_down&did=21804) aka 'No Budget Hitler Cutscenes' made by **>:3/Pawcio1337**
+* [Kick a Friend](https://modworkshop.net/mydownloads.php?action=view_down&did=15175) made by **FishTaco**
 * [HudPanelList](https://bitbucket.org/pjal3urb/hudlist/src/) originally made by **Seven**, modified by **Kamikaze94** in [WolfHUD](https://modworkshop.net/mydownloads.php?action=view_down&did=15901), partially ported as "Enemy Counters" to RAIDWW2 by **me**
 * [KillCounter](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, modified by **Kamikaze94**, ported to RAIDWW2 by **me**
 * [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, ported to RAIDWW2 by **me**

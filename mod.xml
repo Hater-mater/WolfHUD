@@ -46,6 +46,9 @@
 		<!-- NoAds -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
 
+		<!-- NoDebriefing -->
+		<hook source_file="lib/states/eventcompletestate"						file="modules/NoDebriefing.lua"				/>
+
 		<!-- Transparent Pause Menu -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="modules/TransparentPauseMenu.lua"		/>
 
