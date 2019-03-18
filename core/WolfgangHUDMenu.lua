@@ -49,7 +49,6 @@ function WolfgangHUDMenu:Init(root, args)
 				value_format = (data.value_format ~= nil and data.value_format or ("%." .. (data.decimal_places or 2) .. "f")),
 				x_offset = data.x_offset or 0,
 				y_offset = data.y_offset or 10,
-				--w = 576,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
