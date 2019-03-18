@@ -5,48 +5,17 @@ if WolfgangHUD then
 		name_id = "wolfganghud_options_name",
 		is_root = true,
 		options = {
-			{	---- Menu Options ----
+			{	-- HUD Options
+				type = "menu",
+				menu_id = "wolfganghud_hud_options_name",
+				name_id = "wolfganghud_hud_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
+				options = {
+					{ -- General
+						y_offset = 320,
 				type = "header",
-				text_id = "wolfganghud_menu_options_name",
-			},
-			{
-				type = "toggle",
-				name_id = "wolfganghud_straight_to_main_menu_title",
-				value = {"MENU", "STRAIGHT_TO_MAIN_MENU"},
-				visible_reqs = {},
-				enabled_reqs = {},
-			},
-			{
-				type = "toggle",
-				name_id = "wolfganghud_remove_ad_box_title",
-				value = {"MENU", "REMOVE_AD_BOX"},
-				visible_reqs = {},
-				enabled_reqs = {},
-			},
-			{
-				type = "toggle",
-				name_id = "wolfganghud_transparent_pause_menu_title",
-				value = {"MENU", "TRANSPARENT_PAUSE_MENU"},
-				visible_reqs = {},
-				enabled_reqs = {},
-			},
-			{
-				type = "toggle",
-				name_id = "wolfganghud_ready_on_num_enter_title",
-				value = {"MENU", "READY_UP_ON_NUM_ENTER"},
-				visible_reqs = {},
-				enabled_reqs = {},
-			},
-			{
-				type = "toggle",
-				name_id = "wolfganghud_no_debriefing_title",
-				value = {"MENU", "NO_DEBRIEFING"},
-				visible_reqs = {},
-				enabled_reqs = {},
-			},
-			{	---- HUD Options ----
-				type = "header",
-				text_id = "wolfganghud_hud_options_name",
+						text_id = "wolfganghud_hud_general_name",
 			},
 			{
 				type = "toggle",
@@ -64,6 +33,7 @@ if WolfgangHUD then
 				enabled_reqs = {},
 				options = {
 					{ -- KillCount
+								y_offset = 320,
 						type = "header",
 						text_id = "wolfganghud_killcount_name",
 					},
@@ -76,34 +46,34 @@ if WolfgangHUD then
 						invert_value = true,
 					},
 					{
-						type = "toggle",
-						name_id = "wolfganghud_show_special_title",
+								type = "multi_choice",
+								name_id = "wolfganghud_killcount_color_title",
+								value = {"HUD", "PLAYER", "KILLCOUNTER", "COLOR"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						value = {"HUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_show_head_title",
+								name_id = "wolfganghud_show_special_title",
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						value = {"HUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
+								value = {"HUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 					},
 					{
-						type = "multi_choice",
-						name_id = "wolfganghud_killcount_color_title",
-						value = {"HUD", "PLAYER", "KILLCOUNTER", "COLOR"},
+								type = "toggle",
+								name_id = "wolfganghud_show_head_title",
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
+								value = {"HUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 					},
 					{ -- Accuracy
 						type = "header",
@@ -126,6 +96,7 @@ if WolfgangHUD then
 				enabled_reqs = {},
 				options = {
 					{ -- KillCount
+								y_offset = 320,
 						type = "header",
 						text_id = "wolfganghud_killcount_name",
 					},
@@ -138,34 +109,34 @@ if WolfgangHUD then
 						invert_value = true,
 					},
 					{
-						type = "toggle",
-						name_id = "wolfganghud_show_special_title",
+								type = "multi_choice",
+								name_id = "wolfganghud_killcount_color_title",
+								value = {"HUD", "PEER", "KILLCOUNTER", "COLOR"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_show_head_title",
+								name_id = "wolfganghud_show_special_title",
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
+								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 					},
 					{
-						type = "multi_choice",
-						name_id = "wolfganghud_killcount_color_title",
-						value = {"HUD", "PEER", "KILLCOUNTER", "COLOR"},
+								type = "toggle",
+								name_id = "wolfganghud_show_head_title",
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
+								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 					},
 				},
 			},
@@ -177,6 +148,7 @@ if WolfgangHUD then
 				enabled_reqs = {},
 				options = {
 					{ -- KillCount
+								y_offset = 320,
 						type = "header",
 						text_id = "wolfganghud_killcount_name",
 					},
@@ -189,51 +161,52 @@ if WolfgangHUD then
 						invert_value = true,
 					},
 					{
-						type = "toggle",
-						name_id = "wolfganghud_show_special_title",
+								type = "multi_choice",
+								name_id = "wolfganghud_killcount_color_title",
+								value = {"HUD", "AI", "KILLCOUNTER", "COLOR"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						value = {"HUD", "AI", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_show_head_title",
+								name_id = "wolfganghud_show_special_title",
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						value = {"HUD", "AI", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
+								value = {"HUD", "AI", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 					},
 					{
-						type = "multi_choice",
-						name_id = "wolfganghud_killcount_color_title",
-						value = {"HUD", "AI", "KILLCOUNTER", "COLOR"},
+								type = "toggle",
+								name_id = "wolfganghud_show_head_title",
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
 						},
-						options = {},
-						add_color_options = true,
-						add_rainbow = false,
+								value = {"HUD", "AI", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 					},
 				},
 			},
 			{	-- List panels
 				type = "menu",
-				menu_id = "wolfganghud_list_panels_options_menu",
-				name_id = "wolfganghud_list_panels_options_name",
+						menu_id = "wolfganghud_hudlist_options_menu",
+						name_id = "wolfganghud_hudlist_options_name",
 				visible_reqs = {},
 				enabled_reqs = {},
 				options = {
-					{ -- Unit counters
+							{ -- General
+								y_offset = 320,
 						type = "header",
-						text_id = "wolfganghud_unit_count_list_name",
+								text_id = "wolfganghud_hudlist_general_name",
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_use_hudlist_title",
+								name_id = "wolfganghud_hudlist_show_title",
 						value = {"HUDList", "ENABLED"},
 						visible_reqs = {},
 						enabled_reqs = {},
@@ -263,9 +236,6 @@ if WolfgangHUD then
 						add_rainbow = false,
 					},
 					{
-						type = "divider",
-					},
-					{
 						type = "slider",
 						name_id = "wolfganghud_hudlist_scale_unit_count_title",
 						value = {"HUDList", "unit_count_list_scale"},
@@ -291,7 +261,13 @@ if WolfgangHUD then
 					},
 					{
 						type = "divider",
+								y_offset = 100, -- shift for next header
 					},
+							{ -- Unit Types
+								y_offset = 320,
+								type = "header",
+								text_id = "wolfganghud_hudlist_unit_types_name",
+							},
 					{
 						type = "toggle",
 						name_id = "wolfganghud_hudlist_show_enemies_title",
@@ -340,9 +316,6 @@ if WolfgangHUD then
 						add_rainbow = false,
 					},
 					{
-						type = "divider",
-					},
-					{
 						type = "toggle",
 						name_id = "wolfganghud_hudlist_show_objectives_title",
 						value = {"HUDList", "UNIT_COUNT_LIST", "show_objectives"},
@@ -374,6 +347,7 @@ if WolfgangHUD then
 				enabled_reqs = {},
 				options = {
 					{ -- General
+								y_offset = 320,
 						type = "header",
 						text_id = "wolfganghud_fhb_general_name",
 					},
@@ -420,17 +394,27 @@ if WolfgangHUD then
 						max_value = 1,
 						decimal_places = 2,
 					},
-					{ -- Enemies
+							{ -- Pie Color
 						type = "header",
-						text_id = "wolfganghud_fhb_enemy_name",
+								text_id = "wolfganghud_fhb_pie_name",
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_fhb_custom_pie_color_title",
+								value = {"HUD", "FHB", "PIE_COLOR_CUSTOM"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+								},
 					},
 					{
 						type = "multi_choice",
-						name_id = "wolfganghud_fhb_color_start_title",
-						value = {"HUD", "FHB", "COLOR_START"},
+								name_id = "wolfganghud_fhb_pie_color_start_title",
+								value = {"HUD", "FHB", "PIE_COLOR_START"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{ setting = { "HUD", "FHB", "PIE_COLOR_CUSTOM" }, invert = false },
 						},
 						options = {},
 						add_color_options = true,
@@ -438,37 +422,29 @@ if WolfgangHUD then
 					},
 					{
 						type = "multi_choice",
-						name_id = "wolfganghud_fhb_color_end_title",
-						value = {"HUD", "FHB", "COLOR_END"},
+								name_id = "wolfganghud_fhb_pie_color_end_title",
+								value = {"HUD", "FHB", "PIE_COLOR_END"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{ setting = { "HUD", "FHB", "PIE_COLOR_CUSTOM" }, invert = false },
 						},
 						options = {},
 						add_color_options = true,
 						add_rainbow = false,
 					},
-					{ -- Pie Color
+							{ -- Enemies
+								y_offset = 320,
 						type = "header",
-						text_id = "wolfganghud_fhb_pie_name",
-					},
-					{
-						type = "toggle",
-						name_id = "wolfganghud_fhb_custom_pie_color_title",
-						value = {"HUD", "FHB", "PIE_COLOR_CUSTOM"},
-						visible_reqs = {},
-						enabled_reqs = {
-							{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
-						},
+								text_id = "wolfganghud_fhb_enemy_name",
 					},
 					{
 						type = "multi_choice",
-						name_id = "wolfganghud_fhb_pie_color_start_title",
-						value = {"HUD", "FHB", "PIE_COLOR_START"},
+								name_id = "wolfganghud_fhb_color_start_title",
+								value = {"HUD", "FHB", "COLOR_START"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
-							{ setting = { "HUD", "FHB", "PIE_COLOR_CUSTOM" }, invert = false },
 						},
 						options = {},
 						add_color_options = true,
@@ -476,12 +452,11 @@ if WolfgangHUD then
 					},
 					{
 						type = "multi_choice",
-						name_id = "wolfganghud_fhb_pie_color_end_title",
-						value = {"HUD", "FHB", "PIE_COLOR_END"},
+								name_id = "wolfganghud_fhb_color_end_title",
+								value = {"HUD", "FHB", "COLOR_END"},
 						visible_reqs = {},
 						enabled_reqs = {
 							{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
-							{ setting = { "HUD", "FHB", "PIE_COLOR_CUSTOM" }, invert = false },
 						},
 						options = {},
 						add_color_options = true,
@@ -515,9 +490,72 @@ if WolfgangHUD then
 					},
 				},
 			},
-			{	---- Gameplay ----
+				},
+			},
+			{	-- Menu Options
+				type = "menu",
+				menu_id = "wolfganghud_menu_options_name",
+				name_id = "wolfganghud_menu_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
+				options = {
+					{ -- Main Menu
+						y_offset = 320,
+						type = "header",
+						text_id = "wolfganghud_menu_main_menu_name",
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_straight_to_main_menu_title",
+						value = {"MENU", "STRAIGHT_TO_MAIN_MENU"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_remove_ad_box_title",
+						value = {"MENU", "REMOVE_AD_BOX"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{ -- In-Game
+						type = "header",
+						text_id = "wolfganghud_menu_ingame_name",
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_transparent_pause_menu_title",
+						value = {"MENU", "TRANSPARENT_PAUSE_MENU"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_ready_on_num_enter_title",
+						value = {"MENU", "READY_UP_ON_NUM_ENTER"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_no_debriefing_title",
+						value = {"MENU", "NO_DEBRIEFING"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+				},
+			},
+			{	-- Gameplay
+				type = "menu",
+				menu_id = "wolfganghud_gameplay_options_name",
+				name_id = "wolfganghud_gameplay_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
+				options = {
+					{ -- General
+						y_offset = 320,
 				type = "header",
-				text_id = "wolfganghud_gameplay_options_name",
+						text_id = "wolfganghud_gameplay_general_name",
 			},
 			{
 				type = "toggle",
@@ -533,16 +571,31 @@ if WolfgangHUD then
 				visible_reqs = {},
 				enabled_reqs = {},
 			},
-			--[[{
+					--[[
+					{ -- Cheesy
+						type = "header",
+						text_id = "wolfganghud_gameplay_cheesy_name",
+					},
+					{
 				type = "toggle",
 				name_id = "wolfganghud_auto_apply_weapon_skills_title",
 				value = {"GAMEPLAY", "AUTO_APPLY_WEAPON_SKILLS"},
 				visible_reqs = {},
 				enabled_reqs = {},
 			},]]
-			{	---- Hosting ----
+				},
+			},
+			{	-- Hosting
+				type = "menu",
+				menu_id = "wolfganghud_host_options_name",
+				name_id = "wolfganghud_host_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
+				options = {
+					{ -- General
+						y_offset = 320,
 				type = "header",
-				text_id = "wolfganghud_host_options_name",
+						text_id = "wolfganghud_hosting_general_name",
 			},
 			{
 				type = "toggle",
@@ -564,6 +617,8 @@ if WolfgangHUD then
 				keybind_id = "wolfganghud_restart_hotkey",
 				visible_reqs = {},
 				enabled_reqs = {},
+			},
+				},
 			},
 		}
 	}
