@@ -93,6 +93,9 @@
 		<!-- Kick a Friend -->
 		<hook source_file="lib/network/base/basenetworksession"					file="modules/KickAFriend.lua"				/>
 
+		<!-- Realistic Reload -->
+		<hook source_file="lib/units/weapons/raycastweaponbase"					file="modules/RealisticReload.lua"			/>
+
 	</hooks>
 
 	<keybinds>

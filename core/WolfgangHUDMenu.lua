@@ -222,7 +222,6 @@ function WolfgangHUDMenu:Init(root, args)
 		ignore_align = true,
 		y = title:h()
 	})
-
 	-- Populate menu items
 	local item_amount = #args.options
 	for _, data in ipairs(args.options) do
@@ -230,9 +229,8 @@ function WolfgangHUDMenu:Init(root, args)
 		local value = data.value and WolfgangHUD:getSetting(data.value, nil)
 		create_item_handlers[data.type](args.menu_id, index, data, value)
 	end
-
+	-- Populate reset button
 	if args.is_root then -- only in main menu
-		-- Populate reset button
 		index = index + 1
 		self:LongRoundedButton2({
 			index = index,

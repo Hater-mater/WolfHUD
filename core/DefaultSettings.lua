@@ -67,6 +67,7 @@ if WolfgangHUD then
 			NO_SLOWMOTION						= true,
 			AUTO_RELOAD							= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,
+			REALISTIC_RELOAD					= false,
 		},
 		HOST = {
 			INSTANT_RESTART						= true,

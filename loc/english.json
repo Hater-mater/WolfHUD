@@ -79,6 +79,8 @@
 	"wolfganghud_gameplay_general_name"								:		"General",
 	"wolfganghud_no_slowmotion_title"								:			"Disable slow motion effects",
 	"wolfganghud_auto_reload_title"									:			"Auto reload automatic weapons",
+	"wolfganghud_gameplay_hardcore_name"							:		"Hardcore",
+	"wolfganghud_realistic_reload_title"							:			"Realistic reload",
 	"wolfganghud_gameplay_cheesy_name"								:		"Cheesy",
 	"wolfganghud_auto_apply_weapon_skills_title"					:			"Auto apply weapon skills",
 
