@@ -1,12 +1,5 @@
 if WolfgangHUD then
 	WolfgangHUD.default_settings = {
-		MENU ={
-			STRAIGHT_TO_MAIN_MENU				= true,
-			REMOVE_AD_BOX						= true,
-			TRANSPARENT_PAUSE_MENU				= true,
-			READY_UP_ON_NUM_ENTER				= true,
-			NO_DEBRIEFING						= true,
-		},
 		HUD = {
 			SHOW_IN_CAMP						= false,
 			PLAYER = {
@@ -48,6 +41,13 @@ if WolfgangHUD then
 				PIE_COLOR_END					= "gray",
 			},
 		},
+		MENU ={
+			STRAIGHT_TO_MAIN_MENU				= true,
+			REMOVE_AD_BOX						= true,
+			TRANSPARENT_PAUSE_MENU				= true,
+			READY_UP_ON_NUM_ENTER				= true,
+			NO_DEBRIEFING						= true,
+		},
 		HUDList = {
 			ENABLED								= true,
 			unit_count_list_scale				= 1,
@@ -68,6 +68,22 @@ if WolfgangHUD then
 			AUTO_RELOAD							= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,
 			REALISTIC_RELOAD					= false,
+		},
+		INTERACTION = {
+			LOCK_MODE							= 3,
+			MIN_TIMER_DURATION					= 0,
+			EQUIPMENT_PRESS_INTERRUPT			= true,
+			SHOW_LOCK_INDICATOR					= true,
+			SHOW_BAR							= true,
+			BAR_SCALE							= 1,
+			TEXT_SCALE							= 1,
+			SHOW_INTERRUPT_HINT					= true,
+			SHOW_TIME_REMAINING					= true,
+			GRADIENT_COLOR_START				= "orange",
+			GRADIENT_COLOR						= "white",
+			TIMER_SCALE							= 1,
+			SHOW_RELOAD							= true,
+			SHOW_MELEE							= true,
 		},
 		HOST = {
 			INSTANT_RESTART						= true,

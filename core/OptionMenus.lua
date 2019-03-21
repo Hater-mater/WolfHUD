@@ -192,6 +192,117 @@ if WolfgangHUD then
 							},
 						},
 					},
+					{ -- Interaction indicator
+						type = "menu",
+						menu_id = "wolfganghud_interaction_indicator_options_menu",
+						name_id = "wolfganghud_interaction_indicator_options_name",
+						options = {
+							{ -- General
+								y_offset = 320,
+								type = "header",
+								text_id = "wolfganghud_interaction_general_name",
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_interaction_text_scale_title",
+								value = {"INTERACTION", "TEXT_SCALE"},
+								visible_reqs = {},
+								enabled_reqs = {},
+								min_value = 0.3,
+								max_value = 2,
+								decimal_places = 2,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_interaction_show_reload_timer_title",
+								value = {"INTERACTION", "SHOW_RELOAD"},
+								visible_reqs = {},
+								enabled_reqs = {},
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_interaction_show_melee_charge_title",
+								value = {"INTERACTION", "SHOW_MELEE"},
+								visible_reqs = {},
+								enabled_reqs = {},
+							},
+							{
+								type = "divider",
+								y_offset = 100, -- shift for next header
+							},
+							{ -- Interaction Bar
+								y_offset = 320,
+								type = "header",
+								text_id = "wolfganghud_interaction_bar_name",
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_interaction_show_bar_title",
+								value = {"INTERACTION", "SHOW_BAR"},
+								visible_reqs = {},
+								enabled_reqs = {},
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_interaction_bar_scale_title",
+								value = {"INTERACTION", "BAR_SCALE"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "SHOW_BAR" }, invert = false }
+								},
+								min_value = 0.3,
+								max_value = 2,
+								decimal_places = 2,
+							},
+							{ -- Interaction Bar
+								type = "header",
+								text_id = "wolfganghud_interaction_timer_name",
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_interaction_show_timer_title",
+								value = {"INTERACTION", "SHOW_TIME_REMAINING"},
+								visible_reqs = {},
+								enabled_reqs = {},
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_interaction_timer_scale_title",
+								value = {"INTERACTION", "TIMER_SCALE"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+								},
+								min_value = 0.3,
+								max_value = 2,
+								decimal_places = 2,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_interaction_timer_color_start_title",
+								value = {"INTERACTION", "GRADIENT_COLOR_START"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_interaction_timer_color_title",
+								value = {"INTERACTION", "GRADIENT_COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = true,
+							},
+						},
+					},
 					{	-- List panels
 						type = "menu",
 						menu_id = "wolfganghud_hudlist_options_menu",
@@ -594,6 +705,67 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},]]
+					{
+						type = "divider",
+						y_offset = 100, -- shift for next header
+					},
+					{ -- Interaction Lock
+						y_offset = 320,
+						type = "header",
+						text_id = "wolfganghud_gameplay_press2hold_name",
+					},
+					{
+						type = "multi_choice",
+						name_id = "wolfganghud_press2hold_lock_mode_title",
+						options = {
+							"wolfganghud_press2hold_lock_mode_disabled",
+							"wolfganghud_press2hold_lock_mode_progress",
+							"wolfganghud_press2hold_lock_mode_total",
+						},
+						visible_reqs = {},
+						enabled_reqs = {},
+						value = {"INTERACTION", "LOCK_MODE"},
+					},
+					{
+						type = "slider",
+						name_id = "wolfganghud_press2hold_min_timer_duration_title",
+						value = {"INTERACTION", "MIN_TIMER_DURATION"},
+						visible_reqs = {},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2, max = 3 },
+						},
+						min_value = 0,
+						max_value = 45,
+						decimal_places = 2,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_press2hold_show_lockindicator_title",
+						value = {"INTERACTION", "SHOW_LOCK_INDICATOR"},
+						visible_reqs = {},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+							{ setting = { "INTERACTION", "SHOW_BAR" }, invert = false },
+						},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_press2hold_equipment_cancel_title",
+						value = {"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"},
+						visible_reqs = {},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+						},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_press2hold_interrupt_hint_title",
+						value = {"INTERACTION", "SHOW_INTERRUPT_HINT"},
+						visible_reqs = {},
+						enabled_reqs = {
+							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+						},
+					},
 				},
 			},
 			{	-- Hosting
