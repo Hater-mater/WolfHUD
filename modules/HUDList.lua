@@ -221,16 +221,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local list_width = hud_panel:w() / 3 -- use 1/3 of the space
 		local list_height = 80 * scale -- apply scale
 		local x = hud_panel:w() / 3 * 2 -- align right
-		local y = (hud_panel:h() - list_height) - HUDManager.WEAPONS_PANEL_H -- be above the weapons panel
-
-		--local list = self:register_list("unit_count_list", HUDList.HorizontalList,
-		--		{align = "center", x = x, y = y, w = list_width, h = list_height, right_to_left = true, scale = scale, item_margin = 3, item_move_speed = 300, fade_time = 0.15})
+		local y = (hud_panel:h() - list_height) - HUDManager.WEAPONS_PANEL_H - 35 -- be 35 pixels above the weapons panel
 
 		local list = self:register_list("right_side_list", HUDList.VerticalList,
 				{align = "right", x = x, y = y, w = list_width, h = list_height, scale = scale, bottom_to_top = true, item_margin = 5})
 
 		local unit_count_list = list:register_item("unit_count_list", HUDList.HorizontalList,
 				{align = "bottom", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 1})
+
 		self:_set_show_enemies()
 		self:_set_show_objectives()
 	end
@@ -1380,7 +1378,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			{
 				name = string.format("HUDList_%s_unit_count_listener", id),
 				source = "unit_count",
-				event = { "change" },
+				event = {"change"},
 				clbk = callback(self, self, "_change_count_clbk"),
 				keys = keys
 			}
