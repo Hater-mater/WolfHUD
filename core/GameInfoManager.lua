@@ -46,7 +46,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 		self._listeners[source_type] = self._listeners[source_type] or {}
 		self._listeners[source_type][event] = self._listeners[source_type][event] or {}
-		self._listeners[source_type][event][listener_id] = { clbk = clbk, keys = listener_keys, data_only = data_only }
+		self._listeners[source_type][event][listener_id] = {clbk = clbk, keys = listener_keys, data_only = data_only}
 	end
 
 	function GameInfoManager:unregister_listener(listener_id, source_type, event)
@@ -75,7 +75,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		if event == "add" then
 			if not self._units[key] then
 				local unit_type = data.unit:base()._tweak_table
-				self._units[key] = { unit = data.unit, type = unit_type }
+				self._units[key] = {unit = data.unit, type = unit_type}
 				self:_listener_callback("unit", event, key, self._units[key])
 				self:_unit_count_event("change", unit_type, 1)
 			end
@@ -115,21 +115,19 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		end
 	end
 
-end
-
-if string.lower(RequiredScript) == "lib/managers/enemymanager" then
+elseif string.lower(RequiredScript) == "lib/managers/enemymanager" then
 
 	local on_enemy_registered_original = EnemyManager.on_enemy_registered
 	local on_enemy_unregistered_original = EnemyManager.on_enemy_unregistered
 
 	function EnemyManager:on_enemy_registered(unit, ...)
-		managers.gameinfo:event("unit", "add", tostring(unit:key()), { unit = unit })
-		return on_enemy_registered_original(self, unit, ...)
+		managers.gameinfo:event("unit", "add", tostring(unit:key()), {unit = unit})
+		on_enemy_registered_original(self, unit, ...)
 	end
 
 	function EnemyManager:on_enemy_unregistered(unit, ...)
 		managers.gameinfo:event("unit", "remove", tostring(unit:key()))
-		return on_enemy_unregistered_original(self, unit, ...)
+		on_enemy_unregistered_original(self, unit, ...)
 	end
 
 end

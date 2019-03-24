@@ -348,8 +348,8 @@ if WolfgangHUD then
 							},
 							{
 								type = "slider",
-								name_id = "wolfganghud_hudlist_scale_unit_count_title",
-								value = {"HUDList", "unit_count_list_scale"},
+								name_id = "wolfganghud_hudlist_scale_right_title",
+								value = {"HUDList", "right_list_scale"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
@@ -360,8 +360,8 @@ if WolfgangHUD then
 							},
 							{
 								type = "slider",
-								name_id = "wolfganghud_hudlist_progress_alpha_unit_count_title",
-								value = {"HUDList", "unit_count_list_progress_alpha"},
+								name_id = "wolfganghud_hudlist_progress_alpha_right_title",
+								value = {"HUDList", "right_list_progress_alpha"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
@@ -374,15 +374,15 @@ if WolfgangHUD then
 								type = "divider",
 								y_offset = 100, -- shift for next header
 							},
-							{ -- Unit Types
+							{ -- Unit Counters
 								y_offset = 320,
 								type = "header",
-								text_id = "wolfganghud_hudlist_unit_types_name",
+								text_id = "wolfganghud_hudlist_unit_counters_name",
 							},
 							{
 								type = "toggle",
 								name_id = "wolfganghud_hudlist_show_enemies_title",
-								value = {"HUDList", "UNIT_COUNT_LIST", "show_enemies"},
+								value = {"HUDList", "RIGHT_LIST", "show_enemies"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
@@ -395,7 +395,7 @@ if WolfgangHUD then
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "UNIT_COUNT_LIST", "show_enemies" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
 								},
 								options = {},
 								add_color_options = true,
@@ -404,11 +404,11 @@ if WolfgangHUD then
 							{
 								type = "toggle",
 								name_id = "wolfganghud_hudlist_seperate_specials_title",
-								value = {"HUDList", "UNIT_COUNT_LIST", "aggregate_enemies"},
+								value = {"HUDList", "RIGHT_LIST", "aggregate_enemies"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "UNIT_COUNT_LIST", "show_enemies" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
 								},
 								invert_value = true,
 							},
@@ -419,8 +419,8 @@ if WolfgangHUD then
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "UNIT_COUNT_LIST", "show_enemies" }, invert = false },
-									{ setting = { "HUDList", "UNIT_COUNT_LIST", "aggregate_enemies" }, invert = true },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "aggregate_enemies" }, invert = true },
 								},
 								options = {},
 								add_color_options = true,
@@ -429,7 +429,7 @@ if WolfgangHUD then
 							{
 								type = "toggle",
 								name_id = "wolfganghud_hudlist_show_objectives_title",
-								value = {"HUDList", "UNIT_COUNT_LIST", "show_objectives"},
+								value = {"HUDList", "RIGHT_LIST", "show_objectives"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
@@ -442,7 +442,7 @@ if WolfgangHUD then
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "UNIT_COUNT_LIST", "show_objectives" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "show_objectives" }, invert = false },
 								},
 								options = {},
 								add_color_options = true,

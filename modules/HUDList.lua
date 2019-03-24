@@ -48,6 +48,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		return hide_stats_screen_original(self, ...)
 	end
 
+	-- HUDList --
+
 	local HUDLIST_FONT = "lato_outlined_18"
 
 	local function get_icon_data(icon)
@@ -68,8 +70,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDListManager = HUDListManager or class()
 	HUDListManager.ListOptions = {
 		-- General settings
-		unit_count_list_scale			= WolfgangHUD:getSetting({"HUDList", "unit_count_list_scale"}, 1), --Size scale of unit count list
-		unit_count_list_progress_alpha	= WolfgangHUD:getSetting({"HUDList", "unit_count_list_progress_alpha"}, 1),
+		right_list_scale				= WolfgangHUD:getSetting({"HUDList", "right_list_scale"}, 1), --Size scale of unit count list
+		right_list_progress_alpha		= WolfgangHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 1),
 		-- Color settings
 		list_color						= WolfgangHUD:getColorSetting({"HUDList", "list_color"}, "white"),
 		list_color_bg					= WolfgangHUD:getColorSetting({"HUDList", "list_color_bg"}, "black"),
@@ -77,10 +79,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		special_color					= WolfgangHUD:getColorSetting({"HUDList", "special_color"}, "red"),
 		objective_color					= WolfgangHUD:getColorSetting({"HUDList", "objective_color"}, "yellow"),
 
-		-- Unit count list
-		show_enemies					= WolfgangHUD:getSetting({"HUDList", "UNIT_COUNT_LIST", "show_enemies"}, true), --Currently spawned enemies
-			aggregate_enemies			= WolfgangHUD:getSetting({"HUDList", "UNIT_COUNT_LIST", "aggregate_enemies"}, false), --Aggregate all enemies into a single item
-		show_objectives					= WolfgangHUD:getSetting({"HUDList", "UNIT_COUNT_LIST", "show_objectives"}, true),
+		-- Right side list
+		show_enemies					= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "show_enemies"}, true), --Currently spawned enemies
+			aggregate_enemies			= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_enemies"}, false), --Aggregate all enemies into a single item
+		show_objectives					= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "show_objectives"}, true),
 	}
 
 	HUDListManager.UNIT_TYPES = { -- TODO: validate gasmask and commander
@@ -143,25 +145,25 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	}
 
 	HUDListManager.UnitCountItem_MAP = {
-		enemies =		{ class = "UnitCountItem",	 skills =	{3, 8},		color_id = "enemy_color",		priority = 1 }, --Aggregated enemies
+		enemies =		{class = "UnitCountItem",	 skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, --Aggregated enemies
 
-		nazi =			{ class = "UnitCountItem",	 skills =	{3, 8},		color_id = "enemy_color",		priority = 1 }, -- Regular nazis
+		nazi =			{class = "UnitCountItem",	 skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, -- Regular nazis
 
-		waffen_ss =		{ class = "UnitCountItem",	 skills =	{2, 7},		color_id = "special_color",		priority = 2 }, -- Waffen-SS
-		officer =		{ class = "UnitCountItem",	 skills =	{3, 7},		color_id = "special_color",		priority = 3 }, -- Officers
-		sniper =		{ class = "UnitCountItem",	 skills =	{0, 9},		color_id = "special_color",		priority = 4 }, -- Snipers
-		spotter =		{ class = "UnitCountItem",	 skills =	{5, 10},	color_id = "special_color",		priority = 5 }, -- Spotters
-		flamer =		{ class = "UnitCountItem",	 skills =	{3, 10},	color_id = "special_color",		priority = 6 }, -- Flamers
+		waffen_ss =		{class = "UnitCountItem",	 skills =	{2, 7},		color_id = "special_color",		priority = 2	}, -- Waffen-SS
+		officer =		{class = "UnitCountItem",	 skills =	{3, 7},		color_id = "special_color",		priority = 3	}, -- Officers
+		sniper =		{class = "UnitCountItem",	 skills =	{0, 9},		color_id = "special_color",		priority = 4	}, -- Snipers
+		spotter =		{class = "UnitCountItem",	 skills =	{5, 10},	color_id = "special_color",		priority = 5	}, -- Spotters
+		flamer =		{class = "UnitCountItem",	 skills =	{3, 10},	color_id = "special_color",		priority = 6	}, -- Flamers
 
-		general =		{ class = "UnitCountItem",	 skills =	{1, 3},		color_id = "objective_color",	priority = 10 }, -- Strongpoint: Russian generals
-		unknown =		{ class = "UnitCountItem",	 skills =	{3, 9},		color_id = "objective_color",	priority = 99 }, -- Debug
+		general =		{class = "UnitCountItem",	 skills =	{1, 3},		color_id = "objective_color",	priority = 10	}, -- Strongpoint: Russian generals
+		unknown =		{class = "UnitCountItem",	 skills =	{3, 9},		color_id = "objective_color",	priority = 99	}, -- Debug
 	}
 
 	function HUDListManager:init()
 		self._lists = {}
 		self._unit_count_listeners = 0
 
-		self:_setup_unit_count_list()
+		self:_setup_right_list()
 	end
 
 	function HUDListManager:update(t, dt)
@@ -213,27 +215,22 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		self._lists[name] = nil
 	end
 
-	function HUDListManager:_setup_unit_count_list()
+	function HUDListManager:_setup_right_list()
 		local hud_panel = managers.hud:script(PlayerBase.INGAME_HUD_SAFERECT).panel
-		local scale = HUDListManager.ListOptions.unit_count_list_scale or 1
-		local list_width = hud_panel:w()
-		local list_height = 80 * scale
-		local x = 0
-		local y = (hud_panel:h() - list_height) / 2
+		local scale = HUDListManager.ListOptions.right_list_scale or 1
+		local list_width = hud_panel:w() / 3 -- use 1/3 of the space
+		local list_height = 80 * scale -- apply scale
+		local x = hud_panel:w() / 3 * 2 -- align right
+		local y = (hud_panel:h() - list_height) - HUDManager.WEAPONS_PANEL_H -- be above the weapons panel
 
-		local list = self:register_list("unit_count_list", HUDList.HorizontalList, {
-			align = "center",
-			x = x,
-			y = y,
-			w = list_width,
-			h = list_height,
-			right_to_left = true,
-			scale = scale,
-			item_margin = 3,
-			item_move_speed = 300,
-			fade_time = 0.15
-		})
+		--local list = self:register_list("unit_count_list", HUDList.HorizontalList,
+		--		{align = "center", x = x, y = y, w = list_width, h = list_height, right_to_left = true, scale = scale, item_margin = 3, item_move_speed = 300, fade_time = 0.15})
 
+		local list = self:register_list("right_side_list", HUDList.VerticalList,
+				{align = "right", x = x, y = y, w = list_width, h = list_height, scale = scale, bottom_to_top = true, item_margin = 5})
+
+		local unit_count_list = list:register_item("unit_count_list", HUDList.HorizontalList,
+				{align = "bottom", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 1})
 		self:_set_show_enemies()
 		self:_set_show_objectives()
 	end
@@ -265,8 +262,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	--Event handlers
 	function HUDListManager:_unit_count_event(event, unit_type, value)
 		if HUDListManager.UNIT_TYPES[unit_type] then
-			WolfgangHUD:print_log("(HUDListManager) Unit " .. unit_type .. " event: " .. event, "info")
-			local list = self:list("unit_count_list")
+			local list = self:list("right_side_list"):item("unit_count_list")
 			local type_id = HUDListManager.UNIT_TYPES[unit_type].type_id
 			local category = HUDListManager.UNIT_TYPES[unit_type].category
 
@@ -292,17 +288,17 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	--General config
-	function HUDListManager:_set_unit_count_list_scale(scale)
-		local list = self:list("unit_count_list")
-		list:rescale(scale or HUDListManager.ListOptions.unit_count_list_scale)
+	function HUDListManager:_set_right_list_scale(scale)
+		local list = self:list("right_side_list")
+		list:rescale(scale or HUDListManager.ListOptions.right_list_scale)
 	end
 
-	function HUDListManager:_set_unit_count_list_progress_alpha(alpha)
-		local list = self:list("unit_count_list")
+	function HUDListManager:_set_right_list_progress_alpha(alpha)
+		local list = self:list("right_side_list")
 		if list then
 			for _, sub_list in pairs(list:items()) do
 				for _, item in pairs(sub_list:items()) do
-					item:set_progress_alpha(alpha or HUDListManager.ListOptions.unit_count_list_progress_alpha)
+					item:set_progress_alpha(alpha or HUDListManager.ListOptions.right_list_progress_alpha)
 				end
 			end
 		end
@@ -326,11 +322,12 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	-- Unit count list config
 	function HUDListManager:_set_enemy_color(color)
-		local list = self:list("unit_count_list")
+		local list = self:list("right_side_list"):item("unit_count_list")
 		if list then
+			local map = HUDList.UnitCountItem_MAP
 			for _, item in pairs(list:items()) do
 				local u_id = item:unit_id()
-				if HUDListManager.UnitCountItem_MAP[id][u_id] and HUDListManager.UnitCountItem_MAP[id][u_id].color_id == "enemy_color" then
+				if map[u_id] and map[u_id].color_id == "enemy_color" then
 					item:set_icon_color(color or HUDListManager.ListOptions.enemy_color)
 				end
 			end
@@ -338,9 +335,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_set_special_color(color)
-		local list = self:list("unit_count_list")
+		local list = self:list("right_side_list"):item("unit_count_list")
 		if list then
-			local map = HUDList.UnitCountItem.MAP
+			local map = HUDList.UnitCountItem_MAP
 			for _, item in pairs(list:items()) do
 				local u_id = item:unit_id()
 				if map[u_id] and map[u_id].color_id == "special_color" then
@@ -351,9 +348,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_set_objective_color(color)
-		local list = self:list("unit_count_list")
+		local list = self:list("right_side_list"):item("unit_count_list")
 		if list then
-			local map = HUDList.UnitCountItem.MAP
+			local map = HUDList.UnitCountItem_MAP
 			for _, item in pairs(list:items()) do
 				local u_id = item:unit_id()
 				if map[u_id] and map[u_id].color_id == "objective_color" then
@@ -364,7 +361,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_set_show_enemies()
-		local list = self:list("unit_count_list")
+		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
 
 		if HUDListManager.ListOptions.aggregate_enemies then
@@ -377,7 +374,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_set_aggregate_enemies()
-		local list = self:list("unit_count_list")
+		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("enemies")
 		all_types.enemies = {}
 
@@ -389,7 +386,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDListManager:_set_show_objectives()
-		local list = self:list("unit_count_list")
+		local list = self:list("right_side_list"):item("unit_count_list")
 		local all_types, all_ids = self:_get_units_by_category("objectives")
 
 		for unit_type, unit_ids in pairs(all_types) do
