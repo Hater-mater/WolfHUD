@@ -15,6 +15,127 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 	GameInfoManager = GameInfoManager or class()
 
+	GameInfoManager._INTERACTIONS = {
+		INTERACTION_TO_CALLBACK = {
+
+			-- valuables
+			consumable_mission =				"_pickup_interaction_handler", -- outlaw raid documents
+			regular_cache_box =					"_pickup_interaction_handler", -- gold cache
+			hold_take_loot =					"_pickup_interaction_handler", -- loot
+			hold_take_dogtags =					"_pickup_interaction_handler", -- dogtags
+
+			-- mission pickups
+			take_sps_briefcase =				"_pickup_interaction_handler", -- briefcase
+			take_code_book =					"_pickup_interaction_handler", -- code_book
+			gen_pku_crowbar =					"_pickup_interaction_handler", -- crowbar
+			dynamite_x1_pku =					"_pickup_interaction_handler", -- dynamite
+			dynamite_x4_pku =					"_pickup_interaction_handler", -- dynamite
+			dynamite_x5_pku =					"_pickup_interaction_handler", -- dynamite
+			take_dynamite_bag =					"_pickup_interaction_handler", -- dynamite_bag
+			hold_take_empty_canister =			"_pickup_interaction_handler", -- empty_fuel_canister
+			take_enigma =						"_pickup_interaction_handler", -- code_device
+			hold_take_gas_can =					"_pickup_interaction_handler", -- gas can
+			take_gas_tank =						"_pickup_interaction_handler", -- gas tank
+			mine_pku =							"_pickup_interaction_handler", -- mine
+			take_portable_radio =				"_pickup_interaction_handler", -- portable radio
+			take_tools =						"_pickup_interaction_handler", -- repair tools
+			take_safe_key =						"_pickup_interaction_handler", -- key
+			take_safe_keychain =				"_pickup_interaction_handler", -- keychain
+			take_tank_grenade =					"_pickup_interaction_handler", -- tank grenade
+			take_tank_shell =					"_pickup_interaction_handler", -- tank shell
+			take_thermite =						"_pickup_interaction_handler", -- thermite
+			gen_pku_thermite =					"_pickup_interaction_handler", -- thermite
+
+			-- combat pickups
+			health_bag =						"_pickup_interaction_handler", -- health bag
+			health_bag_big =					"_pickup_interaction_handler", -- health bag
+			health_bag_small =					"_pickup_interaction_handler", -- health bag
+			ammo_bag =							"_pickup_interaction_handler", -- ammo bag
+			ammo_bag_big =						"_pickup_interaction_handler", -- ammo bag
+			ammo_bag_small =					"_pickup_interaction_handler", -- ammo bag
+			grenade_crate =						"_pickup_interaction_handler", -- grenade crate
+			grenade_crate_big =					"_pickup_interaction_handler", -- grenade crate
+			grenade_crate_small =				"_pickup_interaction_handler", -- grenade crate
+
+			-- flares
+			extinguish_flare =					"_pickup_interaction_handler", -- spotter flares
+
+			-- NOT USED
+			--[[
+			anwser_radio =						"_pickup_interaction_handler", -- mission radio (not a typo)
+			close_cargo_door =					"_pickup_interaction_handler", -- cargo door
+			close_container =					"_pickup_interaction_handler", -- container
+			crane_joystick_release =			"_pickup_interaction_handler", -- crane
+			destroy_valve =						"_pickup_interaction_handler", -- valve
+			driving_drive =						"_pickup_interaction_handler", -- car
+			hold_connect_cable =				"_pickup_interaction_handler",
+			hold_contact_mrs_white =			"_pickup_interaction_handler",
+			hold_fill_canister =				"_pickup_interaction_handler", -- fill canister
+			hold_ignite_flag =					"_pickup_interaction_handler",
+			hold_open_barrier =					"_pickup_interaction_handler",
+			hold_open_crate_tut =				"_pickup_interaction_handler",
+			hold_open_hatch =					"_pickup_interaction_handler", -- open door hatch
+			hold_pku_intelligence =				"_pickup_interaction_handler", -- mission documents (+camp?)
+			hold_place_canister =				"_pickup_interaction_handler", -- place canister
+			hold_place_codemachine =			"_pickup_interaction_handler",
+			hold_pull_lever =					"_pickup_interaction_handler", -- mission lever
+			hold_remove_latch =					"_pickup_interaction_handler", -- mission latch
+			hold_take_canister =				"_pickup_interaction_handler", -- canister
+			hold_take_empty_canister =			"_pickup_interaction_handler", -- canister
+			hold_take_recording_device =		"_pickup_interaction_handler", -- recording device
+			hold_start_plane =					"_pickup_interaction_handler", -- plane propeller
+			hold_unlock_bank_door =				"_pickup_interaction_handler", -- lockpick: bank door
+			lift_trap_door =					"_pickup_interaction_handler",
+			load_shell =						"_pickup_interaction_handler", -- load flak
+			lockpick_cargo_door =				"_pickup_interaction_handler", -- lockpick: cargo door
+			main_menu_select_interaction =		"_pickup_interaction_handler", -- camp tables
+			move_crane =						"_pickup_interaction_handler", -- crane
+			open_army_crate =					"_pickup_interaction_handler", -- crowbar crate
+			open_cargo_door =					"_pickup_interaction_handler", -- cargo door
+			open_crate_2 =						"_pickup_interaction_handler", -- crate
+			open_door =							"_pickup_interaction_handler", -- cargo door
+			open_drop_pod =						"_pickup_interaction_handler", -- airdrop
+			open_fusebox =						"_pickup_interaction_handler",
+			open_hatch =						"_pickup_interaction_handler", -- hatch
+			open_truck_trunk =					"_pickup_interaction_handler", -- truck trunk
+			piano_key_instant_01 =				"_pickup_interaction_handler", -- camp: piano
+			piano_key_instant_02 =				"_pickup_interaction_handler", -- camp: piano
+			piano_key_instant_03 =				"_pickup_interaction_handler", -- camp: piano
+			piano_key_instant_04 =				"_pickup_interaction_handler", -- camp: piano
+			plant_dynamite =					"_pickup_interaction_handler", -- dynamite bag
+			plant_dynamite_bag =				"_pickup_interaction_handler", -- dynamite bag
+			revive =							"_pickup_interaction_handler", -- downed teammates
+			set_fire_barrel =					"_pickup_interaction_handler",
+			set_up_radio =						"_pickup_interaction_handler", -- mission radio
+			shut_off_valve =					"_pickup_interaction_handler", -- valve
+			sii_lockpick_easy =					"_pickup_interaction_handler", -- lockpick crate/door
+			sii_lockpick_easy_y_direction =		"_pickup_interaction_handler", -- lockpick crate/door
+			sii_lockpick_medium =				"_pickup_interaction_handler", -- lockpick crate/door
+			sii_lockpick_medium_y_direction =	"_pickup_interaction_handler", -- lockpick crate/door
+			sii_lockpick_hard =					"_pickup_interaction_handler", -- lockpick crate/door
+			sii_lockpick_hard_y_direction =		"_pickup_interaction_handler", -- lockpick crate/door
+			sii_tune_radio =					"_pickup_interaction_handler", -- mission radio
+			take_flak_shell =					"_pickup_interaction_handler", -- flak shell
+			temp_interact_box =					"_pickup_interaction_handler",
+			train_yard_open_door =				"_pickup_interaction_handler",
+			tune_radio =						"_pickup_interaction_handler", -- mission radio
+			turn_on_valve =						"_pickup_interaction_handler", -- valve
+			turn_searchlight =					"_pickup_interaction_handler",
+			turret_m2 =							"_pickup_interaction_handler", -- turret
+			turret_flak_88 =					"_pickup_interaction_handler", -- turret
+			turret_flakvierling =				"_pickup_interaction_handler", -- turret
+			use_flare =							"_pickup_interaction_handler",
+			wake_up_spy =						"_pickup_interaction_handler", -- spy mission
+			]]
+		},
+		INTERACTION_TO_CARRY = {
+			-- NOT NEEDED
+			--gold_pile_inactive =				"gold", -- gold
+			--carry_drop_flak_shell =			"ammo", -- flak shell
+			--corpse_dispose =					"person", -- corpse
+		},
+	}
+
 	function GameInfoManager:init()
 		self._t = 0
 		self._scheduled_callbacks = {}
@@ -22,6 +143,8 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 		self._units = {}
 		self._unit_count = {}
+		self._loot = {}
+		self._pickups = {}
 	end
 
 	function GameInfoManager:event(source, ...)
@@ -115,6 +238,99 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		end
 	end
 
+	-- INTERACTIVE UNIT
+
+	function GameInfoManager:_interactive_unit_event(event, key, data)
+		local lookup = GameInfoManager._INTERACTIONS
+		local interact_clbk = lookup.INTERACTION_TO_CALLBACK[data.interact_id]
+		if interact_clbk then
+			self[interact_clbk](self, event, key, data)
+		else
+			local carry_id = data.unit:carry_data() and data.unit:carry_data():carry_id() or lookup.INTERACTION_TO_CARRY[data.interact_id] or (self._loot[key] and self._loot[key].carry_id)
+			self._logged_combos = self._logged_combos or {}
+			if carry_id then
+				if not self._logged_combos[data.interact_id .. "_" .. carry_id] then
+					print_debug("carry interaction! interact_id: %s - carry_id: %s", data.interact_id, carry_id, "info")
+					self._logged_combos[data.interact_id .. "_" .. carry_id] = true
+				end
+				data.carry_id = carry_id
+				self:_loot_interaction_handler(event, key, data)
+			else
+				if not self._logged_combos[data.interact_id] then
+					print_debug("interactable unit! interact_id: %s", data.interact_id, "info")
+					self._logged_combos[data.interact_id] = true
+				end
+				self:_listener_callback("interactable_unit", event, key, data.unit, data.interact_id, carry_id)
+			end
+		end
+	end
+
+	function GameInfoManager:_pickup_interaction_handler(event, key, data)
+		if event == "add" then
+			if not self._pickups[key] then
+				self._pickups[key] = { unit = data.unit, interact_id = data.interact_id }
+				self:_listener_callback("pickup", "add", key, self._pickups[key])
+				self:_pickup_count_event("change", data.interact_id, 1, self._pickups[key])
+			end
+		elseif event == "remove" then
+			if self._pickups[key] then
+				self:_listener_callback("pickup", "remove", key, self._pickups[key])
+				self:_pickup_count_event("change", data.interact_id, -1, self._pickups[key])
+				self._pickups[key] = nil
+			end
+		end
+	end
+
+	function GameInfoManager:_pickup_count_event(event, interact_id, value, data)
+		if event == "change" then
+			if value ~= 0 then
+				self:_listener_callback("pickup_count", "change", interact_id, value, data)
+			end
+		end
+	end
+
+	function GameInfoManager:get_pickups(key)
+		if key then
+			return self._pickups[key]
+		else
+			return self._pickups
+		end
+	end
+
+	function GameInfoManager:_loot_interaction_handler(event, key, data)
+		if event == "add" then
+			if not self._loot[key] then
+				self._loot[key] = {unit = data.unit, carry_id = data.carry_id, count = 1}
+				self:_listener_callback("loot", "add", key, self._loot[key])
+				self:_loot_count_event("change", data.carry_id, 1, self._loot[key])
+			end
+		elseif self._loot[key] then
+			if event == "remove"then
+				self:_listener_callback("loot", "remove", key, self._loot[key])
+				self:_loot_count_event("change", data.carry_id, -self._loot[key].count, self._loot[key])
+				self._loot[key] = nil
+			elseif event == "interact" then
+				self:_listener_callback("loot", "interact", key, self._loot[key])
+			end
+		end
+	end
+
+	function GameInfoManager:_loot_count_event(event, carry_id, value, data)
+		if event == "change" then
+			if value ~= 0 then
+				self:_listener_callback("loot_count", "change", carry_id, value, data)
+			end
+		end
+	end
+
+	function GameInfoManager:get_loot(key)
+		if key then
+			return self._loot[key]
+		else
+			return self._loot
+		end
+	end
+
 elseif string.lower(RequiredScript) == "lib/managers/enemymanager" then
 
 	local on_enemy_registered_original = EnemyManager.on_enemy_registered
@@ -128,6 +344,92 @@ elseif string.lower(RequiredScript) == "lib/managers/enemymanager" then
 	function EnemyManager:on_enemy_unregistered(unit, ...)
 		managers.gameinfo:event("unit", "remove", tostring(unit:key()))
 		on_enemy_unregistered_original(self, unit, ...)
+	end
+
+elseif string.lower(RequiredScript) == "lib/managers/objectinteractionmanager" then
+
+	local init_original = ObjectInteractionManager.init
+	local update_original = ObjectInteractionManager.update
+	local add_unit_original = ObjectInteractionManager.add_unit
+	local remove_unit_original = ObjectInteractionManager.remove_unit
+	local end_action_interact_original = ObjectInteractionManager.end_action_interact
+
+	function ObjectInteractionManager:init(...)
+		init_original(self, ...)
+		self._queued_units = {}
+	end
+
+	function ObjectInteractionManager:update(t, ...)
+		update_original(self, t, ...)
+		self:_process_queued_units(t)
+	end
+
+	function ObjectInteractionManager:add_unit(unit, ...)
+		self:add_unit_clbk(unit)
+		return add_unit_original(self, unit, ...)
+	end
+
+	function ObjectInteractionManager:remove_unit(unit, ...)
+		self:remove_unit_clbk(unit)
+		return remove_unit_original(self, unit, ...)
+	end
+
+	function ObjectInteractionManager:end_action_interact(...)
+		local value = end_action_interact_original(self, ...)
+
+		if alive(self._active_unit) and self._active_unit:interaction() then
+			local id = self._active_unit:interaction().tweak_data
+			local editor_id = self._active_unit:editor_id()
+			managers.gameinfo:event("interactive_unit", "interact", tostring(self._active_unit:key()), {unit = self._active_unit, editor_id = editor_id, interact_id = id})
+		end
+
+		return value
+	end
+
+	function ObjectInteractionManager:add_unit_clbk(unit)
+		self._queued_units[tostring(unit:key())] = unit
+	end
+
+	function ObjectInteractionManager:remove_unit_clbk(unit, interact_id)
+		local key = tostring(unit:key())
+
+		if self._queued_units[key] then
+			self._queued_units[key] = nil
+		else
+			local id = interact_id or unit:interaction() and unit:interaction().tweak_data
+			if id then
+				local editor_id = unit:editor_id()
+				managers.gameinfo:event("interactive_unit", "remove", key, {unit = unit, editor_id = editor_id, interact_id = id})
+			end
+		end
+	end
+
+	function ObjectInteractionManager:_process_queued_units(t)
+		for key, unit in pairs(self._queued_units) do
+			if alive(unit) then
+				local interact_id = unit:interaction().tweak_data
+				local editor_id = unit:editor_id()
+				managers.gameinfo:event("interactive_unit", "add", key, {unit = unit, editor_id = editor_id, interact_id = interact_id})
+			end
+		end
+
+		self._queued_units = {}
+	end
+
+elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" then
+
+	local set_tweak_data_original = BaseInteractionExt.set_tweak_data
+
+	function BaseInteractionExt:set_tweak_data(...)
+		local old_tweak = self.tweak_data
+		local was_active = self:active()
+
+		set_tweak_data_original(self, ...)
+
+		if was_active and self:active() and self.tweak_data ~= old_tweak then
+			managers.interaction:remove_unit_clbk(self._unit, old_tweak)
+			managers.interaction:add_unit_clbk(self._unit)
+		end
 	end
 
 end

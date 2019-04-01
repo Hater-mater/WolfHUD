@@ -38,6 +38,8 @@
 		<!-- GameInfoManager -->
 		<hook source_file="lib/setups/setup"									file="core/GameInfoManager.lua"				/>
 		<hook source_file="lib/managers/enemymanager"							file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/managers/objectinteractionmanager"				file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/units/interactions/interactionext"				file="core/GameInfoManager.lua"				/>
 
 		<!-- Straight To Main Menu -->
 		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>

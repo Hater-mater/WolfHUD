@@ -448,6 +448,112 @@ if WolfgangHUD then
 								add_color_options = true,
 								add_rainbow = false,
 							},
+							{ -- Loot Counters
+								y_offset = 320,
+								type = "header",
+								text_id = "wolfganghud_hudlist_loot_counters_name",
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_hudlist_show_loot_title",
+								value = {"HUDList", "RIGHT_LIST", "show_loot"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{ -- Pickup Counters
+								type = "header",
+								text_id = "wolfganghud_hudlist_pickup_counters_name",
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_hudlist_show_valuables_title",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_hudlist_valuablecolor_title",
+								value = {"HUDList", "valuable_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_hudlist_show_equipment_title",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_hudlist_equipmentcolor_title",
+								value = {"HUDList", "mission_pickup_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_hudlist_show_pickups_title",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_hudlist_pickupcolor_title",
+								value = {"HUDList", "combat_pickup_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_hudlist_show_flares_title",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+								},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_hudlist_flarecolor_title",
+								value = {"HUDList", "flare_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
 						},
 					},
 					{	-- Floating Health Bars

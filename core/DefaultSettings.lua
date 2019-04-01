@@ -57,10 +57,21 @@ if WolfgangHUD then
 			enemy_color							= "orange",
 			special_color						= "red",
 			objective_color						= "yellow",
+			valuable_color						= "orange",
+			mission_pickup_color				= "white",
+			combat_pickup_color					= "light_gray",
+			flare_color							= "red",
 			RIGHT_LIST = {
 				show_enemies					= true,
 					aggregate_enemies			= false,
 				show_objectives					= true,
+				show_loot						= true,
+				SHOW_PICKUP_CATEGORIES = {
+					valuables					= true,
+					mission_pickups				= true,
+					combat_pickups				= false,
+					flares						= true,
+				},
 			},
 		},
 		GAMEPLAY = {

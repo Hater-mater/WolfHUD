@@ -254,7 +254,11 @@ if not _G.WolfgangHUD then
 					local list = tostring(setting[1])
 					local category = tostring(setting[2])
 					local option = tostring(setting[#setting])
-					managers.hud:change_list_setting(option, WolfgangHUD:getColor(value) or value)
+					if list == "RIGHT_LIST" and category == "SHOW_PICKUP_CATEGORIES" then
+						managers.hud:change_pickuplist_setting(option, WolfgangHUD:getColor(value) or value)
+					else
+						managers.hud:change_list_setting(option, WolfgangHUD:getColor(value) or value)
+					end
 				end
 			end,
 		}

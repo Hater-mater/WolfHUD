@@ -78,14 +78,21 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		enemy_color						= WolfgangHUD:getColorSetting({"HUDList", "enemy_color"}, "orange"),
 		special_color					= WolfgangHUD:getColorSetting({"HUDList", "special_color"}, "red"),
 		objective_color					= WolfgangHUD:getColorSetting({"HUDList", "objective_color"}, "yellow"),
+		valuable_color					= WolfgangHUD:getColorSetting({"HUDList", "valuable_color"}, "orange"),
+		mission_pickup_color			= WolfgangHUD:getColorSetting({"HUDList", "mission_pickup_color"}, "white"),
+		combat_pickup_color				= WolfgangHUD:getColorSetting({"HUDList", "combat_pickup_color"}, "light_gray"),
+		flare_color						= WolfgangHUD:getColorSetting({"HUDList", "flare_color"}, "red"),
 
 		-- Right side list
 		show_enemies					= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "show_enemies"}, true), --Currently spawned enemies
 			aggregate_enemies			= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "aggregate_enemies"}, false), --Aggregate all enemies into a single item
 		show_objectives					= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "show_objectives"}, true),
+		show_loot						= WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "show_loot"}, true), -- carryables
 	}
 
-	HUDListManager.UNIT_TYPES = { -- TODO: validate gasmask and commander
+	-- UNIT TYPES
+
+	HUDListManager.UNIT_TYPES = { -- TODO: validate gasmask
 		german_light = 								{ type_id = "nazi",			category = "enemies"		},
 		german_light_kar98 = 						{ type_id = "nazi",			category = "enemies"		},
 		german_light_shotgun = 						{ type_id = "nazi",			category = "enemies"		},
@@ -122,9 +129,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		german_fallschirmjager_heavy_kar98 = 		{ type_id = "nazi",			category = "enemies"		},
 		german_fallschirmjager_heavy_shotgun = 		{ type_id = "nazi",			category = "enemies"		},
 
-		german_gasmask = 							{ type_id = "unknown",		category = "enemies"		}, -- whats this?
-		german_gasmask_shotgun = 					{ type_id = "unknown",		category = "enemies"		}, -- whats this?
-
 		german_waffen_ss = 							{ type_id = "waffen_ss",	category = "enemies"		},
 		german_waffen_ss_mp38 = 					{ type_id = "waffen_ss",	category = "enemies"		},
 		german_waffen_ss_kar98 = 					{ type_id = "waffen_ss",	category = "enemies"		},
@@ -142,21 +146,150 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		soviet_nkvd_int_security_captain = 			{ type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
 		soviet_nkvd_int_security_captain_b = 		{ type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
+
+		german_gasmask = 							{ type_id = "unknown",		category = "enemies"		}, -- whats this?
+		german_gasmask_shotgun = 					{ type_id = "unknown",		category = "enemies"		}, -- whats this?
 	}
 
 	HUDListManager.UnitCountItem_MAP = {
-		enemies =		{class = "UnitCountItem",	 skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, --Aggregated enemies
+		enemies =		{class = "UnitCountItem",	skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, --Aggregated enemies
 
-		nazi =			{class = "UnitCountItem",	 skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, -- Regular nazis
+		nazi =			{class = "UnitCountItem",	skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, -- Regular nazis
 
-		waffen_ss =		{class = "UnitCountItem",	 skills =	{2, 7},		color_id = "special_color",		priority = 2	}, -- Waffen-SS
-		officer =		{class = "UnitCountItem",	 skills =	{3, 7},		color_id = "special_color",		priority = 3	}, -- Officers
-		sniper =		{class = "UnitCountItem",	 skills =	{0, 9},		color_id = "special_color",		priority = 4	}, -- Snipers
-		spotter =		{class = "UnitCountItem",	 skills =	{5, 10},	color_id = "special_color",		priority = 5	}, -- Spotters
-		flamer =		{class = "UnitCountItem",	 skills =	{3, 10},	color_id = "special_color",		priority = 6	}, -- Flamers
+		waffen_ss =		{class = "UnitCountItem",	skills =	{2, 7},		color_id = "special_color",		priority = 2	}, -- Waffen-SS
+		officer =		{class = "UnitCountItem",	skills =	{3, 7},		color_id = "special_color",		priority = 3	}, -- Officers
+		sniper =		{class = "UnitCountItem",	skills =	{0, 9},		color_id = "special_color",		priority = 4	}, -- Snipers
+		spotter =		{class = "UnitCountItem",	skills =	{5, 10},	color_id = "special_color",		priority = 5	}, -- Spotters
+		flamer =		{class = "UnitCountItem",	skills =	{3, 10},	color_id = "special_color",		priority = 6	}, -- Flamers
 
-		general =		{class = "UnitCountItem",	 skills =	{1, 3},		color_id = "objective_color",	priority = 10	}, -- Strongpoint: Russian generals
-		unknown =		{class = "UnitCountItem",	 skills =	{3, 9},		color_id = "objective_color",	priority = 99	}, -- Debug
+		general =		{class = "UnitCountItem",	skills =	{1, 3},		color_id = "objective_color",	priority = 50	}, -- Strongpoint: Russian generals
+
+		unknown =		{class = "UnitCountItem",	skills =	{3, 9},		color_id = "objective_color",	priority = 99	}, -- Debug
+	}
+
+	-- LOOT TYPES
+
+	HUDListManager.LOOT_TYPES = {
+		gold =												"gold",
+		gold_bar =											"gold_bar",		-- untested!
+
+		painting_sto =										"painting",		-- untested!
+		painting_sto_cheap =								"painting",		-- untested!
+
+		plank =												"plank",		-- untested!
+
+		flak_shell =										"flak_shell",	-- untested!
+
+		german_spy =										"alive",		-- untested!
+
+		person =											"corpse",		-- untested!
+		german_grunt_body =									"corpse",		-- untested!
+		german_grunt_light_body =							"corpse",		-- untested!
+		german_grunt_mid_body =								"corpse",		-- untested!
+		gebirgsjager_light_body =							"corpse",		-- untested!
+		gebirgsjager_heavy_body =							"corpse",		-- untested!
+		german_fallschirmjager_light_body =					"corpse",		-- untested!
+		german_fallschirmjager_heavy_body =					"corpse",		-- untested!
+		german_waffen_ss_body =								"corpse",		-- untested!
+		german_commander_body =								"corpse",		-- untested!
+		german_og_commander_body =							"corpse",		-- untested!
+		german_black_waffen_sentry_light_body =				"corpse",		-- untested!
+		german_black_waffen_sentry_gasmask_body =			"corpse",		-- untested!
+		german_black_waffen_sentry_heavy_body =				"corpse",		-- untested!
+		german_black_waffen_sentry_heavy_commander_body =	"corpse",		-- untested!
+		german_black_waffen_sentry_light_commander_body =	"corpse",		-- untested!
+		soviet_nkvd_int_security_captain_body =				"corpse",		-- untested!
+	}
+
+	HUDListManager.LootItem_MAP = {
+		gold =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {877, 1399, 72, 72},	color_id = "valuable_color",	priority = 1	},
+		gold_bar =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {877, 1399, 72, 72},	color_id = "valuable_color",	priority = 2	},
+		painting =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {951, 1405, 72, 72},	color_id = "valuable_color",	priority = 3	},
+		plank =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {875, 1473, 72, 72},									priority = 4	},
+		flak_shell =	{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {535, 1279, 72, 72},									priority = 5	},
+		alive =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {887, 1281, 72, 72},									priority = 6	},
+		corpse =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {461, 1279, 72, 72},									priority = 7	},
+	}
+
+	-- PICKUP TYPES
+
+	HUDListManager.PICKUP_TYPES = {
+
+		-- valuables
+		consumable_mission =				"document",
+		regular_cache_box =					"cache",
+		hold_take_loot =					"loot",
+		hold_take_dogtags =					"dogtags",
+
+		-- equipment
+		take_sps_briefcase =				"briefcase",			-- untested!
+		take_code_book =					"code_book",
+		gen_pku_crowbar =					"crowbar",
+		dynamite_x1_pku =					"dynamite",				-- FIXME: infinite
+		--dynamite_x4_pku =					"dynamite",				-- FIXME: infinite (x4)
+		--dynamite_x5_pku =					"dynamite",				-- FIXME: infinite (x5)
+		take_dynamite_bag =					"dynamite_bag",
+		hold_take_empty_canister =			"empty_fuel_canister",	-- untested!
+		take_enigma =						"enigma",				-- untested!
+		--hold_take_gas_can =				"gas",					-- FIXME: infinite (x4), most likely not used
+		--take_gas_tank =					"gas_tank",				-- most likely not used
+		mine_pku =							"landmine",				-- untested!
+		take_portable_radio =				"portable_radio",		-- untested!
+		take_tools =						"repair_tools",
+		take_safe_key =						"safe_key",				-- untested!
+		take_safe_keychain =				"safe_keychain",		-- untested!
+		--take_tank_grenade =				"tank_grenade",			-- most likely not used
+		take_tank_shell =					"tank_shell",			-- untested!
+		take_thermite =						"thermite",				-- untested!
+		gen_pku_thermite =					"thermite",				-- untested!
+
+		-- pickups
+		health_bag =						"health_bag",
+		health_bag_big =					"health_bag",
+		health_bag_small =					"health_bag",
+		ammo_bag =							"ammo_bag",
+		ammo_bag_big =						"ammo_bag",
+		ammo_bag_small =					"ammo_bag",
+		grenade_crate =						"grenade_crate",
+		grenade_crate_big =					"grenade_crate",
+		grenade_crate_small =				"grenade_crate",
+
+		-- flares
+		extinguish_flare =					"flare",
+
+	}
+
+	HUDListManager.PickupItem_MAP = {
+
+		-- valuables
+		document =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 175, 56, 56},			color_id = "valuable_color",		priority = 1,	category = "valuables",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
+		cache =					{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {677, 1317, 32, 32},		color_id = "valuable_color",		priority = 2,	category = "valuables",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
+		loot =					{class = "PickupItem",	texture = "ui/atlas/raid_atlas_missions", texture_rect = {8, 68, 64, 64},		color_id = "valuable_color",		priority = 3,	category = "valuables",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
+		dogtags =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_missions", texture_rect = {398, 2, 64, 64},		color_id = "valuable_color",		priority = 4,	category = "valuables",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
+
+		-- equipment
+		briefcase =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {977, 1757, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		code_book =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {421, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		crowbar =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {489, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		dynamite =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {643, 1279, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		dynamite_bag =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {609, 1317, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		empty_fuel_canister =	{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {609, 1279, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		enigma =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {455, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		landmine =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {523, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		portable_radio =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {361, 1705, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		repair_tools =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		safe_key =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		safe_keychain =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		tank_shell =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		thermite =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {557, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+
+		-- pickups
+		health_bag =			{class = "PickupItem",	skills = {5, 2},																color_id = "combat_pickup_color",	priority = 21,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
+		ammo_bag =				{class = "PickupItem",	skills = {4, 2},																color_id = "combat_pickup_color",	priority = 20,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
+		grenade_crate =			{class = "PickupItem",	skills = {1, 8},																color_id = "combat_pickup_color",	priority = 22,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
+
+		-- flares
+		flare =					{class = "PickupItem",	skills = {0, 2},																color_id = "flare_color",			priority = 30,	category = "flares",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares"}, true)			},
 	}
 
 	function HUDListManager:init()
@@ -219,7 +352,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local hud_panel = managers.hud:script(PlayerBase.INGAME_HUD_SAFERECT).panel
 		local scale = HUDListManager.ListOptions.right_list_scale or 1
 		local list_width = hud_panel:w() / 3 -- use 1/3 of the space
-		local list_height = 80 * scale -- apply scale
+		local list_height = 240 * scale -- 3 rows, 80 pixels each => 240, apply scale
 		local x = hud_panel:w() / 3 * 2 -- align right
 		local y = (hud_panel:h() - list_height) - HUDManager.WEAPONS_PANEL_H - 35 -- be 35 pixels above the weapons panel
 
@@ -229,8 +362,18 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local unit_count_list = list:register_item("unit_count_list", HUDList.HorizontalList,
 				{align = "bottom", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 1})
 
+		local pickup_list = list:register_item("pickup_list", HUDList.HorizontalList,
+				{align = "bottom", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 2})
+
+		local loot_list = list:register_item("loot_list", HUDList.HorizontalList,
+				{align = "bottom", w = list_width, h = 50 * scale, right_to_left = true, item_margin = 3, priority = 3})
+
 		self:_set_show_enemies()
 		self:_set_show_objectives()
+
+		self:_set_show_pickups()
+
+		self:_set_show_loot()
 	end
 
 	function HUDListManager:_get_units_by_category(category)
@@ -389,6 +532,166 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		for unit_type, unit_ids in pairs(all_types) do
 			self:_update_unit_count_list_items(list, unit_type, unit_ids, HUDListManager.ListOptions.show_objectives)
+		end
+	end
+
+	-- Loot count list config
+	function HUDListManager:_set_show_loot()
+		local list = self:list("right_side_list"):item("loot_list")
+		local all_ids = {}
+		local all_types = {}
+
+		for loot_id, loot_type in pairs(HUDListManager.LOOT_TYPES) do
+			all_types[loot_type] = all_types[loot_type] or {}
+			table.insert(all_types[loot_type], loot_id)
+			table.insert(all_ids, loot_id)
+		end
+
+		for loot_type, members in pairs(all_types) do
+			if HUDListManager.ListOptions.show_loot then
+				local loot_map = HUDListManager.LootItem_MAP[loot_type]
+				if loot_map then
+					local item = list:item(loot_type) or list:register_item(loot_type, loot_map.class or HUDList.LootItem, loot_type, members)
+					list:set_item_disabled(item, "setting", loot_map.ignore)
+				end
+			else
+				list:unregister_item(loot_type, true)
+			end
+		end
+	end
+
+	function HUDManager:change_lootlist_setting(name, show)
+		if managers.hudlist then
+			return managers.hudlist:change_loot_ignore(name, not show)
+		else
+			for _, data in pairs(HUDListManager.LootItem_MAP) do
+				if data.category == name then
+					data.ignore = not show
+				end
+			end
+			return true
+		end
+	end
+
+	function HUDListManager:change_loot_ignore(category_id, ignore)
+		local loot_list = self:list("right_side_list"):item("loot_list")
+		for _, item in pairs(loot_list:items()) do
+			local loot_type = item:name()
+			local loot_data = loot_type and HUDListManager.LootItem_MAP[loot_type]
+			if loot_data and loot_data.category == category_id then
+				loot_list:set_item_disabled(item, "setting", ignore)
+				loot_data.ignore = ignore
+			end
+		end
+	end
+
+	-- Pickup count list config
+	function HUDListManager:_set_show_pickups()
+		local list = self:list("right_side_list"):item("pickup_list")
+		local all_ids = {}
+		local all_types = {}
+
+		for pickup_id, pickup_type in pairs(HUDListManager.PICKUP_TYPES) do
+			all_types[pickup_type] = all_types[pickup_type] or {}
+			table.insert(all_types[pickup_type], pickup_id)
+			table.insert(all_ids, pickup_id)
+		end
+
+		for pickup_type, members in pairs(all_types) do
+			local pickup_map = HUDListManager.PickupItem_MAP[pickup_type]
+			if pickup_map then
+				local item = list:item(pickup_type) or list:register_item(pickup_type, pickup_map.class or HUDList.PickupItem, pickup_type, members)
+				list:set_item_disabled(item, "setting", pickup_map.ignore)
+			end
+		end
+	end
+
+	function HUDListManager:_set_valuable_color(color)
+		local pickup_list = self:list("right_side_list"):item("pickup_list")
+		if pickup_list then
+			local map = HUDList.PickupItem_MAP
+			for _, item in pairs(pickup_list:items()) do
+				local u_id = item:unit_id()
+				if map[u_id] and map[u_id].color_id == "valuable_color" then
+					item:set_icon_color(color or HUDListManager.ListOptions.valuable_color)
+				end
+			end
+		end
+
+		-- temp TODO FIXME
+		local list = self:list("right_side_list"):item("loot_list")
+		if list then
+			local map = HUDList.LootItem_MAP
+			for _, item in pairs(list:items()) do
+				local u_id = item:unit_id()
+				if map[u_id] and map[u_id].color_id == "valuable_color" then
+					item:set_icon_color(color or HUDListManager.ListOptions.valuable_color)
+				end
+			end
+		end
+	end
+
+	function HUDListManager:_set_mission_pickup_color(color)
+		local pickup_list = self:list("right_side_list"):item("pickup_list")
+		if pickup_list then
+			local map = HUDList.PickupItem_MAP
+			for _, item in pairs(pickup_list:items()) do
+				local u_id = item:unit_id()
+				if map[u_id] and map[u_id].color_id == "mission_pickup_color" then
+					item:set_icon_color(color or HUDListManager.ListOptions.mission_pickup_color)
+				end
+			end
+		end
+	end
+
+	function HUDListManager:_set_combat_pickup_color(color)
+		local pickup_list = self:list("right_side_list"):item("pickup_list")
+		if pickup_list then
+			local map = HUDList.PickupItem_MAP
+			for _, item in pairs(pickup_list:items()) do
+				local u_id = item:unit_id()
+				if map[u_id] and map[u_id].color_id == "combat_pickup_color" then
+					item:set_icon_color(color or HUDListManager.ListOptions.combat_pickup_color)
+				end
+			end
+		end
+	end
+
+	function HUDListManager:_set_flare_color(color)
+		local pickup_list = self:list("right_side_list"):item("pickup_list")
+		if pickup_list then
+			local map = HUDList.PickupItem_MAP
+			for _, item in pairs(pickup_list:items()) do
+				local u_id = item:unit_id()
+				if map[u_id] and map[u_id].color_id == "flare_color" then
+					item:set_icon_color(color or HUDListManager.ListOptions.flare_color)
+				end
+			end
+		end
+	end
+
+	function HUDManager:change_pickuplist_setting(name, show)
+		if managers.hudlist then
+			return managers.hudlist:change_pickup_ignore(name, not show)
+		else
+			for _, data in pairs(HUDListManager.PickupItem_MAP) do
+				if data.category == name then
+					data.ignore = not show
+				end
+			end
+			return true
+		end
+	end
+
+	function HUDListManager:change_pickup_ignore(category_id, ignore)
+		local pickup_list = self:list("right_side_list"):item("pickup_list")
+		for _, item in pairs(pickup_list:items()) do
+			local pickup_type = item:name()
+			local pickup_data = pickup_type and HUDListManager.PickupItem_MAP[pickup_type]
+			if pickup_data and pickup_data.category == category_id then
+				pickup_list:set_item_disabled(item, "setting", ignore)
+				pickup_data.ignore = ignore
+			end
 		end
 	end
 
@@ -1398,6 +1701,83 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		else
 			self:change_count(value)
 		end
+	end
+
+	HUDList.LootItem = HUDList.LootItem or class(HUDList.RightListItem)
+
+	function HUDList.LootItem:init(parent, name, id, members)
+		local loot_data = HUDListManager.LootItem_MAP[id]
+		HUDList.LootItem.super.init(self, parent, name, loot_data, loot_data)
+
+		self._loot_types = {}
+
+		local keys = {}
+
+		for _, loot_id in pairs(members) do
+			self._loot_types[loot_id] = true
+			table.insert(keys, loot_id)
+		end
+
+		local total_count = 0
+		for _, data in pairs(managers.gameinfo:get_loot()) do
+			if self._loot_types[data.carry_id] then
+				total_count = total_count + 1
+			end
+		end
+
+		self._listener_clbks = {
+			{
+				name = string.format("HUDList_%s_loot_count_listener", id),
+				source = "loot_count",
+				event = {"change"},
+				clbk = callback(self, self, "_change_loot_count_clbk"),
+				keys = keys
+			}
+		}
+
+		self:set_count(total_count)
+	end
+
+	function HUDList.LootItem:_change_loot_count_clbk(event, carry_id, value, data)
+		self:change_count(value)
+	end
+
+	HUDList.PickupItem = HUDList.PickupItem or class(HUDList.RightListItem)
+
+	function HUDList.PickupItem:init(parent, name, id, members)
+		local pickup_data = HUDListManager.PickupItem_MAP[id]
+		HUDList.PickupItem.super.init(self, parent, name, pickup_data, pickup_data)
+
+		self._pickup_types = {}
+
+		local keys = {}
+		for _, pickup_id in pairs(members) do
+			self._pickup_types[pickup_id] = true
+			table.insert(keys, pickup_id)
+		end
+
+		local total_count = 0
+		for _, data in pairs(managers.gameinfo:get_pickups()) do
+			if self._pickup_types[data.interact_id] then
+				total_count = total_count + 1
+			end
+		end
+
+		self._listener_clbks = {
+			{
+				name = string.format("HUDList_%s_pickup_count_listener", id),
+				source = "pickup_count",
+				event = {"change"},
+				clbk = callback(self, self, "_change_pickup_count_clbk"),
+				keys = keys
+			}
+		}
+
+		self:set_count(total_count)
+	end
+
+	function HUDList.PickupItem:_change_pickup_count_clbk(event, interact_id, value, data)
+		self:change_count(value)
 	end
 
 	PanelFrame = PanelFrame or class()
