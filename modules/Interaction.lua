@@ -489,8 +489,11 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 
 	function ProgressBarGuiObject:init(...)
 		init_original(self, ...)
-
-		self._progress_bar:set_layer(4)
+		if self._description then
+			self._description:set_height(64) -- fix vanilla height bug
+		end
+		self._progress_bar_bg:set_y(self._y - self._height / 2) -- fix vanilla height bug
+		self._progress_bar:set_layer(4) -- set above lock indicator
 
 		self._original_progress_bar_width = self._width
 		self._original_progress_bar_height = self._height
@@ -540,10 +543,10 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 			if ProgressBarGuiObject.LOCK_MODE > 1 and ProgressBarGuiObject.SHOW_LOCK_INDICATOR then
 				self._progress_bar_locked = self._panel:bitmap({
 					layer = 3,
-					x = self._progress_bar_x - 2,
-					y = self._progress_bar_y - 2,
+					x = self._x - self._width / 2 - 2,
+					y = self._y - self._height / 2 - 2,
 					w = 4,
-					h = self._progress_bar_height + 4,
+					h = self._height + 4,
 					color = self._old_text and Color.green or Color.red,
 					alpha = 0.8,
 				})
