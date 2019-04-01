@@ -41,7 +41,7 @@ if WolfgangHUD then
 				PIE_COLOR_END					= "gray",
 			},
 		},
-		MENU ={
+		MENU = {
 			STRAIGHT_TO_MAIN_MENU				= true,
 			REMOVE_AD_BOX						= true,
 			TRANSPARENT_PAUSE_MENU				= true,

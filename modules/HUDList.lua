@@ -690,7 +690,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDList.ListBase:active_items()
-		local count  = 0
+		local count = 0
 		for name, item in pairs(self._items) do
 			if item:is_active() then
 				count = count + 1
@@ -1346,7 +1346,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.UnitCountItem = HUDList.UnitCountItem or class(HUDList.RightListItem)
 	function HUDList.UnitCountItem:init(parent, name, id, unit_types)
 		local unit_data = HUDListManager.UnitCountItem_MAP[id] or {}
-		local params = { priority = unit_data.priority }
+		local params = {priority = unit_data.priority}
 
 		HUDList.UnitCountItem.super.init(self, parent, name, unit_data, params)
 
