@@ -75,6 +75,7 @@ if WolfgangHUD then
 			},
 		},
 		GAMEPLAY = {
+			FOV_BASED_SENSIVITY					= true,
 			NO_SLOWMOTION						= true,
 			AUTO_RELOAD							= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,

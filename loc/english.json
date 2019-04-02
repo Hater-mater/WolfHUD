@@ -103,6 +103,7 @@
 
 	"wolfganghud_gameplay_options_name"								:	"Gameplay",
 	"wolfganghud_gameplay_general_name"								:		"General",
+	"wolfganghud_fov_based_sensivity_title"							:			"FOV based sensivity",
 	"wolfganghud_no_slowmotion_title"								:			"Disable slow motion effects",
 	"wolfganghud_auto_reload_title"									:			"Auto reload automatic weapons",
 	"wolfganghud_gameplay_hardcore_name"							:		"Hardcore",

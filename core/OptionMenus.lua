@@ -776,6 +776,13 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfganghud_fov_based_sensivity_title",
+						value = {"GAMEPLAY", "FOV_BASED_SENSIVITY"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
 						name_id = "wolfganghud_no_slowmotion_title",
 						value = {"GAMEPLAY", "NO_SLOWMOTION"},
 						visible_reqs = {},

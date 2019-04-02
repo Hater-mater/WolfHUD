@@ -106,6 +106,9 @@
 		<!-- Realistic Reload -->
 		<hook source_file="lib/units/weapons/raycastweaponbase"					file="modules/RealisticReload.lua"			/>
 
+		<!-- FOV based sensivity -->
+		<hook source_file="lib/managers/menumanager"							file="modules/FOVBasedSensitivity.lua"		/>
+
 	</hooks>
 
 	<keybinds>
