@@ -1,13 +1,36 @@
+
+--------------------------------------------
+
+-- do not enable without fixing!
+
 do return end -- disabled for now
 
+-- do not enable without fixing!
+
+-- current problem: somewhere around inventory:add_unit_by_factory_name(...), the player weapon becomes a new instance, and it seems like
+-- other ingame objects like enemies etc. keep a pointer to the old instance, which is then dead.
+-- this leads to crashes, after upgrading ingame.. as seen in StatisticsManager:shot_fired, i tried to workaround this,
+-- but workarounds are bad, and the actual cause should be fixed instead... it also turned out that this workaround is not enough at all. random crashes all the way.
+
+-- to make this code actually working, one would have to find a way to point the other things in ram to the new instance.
+
+do return end -- disabled for now
+
+-- do not enable without fixing!
+
+--------------------------------------------
+
+--[[ -- abandoned
 if string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 
 	local shot_fired_original = StatisticsManager.shot_fired
 
 	function StatisticsManager:shot_fired(data, ...)
+
 		-- workaround: seems like some dead weapons still send data to the stats manager,
 		-- i guess thats happening since we simply replace weapons on the fly, and have no proper garbage collection of some sort,
 		-- so whenever a dead unit still sends events, lets catch it here.
+
 		if data ~= nil and type(data) == "table" and data.weapon_unit ~= nil then
 			if not alive(data.weapon_unit) then
 				return
@@ -17,7 +40,10 @@ if string.lower(RequiredScript) == "lib/managers/statisticsmanager" then
 		shot_fired_original(self, data, ...)
 	end
 
-elseif string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
+else
+]] -- abandoned
+
+if string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
 
 	local on_weapon_challenge_completed_original = WeaponSkillsManager.on_weapon_challenge_completed
 
@@ -73,6 +99,7 @@ elseif string.lower(RequiredScript) == "lib/managers/weaponskillsmanager" then
 			inventory:add_unit_by_factory_name(weapon_data.factory_id, true, false, weapon_data.blueprint, weapon_data.cosmetics, texture_switches)
 			inventory:equip_selection(weapon_category_id, true)
 
+			-- FIXME
 			player_state._equipped_unit = inventory:equipped_unit()
 			local weapon = inventory:equipped_unit()
 			player_state._weapon_hold = weapon and weapon:base().weapon_hold and weapon:base():weapon_hold() or weapon:base():get_name_id()
