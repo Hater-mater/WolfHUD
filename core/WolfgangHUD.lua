@@ -20,23 +20,37 @@ if not _G.WolfgangHUD then
 		local msg_type, text = table.remove(params, #params), table.remove(params, 1)
 		if msg_type and LOG_MODES[tostring(msg_type)] then
 			if type(text) == "table" or type(text) == "userdata" then
-				local function log_table(userdata)
+				local function log_table(userdata, max_indent, indent) -- third param is for recursive calls only
+					max_indent = max_indent or 1
+					indent = indent or 0
+					if indent == 0 then
+						log("{") -- self bracket
+					end
 					local text = ""
-					for id, data in pairs(userdata) do
+					local spaces = string.rep(' ', (indent + 1) * 2) -- use 2 spaces per indent and indent self (+1)
+					for id, data in pairs(type(userdata) == "userdata" and getmetatable(userdata) or userdata) do
+						local name = type(id) == "number" and ("[" .. tostring(id) .. "]") or tostring(id)
 						if type(data) == "table" then
-							log(id .. " = {")
-							log_table(data)
-							log("}")
-						elseif type(data) ~= "function" then
-							log(id .. " = " .. tostring(data) .. "")
+							if id ~= "__index" and indent < max_indent then
+								log(spaces .. name .. " = {")
+								log_table(data, max_indent, indent + 1) -- call recursively, increase indent
+								log(spaces .. "},")
+							else
+								log(spaces .. name .. " = {...},")
+							end
+						elseif type(data) == "function" then
+							log(spaces .. "function " .. name .. "(...),")
 						else
-							log("function " .. id .. "(...)")
+							log(spaces .. name .. " = " .. (type(data) == "string" and ('"' .. data .. '"') or tostring(data)) .. ",")
 						end
+					end
+					if indent == 0 then
+						log("}") -- self bracket
 					end
 				end
 				if not text[1] or type(text[1]) ~= "string" then
-					log(string.format("[WolfgangHUD] %s:", string.upper(type(msg_type))))
-					log_table(text)
+					log(string.format("[WolfgangHUD] %s:", string.upper(msg_type)))
+					log_table(text, params[1] or 1)
 					return
 				else
 					text = string.format(unpack(text))
@@ -49,15 +63,15 @@ if not _G.WolfgangHUD then
 			end
 			text = string.format("[WolfgangHUD] %s: %s", string.upper(msg_type), text)
 			log(text)
-			if LOG_MODES.to_console and con and con.print and con.error then
+			--[[if LOG_MODES.to_console and con and con.print and con.error then
 				local t = Application:time()
-				text = string.format("%02d:%06.3f\t>\t%s", math.floor(t/60), t%60, text)
+				text = string.format("%02d:%06.3f\t>\t%s", math.floor(t / 60), t % 60, text)
 				if tostring(msg_type) == "info" then
 					con:print(text)
 				else
 					con:error(text)
 				end
-			end
+			end]]
 		end
 	end
 
@@ -205,27 +219,6 @@ if not _G.WolfgangHUD then
 			self.tweak_data[id] = default
 			self:print_log("Requested tweak_entry doesn't exists!  (id='" .. id .. "', type='" .. tostring(val_type) .. "') ", "error")
 			return default
-		end
-	end
-
-	function WolfgangHUD:PrintTable(tbl, max_indent, indent)
-		local fixed = type(tbl) == 'userdata' and getmetatable(tbl) or tbl
-		if type(fixed) ~= 'table' then
-			log(tostring(fixed))
-			return
-		end
-		indent = indent or 0
-		max_indent = max_indent or 5
-		local idt = string.rep('	', indent)
-		for k, v in pairs(fixed) do
-			formatting = idt .. (type(k) == 'number' and ('[' .. tostring(k) .. ']') or tostring(k)) .. ' = '
-			if k ~= '__index' and type(v) == 'table' and indent < max_indent then
-				log(formatting .. '{')
-				self:PrintTable(v, max_indent, indent + 1)
-				log(idt .. '},')
-			else
-				log(formatting .. tostring(v) .. ',')
-			end
 		end
 	end
 

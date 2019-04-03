@@ -13,10 +13,10 @@ function WolfgangHUDTweakData:init()
 
 	-- Determines which messages get logged
 	self.LOG_MODE = {
-		error = true, 		-- log errors
-		warning = true, 	-- log warnings
-		info = false, 		-- log infos
-		to_console = true 	-- show messages in console (Requires DebugConsole mod)
+		error = true, 			-- log errors
+		warning = true, 		-- log warnings
+		info = false, 			-- log infos
+		--to_console = true, 	-- show messages in console (Requires DebugConsole mod)
 	}
 
 	-- Color table
