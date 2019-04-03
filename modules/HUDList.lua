@@ -182,23 +182,23 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		german_spy =										"alive",		-- untested!
 
-		person =											"corpse",		-- untested!
-		german_grunt_body =									"corpse",		-- untested!
-		german_grunt_light_body =							"corpse",		-- untested!
-		german_grunt_mid_body =								"corpse",		-- untested!
-		gebirgsjager_light_body =							"corpse",		-- untested!
-		gebirgsjager_heavy_body =							"corpse",		-- untested!
-		german_fallschirmjager_light_body =					"corpse",		-- untested!
-		german_fallschirmjager_heavy_body =					"corpse",		-- untested!
-		german_waffen_ss_body =								"corpse",		-- untested!
-		german_commander_body =								"corpse",		-- untested!
-		german_og_commander_body =							"corpse",		-- untested!
-		german_black_waffen_sentry_light_body =				"corpse",		-- untested!
-		german_black_waffen_sentry_gasmask_body =			"corpse",		-- untested!
-		german_black_waffen_sentry_heavy_body =				"corpse",		-- untested!
-		german_black_waffen_sentry_heavy_commander_body =	"corpse",		-- untested!
-		german_black_waffen_sentry_light_commander_body =	"corpse",		-- untested!
-		soviet_nkvd_int_security_captain_body =				"corpse",		-- untested!
+		body =												"corpse",
+		german_grunt_body =									"corpse",
+		german_grunt_light_body =							"corpse",
+		german_grunt_mid_body =								"corpse",
+		gebirgsjager_light_body =							"corpse",
+		gebirgsjager_heavy_body =							"corpse",
+		german_fallschirmjager_light_body =					"corpse",
+		german_fallschirmjager_heavy_body =					"corpse",
+		german_waffen_ss_body =								"corpse",
+		german_commander_body =								"corpse",
+		german_og_commander_body =							"corpse",
+		german_black_waffen_sentry_light_body =				"corpse",
+		german_black_waffen_sentry_gasmask_body =			"corpse",
+		german_black_waffen_sentry_heavy_body =				"corpse",
+		german_black_waffen_sentry_heavy_commander_body =	"corpse",
+		german_black_waffen_sentry_light_commander_body =	"corpse",
+		soviet_nkvd_int_security_captain_body =				"corpse",
 	}
 
 	HUDListManager.LootItem_MAP = {

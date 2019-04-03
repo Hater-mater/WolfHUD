@@ -129,10 +129,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			]]
 		},
 		INTERACTION_TO_CARRY = {
-			-- NOT NEEDED
-			--gold_pile_inactive =				"gold", -- gold
-			--carry_drop_flak_shell =			"ammo", -- flak shell
-			--corpse_dispose =					"person", -- corpse
+			corpse_dispose =					"body", -- fresh corpse
 		},
 	}
 
