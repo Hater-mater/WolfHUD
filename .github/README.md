@@ -38,6 +38,7 @@ a workaround is in the pipeline.
 * [Accuracy Plugin](https://bitbucket.org/pjal3urb/customhud/src) made by **Seven**, ported to RAIDWW2 by **me**
 * [Floating Health Bars](https://modworkshop.net/mydownloads.php?action=view_down&did=20330) originally made by **Zenyr** for [PocoHud](https://steamcommunity.com/groups/pocomods), made standalone and then ported to RAIDWW2 by **me**
 * Interaction lock & timer, reload & melee charge indicator rewritten for RAIDWW2 by **me**, based on WolfHUD's implementation, which was basically made by **Seven**, **Kamikaze94** and **me**. There are several others out there, you may know it as Push2Interact or Press2Hold etc.
+* DamagePopups made by **Kamikaze94** for WolfHUD
 * NoSlowMotion made by **Kamikaze94** for WolfHUD (i think)
 * InstantRestart made by **Kamikaze94** for WolfHUD (i think)
 * RestartHotkey made by **me**

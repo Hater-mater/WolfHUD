@@ -4,6 +4,8 @@ WolfgangHUDMenu = WolfgangHUDMenu or class(BLTMenu)
 function WolfgangHUDMenu:Init(root, args)
 
 	local next_menu_button_x = 0
+	local next_menu_button_y = 122
+	local menu_button_count = 0
 	local index = 0
 
 	self.enabled_req_maps = {}
@@ -24,12 +26,18 @@ function WolfgangHUDMenu:Init(root, args)
 				callback = callback(self, self, clbk_id),
 				ignore_align = true,
 				x = next_menu_button_x,
-				y = 192,
+				y = next_menu_button_y,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
 			end
 			next_menu_button_x = next_menu_button_x + item:w() + 10
+			menu_button_count = menu_button_count + 1
+			if menu_button_count == 6 then
+				menu_button_count = 0
+				next_menu_button_x = 0
+				next_menu_button_y = next_menu_button_y + 70
+			end
 		end,
 		slider = function(menu_id, index, data, value)
 			local id = string.format("%s_%s_slider", menu_id, data.name_id)

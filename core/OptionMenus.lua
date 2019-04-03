@@ -707,6 +707,159 @@ if WolfgangHUD then
 							},
 						},
 					},
+					{ -- Damage Popups
+						type = "menu",
+						menu_id = "wolfganghud_dmgpopups_options_menu",
+						name_id = "wolfganghud_dmgpopups_options_name",
+						visible_reqs = {},
+						enabled_reqs = {},
+						options = {
+							{
+								y_offset = 320,
+								type = "multi_choice",
+								name_id = "wolfganghud_dmgpopups_display_mode_title",
+								value = {"HUD", "DamagePopup", "DISPLAY_MODE"},
+								visible_reqs = {},
+								enabled_reqs = {},
+								options = {
+									"wolfganghud_multiselect_disabled",
+									"wolfganghud_dmgpopups_display_mode_player",
+									"wolfganghud_dmgpopups_display_mode_all"
+								},
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_dmgpopups_scale_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+								},
+								value = {"HUD", "DamagePopup", "SCALE"},
+								min_value = 0.1,
+								max_value = 3,
+								step_size = 0.1,
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_dmgpopups_skull_scale_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+								},
+								value = {"HUD", "DamagePopup", "SKULL_SCALE"},
+								min_value = 0.1,
+								max_value = 3,
+								step_size = 0.1,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_dmgpopups_skull_align_title",
+								value = {"HUD", "DamagePopup", "SKULL_ALIGN"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+								},
+								options = {
+									"wolfganghud_multiselect_left",
+									"wolfganghud_multiselect_right"
+								},
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_dmgpopups_time_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+								},
+								value = {"HUD", "DamagePopup", "DURATION"},
+								min_value = 0.1,
+								max_value = 20,
+								step_size = 0.1,
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_dmgpopups_height_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+								},
+								value = {"HUD", "DamagePopup", "HEIGHT"},
+								min_value = 0,
+								max_value = 500,
+								step_size = 10,
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_dmgpopups_alpha_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+								},
+								value = {"HUD", "DamagePopup", "ALPHA"},
+								min_value = 0,
+								max_value = 1,
+								step_size = 0.05,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_dmgpopups_color_title",
+								value = {"HUD", "DamagePopup", "COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2, max = 2 },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_dmgpopups_critical_color_title",
+								value = {"HUD", "DamagePopup", "CRITICAL_COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2, max = 2 },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_dmgpopups_headshot_color_title",
+								value = {"HUD", "DamagePopup", "HEADSHOT_COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2, max = 2 },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_dmgpopups_custom_ai_color_use_title",
+								value = {"HUD", "DamagePopup", "CUSTOM_AI_COLOR_USE"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 3 },
+								},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_dmgpopups_custom_ai_color_title",
+								value = {"HUD", "DamagePopup", "CUSTOM_AI_COLOR"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 3 },
+									{ setting = { "HUD", "DamagePopup", "CUSTOM_AI_COLOR_USE" }, invert = false },
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+						},
+					},
 				},
 			},
 			{	-- Menu Options
@@ -831,7 +984,7 @@ if WolfgangHUD then
 						type = "multi_choice",
 						name_id = "wolfganghud_press2hold_lock_mode_title",
 						options = {
-							"wolfganghud_press2hold_lock_mode_disabled",
+							"wolfganghud_multiselect_disabled",
 							"wolfganghud_press2hold_lock_mode_progress",
 							"wolfganghud_press2hold_lock_mode_total",
 						},
