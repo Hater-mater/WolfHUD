@@ -752,7 +752,11 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		local show = data[name].show and true or false
 
 		if data[name].std_wp then
-			texture, texture_rect = tweak_data.hud_icons:get_icon_data(data[name].std_wp)
+			local icon = tweak_data.gui.icons[data[name].std_wp]
+			if not icon then
+				WolfgangHUD:print_log("unknown icon: " .. tostring(data[name].std_wp), "error")
+			end
+			texture, texture_rect = icon.texture, icon.texture_rect
 		else
 			texture = data[name].texture
 			texture_rect = data[name].texture_rect
@@ -787,7 +791,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 	function CustomWaypoint:_setup_arrow(data, base_size, base_scale)
 		data.arrow = data.arrow or {}
-		data.arrow.std_wp = "wp_arrow"
+		--data.arrow.std_wp = "wp_arrow" -- FIXME
 		data.arrow.alpha = 0.5
 		data.arrow.show_offscreen = (data.arrow.show_offscreen ~= false)
 		data.arrow.w_ratio = 2

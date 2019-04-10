@@ -26,14 +26,14 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 
 			-- mission pickups
 			take_sps_briefcase =				"_pickup_interaction_handler", -- briefcase
-			take_code_book =					"_pickup_interaction_handler", -- code_book
+			take_code_book =					"_pickup_interaction_handler", -- code book
 			gen_pku_crowbar =					"_pickup_interaction_handler", -- crowbar
 			dynamite_x1_pku =					"_pickup_interaction_handler", -- dynamite
 			dynamite_x4_pku =					"_pickup_interaction_handler", -- dynamite
 			dynamite_x5_pku =					"_pickup_interaction_handler", -- dynamite
 			take_dynamite_bag =					"_pickup_interaction_handler", -- dynamite_bag
-			hold_take_empty_canister =			"_pickup_interaction_handler", -- empty_fuel_canister
-			take_enigma =						"_pickup_interaction_handler", -- code_device
+			hold_take_canister =				"_pickup_interaction_handler", -- fuel canister
+			take_enigma =						"_pickup_interaction_handler", -- code device
 			hold_take_gas_can =					"_pickup_interaction_handler", -- gas can
 			take_gas_tank =						"_pickup_interaction_handler", -- gas tank
 			mine_pku =							"_pickup_interaction_handler", -- mine
@@ -45,6 +45,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			take_tank_shell =					"_pickup_interaction_handler", -- tank shell
 			take_thermite =						"_pickup_interaction_handler", -- thermite
 			gen_pku_thermite =					"_pickup_interaction_handler", -- thermite
+			hold_pku_intelligence =				"_pickup_interaction_handler", -- mission documents
 
 			-- combat pickups
 			health_bag =						"_pickup_interaction_handler", -- health bag
@@ -75,12 +76,10 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			hold_open_barrier =					"_pickup_interaction_handler",
 			hold_open_crate_tut =				"_pickup_interaction_handler",
 			hold_open_hatch =					"_pickup_interaction_handler", -- open door hatch
-			hold_pku_intelligence =				"_pickup_interaction_handler", -- mission documents (+camp?)
 			hold_place_canister =				"_pickup_interaction_handler", -- place canister
 			hold_place_codemachine =			"_pickup_interaction_handler",
 			hold_pull_lever =					"_pickup_interaction_handler", -- mission lever
 			hold_remove_latch =					"_pickup_interaction_handler", -- mission latch
-			hold_take_canister =				"_pickup_interaction_handler", -- canister
 			hold_take_empty_canister =			"_pickup_interaction_handler", -- canister
 			hold_take_recording_device =		"_pickup_interaction_handler", -- recording device
 			hold_start_plane =					"_pickup_interaction_handler", -- plane propeller
@@ -129,7 +128,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			]]
 		},
 		INTERACTION_TO_CARRY = {
-			corpse_dispose =					"body", -- fresh corpse
+			corpse_dispose =					"dead_body", -- fresh corpse
 		},
 	}
 

@@ -182,7 +182,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		german_spy =										"alive",		-- untested!
 
-		body =												"corpse",
+		dead_body =											"corpse",
 		german_grunt_body =									"corpse",
 		german_grunt_light_body =							"corpse",
 		german_grunt_mid_body =								"corpse",
@@ -222,26 +222,26 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		hold_take_dogtags =					"dogtags",
 
 		-- equipment
-		take_sps_briefcase =				"briefcase",			-- untested!
-		take_code_book =					"code_book",
+		--take_sps_briefcase =				"briefcase",
+		--take_code_book =					"code_book",
 		gen_pku_crowbar =					"crowbar",
-		dynamite_x1_pku =					"dynamite",				-- FIXME: infinite
-		--dynamite_x4_pku =					"dynamite",				-- FIXME: infinite (x4)
-		--dynamite_x5_pku =					"dynamite",				-- FIXME: infinite (x5)
-		take_dynamite_bag =					"dynamite_bag",
-		hold_take_empty_canister =			"empty_fuel_canister",	-- untested!
-		take_enigma =						"enigma",				-- untested!
-		--hold_take_gas_can =				"gas",					-- FIXME: infinite (x4), most likely not used
-		--take_gas_tank =					"gas_tank",				-- most likely not used
-		mine_pku =							"landmine",				-- untested!
-		take_portable_radio =				"portable_radio",		-- untested!
-		take_tools =						"repair_tools",
-		take_safe_key =						"safe_key",				-- untested!
-		take_safe_keychain =				"safe_keychain",		-- untested!
-		--take_tank_grenade =				"tank_grenade",			-- most likely not used
-		take_tank_shell =					"tank_shell",			-- untested!
-		take_thermite =						"thermite",				-- untested!
-		gen_pku_thermite =					"thermite",				-- untested!
+		--dynamite_x1_pku =					"dynamite",
+		--dynamite_x4_pku =					"dynamite",
+		--dynamite_x5_pku =					"dynamite",
+		--take_dynamite_bag =				"dynamite_bag",
+		hold_take_canister =				"full_fuel_canister",
+		--take_enigma =						"enigma",
+		--hold_take_gas_can =				"gas",
+		--take_gas_tank =					"gas_tank",
+		mine_pku =							"landmine",
+		--take_portable_radio =				"portable_radio",
+		--take_tools =						"repair_tools",
+		--take_safe_key =					"safe_key",
+		--take_safe_keychain =				"safe_keychain",
+		--take_tank_grenade =				"tank_grenade",
+		--take_tank_shell =					"tank_shell",
+		--take_thermite =					"thermite",
+		--gen_pku_thermite =				"thermite",
 
 		-- pickups
 		health_bag =						"health_bag",
@@ -268,20 +268,20 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		dogtags =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_missions", texture_rect = {398, 2, 64, 64},		color_id = "valuable_color",		priority = 4,	category = "valuables",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true)			},
 
 		-- equipment
-		briefcase =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {977, 1757, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		code_book =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {421, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--briefcase =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {977, 1757, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--code_book =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {421, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 		crowbar =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {489, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		dynamite =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {643, 1279, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		dynamite_bag =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {609, 1317, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		empty_fuel_canister =	{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {609, 1279, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		enigma =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {455, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--dynamite =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {643, 1279, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--dynamite_bag =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {609, 1317, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		full_fuel_canister =	{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {643, 1313, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--enigma =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {455, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 		landmine =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {523, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		portable_radio =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {361, 1705, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		repair_tools =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		safe_key =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		safe_keychain =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		tank_shell =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
-		thermite =				{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {557, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--portable_radio =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {361, 1705, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--repair_tools =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--safe_key =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--safe_keychain =		{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {683, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--tank_shell =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {717, 1717, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
+		--thermite =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {557, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 
 		-- pickups
 		health_bag =			{class = "PickupItem",	skills = {5, 2},																color_id = "combat_pickup_color",	priority = 21,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
