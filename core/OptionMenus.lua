@@ -737,7 +737,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "SCALE"},
 								min_value = 0.1,
 								max_value = 3,
-								step_size = 0.1,
+								decimal_places = 1,
 							},
 							{
 								type = "slider",
@@ -749,7 +749,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "SKULL_SCALE"},
 								min_value = 0.1,
 								max_value = 3,
-								step_size = 0.1,
+								decimal_places = 1,
 							},
 							{
 								type = "multi_choice",
@@ -774,7 +774,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "DURATION"},
 								min_value = 0.1,
 								max_value = 20,
-								step_size = 0.1,
+								decimal_places = 1,
 							},
 							{
 								type = "slider",
@@ -786,7 +786,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "HEIGHT"},
 								min_value = 0,
 								max_value = 500,
-								step_size = 10,
+								decimal_places = 0,
 							},
 							{
 								type = "slider",
@@ -798,7 +798,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "ALPHA"},
 								min_value = 0,
 								max_value = 1,
-								step_size = 0.05,
+								decimal_places = 2,
 							},
 							{
 								type = "multi_choice",
