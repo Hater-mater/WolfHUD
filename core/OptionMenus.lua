@@ -192,7 +192,7 @@ if WolfgangHUD then
 							},
 						},
 					},
-					{ -- Interaction indicator
+					{	-- Interaction indicator
 						type = "menu",
 						menu_id = "wolfganghud_interaction_indicator_options_menu",
 						name_id = "wolfganghud_interaction_indicator_options_name",
@@ -707,7 +707,7 @@ if WolfgangHUD then
 							},
 						},
 					},
-					{ -- Damage Popups
+					{	-- Damage Popups
 						type = "menu",
 						menu_id = "wolfganghud_dmgpopups_options_menu",
 						name_id = "wolfganghud_dmgpopups_options_name",
