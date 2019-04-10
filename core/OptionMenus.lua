@@ -51,7 +51,7 @@ if WolfgangHUD then
 								value = {"HUD", "PLAYER", "KILLCOUNTER", "COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								options = {},
 								add_color_options = true,
@@ -62,7 +62,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_show_special_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								value = {"HUD", "PLAYER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 							},
@@ -71,7 +71,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_show_head_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "PLAYER", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								value = {"HUD", "PLAYER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 							},
@@ -114,7 +114,7 @@ if WolfgangHUD then
 								value = {"HUD", "PEER", "KILLCOUNTER", "COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								options = {},
 								add_color_options = true,
@@ -125,7 +125,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_show_special_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 							},
@@ -134,7 +134,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_show_head_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "PEER", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								value = {"HUD", "PEER", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 							},
@@ -166,7 +166,7 @@ if WolfgangHUD then
 								value = {"HUD", "AI", "KILLCOUNTER", "COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								options = {},
 								add_color_options = true,
@@ -177,7 +177,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_show_special_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								value = {"HUD", "AI", "KILLCOUNTER", "SHOW_SPECIAL_KILLS"},
 							},
@@ -186,7 +186,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_show_head_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true }
+									{setting = {"HUD", "AI", "KILLCOUNTER", "HIDE"}, invert = true}
 								},
 								value = {"HUD", "AI", "KILLCOUNTER", "SHOW_HEADSHOT_KILLS"},
 							},
@@ -248,7 +248,7 @@ if WolfgangHUD then
 								value = {"INTERACTION", "BAR_SCALE"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "INTERACTION", "SHOW_BAR" }, invert = false }
+									{setting = {"INTERACTION", "SHOW_BAR"}, invert = false},
 								},
 								min_value = 0.3,
 								max_value = 2,
@@ -271,7 +271,7 @@ if WolfgangHUD then
 								value = {"INTERACTION", "TIMER_SCALE"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+									{setting = {"INTERACTION", "SHOW_TIME_REMAINING"}, invert = false},
 								},
 								min_value = 0.3,
 								max_value = 2,
@@ -283,7 +283,7 @@ if WolfgangHUD then
 								value = {"INTERACTION", "GRADIENT_COLOR_START"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+									{setting = {"INTERACTION", "SHOW_TIME_REMAINING"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -295,7 +295,7 @@ if WolfgangHUD then
 								value = {"INTERACTION", "GRADIENT_COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "INTERACTION", "SHOW_TIME_REMAINING" }, invert = false },
+									{setting = {"INTERACTION", "SHOW_TIME_REMAINING"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -328,7 +328,7 @@ if WolfgangHUD then
 								value = {"HUDList", "list_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -340,7 +340,7 @@ if WolfgangHUD then
 								value = {"HUDList", "list_color_bg"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -352,7 +352,7 @@ if WolfgangHUD then
 								value = {"HUDList", "right_list_scale"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 								min_value = 0.5,
 								max_value = 2,
@@ -364,7 +364,7 @@ if WolfgangHUD then
 								value = {"HUDList", "right_list_progress_alpha"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 								min_value = 0.0,
 								max_value = 1.0,
@@ -385,7 +385,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "show_enemies"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -394,8 +394,8 @@ if WolfgangHUD then
 								value = {"HUDList", "enemy_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "show_enemies"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -407,8 +407,8 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "aggregate_enemies"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "show_enemies"}, invert = false},
 								},
 								invert_value = true,
 							},
@@ -418,9 +418,9 @@ if WolfgangHUD then
 								value = {"HUDList", "special_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_enemies" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "aggregate_enemies" }, invert = true },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "show_enemies"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "aggregate_enemies"}, invert = true},
 								},
 								options = {},
 								add_color_options = true,
@@ -432,7 +432,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "show_objectives"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -441,8 +441,8 @@ if WolfgangHUD then
 								value = {"HUDList", "objective_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "show_objectives" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "show_objectives"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -459,7 +459,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "show_loot"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{ -- Pickup Counters
@@ -472,7 +472,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -481,8 +481,8 @@ if WolfgangHUD then
 								value = {"HUDList", "valuable_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -494,7 +494,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -503,8 +503,8 @@ if WolfgangHUD then
 								value = {"HUDList", "mission_pickup_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -516,7 +516,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -525,8 +525,8 @@ if WolfgangHUD then
 								value = {"HUDList", "combat_pickup_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -538,7 +538,7 @@ if WolfgangHUD then
 								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -547,8 +547,8 @@ if WolfgangHUD then
 								value = {"HUDList", "flare_color"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-									{ setting = { "HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares" }, invert = false },
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -581,7 +581,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "SIZE"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 								min_value = 10,
 								max_value = 100,
@@ -593,7 +593,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "MARGIN"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 								min_value = 0,
 								max_value = 20,
@@ -605,7 +605,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "ALPHA"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 								min_value = 0,
 								max_value = 1,
@@ -621,7 +621,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "PIE_COLOR_CUSTOM"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -630,8 +630,8 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "PIE_COLOR_START"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
-									{ setting = { "HUD", "FHB", "PIE_COLOR_CUSTOM" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
+									{setting = {"HUD", "FHB", "PIE_COLOR_CUSTOM"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -643,8 +643,8 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "PIE_COLOR_END"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
-									{ setting = { "HUD", "FHB", "PIE_COLOR_CUSTOM" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
+									{setting = {"HUD", "FHB", "PIE_COLOR_CUSTOM"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -661,7 +661,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "COLOR_START"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -673,7 +673,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "COLOR_END"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -689,7 +689,7 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "SHOW_FRIENDLY"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
 								},
 							},
 							{
@@ -698,8 +698,8 @@ if WolfgangHUD then
 								value = {"HUD", "FHB", "COLOR_FRIENDLY"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "FHB", "ENABLED" }, invert = false },
-									{ setting = { "HUD", "FHB", "SHOW_FRIENDLY" }, invert = false },
+									{setting = {"HUD", "FHB", "ENABLED"}, invert = false},
+									{setting = {"HUD", "FHB", "SHOW_FRIENDLY"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -732,7 +732,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_dmgpopups_scale_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2},
 								},
 								value = {"HUD", "DamagePopup", "SCALE"},
 								min_value = 0.1,
@@ -744,7 +744,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_dmgpopups_skull_scale_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2},
 								},
 								value = {"HUD", "DamagePopup", "SKULL_SCALE"},
 								min_value = 0.1,
@@ -757,7 +757,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "SKULL_ALIGN"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2},
 								},
 								options = {
 									"wolfganghud_multiselect_left",
@@ -769,7 +769,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_dmgpopups_time_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2},
 								},
 								value = {"HUD", "DamagePopup", "DURATION"},
 								min_value = 0.1,
@@ -781,7 +781,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_dmgpopups_height_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2},
 								},
 								value = {"HUD", "DamagePopup", "HEIGHT"},
 								min_value = 0,
@@ -793,7 +793,7 @@ if WolfgangHUD then
 								name_id = "wolfganghud_dmgpopups_alpha_title",
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2},
 								},
 								value = {"HUD", "DamagePopup", "ALPHA"},
 								min_value = 0,
@@ -806,7 +806,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2, max = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2, max = 2},
 								},
 								options = {},
 								add_color_options = true,
@@ -818,7 +818,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "CRITICAL_COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2, max = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2, max = 2},
 								},
 								options = {},
 								add_color_options = true,
@@ -830,7 +830,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "HEADSHOT_COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 2, max = 2 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 2, max = 2},
 								},
 								options = {},
 								add_color_options = true,
@@ -842,7 +842,7 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "CUSTOM_AI_COLOR_USE"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 3 },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 3},
 								},
 							},
 							{
@@ -851,8 +851,8 @@ if WolfgangHUD then
 								value = {"HUD", "DamagePopup", "CUSTOM_AI_COLOR"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUD", "DamagePopup", "DISPLAY_MODE" }, min = 3 },
-									{ setting = { "HUD", "DamagePopup", "CUSTOM_AI_COLOR_USE" }, invert = false },
+									{setting = {"HUD", "DamagePopup", "DISPLAY_MODE"}, min = 3},
+									{setting = {"HUD", "DamagePopup", "CUSTOM_AI_COLOR_USE"}, invert = false},
 								},
 								options = {},
 								add_color_options = true,
@@ -998,7 +998,7 @@ if WolfgangHUD then
 						value = {"INTERACTION", "MIN_TIMER_DURATION"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2, max = 3 },
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2, max = 3},
 						},
 						min_value = 0,
 						max_value = 45,
@@ -1010,8 +1010,8 @@ if WolfgangHUD then
 						value = {"INTERACTION", "SHOW_LOCK_INDICATOR"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
-							{ setting = { "INTERACTION", "SHOW_BAR" }, invert = false },
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2},
+							{setting = {"INTERACTION", "SHOW_BAR"}, invert = false},
 						},
 					},
 					{
@@ -1020,7 +1020,7 @@ if WolfgangHUD then
 						value = {"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2},
 						},
 					},
 					{
@@ -1029,7 +1029,7 @@ if WolfgangHUD then
 						value = {"INTERACTION", "SHOW_INTERRUPT_HINT"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{ setting = { "INTERACTION", "LOCK_MODE" }, min = 2 },
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2},
 						},
 					},
 				},

@@ -93,62 +93,62 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	-- UNIT TYPES
 
 	HUDListManager.UNIT_TYPES = { -- TODO: validate gasmask
-		german_light = 								{ type_id = "nazi",			category = "enemies"		},
-		german_light_kar98 = 						{ type_id = "nazi",			category = "enemies"		},
-		german_light_shotgun = 						{ type_id = "nazi",			category = "enemies"		},
-		german_heavy = 								{ type_id = "nazi",			category = "enemies"		},
-		german_heavy_mp38 = 						{ type_id = "nazi",			category = "enemies"		},
-		german_heavy_kar98 = 						{ type_id = "nazi",			category = "enemies"		},
-		german_heavy_shotgun = 						{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_light = 						{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_light_mp38 = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_light_kar98 = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_light_shotgun = 				{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_mid =							{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_mid_mp38 = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_mid_kar98 = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_mid_shotgun = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_heavy = 						{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_heavy_mp38 = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_heavy_kar98 = 					{ type_id = "nazi",			category = "enemies"		},
-		german_grunt_heavy_shotgun = 				{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_light = 				{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_light_mp38 = 			{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_light_kar98 = 			{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_light_shotgun = 		{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_heavy = 				{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_heavy_mp38 = 			{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_heavy_kar98 = 			{ type_id = "nazi",			category = "enemies"		},
-		german_gebirgsjager_heavy_shotgun = 		{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_light = 				{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_light_mp38 = 		{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_light_kar98 = 		{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_light_shotgun = 		{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_heavy = 				{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_heavy_mp38 = 		{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_heavy_kar98 = 		{ type_id = "nazi",			category = "enemies"		},
-		german_fallschirmjager_heavy_shotgun = 		{ type_id = "nazi",			category = "enemies"		},
+		german_light =								{type_id = "nazi",			category = "enemies"		},
+		german_light_kar98 =						{type_id = "nazi",			category = "enemies"		},
+		german_light_shotgun =						{type_id = "nazi",			category = "enemies"		},
+		german_heavy =								{type_id = "nazi",			category = "enemies"		},
+		german_heavy_mp38 =							{type_id = "nazi",			category = "enemies"		},
+		german_heavy_kar98 =						{type_id = "nazi",			category = "enemies"		},
+		german_heavy_shotgun =						{type_id = "nazi",			category = "enemies"		},
+		german_grunt_light =						{type_id = "nazi",			category = "enemies"		},
+		german_grunt_light_mp38 =					{type_id = "nazi",			category = "enemies"		},
+		german_grunt_light_kar98 =					{type_id = "nazi",			category = "enemies"		},
+		german_grunt_light_shotgun =				{type_id = "nazi",			category = "enemies"		},
+		german_grunt_mid =							{type_id = "nazi",			category = "enemies"		},
+		german_grunt_mid_mp38 =						{type_id = "nazi",			category = "enemies"		},
+		german_grunt_mid_kar98 =					{type_id = "nazi",			category = "enemies"		},
+		german_grunt_mid_shotgun =					{type_id = "nazi",			category = "enemies"		},
+		german_grunt_heavy =						{type_id = "nazi",			category = "enemies"		},
+		german_grunt_heavy_mp38 =					{type_id = "nazi",			category = "enemies"		},
+		german_grunt_heavy_kar98 =					{type_id = "nazi",			category = "enemies"		},
+		german_grunt_heavy_shotgun =				{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_light =					{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_light_mp38 =			{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_light_kar98 =			{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_light_shotgun =			{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_heavy =					{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_heavy_mp38 =			{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_heavy_kar98 =			{type_id = "nazi",			category = "enemies"		},
+		german_gebirgsjager_heavy_shotgun =			{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_light =				{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_light_mp38 =			{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_light_kar98 =		{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_light_shotgun =		{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_heavy =				{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_heavy_mp38 =			{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_heavy_kar98 =		{type_id = "nazi",			category = "enemies"		},
+		german_fallschirmjager_heavy_shotgun =		{type_id = "nazi",			category = "enemies"		},
 
-		german_waffen_ss = 							{ type_id = "waffen_ss",	category = "enemies"		},
-		german_waffen_ss_mp38 = 					{ type_id = "waffen_ss",	category = "enemies"		},
-		german_waffen_ss_kar98 = 					{ type_id = "waffen_ss",	category = "enemies"		},
-		german_waffen_ss_shotgun = 					{ type_id = "waffen_ss",	category = "enemies"		},
+		german_waffen_ss =							{type_id = "waffen_ss",		category = "enemies"		},
+		german_waffen_ss_mp38 =						{type_id = "waffen_ss",		category = "enemies"		},
+		german_waffen_ss_kar98 =					{type_id = "waffen_ss",		category = "enemies"		},
+		german_waffen_ss_shotgun =					{type_id = "waffen_ss",		category = "enemies"		},
 
-		german_officer = 							{ type_id = "officer",		category = "enemies"		},
-		german_commander = 							{ type_id = "officer",		category = "enemies"		},
-		german_og_commander = 						{ type_id = "officer",		category = "enemies"		},
+		german_officer =							{type_id = "officer",		category = "enemies"		},
+		german_commander =							{type_id = "officer",		category = "enemies"		},
+		german_og_commander =						{type_id = "officer",		category = "enemies"		},
 
-		german_spotter = 							{ type_id = "spotter",		category = "enemies"		},
+		german_spotter =							{type_id = "spotter",		category = "enemies"		},
 
-		german_sniper =								{ type_id = "sniper",		category = "enemies"		},
+		german_sniper =								{type_id = "sniper",		category = "enemies"		},
 
-		german_flamer = 							{ type_id = "flamer",		category = "enemies"		},
+		german_flamer =								{type_id = "flamer",		category = "enemies"		},
 
-		soviet_nkvd_int_security_captain = 			{ type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
-		soviet_nkvd_int_security_captain_b = 		{ type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
+		soviet_nkvd_int_security_captain =			{type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
+		soviet_nkvd_int_security_captain_b =		{type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
 
-		german_gasmask = 							{ type_id = "unknown",		category = "enemies"		}, -- whats this?
-		german_gasmask_shotgun = 					{ type_id = "unknown",		category = "enemies"		}, -- whats this?
+		german_gasmask =							{type_id = "unknown",		category = "enemies"		}, -- whats this?
+		german_gasmask_shotgun =					{type_id = "unknown",		category = "enemies"		}, -- whats this?
 	}
 
 	HUDListManager.UnitCountItem_MAP = {
@@ -842,14 +842,14 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDList.ItemBase:_fade(target_alpha, instant, time_override)
 		self._panel:stop()
-		self._active_fade = { instant = instant or self._panel:alpha() == target_alpha, alpha = target_alpha, time_override = time_override }
+		self._active_fade = {instant = instant or self._panel:alpha() == target_alpha, alpha = target_alpha, time_override = time_override}
 		self:_animate_item()
 	end
 
 	function HUDList.ItemBase:move(x, y, instant, time_override)
 		if alive(self._panel) then
 			self._panel:stop()
-			self._active_move = { instant = instant or (self._panel:x() == x and self._panel:y() == y), x = x, y = y, time_override = time_override }
+			self._active_move = {instant = instant or (self._panel:x() == x and self._panel:y() == y), x = x, y = y, time_override = time_override}
 			self:_animate_item()
 		end
 	end
@@ -1459,7 +1459,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDList.ExpansionIndicator = HUDList.ExpansionIndicator or class(HUDList.ItemBase)
 
 	function HUDList.ExpansionIndicator:init(parent, name, ratio_w, ratio_h, params)
-		HUDList.ExpansionIndicator.super.init(self, parent, name, { align = "center", w = parent:panel():h() * (ratio_w or 1), h = parent:panel():h() * (ratio_h or 1) })
+		HUDList.ExpansionIndicator.super.init(self, parent, name, {align = "center", w = parent:panel():h() * (ratio_w or 1), h = parent:panel():h() * (ratio_h or 1)})
 
 		local icon = params.icon or {}
 		self._icon = self._panel:bitmap({
@@ -1825,7 +1825,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		local pw, ph = self._panel:w(), self._panel:h()
 		local total = 2*pw + 2*ph
 		self._bar_w = w
-		self._stages = { 0, (pw - 2*self._bar_w)/total, (pw+ph-self._bar_w)/total, (2*pw+ph-2*self._bar_w)/total, 1 }
+		self._stages = {0, (pw - 2 * self._bar_w) / total, (pw + ph - self._bar_w) / total, (2 * pw + ph - 2 * self._bar_w) / total, 1}
 		self._top:set_h(w)
 		self._top:set_top(0)
 		self._bottom:set_h(w)

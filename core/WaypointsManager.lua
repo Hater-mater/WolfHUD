@@ -292,7 +292,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			visible_distance = data.visible_distance or {},
 			fade_angle = data.fade_angle or {},
 			--rescale_distance = data.rescale_distance or {},	--Don't use this for main panel or things get ugly
-			base_values = { alpha = data.alpha or 1 },
+			base_values = {alpha = data.alpha or 1},
 		}
 
 		for component_name, component_data in pairs(data) do
@@ -762,7 +762,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		self._settings[name] = {
 			show = show,
 			show_offscreen = (data[name].show_offscreen ~= false) or false,
-			base_values = { size = size, alpha = alpha, w_ratio = w_ratio },
+			base_values = {size = size, alpha = alpha, w_ratio = w_ratio},
 			color = data[name].color,
 			fade_duration = data[name].fade_duration or {},
 			visible_angle = data[name].visible_angle or {},
@@ -812,7 +812,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		self._settings[name] = {
 			show = show,
 			show_offscreen = component_data.show_offscreen and true or false,
-			base_values = { size = size, alpha = alpha, font_size = size * 0.95 },
+			base_values = {size = size, alpha = alpha, font_size = size * 0.95},
 			color = component_data.color,
 			fade_duration = component_data.fade_duration or {},
 			visible_angle = component_data.visible_angle or {},

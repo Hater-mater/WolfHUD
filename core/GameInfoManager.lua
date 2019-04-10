@@ -265,7 +265,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 	function GameInfoManager:_pickup_interaction_handler(event, key, data)
 		if event == "add" then
 			if not self._pickups[key] then
-				self._pickups[key] = { unit = data.unit, interact_id = data.interact_id }
+				self._pickups[key] = {unit = data.unit, interact_id = data.interact_id}
 				self:_listener_callback("pickup", "add", key, self._pickups[key])
 				self:_pickup_count_event("change", data.interact_id, 1, self._pickups[key])
 			end

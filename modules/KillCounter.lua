@@ -169,7 +169,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 		local icon_side_len = self._kills_panel:h() * 0.9
 		self._kill_icon = self._kills_panel:bitmap({
 			texture = "ui/hud/atlas/raid_atlas_waypoints",
-			texture_rect = { 401, 437, 38, 38 },
+			texture_rect = {401, 437, 38, 38},
 			w = icon_side_len,
 			h = icon_side_len,
 			blend_mode = "normal",
