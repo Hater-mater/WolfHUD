@@ -714,8 +714,12 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 						options = {
-							{
+							{ -- General
 								y_offset = 320,
+								type = "header",
+								text_id = "wolfganghud_dmgpopups_general_name",
+							},
+							{
 								type = "multi_choice",
 								name_id = "wolfganghud_dmgpopups_display_mode_title",
 								value = {"HUD", "DamagePopup", "DISPLAY_MODE"},
