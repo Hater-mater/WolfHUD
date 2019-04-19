@@ -88,6 +88,15 @@ if WolfgangHUD then
 				},
 			},
 		},
+		CustomWaypoints = {
+			SHOW_PICKUPS						= true,
+			LOOT = {
+				SHOW							= true,
+				ICON							= false,
+				OFFSET							= 15,
+				ANGLE							= 15,
+			},
+		},
 		GAMEPLAY = {
 			FOV_BASED_SENSIVITY					= true,
 			NO_SLOWMOTION						= true,

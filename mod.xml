@@ -46,6 +46,10 @@
 
 		<!-- MODULES -->
 
+		<!-- Custom Waypoints -->
+		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/CustomWaypoints.lua"			/>
+		<hook source_file="lib/units/vehicles/vehicledrivingext"				file="modules/CustomWaypoints.lua"			/>
+
 		<!-- Damage Popup -->
 		<hook source_file="lib/units/civilians/civiliandamage"					file="modules/DamagePopup.lua"				/>
 		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/DamagePopup.lua"				/>
