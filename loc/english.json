@@ -21,7 +21,7 @@
 	"wolfganghud_multiselect_left"									: "Left",
 	"wolfganghud_multiselect_right"									: "Right",
 
-	"wolfganghud_int_locked"										: "PRESS $BTN_CANCEL TO INTERRUPT",
+	"wolfganghud_int_locked"										: "PRESS $BTN_CANCEL; TO INTERRUPT",
 
 	"wolfganghud_reset_options_title"								: "Default options",
 	"wolfganghud_reset_options_confirm"								: "Are you sure, you want to reset all WolfgangHUD options to their default value?",
