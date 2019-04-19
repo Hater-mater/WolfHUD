@@ -11,7 +11,7 @@
 	<auto_updates
 			provider="modworkshop"
 			id="24551"
-			version="1.5"/>
+			version="1.6"/>
 
 	<localization directory="loc" default="english.json">
 		<loc file="chinese.json" language="chinese"/>
