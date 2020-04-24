@@ -431,7 +431,10 @@ lounge		100421		100448			102049
 				[132065] = true,
 				[100426] = true,
 				[132537] = true,
-				[100058] = true
+				[100058] = true,
+			},
+			mex_cooking = { -- Border Crystals (4x Roman Armor)
+				roman_armor = true,
 			}
 		},
 	}
@@ -2319,7 +2322,7 @@ if string.lower(RequiredScript) == "lib/units/equipment/ecm_jammer/ecmjammerbase
 	end
 
 	function ECMJammerBase:_set_feedback_active(state, ...)
-		if not state and self._feedback_active then
+		if not state and self._feedback_active and managers.network and managers.network:session() and managers.network:session():local_peer() and managers.network:session():local_peer():id() then
 			local peer_id = managers.network:session():local_peer():id()
 
 			if self._owner_id == peer_id and managers.player:has_category_upgrade("ecm_jammer", "can_retrigger") then

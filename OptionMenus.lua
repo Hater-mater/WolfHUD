@@ -774,10 +774,7 @@ if WolfHUD then
 								type = "toggle",
 								name_id = "wolfhud_panels_show_ping_title",
 								desc_id = "wolfhud_panels_show_ping_desc",
-								visible_reqs = {},
-								enabled_reqs = {
-									{ setting = {"CustomHUD", "ENABLED"}, invert = false }
-								},
+								visible_reqs = {}, enabled_reqs = {},
 								value = {"CustomHUD", "TEAMMATE", "LATENCY"},
 							},
 							{
@@ -1172,7 +1169,7 @@ if WolfHUD then
 								visible_reqs = {}, enabled_reqs = {},
 								value = {"HUDChat", "LINE_HEIGHT"},
 								min_value = 10,
-								max_value = 20,
+								max_value = 40,
 								step_size = 1,
 							},
 							{
@@ -1784,6 +1781,17 @@ if WolfHUD then
 						size = 16,
 					},
 					{
+						type = "toggle",
+						name_id = "wolfhud_hudlist_timers_in_seconds_title",
+						desc_id = "wolfhud_hudlist_timers_in_second_desc",
+						value = {"HUDList", "timers_in_seconds"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type ="divider",
+						size = 8,
+					},
+					{
 						type = "slider",
 						name_id = "wolfhud_hudlist_scale_left_title",
 						desc_id = "wolfhud_hudlist_scale_left_desc",
@@ -2073,7 +2081,7 @@ if WolfHUD then
 								type = "toggle",
 								name_id = "wolfhud_hudlist_show_own_minions_only_title",
 								desc_id = "wolfhud_hudlist_show_own_minions_only_desc",
-								value = {"HUDList", "LEFT_LIST", "show_minions"},
+								value = {"HUDList", "LEFT_LIST", "show_own_minions_only"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
@@ -2105,19 +2113,6 @@ if WolfHUD then
 								value = {"HUDList", "LEFT_LIST", "show_tape_loop"},
 								visible_reqs = {},
 								enabled_reqs = {
-									{ setting = { "HUDList", "ENABLED" }, invert = false },
-								},
-							},
-							{
-								type = "divider",
-								size = 8,
-							},
-							{
-								type = "toggle",
-								name_id = "wolfhud_hudlist_timer_format_title",
-								desc_id = "wolfhud_hudlist_timer_format_desc",
-								value = {"HUDList", "LEFT_LIST", "timer_in_seconds"},
-								visible_reqs = {
 									{ setting = { "HUDList", "ENABLED" }, invert = false },
 								},
 							},
@@ -3832,38 +3827,6 @@ if WolfHUD then
 				options = {
 					{
 						type = "toggle",
-						name_id = "wolfhud_replace_weapon_names_title",
-						desc_id = "wolfhud_replace_weapon_names_desc",
-						value = {"INVENTORY", "USE_REAL_WEAPON_NAMES"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_inventory_names_title",
-						desc_id = "wolfhud_inventory_names_desc",
-						value = {"INVENTORY", "SHOW_WEAPON_NAMES"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_show_mini_icons_title",
-						desc_id = "wolfhud_show_mini_icons_desc",
-						value = {"INVENTORY", "SHOW_WEAPON_MINI_ICONS"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "toggle",
-						name_id = "wolfhud_skill_names_title",
-						desc_id = "wolfhud_skill_names_desc",
-						value = {"INVENTORY", "SHOW_SKILL_NAMES"},
-						visible_reqs = {}, enabled_reqs = {},
-					},
-					{
-						type = "divider",
-						size = 24,
-					},
-					{
-						type = "toggle",
 						name_id = "wolfhud_enable_burstmode_title",
 						desc_id = "wolfhud_enable_burstmode_desc",
 						value = {"EQUIPMENT", "ENABLE_BURSTMODE"},
@@ -3895,6 +3858,48 @@ if WolfHUD then
 						name_id = "wolfhud_equipment_keycard_doors_disabled_title",
 						desc_id = "wolfhud_equipment_keycard_doors_disabled_desc",
 						value = {"EQUIPMENT", "KEYCARD_DOORS_DISABLED"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 24,
+					},{
+						type = "toggle",
+						name_id = "wolfhud_show_contractor_job_heat_title",
+						desc_id = "wolfhud_show_contractor_job_heat_desc",
+						value = {"INVENTORY", "SHOW_CONTRACTOR_JOB_HEAT"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "divider",
+						size = 24,
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_replace_weapon_names_title",
+						desc_id = "wolfhud_replace_weapon_names_desc",
+						value = {"INVENTORY", "USE_REAL_WEAPON_NAMES"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_inventory_names_title",
+						desc_id = "wolfhud_inventory_names_desc",
+						value = {"INVENTORY", "SHOW_WEAPON_NAMES"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_show_mini_icons_title",
+						desc_id = "wolfhud_show_mini_icons_desc",
+						value = {"INVENTORY", "SHOW_WEAPON_MINI_ICONS"},
+						visible_reqs = {}, enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfhud_skill_names_title",
+						desc_id = "wolfhud_skill_names_desc",
+						value = {"INVENTORY", "SHOW_SKILL_NAMES"},
 						visible_reqs = {}, enabled_reqs = {},
 					},
 				},

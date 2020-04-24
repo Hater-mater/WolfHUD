@@ -12,8 +12,6 @@ I got the permission from **Seven, ViciousWalrus, Undeadsewer, FishTaco, friendI
 
 **Huge thanks to [Kampfhörnchen](http://modworkshop.net/member.php?action=profile&uid=19364) for creating a better logo and a banner.**
 
-Keep in mind, that this is a development version. For a more stable release, get your version [here](http://paydaymods.com/mods/298/wolfhud).
-
 ## Preview
 
 <p align="center">
@@ -24,27 +22,29 @@ Keep in mind, that this is a development version. For a more stable release, get
 
 ## Requirements
 
-To make this mod work you will need to install either [Better Lua injecTor](http://paydaymods.com/download/) aka BLT. Linux/ SteamOS users need to use [BLT4L](https://github.com/blt4linux/blt4l/releases) instead.
+To make this mod work you will need to install __[SuperBLT](https://superblt.znix.xyz)__.
+
+*Note: Regular BLT is, with Version 3.00 forward, no longer supported.*
 
 ## Installation (Direct Download)
 
-1. Click on the **Clone or Download** Button at the top of this site
-2. Click on the **Download .ZIP** Button
-3. Open the downloaded archive, using WinRAR or 7Zip
-4. Extract the **WolfHUD-master** folder into your 'PAYDAY 2/mods' folder
-5. Rename the folder **WolfHUD-master** to **WolfHUD** (if you want to)
-6. Start the game once. It will prompt you to update Federal Inventory and WolfHUD_Textures. Update both.
+1. [Download WolfHUD from here](https://github.com/Kamikaze94/WolfHUD/archive/master.zip) or clone the master branch.  
+2. Open the downloaded archive, using WinRAR or 7Zip
+3. Extract the **WolfHUD-master** folder into your 'PAYDAY 2/mods' folder
 
-## If you don't want/like Inventory Icons
+## AutoUpdates
 
-To remove "Federal Inventory" go to your **PAYDAY 2/assets/mod_overrides/Federal Inventory** folder and delete the **guis** folder. Then open **revision.txt** and change the number to a higher one, to prevent future updates.
+This mod uses SuperBLTs custom update URL support.  
+When an update is available, you'll be notified about it in the game.  
+The update can be downloaded and installed through SuperBLTs download manager.   
+*(The installation-folder needs to be named **WolfHUD-master** for autoupdates to work!)*
 
 ## Bug reports
 
-If you encounter any bugs, feel free to post about it on the issues tab!
-Please try to provide information from your crashlog and the actions you and your teammates were doing, when you crashed. ;)
-The Crashlog can be found at **%localappdata%/PAYDAY 2/crashlog.txt**.
-The BLT log can be found at **PAYDAY 2/mods/logs/**.
+If you encounter any bugs, feel free to post about it on the issues tab!  
+Please try to provide information from your crashlog and the actions you and your teammates were doing, when you crashed. ;)  
+The Crashlog can be found at **%localappdata%/PAYDAY 2/crashlog.txt**.  
+The BLT log can be found at **PAYDAY 2/mods/logs/**.  
 
 ## Included Mods
 
@@ -80,9 +80,6 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
   * Show Skill Names made by **me**
   * [Skillset Info](http://modworkshop.net/mydownloads.php?action=view_down&did=15294) made by **Fooksie**
   * Increased the maximum chars of custom Weapon/Mask/Skillset names
-  * Federal Inventory (Mod Override), made by **Nervatel Hanging Closet Monster** and **Luffy**, updated by **me**
-    * [Weapon Icons](https://modworkshop.net/mydownloads.php?action=view_down&did=14240), [Melee Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13910) and [Mask Icons](http://modworkshop.net/mydownloads.php?action=view_down&did=13911) made by **Nervatel Hanging Closet Monster**
-    * [Throwables, Equipment, Armor and Heister Portraits](http://modworkshop.net/mydownloads.php?action=view_down&did=13916) made by **Luffy**
 
 ## Localizations
 
@@ -94,8 +91,9 @@ The BLT log can be found at **PAYDAY 2/mods/logs/**.
 * Chinese made by **zhongfly** & **CoolLKK**
 * French made by **Elise MRX (La Mule)**
 * Portuguese made by **Kazenin (Aldo Raine)**
+* Italian made by **LeecanIt**
 
-Big credit goes to all of you!
-Without your awesome mods, I would have quitted this game a long time ago!
-**If I forgot to mention you, I'm really sorry.
-Please feel free to contact me, so I can credit you, for the awesome stuff you have made :)**
+Big credit goes to all of you!  
+Without your awesome mods, I would have quitted this game a long time ago!  
+**If I forgot to mention you, I'm really sorry.  
+Please feel free to contact me, so I can credit you, for the awesome stuff you have made :)**  

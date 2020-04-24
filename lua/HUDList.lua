@@ -5,7 +5,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local format_time_string = function(value)
 		local time_str
 
-		if math.floor(value) > 60 and not WolfHUD:getSetting({"HUDList", "LEFT_LIST", "timer_in_seconds"}, true) then
+		if math.floor(value) > 60 and not (HUDListManager and HUDListManager.ListOptions.timers_in_seconds) then
 			time_str = string.format("%d:%02d", math.floor(value / 60), math.floor(value % 60))
 		elseif math.floor(value) > 9.9 then
 			time_str = string.format("%d", math.floor(value))
@@ -183,6 +183,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		right_list_progress_alpha 		= WolfHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 0.4),
 		left_list_progress_alpha 		= WolfHUD:getSetting({"HUDList", "left_list_progress_alpha"}, 0.4),
 		buff_list_progress_alpha 		= WolfHUD:getSetting({"HUDList", "buff_list_progress_alpha"}, 1.0),
+		
+		timers_in_seconds 				= WolfHUD:getSetting({"HUDList", "timers_in_seconds"}, false),
 
 		--Left side list
 		show_timers 					= WolfHUD:getSetting({"HUDList", "LEFT_LIST", "show_timers"}, true),     				--Drills, time locks, hacking etc.
@@ -281,8 +283,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		city_swat = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_city_swat" 				},
 		security = 					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security" 				},
 		security_undominatable = 	{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security" 				},
+		security_mex = 				{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security" 				},
 		gensec = 					{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_gensec" 					},
 		bolivian_indoors =			{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_bolivian_security" 		},
+		bolivian_indoors_mex =		{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_bolivian_security_mex" 	},
 		bolivian =					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_bolivian_thug" 			},
 		gangster = 					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_gangster" 				},
 		mobster = 					{ type_id = "thug",			category = "enemies",	long_name = "wolfhud_enemy_mobster" 				},
@@ -309,6 +313,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		phalanx_minion = 			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_phalanx_minion" 			},
 		civilian = 					{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian" 				},
 		civilian_female = 			{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian" 				},
+		civilian_mariachi = 		{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_civilian" 				},
 		bank_manager = 				{ type_id = "civ",			category = "civilians",	long_name = "wolfhud_enemy_bank_manager" 			},
 		--drunk_pilot = 			{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_drunk_pilot" 			},	--White x-Mas
 		--escort = 					{ type_id = "unique",		category = "civilians",	long_name = "wolfhud_enemy_escort" 					},	--?
@@ -328,8 +333,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		civ_hostage =				{ type_id = "civ_hostage",	category = "hostages",	force_update = { "civ", "civilians" } 				},
 		cop_minion =				{ type_id = "minion",		category = "minions",	force_update = { "cop", "enemies" } 				},
 		sec_minion =				{ type_id = "minion",		category = "minions",	force_update = { "security", "enemies" }			},
-
-		boom = 						{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_boom" 					},
+		
+		--Restoration Overhaul Enemies
+		boom = 						{ type_id = "grenadier",	category = "enemies",	long_name = "wolfhud_enemy_boom" 					},
 		omnia_lpf = 				{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_omnia_lpf" 				},
 		summers = 					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_summers" 				},
 		boom_summers = 				{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_boom_summers" 			},
@@ -337,6 +343,23 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		medic_summers = 			{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_medic_summers" 			},
 		spring = 					{ type_id = "phalanx",		category = "enemies",	long_name = "wolfhud_enemy_spring" 					},
 		fbi_vet = 					{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_fbi_vet" 				},
+
+		--Crackdown Enemies
+		deathvox_lightar = 			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_deathvox_light" },
+		deathvox_heavyar = 			{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_deathvox_heavy" },
+		deathvox_lightshot = 		{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_deathvox_light" },
+		deathvox_heavyshot = 		{ type_id = "cop",			category = "enemies",	long_name = "wolfhud_enemy_deathvox_heavy" },
+		deathvox_greendozer = 		{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank" },
+		deathvox_blackdozer = 		{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank" },
+		deathvox_lmgdozer = 		{ type_id = "tank",			category = "enemies",	long_name = "wolfhud_enemy_tank" },
+		deathvox_medicdozer =		{ type_id = "tank_med",		category = "enemies",	long_name = "wolfhud_enemy_tank_medic" },
+		deathvox_cloaker =			{ type_id = "spooc",		category = "enemies",	long_name = "wolfhud_enemy_spooc" },
+		deathvox_taser =			{ type_id = "taser",		category = "enemies",	long_name = "wolfhud_enemy_taser" },
+		deathvox_shield =			{ type_id = "shield",		category = "enemies",	long_name = "wolfhud_enemy_shield" },
+		deathvox_sniper =			{ type_id = "sniper",		category = "enemies",	long_name = "wolfhud_enemy_sniper" },
+		deathvox_medic =			{ type_id = "medic",		category = "enemies",	long_name = "wolfhud_enemy_medic" },
+		deathvox_grenadier =		{ type_id = "grenadier",	category = "enemies",	long_name = "wolfhud_enemy_boom" },
+		deathvox_guard =			{ type_id = "security",		category = "enemies",	long_name = "wolfhud_enemy_security" },
 	}
 
 	HUDListManager.SPECIAL_PICKUP_TYPES = {
@@ -405,6 +428,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		drone_control_helmet =		"drone_ctrl",
 		evidence_bag =				"evidence",
 		expensive_vine = 			"wine",
+		faberge_egg = 				"egg",
 		goat = 						"goat",
 		gold =						"gold",
 		hope_diamond =				"diamond",
@@ -432,9 +456,11 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		safe_ovk =					"safe",
 		safe_wpn =					"safe",
 		samurai_suit =				"armor",
+		roman_armor = 				"armor",
 		sandwich =					"toast",
 		special_person =			"body",
 		toothbrush = 				"toothbrush",
+		treasure = 					"treasure",
 		turret =					"turret",
 		unknown =					"dentist",
 		box_unknown = 				"dentist",
@@ -2732,6 +2758,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			shield =		{ class = "ShieldCountItem", texture = buff_shield, color_id = "special_color", 	priority = 6 },
 			sniper =		{ class = "UnitCountItem",	 skills = 	{6, 5}, 	color_id = "special_color", 	priority = 6 },
 			medic = 		{ class = "UnitCountItem",	 skills = 	{5, 8}, 	color_id = "special_color", 	priority = 6 },
+			grenadier = 	{ class = "UnitCountItem",	 skills = 	{9, 9}, 	color_id = "special_color", 	priority = 6 },
 			thug_boss =		{ class = "UnitCountItem",	 skills = 	{1, 1}, 	color_id = "thug_color", 		priority = 4 },
 			phalanx =		{ class = "UnitCountItem",	 texture = buff_shield, color_id = "special_color", 	priority = 7 },
 
@@ -3065,7 +3092,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		c4 = 						{ hudicons	 = { 36, 242, 32, 32 }, 											priority = 1, category = "mission_pickups", ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true) 	},
 		small_loot = 				{ hudpickups = { 32, 224, 32, 32}, 												priority = 3, category = "valuables", 		ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, true) 		},
 		briefcase = 				{ hudpickups = { 96, 224, 32, 32}, 												priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
-		courier = 					{ texture = "guis/dlcs/gage_pack_jobs/textures/pd2/endscreen/gage_assignment", 	priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},			--{ texture = "guis/textures/contact_vlad", texture_rect = {1920, 0, 64, 64}, priority = 3 }, --[[skills 	 = { 6, 0 }]]
+		courier = 					{ texture = "guis/dlcs/gage_pack_jobs/textures/pd2/endscreen/gage_assignment", 	priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
 		gage_case = 				{ skills 	 = { 1, 0 }, 														priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
 		gage_key = 					{ hudpickups = { 32, 64, 32, 32 }, 												priority = 3, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
 		paycheck_masks = 			{ hudpickups = { 128, 32, 32, 32 }, 											priority = 4, category = "collectables", 	ignore = not WolfHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "collectables"}, true) 		},
@@ -3126,6 +3153,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		diamond = 		{ text = "wolfhud_hudlist_loot_diamond", 	priority = 1 },	-- The Diamond/Diamond Heist Red Diamond
 		diamonds =		{ text = "hud_carry_diamonds_dah", 			priority = 1 },	-- The Diamond Heist
 		drone_ctrl = 	{ text = "hud_carry_helmet", 				priority = 1 },	-- Biker Heist
+		egg = 			{ text = "wolfhud_hudlist_loot_egg", 		priority = 1 },	-- San Martin Bank
 		evidence =		{ text = "wolfhud_hudlist_loot_evidence", 	priority = 1 },	-- Hoxton revenge
 		goat =			{ text = "hud_carry_goat", 					priority = 1 },	-- Goat Simulator
 		gold =			{ text = "hud_carry_gold", 					priority = 1 },
@@ -3143,6 +3171,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		toast =			{ text = "wolfhud_hudlist_loot_toast", 		priority = 1 },	-- White Xmas
 		toothbrush = 	{ text = "wolfhud_hudlist_loot_toothbrush", priority = 1 },	-- Panic Room
 		toy = 			{ text = "wolfhud_hudlist_loot_toy", 		priority = 1 },	-- Stealing Xmas
+		treasure = 		{ text = "wolfhud_hudlist_loot_treasure", 	priority = 1 },	-- San Martin Bank
 		turret =		{ text = "hud_carry_turret", 				priority = 1 },	-- Transport: Train
 		vr = 			{ text = "wolfhud_hudlist_loot_vr", 		priority = 1 },	-- Stealing Xmas
 		warhead =		{ text = "hud_carry_warhead", 				priority = 1 },	-- Meltdown
@@ -5564,8 +5593,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ignore = false,
 		},
 		weapon_charge = {
-			texture = "guis/textures/contact_vlad",
-			texture_rect = {1984, 0, 64, 64},
+			texture = "guis/textures/wolfhud/hudlist/weapon_charge",
 			class = "TimedBuffItem",
 			priority = 15,
 			color = HUDList.BuffItemBase.ICON_COLOR.STANDARD,
@@ -6451,8 +6479,8 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDList.TimedInteractionItem = HUDList.TimedInteractionItem or class(HUDList.TimedBuffItem)
 	HUDList.TimedInteractionItem.INTERACT_ID_TO_ICON = {
-		default 					= { texture = "guis/textures/pd2/skilltree/drillgui_icon_faster" 					},
-		mask_up 					= { texture = "guis/textures/contact_vlad", texture_rect = {1920, 256, 128, 130}	},
+		default 					= { texture = "guis/textures/pd2/skilltree/drillgui_icon_faster" 	},
+		mask_up 					= { texture = "guis/textures/wolfhud/hudlist/mask_up" 				},
 		ammo_bag 					= { skills 		= {1, 0}				},
 		doc_bag 					= { skills 		= {2, 7}				},
 		first_aid_kit 				= { skills 		= {3, 10}, 				},
