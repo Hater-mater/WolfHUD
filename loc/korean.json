@@ -134,6 +134,7 @@
 	"wolfhud_tabstats_melee_kills" : "근접 사살 수:",
 	"wolfhud_tabstats_explosion_kills" : "폭팔 사살 수:",
 	"wolfhud_tabstats_nonspecial_kills" : "일반경찰 사살 수:",
+	"wolfhud_tabstats_total_kills" : "Total Kills:",
 	"wolfhud_tabstats_total_revives" : "총 살려낸 팀원 (플레이어/봇):",
 	"wolfhud_tabstats_alltime_stat" : "합계:",
 

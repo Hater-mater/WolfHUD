@@ -136,6 +136,7 @@
 	"wolfhud_tabstats_melee_kills" : "Nahkampf Kills:",
 	"wolfhud_tabstats_explosion_kills" : "Explosions Kills:",
 	"wolfhud_tabstats_nonspecial_kills" : "Normale Kills:",
+	"wolfhud_tabstats_total_kills" : "Gesamt Kills:",
 	"wolfhud_tabstats_total_revives" : "Wiederbelebung (P/AI):",
 	"wolfhud_tabstats_alltime_stat" : "Insgesamt:",
 
