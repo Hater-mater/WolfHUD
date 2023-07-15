@@ -54,10 +54,10 @@
 		<hook source_file="lib/units/civilians/civiliandamage"					file="modules/DamagePopup.lua"				/>
 		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/DamagePopup.lua"				/>
 
-		<!-- Straight To Main Menu -->
+		<!-- Straight To Main Menu
 		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
 		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
-
+ -->
 		<!-- NoAds -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
 

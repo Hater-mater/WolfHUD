@@ -27,6 +27,8 @@ function WolfgangHUDMenu:Init(root, args)
 				ignore_align = true,
 				x = next_menu_button_x,
 				y = next_menu_button_y,
+				h = 50,
+				w = 275,
 			})
 			if data.visible_reqs or data.enabled_reqs then
 				self:_add_enabled_reqs(item, data)
