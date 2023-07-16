@@ -2,8 +2,8 @@ if string.lower(RequiredScript) == "lib/setups/menusetup" then
 
 	local init_game_original = MenuSetup.init_game
 
-	function MenuSetup:init_game()
-		local result = init_game_original(self)
+	function MenuSetup:init_game(...)
+		local result = init_game_original(self, ...)
 		if WolfgangHUD:getSetting({"MENU", "STRAIGHT_TO_MAIN_MENU"}, true) then
 			game_state_machine:set_boot_intro_done(true)
 			game_state_machine:change_state_by_name("menu_titlescreen")
@@ -14,10 +14,8 @@ if string.lower(RequiredScript) == "lib/setups/menusetup" then
 elseif string.lower(RequiredScript) == "lib/states/menutitlescreenstate" then
 
 	local get_start_pressed_controller_index_original = MenuTitlescreenState.get_start_pressed_controller_index
-	local _load_savegames_done_original = MenuTitlescreenState._load_savegames_done
 
-	function MenuTitlescreenState:get_start_pressed_controller_index()
-		self.SILENCED = false
+	function MenuTitlescreenState:get_start_pressed_controller_index(...)
 		if WolfgangHUD:getSetting({"MENU", "STRAIGHT_TO_MAIN_MENU"}, true) then
 			local num_connected = 0
 			local keyboard_index = nil
@@ -30,19 +28,10 @@ elseif string.lower(RequiredScript) == "lib/states/menutitlescreenstate" then
 				end
 			end
 			if num_connected == 1 and keyboard_index ~= nil then
-				self.SILENCED = true
 				return keyboard_index
 			end
 		end
-		return get_start_pressed_controller_index_original(self)
-	end
-
-	function MenuTitlescreenState:_load_savegames_done()
-		if self.SILENCED then
-			self:gsm():change_state_by_name("menu_main")
-		else
-			_load_savegames_done_original(self)
-		end
+		return get_start_pressed_controller_index_original(self, ...)
 	end
 
 end
