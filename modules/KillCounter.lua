@@ -11,6 +11,7 @@ if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 		local attacker = alive(data.attacker_unit) and data.attacker_unit
 
 		if attacker then
+			local attacker_base = attacker:base()
 			if attacker:in_slot(3) or attacker:in_slot(5) then
 				--Human team mate
 				killer = attacker
@@ -24,12 +25,12 @@ if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 				--Enemy
 			elseif attacker:in_slot(25)	then
 				--Turret
-				local owner = attacker:base():get_owner_id()
+				local owner = (attacker_base and attacker_base.get_owner_id) and attacker_base:get_owner_id() or nil
 				if owner then
-					killer =  managers.criminals:character_unit_by_peer_id(owner)
+					killer = managers.criminals:character_unit_by_peer_id(owner)
 				end
-			elseif attacker:base().thrower_unit then
-				killer = attacker:base():thrower_unit()
+			elseif attacker_base and attacker_base.thrower_unit then
+				killer = attacker_base:thrower_unit()
 			end
 
 			if alive(killer) and alive(self._unit) then
