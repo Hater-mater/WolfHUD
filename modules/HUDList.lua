@@ -219,7 +219,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		consumable_mission =				"document",
 		regular_cache_box =					"cache",
 		hold_take_loot =					"loot",
+		press_take_loot =					"loot",
 		hold_take_dogtags =					"dogtags",
+		press_take_dogtags =				"dogtags",
 
 		-- equipment
 		--take_sps_briefcase =				"briefcase",
@@ -230,8 +232,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--dynamite_x5_pku =					"dynamite",
 		--take_dynamite_bag =				"dynamite_bag",
 		hold_take_canister =				"full_fuel_canister",
+		press_take_canister =				"full_fuel_canister",
 		--take_enigma =						"enigma",
 		--hold_take_gas_can =				"gas",
+		--press_take_gas_can =				"gas",
 		--take_gas_tank =					"gas_tank",
 		mine_pku =							"landmine",
 		--take_portable_radio =				"portable_radio",

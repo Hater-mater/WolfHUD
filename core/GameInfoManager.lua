@@ -22,7 +22,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			consumable_mission =				"_pickup_interaction_handler", -- outlaw raid documents
 			regular_cache_box =					"_pickup_interaction_handler", -- gold cache
 			hold_take_loot =					"_pickup_interaction_handler", -- loot
+			press_take_loot =					"_pickup_interaction_handler", -- loot
 			hold_take_dogtags =					"_pickup_interaction_handler", -- dogtags
+			press_take_dogtags =				"_pickup_interaction_handler", -- dogtags
 
 			-- mission pickups
 			take_sps_briefcase =				"_pickup_interaction_handler", -- briefcase
@@ -33,8 +35,10 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			dynamite_x5_pku =					"_pickup_interaction_handler", -- dynamite
 			take_dynamite_bag =					"_pickup_interaction_handler", -- dynamite_bag
 			hold_take_canister =				"_pickup_interaction_handler", -- fuel canister
+			press_take_canister =				"_pickup_interaction_handler", -- fuel canister
 			take_enigma =						"_pickup_interaction_handler", -- code device
 			hold_take_gas_can =					"_pickup_interaction_handler", -- gas can
+			press_take_gas_can =				"_pickup_interaction_handler", -- gas can
 			take_gas_tank =						"_pickup_interaction_handler", -- gas tank
 			mine_pku =							"_pickup_interaction_handler", -- mine
 			take_portable_radio =				"_pickup_interaction_handler", -- portable radio
@@ -81,7 +85,9 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			hold_pull_lever =					"_pickup_interaction_handler", -- mission lever
 			hold_remove_latch =					"_pickup_interaction_handler", -- mission latch
 			hold_take_empty_canister =			"_pickup_interaction_handler", -- canister
+			press_take_empty_canister =			"_pickup_interaction_handler", -- canister
 			hold_take_recording_device =		"_pickup_interaction_handler", -- recording device
+			press_take_recording_device =		"_pickup_interaction_handler", -- recording device
 			hold_start_plane =					"_pickup_interaction_handler", -- plane propeller
 			hold_unlock_bank_door =				"_pickup_interaction_handler", -- lockpick: bank door
 			lift_trap_door =					"_pickup_interaction_handler",

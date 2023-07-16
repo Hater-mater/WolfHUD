@@ -10,7 +10,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				consumable_mission =				{texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 175, 56, 56}}, -- untested
 				regular_cache_box =					{texture = "ui/atlas/raid_atlas_hud", texture_rect = {677, 1317, 32, 32}},
 				hold_take_loot =					{texture = "ui/atlas/raid_atlas_missions", texture_rect = {8, 68, 64, 64}},
+				press_take_loot =					{texture = "ui/atlas/raid_atlas_missions", texture_rect = {8, 68, 64, 64}},
 				hold_take_dogtags =					{texture = "ui/atlas/raid_atlas_missions", texture_rect = {398, 2, 64, 64}},
+				press_take_dogtags =				{texture = "ui/atlas/raid_atlas_missions", texture_rect = {398, 2, 64, 64}},
 
 				-- EQUIPMENT
 				take_sps_briefcase =				{std_icon = "equipment_panel_sps_briefcase"}, -- untested
@@ -21,8 +23,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				--dynamite_x5_pku =					{std_icon = "equipment_panel_dynamite_stick"},
 				--take_dynamite_bag =				{std_icon = "equipment_panel_dynamite"},
 				hold_take_canister =				{std_icon = "equipment_panel_fuel_full"},
+				press_take_canister =				{std_icon = "equipment_panel_fuel_full"},
 				take_enigma =						{std_icon = "equipment_panel_code_device"}, -- untested
 				hold_take_gas_can =					{std_icon = "equipment_panel_fuel_full"}, -- untested
+				press_take_gas_can =				{std_icon = "equipment_panel_fuel_full"}, -- untested
 				take_gas_tank =						{std_icon = "equipment_panel_fuel_full"}, -- untested
 				mine_pku =							{std_icon = "equipment_panel_cvy_landimine"}, -- untested
 				take_portable_radio =				{std_icon = "equipment_panel_recording_device"}, -- untested
