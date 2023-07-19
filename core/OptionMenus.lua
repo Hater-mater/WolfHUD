@@ -946,10 +946,24 @@ if WolfgangHUD then
 						type = "header",
 						text_id = "wolfganghud_menu_main_menu_name",
 					},
-					{
+					--[[{
 						type = "toggle",
 						name_id = "wolfganghud_straight_to_main_menu_title",
 						value = {"MENU", "STRAIGHT_TO_MAIN_MENU"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},]]
+					{
+						type = "toggle",
+						name_id = "wolfganghud_streamline_menu_title",
+						value = {"MENU", "STREAMLINE"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_add_join_menu_title",
+						value = {"MENU", "ADD_JOIN_MENU"},
 						visible_reqs = {},
 						enabled_reqs = {},
 					},

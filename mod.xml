@@ -11,7 +11,7 @@
 	<auto_updates
 			provider="modworkshop"
 			id="24551"
-			version="1.91"/>
+			version="1.92"/>
 
 	<localization directory="loc" default="english.json">
 		<loc file="chinese.json" language="chinese"/>
@@ -54,10 +54,10 @@
 		<hook source_file="lib/units/civilians/civiliandamage"					file="modules/DamagePopup.lua"				/>
 		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/DamagePopup.lua"				/>
 
-		<!-- Straight To Main Menu -->
+		<!-- Straight To Main Menu
 		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
 		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
-
+ -->
 		<!-- NoAds -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
 
@@ -121,6 +121,10 @@
 
 		<!-- FOV based sensivity -->
 		<hook source_file="lib/managers/menumanager"							file="modules/FOVBasedSensitivity.lua"		/>
+
+		<!-- Menu Tweaks -->
+		<hook source_file="lib/managers/menumanager"							file="modules/MenuTweaks.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/MenuTweaks.lua"				/>
 
 	</hooks>
 

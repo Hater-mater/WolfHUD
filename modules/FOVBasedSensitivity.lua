@@ -3,7 +3,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 
 	function MenuManager:set_mouse_sensitivity(zoomed)
 		local zoom_sense = zoomed
-		local sense_x, sense_y = nil
+		local sense_x, sense_y = nil, nil
 		if zoom_sense then
 			sense_x = managers.user:get_setting("camera_zoom_sensitivity_x")
 			sense_y = managers.user:get_setting("camera_zoom_sensitivity_y")

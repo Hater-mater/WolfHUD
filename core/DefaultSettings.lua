@@ -56,11 +56,13 @@ if WolfgangHUD then
 			},
 		},
 		MENU = {
-			STRAIGHT_TO_MAIN_MENU				= true,
+			STRAIGHT_TO_MAIN_MENU				= false,
+			STREAMLINE							= true,
+			ADD_JOIN_MENU						= true,
 			REMOVE_AD_BOX						= true,
 			TRANSPARENT_PAUSE_MENU				= true,
 			READY_UP_ON_NUM_ENTER				= true,
-			NO_DEBRIEFING						= true,
+			NO_DEBRIEFING						= false,
 		},
 		HUDList = {
 			ENABLED								= true,

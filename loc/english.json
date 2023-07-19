@@ -123,6 +123,8 @@
 	"wolfganghud_menu_options_name"									:	"Menu",
 	"wolfganghud_menu_main_menu_name"								:		"Main Menu",
 	"wolfganghud_straight_to_main_menu_title"						:			"Straight to main menu",
+	"wolfganghud_streamline_menu_title"								:			"Streamline main menu",
+	"wolfganghud_add_join_menu_title"								:			"Add servers to main menu",
 	"wolfganghud_remove_ad_box_title"								:			"Remove ad-box",
 	"wolfganghud_menu_ingame_name"									:		"In-Game",
 	"wolfganghud_transparent_pause_menu_title"						:			"Transparent pause menu",
