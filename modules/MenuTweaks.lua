@@ -36,6 +36,7 @@ if string.lower(RequiredScript) == "lib/managers/menumanager" then
 elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenugui" then
 
     local _list_menu_data_source_original = RaidMainMenuGui._list_menu_data_source
+
     function RaidMainMenuGui:_list_menu_data_source(...)
         local _list_items = _list_menu_data_source_original(self, ...)
         if WolfgangHUD:getSetting({"MENU", "ADD_JOIN_MENU"}, true) then
@@ -56,5 +57,12 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
         end
         return _list_items
     end
+
+    Hooks:PostHook(RaidMainMenuGui, "_layout_version_id", "RaidMainMenuGuiPostLayoutVersionString_WolfgangHUD", function(self)
+        if self._version_id then
+            self._version_id:set_width(1000)
+            self._version_id:set_text(self._version_id:text() .. " | WolfgangHUD v" .. WolfgangHUD:getVersion())
+        end
+    end)
 
 end

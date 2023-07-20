@@ -72,6 +72,7 @@
 	"wolfganghud_hudlist_show_loot_title"							:				"Show portables",
 	"wolfganghud_hudlist_pickup_counters_name"						:			"Pickup counters",
 	"wolfganghud_hudlist_show_valuables_title"						:				"Show valuables",
+	"wolfganghud_hudlist_use_dogtag_values_title"					:				"Use actual dogtag counts",
 	"wolfganghud_hudlist_valuablecolor_title"						:				"Valuables color",
 	"wolfganghud_hudlist_show_equipment_title"						:				"Show equipment",
 	"wolfganghud_hudlist_equipmentcolor_title"						:				"Equipment color",

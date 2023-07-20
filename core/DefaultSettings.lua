@@ -77,6 +77,7 @@ if WolfgangHUD then
 			mission_pickup_color				= "white",
 			combat_pickup_color					= "light_gray",
 			flare_color							= "red",
+			use_dogtag_values					= true,
 			RIGHT_LIST = {
 				show_enemies					= true,
 					aggregate_enemies			= false,

@@ -476,6 +476,16 @@ if WolfgangHUD then
 								},
 							},
 							{
+								type = "toggle",
+								name_id = "wolfganghud_hudlist_use_dogtag_values_title",
+								value = {"HUDList", "use_dogtag_values"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "valuables"}, invert = false},
+								},
+							},
+							{
 								type = "multi_choice",
 								name_id = "wolfganghud_hudlist_valuablecolor_title",
 								value = {"HUDList", "valuable_color"},
@@ -946,13 +956,13 @@ if WolfgangHUD then
 						type = "header",
 						text_id = "wolfganghud_menu_main_menu_name",
 					},
-					--[[{
+					{
 						type = "toggle",
 						name_id = "wolfganghud_straight_to_main_menu_title",
 						value = {"MENU", "STRAIGHT_TO_MAIN_MENU"},
 						visible_reqs = {},
 						enabled_reqs = {},
-					},]]
+					},
 					{
 						type = "toggle",
 						name_id = "wolfganghud_streamline_menu_title",

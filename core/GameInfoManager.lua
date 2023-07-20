@@ -270,14 +270,17 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 	function GameInfoManager:_pickup_interaction_handler(event, key, data)
 		if event == "add" then
 			if not self._pickups[key] then
-				self._pickups[key] = {unit = data.unit, interact_id = data.interact_id}
+				self._pickups[key] = {unit = data.unit, interact_id = data.interact_id, value = 1}
+				if WolfgangHUD:getSetting({"HUDList", "use_dogtag_values"}, true) and data.unit.loot_drop and data.unit:loot_drop() then
+					self._pickups[key].value = data.unit:loot_drop():value()
+				end
 				self:_listener_callback("pickup", "add", key, self._pickups[key])
-				self:_pickup_count_event("change", data.interact_id, 1, self._pickups[key])
+				self:_pickup_count_event("change", data.interact_id, self._pickups[key].value, self._pickups[key])
 			end
 		elseif event == "remove" then
 			if self._pickups[key] then
 				self:_listener_callback("pickup", "remove", key, self._pickups[key])
-				self:_pickup_count_event("change", data.interact_id, -1, self._pickups[key])
+				self:_pickup_count_event("change", data.interact_id, -self._pickups[key].value, self._pickups[key])
 				self._pickups[key] = nil
 			end
 		end

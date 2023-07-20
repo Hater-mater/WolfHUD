@@ -5,13 +5,13 @@
 		priority="1"
 		author="BangL"
 		cannot_be_disabled="false"
-		min_blt_version="1.5"
+		min_blt_version="1.61"
 		early_init="false">
 
 	<auto_updates
 			provider="modworkshop"
 			id="24551"
-			version="1.92"/>
+			version="1.93"/>
 
 	<localization directory="loc" default="english.json">
 		<loc file="chinese.json" language="chinese"/>
@@ -54,10 +54,10 @@
 		<hook source_file="lib/units/civilians/civiliandamage"					file="modules/DamagePopup.lua"				/>
 		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/DamagePopup.lua"				/>
 
-		<!-- Straight To Main Menu
+		<!-- Straight To Main Menu -->
 		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
 		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
- -->
+
 		<!-- NoAds -->
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
 
