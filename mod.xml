@@ -4,6 +4,7 @@
 		merge_global="false"
 		priority="1"
 		author="BangL"
+		color="Color('1144aa')"
 		cannot_be_disabled="false"
 		min_blt_version="1.61"
 		early_init="false">
