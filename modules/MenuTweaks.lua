@@ -46,7 +46,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
                 -- item_font_size = 60,
                 availability_flags = {RaidGUIItemAvailabilityFlag.IS_IN_MAIN_MENU,
                                       RaidGUIItemAvailabilityFlag.SHOULD_NOT_SHOW_TUTORIAL},
-                text = utf8.to_upper(managers.localization:text("menu_servers"))
+                text = utf8.to_upper(managers.localization:text("wolfganghud_menu_joinonline"))
             })
         end
         if WolfgangHUD:getSetting({"MENU", "STREAMLINE"}, true) then
