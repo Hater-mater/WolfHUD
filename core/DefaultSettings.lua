@@ -55,7 +55,7 @@ if WolfgangHUD then
 				CUSTOM_AI_COLOR					= "white",
 			},
 			Suspicion = {
-				SCALE							= 1.2,
+				SCALE							= 1.0,
 				SHOW_PD2HUD						= true,
 				SHOW_PERCENTAGE_NUMERIC			= true,
 				COLOR_START						= "light_blue",
