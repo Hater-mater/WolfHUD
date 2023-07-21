@@ -91,7 +91,7 @@ if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 			local id = "damage_wp_" .. tostring(self._unit:key())
 			local waypoint = managers.waypoints:get_waypoint(id)
 			local waypoint_color = color_id and ((color_id == 5 and WolfgangHUD:getSetting({"HUD", "DamagePopup", "CUSTOM_AI_COLOR_USE"}, true)) and WolfgangHUD:getColorSetting({"HUD", "DamagePopup", "CUSTOM_AI_COLOR"}, "white") or tweak_data.chat_colors[color_id]) or WolfgangHUD:getColorSetting({"HUD", "DamagePopup", critical and "CRITICAL_COLOR" or headshot and "HEADSHOT_COLOR" or "COLOR"}, "yellow")
-			waypoint_color = waypoint_color:with_alpha(WolfgangHUD:getSetting({"HUD", "DamagePopup", "ALPHA"}, 0.8))
+			waypoint_color = waypoint_color and waypoint_color:with_alpha(WolfgangHUD:getSetting({"HUD", "DamagePopup", "ALPHA"}, 0.8))
 			local waypoint_duration = WolfgangHUD:getSetting({"HUD", "DamagePopup", "DURATION"}, 2)
 			if waypoint and not waypoint:is_deleted() then
 				managers.waypoints:set_waypoint_duration(id, "duration", waypoint_duration)

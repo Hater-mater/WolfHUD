@@ -101,14 +101,17 @@ function WolfgangHUDMenu:Init(root, args)
 				})
 			end
 			if data.add_color_options then
-				for k, v in ipairs(WolfgangHUD:getTweakEntry("color_table", "table") or {}) do
-					if data.add_rainbow or v.name ~= "rainbow" then
-						local color_name = utf8.to_upper(managers.localization:text("wolfganghud_colors_" .. v.name))
-						color_name = not color_name:lower():find("error") and color_name or string.upper(v.name)
-						table.insert(items, {
-							text = color_name,
-							value = v.name,
-						})
+				local tbl = WolfgangHUD:getTweakEntry("color_table", "table", {})
+				if type(tbl) == "table" then
+					for _, v in ipairs(tbl) do
+						if data.add_rainbow or v.name ~= "rainbow" then
+							local color_name = utf8.to_upper(managers.localization:text("wolfganghud_colors_" .. v.name))
+							color_name = not color_name:lower():find("error") and color_name or string.upper(v.name)
+							table.insert(items, {
+								text = color_name,
+								value = v.name,
+							})
+						end
 					end
 				end
 			end

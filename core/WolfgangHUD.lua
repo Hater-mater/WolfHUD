@@ -182,9 +182,12 @@ if not _G.WolfgangHUD then
 
 	function WolfgangHUD:getColorID(name)
 		if self.tweak_data and type(name) == "string" then
-			for i, data in ipairs(self:getTweakEntry("color_table", "table")) do
-				if name == data.name then
-					return i
+			local tbl = self:getTweakEntry("color_table", "table", {})
+			if type(tbl) == "table" then
+				for i, data in ipairs(tbl) do
+					if name == data.name then
+						return i
+					end
 				end
 			end
 		end
@@ -192,9 +195,12 @@ if not _G.WolfgangHUD then
 
 	function WolfgangHUD:getColor(name, ...)
 		if self.tweak_data and type(name) == "string" then
-			for i, data in ipairs(self:getTweakEntry("color_table", "table")) do
-				if name == data.name then
-					return data.color and Color(data.color) or data.color_func and data.color_func(...) or nil
+			local tbl = self:getTweakEntry("color_table", "table", {})
+			if type(tbl) == "table" then
+				for i, data in ipairs(tbl) do
+					if name == data.name then
+						return data.color and Color(data.color) or data.color_func and data.color_func(...) or nil
+					end
 				end
 			end
 		end
