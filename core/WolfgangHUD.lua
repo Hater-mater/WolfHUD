@@ -18,7 +18,7 @@ if not _G.WolfgangHUD then
 		local LOG_MODES = self:getTweakEntry("LOG_MODE", "table", {})
 		local params = {...}
 		local msg_type, text = table.remove(params, #params), table.remove(params, 1)
-		if msg_type and LOG_MODES[tostring(msg_type)] then
+		if msg_type and LOG_MODES and LOG_MODES[tostring(msg_type)] then
 			if type(text) == "table" or type(text) == "userdata" then
 				local function log_table(userdata, max_indent, indent) -- third param is for recursive calls only
 					max_indent = max_indent or 1

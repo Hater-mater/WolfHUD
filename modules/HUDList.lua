@@ -1286,7 +1286,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			local left = (self._panel:w() - math.min(total_width, self._panel:w())) / 2
 
 			if self._static_item then
-				self._static_item:move(left, item:panel():y(), instant_move, move_timer)
+				self._static_item:move(left, self._static_item:panel():y(), instant_move, move_timer)
 				left = left + self._static_item:panel():w() + self._item_margin
 			end
 
@@ -1415,7 +1415,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			local total_height = self._static_item and (self._static_item:panel():h() + self._item_margin) or 0
 			for i, item in ipairs(self._shown_items) do
 				if item:enabled() then
-					total_height = total_width + item:panel():h() + self._item_margin
+					total_height = total_height + item:panel():h() + self._item_margin
 				end
 			end
 			total_height = total_height - self._item_margin
@@ -1423,7 +1423,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			local top = (self._panel:h() - math.min(total_height, self._panel:h())) / 2
 
 			if self._static_item then
-				self._static_item:move(item:panel():x(), top, instant_move, move_timer)
+				self._static_item:move(self._static_item:panel():x(), top, instant_move, move_timer)
 				top = top + self._static_item:panel():h() + self._item_margin
 			end
 
@@ -1586,7 +1586,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDList.RightListItem:set_color(color)
-		self._default_text_color = HUDListManager.ListOptions.list_color or Color.white
+		self._default_text_color = color or HUDListManager.ListOptions.list_color or Color.white
 		self._icon:set_color(self._default_icon_color or self._default_text_color)
 		self._progress_bar:set_color(self._default_text_color)
 		self._text:set_color(self._default_text_color)

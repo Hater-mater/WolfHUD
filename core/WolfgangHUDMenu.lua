@@ -133,8 +133,8 @@ function WolfgangHUDMenu:Init(root, args)
 			end
 		end,
 		input = function(menu_id, index, data)
+			local id = string.format("%s_%s_input", menu_id, data.name_id)
 			--[[
-				local id = string.format("%s_%s_input", menu_id, data.name_id)
 				local clbk_id = id .. "_clbk"
 
 				MenuHelper:AddInput({

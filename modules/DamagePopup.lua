@@ -56,11 +56,14 @@ if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 				killer = attacker
 			elseif attacker:in_slot(12) then
 				--Enemy
-			elseif attacker:in_slot(25)	then
+			elseif attacker:in_slot(25) then
 				--Turret
-				local owner = attacker:base():get_owner_id()
-				if owner then
-					killer =  managers.criminals:character_unit_by_peer_id(owner)
+				local base = attacker.base and attacker:base()
+				if base then
+					local owner = base.get_owner_id and base:get_owner_id()
+					if owner then
+						killer = managers.criminals:character_unit_by_peer_id(owner)
+					end
 				end
 			elseif attacker:base().thrower_unit then
 				killer = attacker:base():thrower_unit()
