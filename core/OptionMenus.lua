@@ -874,6 +874,66 @@ if WolfgangHUD then
 							},
 						},
 					},
+					{	-- Suspicion
+						type = "menu",
+						menu_id = "wolfganghud_suspicion_options_menu",
+						name_id = "wolfganghud_suspicion_options_name",
+						options = {
+							{ -- General
+								y_offset = 320,
+								type = "header",
+								text_id = "wolfganghud_suspicion_general_name",
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_suspicion_scale_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = { "HUD", "Suspicion", "SCALE" },
+								min_value = 0.3,
+								max_value = 1.2,
+								step_size = 0.01,
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_suspicion_show_pd2hud_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = { "HUD", "Suspicion", "SHOW_PD2HUD" },
+							},
+							{
+								type = "toggle",
+								name_id = "wolfganghud_suspicion_show_percentage_numeric_title",
+								visible_reqs = {},
+								enabled_reqs = {},
+								value = { "HUD", "Suspicion", "SHOW_PERCENTAGE_NUMERIC" },
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_suspicion_percentage_color_start_title",
+								value = {"HUD", "Suspicion", "COLOR_START"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"HUD", "Suspicion", "SHOW_PERCENTAGE_NUMERIC"}, invert = false},
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_suspicion_percentage_color_end_title",
+								value = {"HUD", "Suspicion", "COLOR_END"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"HUD", "Suspicion", "SHOW_PERCENTAGE_NUMERIC"}, invert = false},
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
+							},
+						},
+					},
 					{	-- Custom Waypoints
 						type = "menu",
 						menu_id = "wolfganghud_waypoints_options_menu",
@@ -887,7 +947,6 @@ if WolfgangHUD then
 							{
 								type = "toggle",
 								name_id = "wolfganghud_waypoints_show_pickups_title",
-								desc_id = "wolfganghud_waypoints_show_pickups_desc",
 								value = {"CustomWaypoints", "SHOW_PICKUPS"},
 								visible_reqs = {},
 								enabled_reqs = {},
@@ -899,7 +958,6 @@ if WolfgangHUD then
 							{
 								type = "toggle",
 								name_id = "wolfganghud_waypoints_show_loot_title",
-								desc_id = "wolfganghud_waypoints_show_loot_desc",
 								value = {"CustomWaypoints", "LOOT", "SHOW"},
 								visible_reqs = {},
 								enabled_reqs = {},
@@ -907,7 +965,6 @@ if WolfgangHUD then
 							{
 								type = "toggle",
 								name_id = "wolfganghud_waypoints_loot_icon_title",
-								desc_id = "wolfganghud_waypoints_loot_icon_desc",
 								value = {"CustomWaypoints", "LOOT", "ICON"},
 								visible_reqs = {},
 								enabled_reqs = {
@@ -917,7 +974,6 @@ if WolfgangHUD then
 							{
 								type = "slider",
 								name_id = "wolfganghud_waypoints_loot_offset_title",
-								desc_id = "wolfganghud_waypoints_loot_offset_desc",
 								value = {"CustomWaypoints", "LOOT", "OFFSET"},
 								visible_reqs = {},
 								enabled_reqs = {
@@ -930,7 +986,6 @@ if WolfgangHUD then
 							{
 								type = "slider",
 								name_id = "wolfganghud_waypoints_loot_angle_title",
-								desc_id = "wolfganghud_waypoints_loot_angle_desc",
 								value = {"CustomWaypoints", "LOOT", "ANGLE"},
 								visible_reqs = {},
 								enabled_reqs = {

@@ -71,6 +71,10 @@
 		<!-- HUDList -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDList.lua"					/>
 
+		<!-- HUDSuspicion -->
+		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDSuspicion.lua"				/>
+		<hook source_file="lib/managers/hud/hudsuspicion"						file="modules/HUDSuspicion.lua"				/>
+
 		<!-- KillCounter -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/KillCounter.lua"				/>
 		<hook source_file="lib/managers/raidjobmanager"							file="modules/KillCounter.lua"				/>

@@ -22,6 +22,7 @@
 	"wolfganghud_multiselect_right"									: "Right",
 
 	"wolfganghud_int_locked"										: "PRESS $BTN_CANCEL; TO INTERRUPT",
+	"wolfganghud_suspicion_detected"								: "Detected",
 
 	"wolfganghud_reset_options_title"								: "Default options",
 	"wolfganghud_reset_options_confirm"								: "Are you sure, you want to reset all WolfgangHUD options to their default value?",
@@ -112,6 +113,13 @@
 	"wolfganghud_dmgpopups_headshot_color_title"					:				"headshot color",
 	"wolfganghud_dmgpopups_custom_ai_color_use_title"				:				"Use custom bot color",
 	"wolfganghud_dmgpopups_custom_ai_color_title"					:				"Custom bot color",
+	"wolfganghud_suspicion_options_name"							:		"Suspicion HUD",
+	"wolfganghud_suspicion_general_name"							:			"General",
+	"wolfganghud_suspicion_scale_title"								:				"Scale",
+	"wolfganghud_suspicion_show_pd2hud_title"						:				"Show PD2-Style HUD",
+	"wolfganghud_suspicion_show_percentage_numeric_title"			:				"Show numeric percentage",
+	"wolfganghud_suspicion_percentage_color_start_title"			:				"Color (start)",
+	"wolfganghud_suspicion_percentage_color_end_title"				:				"Color (end)",
 	"wolfganghud_waypoints_options_name"							:		"Custom Waypoints",
 	"wolfganghud_waypoints_pickups_name"							:			"Pickups",
 	"wolfganghud_waypoints_show_pickups_title"						:				"Show",

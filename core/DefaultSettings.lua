@@ -54,6 +54,13 @@ if WolfgangHUD then
 				CUSTOM_AI_COLOR_USE				= true,
 				CUSTOM_AI_COLOR					= "white",
 			},
+			Suspicion = {
+				SCALE							= 1.2,
+				SHOW_PD2HUD						= true,
+				SHOW_PERCENTAGE_NUMERIC			= true,
+				COLOR_START						= "light_blue",
+				COLOR_END						= "red",
+			},
 		},
 		MENU = {
 			STRAIGHT_TO_MAIN_MENU				= false,

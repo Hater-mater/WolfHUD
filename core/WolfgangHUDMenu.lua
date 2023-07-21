@@ -143,7 +143,6 @@ function WolfgangHUDMenu:Init(root, args)
 				MenuHelper:AddInput({
 					id = id,
 					title = data.name_id,
-					desc = data.desc_id,
 					value = tostring(data.value),
 					callback = clbk_id,
 					menu_id = menu_id,
