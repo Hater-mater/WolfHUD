@@ -171,14 +171,22 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	HUDListManager.LOOT_TYPES = {
 		gold =												"gold",
-		gold_bar =											"gold_bar",		-- untested!
+		gold_bar =											"gold_bar",
 
-		painting_sto =										"painting",		-- untested!
-		painting_sto_cheap =								"painting",		-- untested!
+		painting_sto =										"painting",
+		painting_sto_cheap =								"painting",
+
+		baptismal_font =									"valuable",
+		candelabrum =										"valuable",
+		cigar_crate =										"valuable",
+		chocolate_box =										"valuable",
+		crucifix =											"valuable",
+		religious_figurine =								"valuable",
+		wine_crate =										"valuable",
 
 		plank =												"plank",		-- untested!
 
-		flak_shell =										"flak_shell",	-- untested!
+		flak_shell =										"flak_shell",
 
 		german_spy =										"alive",		-- untested!
 
@@ -205,10 +213,11 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		gold =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {877, 1399, 72, 72},	color_id = "valuable_color",	priority = 1	},
 		gold_bar =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {877, 1399, 72, 72},	color_id = "valuable_color",	priority = 2	},
 		painting =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {951, 1405, 72, 72},	color_id = "valuable_color",	priority = 3	},
-		plank =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {875, 1473, 72, 72},									priority = 4	},
-		flak_shell =	{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {535, 1279, 72, 72},									priority = 5	},
-		alive =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {887, 1281, 72, 72},									priority = 6	},
-		corpse =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {461, 1279, 72, 72},									priority = 7	},
+		valuable =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {387, 1279, 72, 72},	color_id = "valuable_color",	priority = 4	},
+		plank =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {875, 1473, 72, 72},									priority = 5	},
+		flak_shell =	{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {535, 1279, 72, 72},									priority = 6	},
+		alive =			{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {887, 1281, 72, 72},									priority = 7	},
+		corpse =		{class = "LootItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {461, 1279, 72, 72},									priority = 8	},
 	}
 
 	-- PICKUP TYPES
