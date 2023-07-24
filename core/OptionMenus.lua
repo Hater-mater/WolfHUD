@@ -892,7 +892,7 @@ if WolfgangHUD then
 								value = { "HUD", "Suspicion", "SCALE" },
 								min_value = 0.3,
 								max_value = 1.2,
-								step_size = 0.01,
+								decimal_places = 2,
 							},
 							{
 								type = "toggle",
