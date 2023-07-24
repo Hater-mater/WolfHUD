@@ -7,7 +7,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			ICON_MAP = {
 
 				-- VALUABLES
-				consumable_mission =				{texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 175, 56, 56}}, -- untested
+				consumable_mission =				{texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 175, 56, 56}},
 				regular_cache_box =					{texture = "ui/atlas/raid_atlas_hud", texture_rect = {677, 1317, 32, 32}},
 				hold_take_loot =					{texture = "ui/atlas/raid_atlas_missions", texture_rect = {8, 68, 64, 64}},
 				press_take_loot =					{texture = "ui/atlas/raid_atlas_missions", texture_rect = {8, 68, 64, 64}},
@@ -37,7 +37,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				take_tank_shell =					{std_icon = "equipment_panel_tools"}, -- untested
 				take_thermite =						{std_icon = "equipment_panel_cvy_thermite"}, -- untested
 				gen_pku_thermite =					{std_icon = "equipment_panel_cvy_thermite"}, -- untested
-				hold_pku_intelligence =				{texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 175, 56, 56}}, -- FIXME: did not work in Strongpoint, needs further testing
+				hold_pku_intelligence =				{texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 753, 56, 56}},
 
 				-- PICKUPS
 				--health_bag =						{std_icon = ""},
