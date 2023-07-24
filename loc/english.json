@@ -70,7 +70,7 @@
 	"wolfganghud_hudlist_show_objectives_title"						:				"Show objective enemies",
 	"wolfganghud_hudlist_objectivecolor_title"						:				"Objective enemy color",
 	"wolfganghud_hudlist_loot_counters_name"						:			"Heavy objects counters",
-	"wolfganghud_hudlist_show_loot_title"							:				"Show portables",
+	"wolfganghud_hudlist_show_loot_title"							:				"Show heavy objects",
 	"wolfganghud_hudlist_pickup_counters_name"						:			"Pickup counters",
 	"wolfganghud_hudlist_show_valuables_title"						:				"Show valuables",
 	"wolfganghud_hudlist_use_dogtag_values_title"					:				"Use actual dogtag counts",
