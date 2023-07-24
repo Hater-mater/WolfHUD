@@ -437,4 +437,22 @@ elseif string.lower(RequiredScript) == "lib/units/interactions/interactionext" t
 		end
 	end
 
+elseif string.lower(RequiredScript) == "lib/units/pickups/greedcacheitem" then
+
+	local on_interacted_original = GreedCacheItem.on_interacted
+
+	function GreedCacheItem:on_interacted(amount, ...)
+		local pickup_amount = on_interacted_original(self, amount, ...)
+
+		if self._current_amount == 0 then
+			local unit = self._unit
+			local key = tostring(unit:key())
+			local editor_id = unit:editor_id()
+			local interact_id = unit:interaction().tweak_data
+			managers.gameinfo:event("interactive_unit", "remove", key, {unit = unit, editor_id = editor_id, interact_id = interact_id})
+		end
+
+		return pickup_amount
+	end
+
 end
