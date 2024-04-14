@@ -70,7 +70,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	HUDListManager = HUDListManager or class()
 	HUDListManager.ListOptions = {
 		-- General settings
-		right_list_scale				= WolfgangHUD:getSetting({"HUDList", "right_list_scale"}, 1), --Size scale of unit count list
+		right_list_scale				= WolfgangHUD:getSetting({"HUDList", "right_list_scale"}, 1.2), --Size scale of unit count list
 		right_list_progress_alpha		= WolfgangHUD:getSetting({"HUDList", "right_list_progress_alpha"}, 1),
 		-- Color settings
 		list_color						= WolfgangHUD:getColorSetting({"HUDList", "list_color"}, "white"),
@@ -363,7 +363,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	function HUDListManager:_setup_right_list()
 		local hud_panel = managers.hud:script(PlayerBase.INGAME_HUD_SAFERECT).panel
-		local scale = HUDListManager.ListOptions.right_list_scale or 1
+		local scale = HUDListManager.ListOptions.right_list_scale or 1.2
 		local list_width = hud_panel:w() / 3 -- use 1/3 of the space
 		local list_height = 240 * scale -- 3 rows, 80 pixels each => 240, apply scale
 		local x = hud_panel:w() / 3 * 2 -- align right

@@ -6,7 +6,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmenusceneman
 	function RaidMenuSceneManager:show_background()
 		show_background_original(self)
 		local bg = self._background_image._panel
-		if alive(bg) and not self._pause_menu_enabled or not WolfgangHUD:getSetting({"MENU", "TRANSPARENT_PAUSE_MENU"}, true) then
+		if alive(bg) and not self._pause_menu_enabled or not WolfgangHUD:getSetting({"MENU", "TRANSPARENT_PAUSE_MENU"}, false) then
 			bg:show()
 		end
 	end

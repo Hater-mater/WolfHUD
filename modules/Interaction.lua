@@ -354,7 +354,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 		end
 
 		if HUDInteraction.SHOW_TIME_REMAINING then
-			local fontSize = 32 * WolfgangHUD:getSetting({"INTERACTION", "TIMER_SCALE"}, 1)
+			local fontSize = 32 * WolfgangHUD:getSetting({"INTERACTION", "TIMER_SCALE"}, 1.2)
 			if not self._interact_time then
 				self._interact_time = self._hud_panel:text({
 					name = "interaction_timer",
@@ -556,7 +556,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 		end
 
 		if ProgressBarGuiObject.SHOW_TIME_REMAINING then
-			local fontSize = 32 * WolfgangHUD:getSetting({"INTERACTION", "TIMER_SCALE"}, 1)
+			local fontSize = 32 * WolfgangHUD:getSetting({"INTERACTION", "TIMER_SCALE"}, 1.2)
 			if not self._interact_time then
 				self._interact_time = self._panel:text({
 					name = "interaction_timer",

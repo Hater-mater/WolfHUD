@@ -84,7 +84,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		if event == "add" then
 			if tweak_entry and not tweak_entry.is_vehicle and not tweak_entry.skip_exit_secure and (not string.ends(data.carry_id, "_body")) then
-				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or WolfgangHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 15)
+				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or WolfgangHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 20)
 				local name_id = data.carry_id and tweak_data.carry[data.carry_id] and tweak_data.carry[data.carry_id].name_id
 				local bag_name = name_id and managers.localization:to_upper_text(name_id)
 				local count = data.count or 1
@@ -100,7 +100,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						scale = 1.5,
 						icon = {
 							type = "icon",
-							show = WolfgangHUD:getSetting({"CustomWaypoints", "LOOT", "ICON"}, false),
+							show = WolfgangHUD:getSetting({"CustomWaypoints", "LOOT", "ICON"}, true),
 							texture = "ui/ingame/textures/hud/hud_waypoint_icons_01",
 							texture_rect = {96, 0, 32, 32},
 							alpha = 0.5,
