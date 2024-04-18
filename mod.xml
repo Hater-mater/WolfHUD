@@ -6,7 +6,7 @@
 		author="BangL"
 		color="Color('1144aa')"
 		cannot_be_disabled="false"
-		min_blt_version="1.61"
+		min_blt_version="1.65"
 		early_init="false">
 
 	<auto_updates
