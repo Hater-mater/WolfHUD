@@ -111,6 +111,7 @@ if WolfgangHUD then
 			FOV_BASED_SENSIVITY					= true,
 			NO_SLOWMOTION						= true,
 			AUTO_RELOAD							= true,
+			AUTO_RELOAD_SINGLE					= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,
 			REALISTIC_RELOAD					= false,
 		},

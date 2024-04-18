@@ -146,6 +146,7 @@
 	"wolfganghud_fov_based_sensivity_title"							:			"FOV based sensivity",
 	"wolfganghud_no_slowmotion_title"								:			"Disable slow motion effects",
 	"wolfganghud_auto_reload_title"									:			"Auto reload automatic weapons",
+	"wolfganghud_auto_reload_single_title"							:			"Auto reload single shot weapons",
 	"wolfganghud_gameplay_hardcore_name"							:		"Hardcore",
 	"wolfganghud_realistic_reload_title"							:			"Realistic reload",
 	"wolfganghud_gameplay_cheesy_name"								:		"Cheesy",

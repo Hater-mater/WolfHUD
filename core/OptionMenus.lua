@@ -1099,6 +1099,13 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_auto_reload_single_title",
+						value = {"GAMEPLAY", "AUTO_RELOAD_SINGLE"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
 					{ -- Hardcore
 						type = "header",
 						text_id = "wolfganghud_gameplay_hardcore_name",
