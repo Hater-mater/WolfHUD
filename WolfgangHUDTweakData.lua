@@ -1,15 +1,15 @@
 WolfgangHUDTweakData = WolfgangHUDTweakData or class()
 function WolfgangHUDTweakData:init()
 
-	----------------------------------------------------------------------------------------------------------------------
-	-- WolfgangHUD Tweak Data																							--
-	----------------------------------------------------------------------------------------------------------------------
-	-- This file enables access to advanced settings, or those I cannot really implement into ingame menus easily.		--
-	-- If you want to save those changes, please copy this file to "Payday 2/mods/saves" and edit that copy instead.	--
-	-- You will need to take care of that version beeing up to date on your own.										--
-	-- It will not get changed on updates automatically.																--
-	-- If you encounter problems, make sure the contents of this file matches the contents of your customized version.	--
-	----------------------------------------------------------------------------------------------------------------------
+	------------------------------------------------------------------------------------------------------------------------------
+	-- WolfgangHUD Tweak Data																									--
+	------------------------------------------------------------------------------------------------------------------------------
+	-- This file enables access to advanced settings, or those I cannot really implement into ingame menus easily.		      	--
+	-- If you want to save those changes, please copy this file to "RAID World War II/mods/saves" and edit that copy instead.	--
+	-- You will need to take care of that version beeing up to date on your own.												--
+	-- It will not get changed on updates automatically.																		--
+	-- If you encounter problems, make sure the contents of this file matches the contents of your customized version.			--
+	------------------------------------------------------------------------------------------------------------------------------
 
 	-- Determines which messages get logged
 	self.LOG_MODE = {
