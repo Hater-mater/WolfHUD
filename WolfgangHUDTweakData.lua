@@ -16,7 +16,6 @@ function WolfgangHUDTweakData:init()
 		error = true,			-- log errors
 		warning = true,			-- log warnings
 		info = false,			-- log infos
-		--to_console = true,	-- show messages in console (Requires DebugConsole mod)
 	}
 
 	-- Color table

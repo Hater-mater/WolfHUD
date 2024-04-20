@@ -63,15 +63,6 @@ if not _G.WolfgangHUD then
 			end
 			text = string.format("[WolfgangHUD] %s: %s", string.upper(msg_type), text)
 			log(text)
-			--[[if LOG_MODES.to_console and con and con.print and con.error then
-				local t = Application:time()
-				text = string.format("%02d:%06.3f\t>\t%s", math.floor(t / 60), t % 60, text)
-				if tostring(msg_type) == "info" then
-					con:print(text)
-				else
-					con:error(text)
-				end
-			end]]
 		end
 	end
 
