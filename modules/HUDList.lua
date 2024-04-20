@@ -92,7 +92,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 	-- UNIT TYPES
 
-	HUDListManager.UNIT_TYPES = { -- TODO: validate gasmask
+	HUDListManager.UNIT_TYPES = {
 		german_light =								{type_id = "nazi",			category = "enemies"		},
 		german_light_kar98 =						{type_id = "nazi",			category = "enemies"		},
 		german_light_shotgun =						{type_id = "nazi",			category = "enemies"		},
@@ -134,6 +134,9 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		german_waffen_ss_kar98 =					{type_id = "waffen_ss",		category = "enemies"		},
 		german_waffen_ss_shotgun =					{type_id = "waffen_ss",		category = "enemies"		},
 
+		german_gasmask =							{type_id = "gasmask",		category = "enemies"		},
+		german_gasmask_shotgun =					{type_id = "gasmask",		category = "enemies"		},
+
 		german_officer =							{type_id = "officer",		category = "enemies"		},
 		german_commander =							{type_id = "officer",		category = "enemies"		},
 		german_og_commander =						{type_id = "officer",		category = "enemies"		},
@@ -146,9 +149,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		soviet_nkvd_int_security_captain =			{type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
 		soviet_nkvd_int_security_captain_b =		{type_id = "general",		category = "objectives"		}, -- Strongpoint: Russian generals
-
-		german_gasmask =							{type_id = "unknown",		category = "enemies"		}, -- whats this?
-		german_gasmask_shotgun =					{type_id = "unknown",		category = "enemies"		}, -- whats this?
 	}
 
 	HUDListManager.UnitCountItem_MAP = {
@@ -157,14 +157,15 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		nazi =			{class = "UnitCountItem",	skills =	{3, 8},		color_id = "enemy_color",		priority = 1	}, -- Regular nazis
 
 		waffen_ss =		{class = "UnitCountItem",	skills =	{2, 7},		color_id = "special_color",		priority = 2	}, -- Waffen-SS
-		officer =		{class = "UnitCountItem",	skills =	{3, 7},		color_id = "special_color",		priority = 3	}, -- Officers
-		sniper =		{class = "UnitCountItem",	skills =	{0, 9},		color_id = "special_color",		priority = 4	}, -- Snipers
-		spotter =		{class = "UnitCountItem",	skills =	{5, 10},	color_id = "special_color",		priority = 5	}, -- Spotters
-		flamer =		{class = "UnitCountItem",	skills =	{3, 10},	color_id = "special_color",		priority = 6	}, -- Flamers
+		gasmask =		{class = "UnitCountItem",	skills =	{3, 10},	color_id = "special_color",		priority = 3	}, -- Gasmasks
+		officer =		{class = "UnitCountItem",	skills =	{3, 7},		color_id = "special_color",		priority = 4	}, -- Officers
+		sniper =		{class = "UnitCountItem",	skills =	{0, 9},		color_id = "special_color",		priority = 5	}, -- Snipers
+		spotter =		{class = "UnitCountItem",	skills =	{5, 10},	color_id = "special_color",		priority = 6	}, -- Spotters
+		flamer =		{class = "UnitCountItem",	skills =	{3, 0},		color_id = "special_color",		priority = 7	}, -- Flamers
 
 		general =		{class = "UnitCountItem",	skills =	{1, 3},		color_id = "objective_color",	priority = 50	}, -- Strongpoint: Russian generals
 
-		unknown =		{class = "UnitCountItem",	skills =	{3, 9},		color_id = "objective_color",	priority = 99	}, -- Debug
+		--unknown =		{class = "UnitCountItem",	skills =	{3, 9},		color_id = "objective_color",	priority = 99	}, -- Debug
 	}
 
 	-- LOOT TYPES
