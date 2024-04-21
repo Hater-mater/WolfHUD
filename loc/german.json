@@ -160,6 +160,10 @@
 	"wolfganghud_press2hold_equipment_cancel_title"					:			"Ausrüstungsunterbrechung",
 	"wolfganghud_press2hold_interrupt_hint_title"					:			"Zeige Unterbrechungshinweis",
 
+	"wolfganghud_sound_options_name"								:	"Ton",
+	"wolfganghud_sound_general_name"								:		"Allgemein",
+	"wolfganghud_sound_mute_toasts_title"							:			"Stille Missions-Benachrichtigungen",
+
 	"wolfganghud_host_options_name"									:	"Hosting",
 	"wolfganghud_hosting_general_name"								:		"Allgemein",
 	"wolfganghud_kick_a_friend_title"								:			"Werfe Steam-Freunde ohne Ban raus",

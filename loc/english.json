@@ -162,7 +162,7 @@
 
 	"wolfganghud_sound_options_name"								:	"Sound",
 	"wolfganghud_sound_general_name"								:		"General",
-	"wolfganghud_sound_mute_toasts_title"							:			"Silent notifications",
+	"wolfganghud_sound_mute_toasts_title"							:			"Silent mission notifications",
 
 	"wolfganghud_host_options_name"									:	"Hosting",
 	"wolfganghud_hosting_general_name"								:		"General",
