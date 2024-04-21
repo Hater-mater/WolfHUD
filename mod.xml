@@ -44,6 +44,18 @@
 
 		<!-- MODULES -->
 
+		<!-- PD2Layout -->
+		<hook source_file="lib/managers/hudmanager"								file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudcarry"							file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudobjectivebase"					file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudobjectivesub"					file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudobjectivemain"					file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudnotification"					file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/huddriving"							file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudturret"							file="modules/PD2HUDLayout.lua"				/>
+		<hook source_file="lib/managers/hud/hudsaveicon"						file="modules/PD2HUDLayout.lua"				/>
+
 		<!-- Custom Waypoints -->
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/CustomWaypoints.lua"			/>
 		<hook source_file="lib/units/vehicles/vehicledrivingext"				file="modules/CustomWaypoints.lua"			/>

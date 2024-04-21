@@ -18,6 +18,17 @@ if WolfgangHUD then
 						text_id = "wolfganghud_hud_general_name",
 					},
 					{
+						type = "multi_choice",
+						name_id = "wolfganghud_hud_layout_title",
+						value = {"HUD", "LAYOUT"},
+						visible_reqs = {},
+						enabled_reqs = {},
+						options = {
+							"wolfganghud_hudlayouts_vanilla",
+							"wolfganghud_hudlayouts_pd2style"
+						},
+					},
+					{
 						type = "toggle",
 						name_id = "wolfganghud_hide_in_camp_title",
 						value = {"HUD", "SHOW_IN_CAMP"},

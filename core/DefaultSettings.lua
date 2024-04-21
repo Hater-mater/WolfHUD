@@ -1,6 +1,7 @@
 if WolfgangHUD then
 	WolfgangHUD.default_settings = {
 		HUD = {
+			LAYOUT								= 1,
 			SHOW_IN_CAMP						= false,
 			PLAYER = {
 				SHOW_ACCURACY					= true,

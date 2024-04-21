@@ -150,7 +150,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 
 	function HUDTeammateBase:set_x(x)
 		set_x_original(self, x)
-		if alive(self._kills_panel) then
+		if alive(self._kills_panel) and managers.hud:wolfganghud_layout_is_vanilla() then
 			self._kills_panel:set_right((self._right_panel:w() - x) - 60) -- fix for ai panels alignment if human_teammates_exist (see HUDManager:_layout_teammate_panels())
 		end
 	end
