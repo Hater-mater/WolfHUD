@@ -1168,8 +1168,8 @@ if WolfgangHUD then
 						value = {"INTERACTION", "SHOW_LOCK_INDICATOR"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2},
 							{setting = {"INTERACTION", "SHOW_BAR"}, invert = false},
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2, max = 3},
 						},
 					},
 					{
@@ -1178,7 +1178,7 @@ if WolfgangHUD then
 						value = {"INTERACTION", "EQUIPMENT_PRESS_INTERRUPT"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2},
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2, max = 3},
 						},
 					},
 					{
@@ -1187,7 +1187,7 @@ if WolfgangHUD then
 						value = {"INTERACTION", "SHOW_INTERRUPT_HINT"},
 						visible_reqs = {},
 						enabled_reqs = {
-							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2},
+							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2, max = 3},
 						},
 					},
 				},
