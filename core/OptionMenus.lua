@@ -1227,6 +1227,27 @@ if WolfgangHUD then
 					},
 				},
 			},
+			{	-- Sound
+				type = "menu",
+				menu_id = "wolfganghud_sound_options_name",
+				name_id = "wolfganghud_sound_options_name",
+				visible_reqs = {},
+				enabled_reqs = {},
+				options = {
+					{ -- General
+						y_offset = 320,
+						type = "header",
+						text_id = "wolfganghud_sound_general_name",
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_sound_mute_toasts_title",
+						value = {"SOUND", "MUTE_TOASTS"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+				},
+			},
 		}
 	}
 end

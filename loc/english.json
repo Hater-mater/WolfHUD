@@ -160,6 +160,10 @@
 	"wolfganghud_press2hold_equipment_cancel_title"					:			"Equipment Interrupt",
 	"wolfganghud_press2hold_interrupt_hint_title"					:			"Show Interrupt Hint",
 
+	"wolfganghud_sound_options_name"								:	"Sound",
+	"wolfganghud_sound_general_name"								:		"General",
+	"wolfganghud_sound_mute_toasts_title"							:			"Silent notifications",
+
 	"wolfganghud_host_options_name"									:	"Hosting",
 	"wolfganghud_hosting_general_name"								:		"General",
 	"wolfganghud_kick_a_friend_title"								:			"Kick steam friends without ban",

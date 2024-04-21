@@ -135,6 +135,9 @@ if WolfgangHUD then
 			INSTANT_RESTART						= true,
 			KICK_A_FRIEND						= true,
 		},
+		SOUND = {
+			MUTE_TOASTS							= false,
+		},
 	}
 	WolfgangHUD.settings = deep_clone(WolfgangHUD.default_settings)
 end

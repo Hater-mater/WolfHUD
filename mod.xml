@@ -128,6 +128,9 @@
 		<hook source_file="lib/managers/menumanager"							file="modules/MenuTweaks.lua"				/>
 		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/MenuTweaks.lua"				/>
 
+		<!-- No Toast Sound -->
+		<hook source_file="lib/managers/hud/hudtoastnotification"				file="modules/NoToastSound.lua"				/>
+
 	</hooks>
 
 	<keybinds>
