@@ -34,6 +34,8 @@
 	"wolfganghud_hud_layout_title"									:			"HUD Anordnung",
 	"wolfganghud_hudlayouts_vanilla"								:				"RaidWW2",
 	"wolfganghud_hudlayouts_pd2style"								:				"Payday2",
+	"wolfganghud_colorize_names_title"								:			"Namen einfärben",
+	"wolfganghud_levels_before_name_title"							:			"Zeige Level vor Namen",
 	"wolfganghud_hide_in_camp_title"								:			"Verstecke WolfgangHUD-Boxen im Lager",
 	"wolfganghud_player_panel_options_name"							:		"Spielerboxen",
 	"wolfganghud_peer_panels_options_name"							:		"Mitspielerboxen",

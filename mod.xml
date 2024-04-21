@@ -44,6 +44,11 @@
 
 		<!-- MODULES -->
 
+		<!-- HUD Tweaks -->
+		<hook source_file="lib/managers/hud/hudteammatebase"					file="modules/HUDTweaks.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatepeer"					file="modules/HUDTweaks.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/HUDTweaks.lua"				/>
+
 		<!-- PD2Layout -->
 		<hook source_file="lib/managers/hudmanager"								file="modules/HUDLayoutPD2.lua"				/>
 		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDLayoutPD2.lua"				/>

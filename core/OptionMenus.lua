@@ -30,6 +30,20 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfganghud_colorize_names_title",
+						value = {"HUD", "COLORIZE_NAMES"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_levels_before_name_title",
+						value = {"HUD", "LEVELS_BEFORE_NAME"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
 						name_id = "wolfganghud_hide_in_camp_title",
 						value = {"HUD", "SHOW_IN_CAMP"},
 						visible_reqs = {},

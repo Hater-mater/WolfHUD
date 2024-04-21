@@ -34,6 +34,8 @@
 	"wolfganghud_hud_layout_title"									:			"HUD Layout",
 	"wolfganghud_hudlayouts_vanilla"								:				"RaidWW2",
 	"wolfganghud_hudlayouts_pd2style"								:				"Payday2",
+	"wolfganghud_colorize_names_title"								:			"Colorize names",
+	"wolfganghud_levels_before_name_title"							:			"Show levels before names",
 	"wolfganghud_hide_in_camp_title"								:			"Hide WolfgangHUD panels in camp",
 	"wolfganghud_player_panel_options_name"							:		"Player panels",
 	"wolfganghud_peer_panels_options_name"							:		"Teammate panels",
