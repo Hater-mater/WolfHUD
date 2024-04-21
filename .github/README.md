@@ -48,7 +48,11 @@ a workaround is in the pipeline.
 * NoAds made by **me**
 * RealisticReload made by **me**
 * FOVBasedSensivity ported from PD2 by **me** (original code by Frankelstner)
+* PD2 Suspicion HUD ported by **me**
+* PD2 Style HUD Layout made by **me**
 * ~~AutoApplyWeaponSkills made by **me**~~ disabled for now, due to stability issues, needs more testing, and much time, and energy, and tea, and other things that keep my brain running
+
+Pretty much all features are optional, and can be configured in game.
 
 Big credit goes to all of you!
 Without your awesome mods, I would not even have started playing this game at all.

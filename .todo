@@ -2,6 +2,7 @@
 
 - option: level before name
 - option: colorize names
+- opyion: classic weapons hud
 - hudtabstats
 - option: hide dot when interaction number is shown /OR/ move interaction number layer above dot
 - custom hud layout?
