@@ -2,7 +2,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
     function HUDTeammateBase:wh_refresh_level(is_player)
         if alive(self._player_level) and alive(self._player_name) then
             self._player_level:set_x(0)
-            self._player_level:set_y(0)
+            self._player_level:set_y(is_player and 0 or 2)
             self._player_level:set_h(self._player_name:h())
             self._player_level:set_valign("left")
             self._player_level:set_halign(self._player_name:halign())
@@ -12,7 +12,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
         end
     end
 
-    function HUDTeammateBase:wh_refresh_name(is_player)
+    function HUDTeammateBase:wh_refresh_name()
         if alive(self._player_level) and alive(self._player_name) then
             self._player_name:set_x(self._player_level:w() + 4)
             self._player_name:set_y(0)
@@ -55,7 +55,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatepeer" then
         end
 
         if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
-            self:wh_refresh_name(false)
+            self:wh_refresh_name()
         end
     end
 
@@ -80,7 +80,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
         end
 
         if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
-            self:wh_refresh_name(true)
+            self:wh_refresh_name()
         end
     end
 
