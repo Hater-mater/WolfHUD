@@ -391,11 +391,16 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
 
     function HUDNotification:init(notification_data, ...)
         if managers.hud:wolfganghud_layout_is_pd2() then
-            self.BOTTOM = math.clamp(managers.hud:get_pd2style_notification_bottom(), 0, 800)
+            self.BOTTOM = managers.hud:get_pd2style_notification_bottom() -- fixes all but normal and weapon challenge
         end
         init_original(self, notification_data, ...)
+        if managers.hud:wolfganghud_layout_is_pd2() then -- fixes normal
+            self._panel_shape_y = self.BOTTOM - self._panel_shape_h
+            self._object:set_bottom(self.BOTTOM)
+        end
     end
 
+    -- fixes weapon challenge
     function HUDNotificationWeaponChallenge:_create_panel(...)
         if managers.hud:wolfganghud_layout_is_pd2() then
             local bottom = managers.hud:get_pd2style_notification_bottom()
@@ -411,6 +416,8 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
             self._object:set_bottom(self.BOTTOM)
         end
     end
+
+    -- possible todo: HUDNotificationCardFail
 elseif string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
     local _animate_show_original = HUDDriving._animate_show
     local _animate_hide_original = HUDDriving._animate_hide

@@ -1,9 +1,9 @@
 # TODO
 
-- fix bot kill counter alignment in pd2 layout
-- option: classic weapons/ammo hud
 - hudtabstats (centered?)
 - option: hide dot when interaction number is shown /OR/ move interaction number layer above dot
 - custom hud layout?
 - review: realistic reload with all weapons
 - fix/finish: AutoApplyWeaponSkills?
+
+-- possible todo: HUDNotificationCardFail bottom alignment (pd2 layout)
