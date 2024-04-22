@@ -2,7 +2,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
     function HUDTeammateBase:wh_refresh_level(is_player)
         if alive(self._player_level) and alive(self._player_name) then
             self._player_level:set_x(0)
-            self._player_level:set_y(is_player and 1 or 0)
+            self._player_level:set_y(0)
             self._player_level:set_h(self._player_name:h())
             self._player_level:set_valign("left")
             self._player_level:set_halign(self._player_name:halign())
