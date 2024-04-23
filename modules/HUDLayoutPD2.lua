@@ -386,38 +386,56 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudobjectivemain" then
     end
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     local init_original = HUDNotification.init
+    local init_dogtag_original = HUDNotificationDogTag.init
     local _create_panel_original = HUDNotificationWeaponChallenge._create_panel
     local _fit_size_original = HUDNotificationWeaponChallenge._fit_size
 
-    function HUDNotification:init(notification_data, ...)
+    function HUDNotification:wh_fix_bottom(original_init_func, ...)
         if managers.hud:wolfganghud_layout_is_pd2() then
-            self.BOTTOM = managers.hud:get_pd2style_notification_bottom() -- fixes all but normal and weapon challenge
+            self.BOTTOM = managers.hud:get_pd2style_notification_bottom() -- fixes all other (but HUDNotification and HUDNotificationWeaponChallenge)
         end
-        init_original(self, notification_data, ...)
-        if managers.hud:wolfganghud_layout_is_pd2() then -- fixes normal
-            self._panel_shape_y = self.BOTTOM - self._panel_shape_h
+        original_init_func(self, ...)
+        if managers.hud:wolfganghud_layout_is_pd2() then -- fixes HUDNotification
             self._object:set_bottom(self.BOTTOM)
         end
     end
 
-    -- fixes weapon challenge
+    -- fixes HUDNotification
+    function HUDNotification:init(notification_data, ...)
+        self:wh_fix_bottom(init_original, notification_data, ...)
+        if managers.hud:wolfganghud_layout_is_pd2() then -- fixes HUDNotification
+            if self._panel_shape_y and self._panel_shape_h then
+                self._panel_shape_y = self.BOTTOM - self._panel_shape_h
+            end
+        end
+    end
+
+    -- fixes HUDNotificationDogTag
+    function HUDNotificationDogTag:init(notification_data, ...)
+        self:wh_fix_bottom(init_dogtag_original, notification_data, ...)
+    end
+
+    -- possible todos:
+    --   - HUDNotificationActiveDuty
+    --   - HUDNotificationCardFail
+    --   - HUDNotificationConsumablePickup
+    --   - HUDNotificationGreedItem
+    --   - HUDNotificationRaidUnlocked
+
+    -- fixes HUDNotificationWeaponChallenge
     function HUDNotificationWeaponChallenge:_create_panel(...)
         if managers.hud:wolfganghud_layout_is_pd2() then
-            local bottom = managers.hud:get_pd2style_notification_bottom()
-            self.Y = bottom - self.HEIGHT
-            self.BOTTOM = bottom
+            self.Y = managers.hud:get_pd2style_notification_bottom() - self.HEIGHT
         end
         _create_panel_original(self, ...)
     end
 
     function HUDNotificationWeaponChallenge:_fit_size(...)
         _fit_size_original(self, ...)
-        if managers.hud:wolfganghud_layout_is_pd2() and self.BOTTOM then
-            self._object:set_bottom(self.BOTTOM)
+        if managers.hud:wolfganghud_layout_is_pd2() and self.Y then
+            self._object:set_y(self.Y)
         end
     end
-
-    -- possible todo: HUDNotificationCardFail
 elseif string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
     local _animate_show_original = HUDDriving._animate_show
     local _animate_hide_original = HUDDriving._animate_hide
