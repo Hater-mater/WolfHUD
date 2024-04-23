@@ -262,6 +262,17 @@ if not _G.WolfgangHUD then
 		else
 			WolfgangHUD:print_log(string.format("Tweak Data file couldn't be found! (%s)", tweak_path), "error")
 		end
+		if WolfgangHUD.tweak_data and not WolfgangHUD.tweak_data.post_init then
+			for _, data in ipairs(WolfgangHUD.tweak_data.color_table) do
+				if data.name == "rainbow" then
+					data.color_func = function(frequency)
+						local r = Application:time() * 360 * (frequency or 1)
+						local r, g, b = (1 + math.sin(r + 0)) / 2, (1 + math.sin(r + 120)) / 2, (1 + math.sin(r + 240)) / 2
+						return Color(r, g, b)
+					end
+				end
+			end
+		end
 	end
 
 	--callback functions to apply changed settings on the fly
