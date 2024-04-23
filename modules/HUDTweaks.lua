@@ -46,7 +46,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatepeer" then
             return
         end
 
-        if WolfgangHUD:getSetting({ "HUD", "COLORIZE_NAMES" }, false) then
+        if WolfgangHUD:getSetting({ "HUD", "COLORIZE_NAMES" }, true) then
             local peer_id = self:peer_id()
             if peer_id then
                 local unit = managers.criminals:character_unit_by_peer_id(peer_id)
@@ -54,14 +54,14 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatepeer" then
             end
         end
 
-        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
+        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true) then
             self:wh_refresh_name()
         end
     end
 
     function HUDTeammatePeer:set_level(level, ...)
         set_level_original(self, level, ...)
-        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
+        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true) then
             self:wh_refresh_level(false)
         end
     end
@@ -75,18 +75,18 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
             return
         end
 
-        if WolfgangHUD:getSetting({ "HUD", "COLORIZE_NAMES" }, false) then
+        if WolfgangHUD:getSetting({ "HUD", "COLORIZE_NAMES" }, true) then
             self:wh_set_unit(managers.player:player_unit())
         end
 
-        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
+        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true) then
             self:wh_refresh_name()
         end
     end
 
     function HUDTeammatePlayer:set_level(level, ...)
         set_level_original(self, level, ...)
-        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
+        if WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true) then
             self:wh_refresh_level(true)
         end
     end

@@ -3,8 +3,8 @@ if WolfgangHUD then
 		HUD = {
 			LAYOUT								= 1,
 			SHOW_IN_CAMP						= false,
-			COLORIZE_NAMES						= false,
-			LEVELS_BEFORE_NAME					= false,
+			COLORIZE_NAMES						= true,
+			LEVELS_BEFORE_NAME					= true,
 			PLAYER = {
 				SHOW_ACCURACY					= true,
 				KILLCOUNTER = {
