@@ -151,16 +151,14 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 	function HUDTeammateBase:set_x(x)
 		set_x_original(self, x)
 		if alive(self._kills_panel) then
+			local is_ai = self:is_ai()
 			if managers.hud:wolfganghud_layout_is_vanilla() then
 				self._kills_panel:set_right((self._right_panel:w() - x) - 60) -- fix for ai panels alignment if human_teammates_exist (see HUDManager:_layout_teammate_panels())
-			elseif managers.hud:wolfganghud_layout_is_pd2() then
-				local is_ai = self:is_ai()
-				if is_ai then
-					self._kills_panel:set_right(self._right_panel:w() - 60)
-				end
-				if is_ai or WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
-					self._kills_panel:set_y(self._player_name:y() + 1)
-				end
+			elseif managers.hud:wolfganghud_layout_is_pd2() and is_ai then
+				self._kills_panel:set_right(self._right_panel:w() - 60)
+			end
+			if is_ai or WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, false) then
+				self._kills_panel:set_y(self._player_name:y() + 1)
 			end
 		end
 	end
