@@ -157,7 +157,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 			elseif managers.hud:wolfganghud_layout_is_pd2() and is_ai then
 				self._kills_panel:set_right(self._right_panel:w() - 60)
 			end
-			if is_ai or WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true) then
+			if self._player_name and (is_ai or WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true)) then
 				self._kills_panel:set_y(self._player_name:y() + 1)
 			end
 		end
@@ -165,13 +165,17 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 
 	function HUDTeammateBase:_init_killcount()
 		local right_panel = self._right_panel
+		local y = right_panel:h() - self.KILLCOUNTER_FONT_SIZE
+		if self._player_name and (self:is_ai() or WolfgangHUD:getSetting({ "HUD", "LEVELS_BEFORE_NAME" }, true)) then
+			y = self._player_name:y() + 1
+		end
 		self._kills_panel = right_panel:panel({
 			name = "kills_panel",
 			visible = WolfgangHUD:ShowHudElements() and not WolfgangHUD:getSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "HIDE"}, false),
 			w = 150,
 			h = self.KILLCOUNTER_FONT_SIZE,
 			x = right_panel:w() - 150,
-			y = right_panel:h() - self.KILLCOUNTER_FONT_SIZE,
+			y = y,
 			halign = "right"
 		})
 		local killcount_color = WolfgangHUD:getColorSetting({"HUD", self._setting_prefix, "KILLCOUNTER", "COLOR"}, "orange")
