@@ -1059,6 +1059,13 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
+						name_id = "wolfganghud_add_join_menu_offline_title",
+						value = {"MENU", "ADD_JOIN_MENU_OFFLINE"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
 						name_id = "wolfganghud_remove_ad_box_title",
 						value = {"MENU", "REMOVE_AD_BOX"},
 						visible_reqs = {},
