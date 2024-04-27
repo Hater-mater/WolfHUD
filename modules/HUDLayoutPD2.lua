@@ -203,24 +203,20 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudobjectivebase" then
 
     function HUDObjectiveBase:set_visible(...)
         set_visible_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._object:set_x(0)
-        end
+        self._object:set_x(0)
     end
 
     function HUDObjectiveBase:set_hidden(...)
         set_hidden_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._object:set_x(self.OFFSET_WHILE_HIDDEN)
-        end
+        self._object:set_x(self.OFFSET_WHILE_HIDDEN)
     end
 
     function HUDObjectiveBase:_animate_show(panel, delay, ...)
@@ -300,49 +296,41 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudobjectivesub" then
 
     function HUDObjectiveSub:_create_objective_text(...)
         _create_objective_text_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._objective_text:set_halign("left")
-            self._objective_text:set_align("left")
-        end
+        self._objective_text:set_halign("left")
+        self._objective_text:set_align("left")
     end
 
     function HUDObjectiveSub:_create_amount(...)
         _create_amount_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._amount_panel:set_halign("left")
-            self._amount_panel:set_x(0)
-        end
+        self._amount_panel:set_halign("left")
+        self._amount_panel:set_x(0)
     end
 
     function HUDObjectiveSub:_create_checkbox(...)
         _create_checkbox_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._checkbox_panel:set_x(0)
-            self._objective_text:set_x(self._checkbox_panel:w() + self.OBJECTIVE_TEXT_PADDING_RIGHT)
-        end
+        self._checkbox_panel:set_x(0)
+        self._objective_text:set_x(self._checkbox_panel:w() + self.OBJECTIVE_TEXT_PADDING_RIGHT)
     end
 
     function HUDObjectiveSub:complete(...)
         complete_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._objective_text:set_x(self._checkbox_panel:w() + self.OBJECTIVE_TEXT_PADDING_RIGHT)
-        end
+        self._objective_text:set_x(self._checkbox_panel:w() + self.OBJECTIVE_TEXT_PADDING_RIGHT)
     end
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudobjectivemain" then
     local _create_timer_original = HUDObjectiveMain._create_timer
@@ -351,14 +339,12 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudobjectivemain" then
 
     function HUDObjectiveMain:_create_timer(...)
         _create_timer_original(self, ...)
-        if not managers.hud:wolfganghud_layout_is_pd2() then
+        if self:is_tab_screen() or not managers.hud:wolfganghud_layout_is_pd2() then
             return
         end
 
-        if not self:is_tab_screen() then
-            self._timer_panel:set_halign("left")
-            self._timer_panel:set_x(self.OBJECTIVE_TEXT_PADDING_RIGHT)
-        end
+        self._timer_panel:set_halign("left")
+        self._timer_panel:set_x(self.OBJECTIVE_TEXT_PADDING_RIGHT)
     end
 
     function HUDObjectiveMain:show_timer(...)
