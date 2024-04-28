@@ -319,6 +319,10 @@ function WolfgangHUDMenu:Reset(value, item)
 		managers.localization:text("wolfganghud_reset_options_confirm"),
 		{
 			[1] = {
+				text = managers.localization:text("dialog_no"),
+				is_cancel_button = true,
+			},
+			[2] = {
 				text = managers.localization:text("dialog_yes"),
 				callback = function()
 					local old_settings = deep_clone(WolfgangHUD.settings)
@@ -343,10 +347,6 @@ function WolfgangHUDMenu:Reset(value, item)
 					--managers.viewport:resolution_changed() -- FIXME: causes crash when going back to main menu (raid-blt bug on every res change)
 					WolfgangHUD:print_log("Settings reset!", "info")
 				end,
-			},
-			[2] = {
-				text = managers.localization:text("dialog_no"),
-				is_cancel_button = true,
 			},
 		},
 		true
