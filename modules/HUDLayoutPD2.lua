@@ -19,7 +19,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanager" then
     end
 elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
     local _setup_ingame_hud_saferect_original = HUDManager._setup_ingame_hud_saferect
-    local _layout_teammate_panels_original = HUDManager._layout_weapon_panels
+    local _layout_teammate_panels_original = HUDManager._layout_teammate_panels
     local _create_objectives_original = HUDManager._create_objectives
 
     function HUDManager:_setup_ingame_hud_saferect(...)
