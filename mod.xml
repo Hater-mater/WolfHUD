@@ -148,6 +148,10 @@
 		<!-- No Toast Sound -->
 		<hook source_file="lib/managers/hud/hudtoastnotification"				file="modules/NoToastSound.lua"				/>
 
+		<!-- Bots Amount -->
+		<hook source_file="lib/managers/menu/raid_menu/missionselectiongui" 	file="modules/BotsAmount.lua"				/>
+		<hook source_file="lib/managers/criminalsmanager" 						file="modules/BotsAmount.lua"				/>
+
 		<!-- Stealthable Missions Icon -->
 		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids" file="modules/StealthableMissions.lua"				/>
 

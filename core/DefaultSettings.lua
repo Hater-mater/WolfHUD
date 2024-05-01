@@ -119,6 +119,7 @@ if WolfgangHUD then
 			AUTO_RELOAD_SINGLE					= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,
 			REALISTIC_RELOAD					= false,
+			BOTS_AMOUNT							= 3,
 		},
 		INTERACTION = {
 			LOCK_MODE							= 3,

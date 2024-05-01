@@ -21,6 +21,10 @@
 	"wolfganghud_multiselect_left"									: "Left",
 	"wolfganghud_multiselect_right"									: "Right",
 
+	"wolfganghud_multiselect_1"										: "1",
+	"wolfganghud_multiselect_2"										: "2",
+	"wolfganghud_multiselect_3"										: "3",
+
 	"wolfganghud_int_locked"										: "PRESS $BTN_CANCEL; TO INTERRUPT",
 	"wolfganghud_suspicion_detected"								: "Detected",
 
@@ -28,6 +32,8 @@
 	"wolfganghud_reset_options_confirm"								: "Are you sure, you want to reset all WolfgangHUD options to their default value?",
 
 	"wolfganghud_options_name"										: "WolfgangHUD",
+
+	"wolfganghud_menu_bots_amount_title"							: "Maximum Team AI",
 
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"General",
