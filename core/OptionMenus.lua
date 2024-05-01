@@ -1096,6 +1096,17 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
+					{ -- Missions
+						type = "header",
+						text_id = "wolfganghud_menu_missions_name",
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_mark_stealthables_title",
+						value = {"MENU", "MARK_STEALTHABLES"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
 				},
 			},
 			{	-- Gameplay

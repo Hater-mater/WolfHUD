@@ -148,6 +148,9 @@
 		<!-- No Toast Sound -->
 		<hook source_file="lib/managers/hud/hudtoastnotification"				file="modules/NoToastSound.lua"				/>
 
+		<!-- Stealthable Missions Icon -->
+		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids" file="modules/StealthableMissions.lua"				/>
+
 	</hooks>
 
 	<keybinds>

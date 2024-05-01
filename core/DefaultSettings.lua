@@ -74,6 +74,7 @@ if WolfgangHUD then
 			TRANSPARENT_PAUSE_MENU				= false,
 			READY_UP_ON_NUM_ENTER				= true,
 			NO_DEBRIEFING						= false,
+			MARK_STEALTHABLES					= true,
 		},
 		HUDList = {
 			ENABLED								= true,
