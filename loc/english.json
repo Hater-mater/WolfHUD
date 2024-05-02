@@ -143,7 +143,7 @@
 
 	"wolfganghud_menu_options_name"									:	"Menu",
 	"wolfganghud_menu_main_menu_name"								:		"Main Menu",
-	"wolfganghud_straight_to_main_menu_title"						:			"Straight to main menu (EXPERIMENTAL)",
+	"wolfganghud_straight_to_main_menu_title"						:			"Straight to main menu",
 	"wolfganghud_streamline_menu_title"								:			"Streamline main menu",
 	"wolfganghud_add_join_menu_title"								:			"Add \"join online\" to main menu",
 	"wolfganghud_add_join_menu_offline_title"						:			"Add \"join online\" to offline camp",
