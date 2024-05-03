@@ -1,5 +1,7 @@
 # TODO
 
+-- fix active duty align!
+-- fix outlaw raid unlocked align!
 - host/join online when in offline (in menu?)
 - hudtabstats (centered?)
 - option: hide dot when interaction number is shown /OR/ move interaction number layer above dot

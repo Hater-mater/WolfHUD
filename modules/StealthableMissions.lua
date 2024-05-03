@@ -9,6 +9,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
         ["bunker_test"] = true,   -- Bunker Busters             // ends when blowing up the dynamite
         ["spies_test"] = true,    -- Extraction                 // ends when using the radio
         ["tutorial"] = true,      -- 'Tutorial Online' compat   // ends when warcry is shown to the player
+        ["fake_mission_clear_skies_radio_defense"] = true, -- 'Operation days as missions' compat (London calling / clear skies 4/6)
     }
 
     function RaidGUIControlListItemRaids:_layout_raid_name(params, data, ...)
