@@ -138,7 +138,7 @@
 
 	"wolfganghud_menu_options_name"									:	"Menü",
 	"wolfganghud_menu_main_menu_name"								:		"Hauptmenü",
-	"wolfganghud_straight_to_main_menu_title"						:			"Direkt ins Hauptmenü",
+	"wolfganghud_straight_to_main_menu_title"						:			"Direkt ins Hauptmenü (EXPERIMENTELL)",
 	"wolfganghud_streamline_menu_title"								:			"Hauptmenü rationalisieren",
 	"wolfganghud_add_join_menu_title"								:			"Füge dem Hauptmenü \"Online beitreten\" hinzu",
 	"wolfganghud_add_join_menu_offline_title"						:			"Füge dem Offline-Camp \"Online beitreten\" hinzu",
