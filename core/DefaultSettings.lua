@@ -66,7 +66,7 @@ if WolfgangHUD then
 			},
 		},
 		MENU = {
-			STRAIGHT_TO_MAIN_MENU				= true,
+			STRAIGHT_TO_MAIN_MENU				= false,
 			STREAMLINE							= true,
 			ADD_JOIN_MENU						= true,
 			ADD_JOIN_MENU_OFFLINE				= true,
