@@ -3,7 +3,6 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
 
     local icon_size = tweak_data.gui.font_sizes.small - 2
 
-    --local icon_color = tweak_data.gui.colors.raid_dirty_white
     local override_partially_stealthable = {
         ["gold_rush"] = true,     -- Gold Rush                  // Starts in stealth, but ends when shooting the hole into the wall/door :D
         ["fury_railway"] = true,  -- Gold Diggers               // ends when closing gate
