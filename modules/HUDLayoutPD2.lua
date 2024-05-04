@@ -372,7 +372,11 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudobjectivemain" then
     end
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     local init_original = HUDNotification.init
+    local init_activeduty_original = HUDNotificationActiveDuty.init
     local init_dogtag_original = HUDNotificationDogTag.init
+    local init_raidunlocked_original = HUDNotificationRaidUnlocked.init
+    local init_consumablepickup_original = HUDNotificationConsumablePickup.init
+    local init_greeditem_original = HUDNotificationGreedItem.init
     local _create_panel_original = HUDNotificationWeaponChallenge._create_panel
     local _fit_size_original = HUDNotificationWeaponChallenge._fit_size
 
@@ -396,17 +400,32 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
         end
     end
 
+    -- fixes HUDNotificationActiveDuty
+    function HUDNotificationActiveDuty:init(notification_data, ...)
+        self:wh_fix_bottom(init_activeduty_original, notification_data, ...)
+    end
+
     -- fixes HUDNotificationDogTag
     function HUDNotificationDogTag:init(notification_data, ...)
         self:wh_fix_bottom(init_dogtag_original, notification_data, ...)
     end
 
-    -- possible todos:
-    --   - HUDNotificationActiveDuty
-    --   - HUDNotificationCardFail
-    --   - HUDNotificationConsumablePickup
-    --   - HUDNotificationGreedItem
-    --   - HUDNotificationRaidUnlocked
+    -- fixes HUDNotificationRaidUnlocked
+    function HUDNotificationRaidUnlocked:init(notification_data, ...)
+        self:wh_fix_bottom(init_raidunlocked_original, notification_data, ...)
+    end
+
+    -- fixes HUDNotificationConsumablePickup
+    function HUDNotificationConsumablePickup:init(notification_data, ...)
+        self:wh_fix_bottom(init_consumablepickup_original, notification_data, ...)
+    end
+
+    -- fixes HUDNotificationGreedItem
+    function HUDNotificationGreedItem:init(notification_data, ...)
+        self:wh_fix_bottom(init_greeditem_original, notification_data, ...)
+    end
+
+    -- possible todo: HUDNotificationCardFail
 
     -- fixes HUDNotificationWeaponChallenge
     function HUDNotificationWeaponChallenge:_create_panel(...)
