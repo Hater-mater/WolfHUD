@@ -331,6 +331,9 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 
 		HUDInteraction.SHOW_LOCK_INDICATOR = WolfgangHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, false)
 		HUDInteraction.SHOW_TIME_REMAINING = WolfgangHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
+		HUDInteraction.TIMER_OFFSET_X = WolfgangHUD:getSetting({"INTERACTION", "TIMER_OFFSET_X"}, 0)
+		HUDInteraction.TIMER_OFFSET_Y = WolfgangHUD:getSetting({"INTERACTION", "TIMER_OFFSET_Y"}, 36)
+		HUDInteraction.HIDE_MOTION_DOT = WolfgangHUD:getSetting({"INTERACTION", "HIDE_MOTION_DOT"}, false)
 		HUDInteraction.SHOW_BAR = WolfgangHUD:getSetting({"INTERACTION", "SHOW_BAR"}, false)
 		HUDInteraction.LOCK_MODE = PlayerStandard.LOCK_MODE or 1
 		HUDInteraction.GRADIENT_COLOR_NAME = WolfgangHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "white")
@@ -372,11 +375,16 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 				self._interact_time:set_font_size(fontSize)
 			end
 			local text = string.format("%.1fs", total)
-			self._interact_time:set_y(self._hud_panel:center_y() - self._interact_time:font_size() / 2)
+			self._interact_time:set_x(HUDInteraction.TIMER_OFFSET_X + self._hud_panel:center_x() - self._interact_time:w() / 2)
+			self._interact_time:set_y(HUDInteraction.TIMER_OFFSET_Y + self._hud_panel:center_y() - self._interact_time:h() / 2)
 			self._interact_time:set_text(text)
 			self._interact_time:show()
-		end
 
+			if HUDInteraction.HIDE_MOTION_DOT and managers.user:get_setting("motion_dot") ~= 0 then
+				self._motion_dot_hidden = true
+				managers.hud:fade_out_motion_dot()
+			end
+		end
 	end
 
 	function HUDInteraction:hide_interaction_bar(complete, show_interact_at_finish, ...)
@@ -406,6 +414,11 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudinteraction" then
 			if show_interact_at_finish then
 				self:show_interact()
 			end
+		end
+
+		if self._motion_dot_hidden and managers.user:get_setting("motion_dot") ~= 0 then
+			self._motion_dot_hidden = nil
+			managers.hud:fade_in_motion_dot()
 		end
 	end
 
@@ -487,6 +500,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 		self._progress_bar:set_layer(layer + 2)
 	end
 
+	-- covers exiting vehicles and foxholes
 	function ProgressBarGuiObject:init(...)
 		init_original(self, ...)
 		if self._description then
@@ -534,6 +548,9 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 
 		ProgressBarGuiObject.SHOW_LOCK_INDICATOR = WolfgangHUD:getSetting({"INTERACTION", "SHOW_LOCK_INDICATOR"}, false)
 		ProgressBarGuiObject.SHOW_TIME_REMAINING = WolfgangHUD:getSetting({"INTERACTION", "SHOW_TIME_REMAINING"}, true)
+		ProgressBarGuiObject.TIMER_OFFSET_X = WolfgangHUD:getSetting({"INTERACTION", "TIMER_OFFSET_X"}, 0)
+		ProgressBarGuiObject.TIMER_OFFSET_Y = WolfgangHUD:getSetting({"INTERACTION", "TIMER_OFFSET_Y"}, 36)
+		ProgressBarGuiObject.HIDE_MOTION_DOT = WolfgangHUD:getSetting({"INTERACTION", "HIDE_MOTION_DOT"}, false)
 		ProgressBarGuiObject.SHOW_BAR = WolfgangHUD:getSetting({"INTERACTION", "SHOW_BAR"}, false)
 		ProgressBarGuiObject.LOCK_MODE = PlayerStandard.LOCK_MODE or 1
 		ProgressBarGuiObject.GRADIENT_COLOR_NAME = WolfgangHUD:getSetting({"INTERACTION", "GRADIENT_COLOR"}, "white")
@@ -574,11 +591,16 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 				self._interact_time:set_font_size(fontSize)
 			end
 			local text = string.format("%.1fs", 0)
-			self._interact_time:set_y(self._panel:center_y() - self._interact_time:font_size() / 2)
+			self._interact_time:set_x(ProgressBarGuiObject.TIMER_OFFSET_X + self._panel:center_x() - self._interact_time:w() / 2)
+			self._interact_time:set_y(ProgressBarGuiObject.TIMER_OFFSET_Y + self._panel:center_y() - self._interact_time:h() / 2)
 			self._interact_time:set_text(text)
 			self._interact_time:show()
-		end
 
+			if ProgressBarGuiObject.HIDE_MOTION_DOT and managers.user:get_setting("motion_dot") ~= 0 then
+				self._motion_dot_hidden = true
+				managers.hud:fade_out_motion_dot()
+			end
+		end
 	end
 
 	function ProgressBarGuiObject:hide(complete, ...)
@@ -599,6 +621,11 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/progressbarguiobject" 
 		if self._progress_bar_locked then
 			self._progress_bar_locked:parent():remove(self._progress_bar_locked)
 			self._progress_bar_locked = nil
+		end
+
+		if self._motion_dot_hidden and managers.user:get_setting("motion_dot") ~= 0 then
+			self._motion_dot_hidden = nil
+			managers.hud:fade_in_motion_dot()
 		end
 	end
 

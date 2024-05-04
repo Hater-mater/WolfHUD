@@ -291,6 +291,15 @@ if WolfgangHUD then
 								enabled_reqs = {},
 							},
 							{
+								type = "toggle",
+								name_id = "wolfganghud_interaction_timer_hide_motion_dot_title",
+								value = {"INTERACTION", "HIDE_MOTION_DOT"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"INTERACTION", "SHOW_TIME_REMAINING"}, invert = false},
+								},
+							},
+							{
 								type = "slider",
 								name_id = "wolfganghud_interaction_timer_scale_title",
 								value = {"INTERACTION", "TIMER_SCALE"},
@@ -301,6 +310,30 @@ if WolfgangHUD then
 								min_value = 0.3,
 								max_value = 2,
 								decimal_places = 2,
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_interaction_timer_offset_x_title",
+								value = {"INTERACTION", "TIMER_OFFSET_X"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"INTERACTION", "SHOW_TIME_REMAINING"}, invert = false},
+								},
+								min_value = -960,
+								max_value = 960,
+								decimal_places = 0,
+							},
+							{
+								type = "slider",
+								name_id = "wolfganghud_interaction_timer_offset_y_title",
+								value = {"INTERACTION", "TIMER_OFFSET_Y"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"INTERACTION", "SHOW_TIME_REMAINING"}, invert = false},
+								},
+								min_value = -540,
+								max_value = 540,
+								decimal_places = 0,
 							},
 							{
 								type = "multi_choice",
