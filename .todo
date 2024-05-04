@@ -1,12 +1,9 @@
 # TODO
 
--- fix active duty align!
--- fix outlaw raid unlocked align!
-- host/join online when in offline (in menu?)
-- hudtabstats (centered?)
-- option: hide dot when interaction number is shown /OR/ move interaction number layer above dot
-- custom hud layout?
+- possible todo: HUDNotificationCardFail bottom alignment (pd2 layout)
+- hud-tab-stats (centered?)
+- host only coloring (always green)
 - review: realistic reload with all weapons
+- custom hud layout?
 - fix/finish: AutoApplyWeaponSkills?
-
--- possible todo: HUDNotificationCardFail bottom alignment (pd2 layout)
+- option: hide dot when interaction number is shown /OR/ move interaction number layer above dot
