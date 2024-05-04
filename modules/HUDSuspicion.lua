@@ -146,7 +146,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudsuspicion" then
         local visible = WolfgangHUD:getSetting({"HUD", "Suspicion", "SHOW_PD2HUD"}, true)
         self._suspicion_panel:child("suspicion_left"):set_visible(visible)
         self._suspicion_panel:child("suspicion_right"):set_visible(visible)
-        self._suspicion_panel:child("suspicion_detected"):set_visible(visible)
+        self._suspicion_panel:child("suspicion_detected"):set_visible(visible and WolfgangHUD:getSetting({"HUD", "Suspicion", "SHOW_DETECTED_TEXT"}, false))
         self._misc_panel:child("hud_stealth_eye"):set_visible(visible)
         self._misc_panel:child("hud_stealth_exclam"):set_visible(visible)
 
