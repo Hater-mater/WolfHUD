@@ -63,6 +63,7 @@ if WolfgangHUD then
 				SHOW_PERCENTAGE_NUMERIC			= true,
 				COLOR_START						= "light_blue",
 				COLOR_END						= "red",
+				SHOW_DETECTED_TEXT				= false,
 			},
 		},
 		MENU = {

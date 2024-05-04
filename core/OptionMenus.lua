@@ -928,6 +928,15 @@ if WolfgangHUD then
 							},
 							{
 								type = "toggle",
+								name_id = "wolfganghud_suspicion_show_detected_text_title",
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"HUD", "Suspicion", "SHOW_PD2HUD"}, invert = false},
+								},
+								value = { "HUD", "Suspicion", "SHOW_DETECTED_TEXT" },
+							},
+							{
+								type = "toggle",
 								name_id = "wolfganghud_suspicion_show_percentage_numeric_title",
 								visible_reqs = {},
 								enabled_reqs = {},
