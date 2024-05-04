@@ -377,6 +377,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
     local init_raidunlocked_original = HUDNotificationRaidUnlocked.init
     local init_consumablepickup_original = HUDNotificationConsumablePickup.init
     local init_greeditem_original = HUDNotificationGreedItem.init
+    local init_cardfail_original = HUDNotificationCardFail.init
     local _create_panel_original = HUDNotificationWeaponChallenge._create_panel
     local _fit_size_original = HUDNotificationWeaponChallenge._fit_size
 
@@ -425,7 +426,10 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudnotification" then
         self:wh_fix_bottom(init_greeditem_original, notification_data, ...)
     end
 
-    -- possible todo: HUDNotificationCardFail
+    -- fixes HUDNotificationCardFail
+    function HUDNotificationCardFail:init(notification_data, ...)
+        self:wh_fix_bottom(init_cardfail_original, notification_data, ...)
+    end
 
     -- fixes HUDNotificationWeaponChallenge
     function HUDNotificationWeaponChallenge:_create_panel(...)
