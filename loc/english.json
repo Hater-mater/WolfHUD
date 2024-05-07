@@ -35,6 +35,8 @@
 
 	"wolfganghud_menu_joinonline"									: "Join online",
 	"wolfganghud_menu_bots_amount_title"							: "Maximum Team AI",
+	"wolfganghud_menu_weapons_stats_concealment"					: "Concealment",
+	"wolfganghud_menu_weapons_detection_risk"						: "Detection risk",
 
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"General",
@@ -153,12 +155,16 @@
 	"wolfganghud_add_join_menu_offline_title"						:			"Add \"join online\" to offline camp",
 	"wolfganghud_remove_ad_box_title"								:			"Remove ad-box",
 	"wolfganghud_menu_ingame_name"									:		"In-Game",
-	"wolfganghud_transparent_pause_menu_title"						:			"Transparent pause menu",
+	"wolfganghud_transparent_pause_menu_title"						:			"Transparent menus",
 	"wolfganghud_ready_on_num_enter_title"							:			"Ready up on num-enter",
 	"wolfganghud_no_debriefing_title"								:			"No debriefing videos",
 
 	"wolfganghud_menu_missions_name"								:	"Missions",
 	"wolfganghud_mark_stealthables_title"							:		"Mark stealthable missions",
+
+	"wolfganghud_menu_weapons_name"									:	"Weapons",
+	"wolfganghud_show_weapon_concealment_title"						:		"Show weapon concealment",
+	"wolfganghud_show_detection_risk_title"							:		"Show detection risk",
 
 	"wolfganghud_gameplay_options_name"								:	"Gameplay",
 	"wolfganghud_gameplay_general_name"								:		"General",

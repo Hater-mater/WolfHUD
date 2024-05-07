@@ -1139,6 +1139,7 @@ if WolfgangHUD then
 						enabled_reqs = {},
 					},
 					{ -- Missions
+						y_offset = 320,
 						type = "header",
 						text_id = "wolfganghud_menu_missions_name",
 					},
@@ -1146,6 +1147,24 @@ if WolfgangHUD then
 						type = "toggle",
 						name_id = "wolfganghud_mark_stealthables_title",
 						value = {"MENU", "MARK_STEALTHABLES"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{ -- Weapons
+						type = "header",
+						text_id = "wolfganghud_menu_weapons_name",
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_show_weapon_concealment_title",
+						value = {"MENU", "SHOW_WEAPON_CONCEALMENT"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_show_detection_risk_title",
+						value = {"MENU", "SHOW_DETECTION_RISK"},
 						visible_reqs = {},
 						enabled_reqs = {},
 					},

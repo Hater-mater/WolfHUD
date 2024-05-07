@@ -155,6 +155,10 @@
 		<!-- Stealthable Missions Icon -->
 		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids" file="modules/StealthableMissions.lua"				/>
 
+		<!-- Concealment -->
+		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrolweaponstats" file="modules/Concealment.lua"	/>
+		<hook source_file="lib/managers/menu/menucomponentmanager" 				file="modules/Concealment.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/weaponselectiongui" 		file="modules/Concealment.lua"				/>
 	</hooks>
 
 	<keybinds>
