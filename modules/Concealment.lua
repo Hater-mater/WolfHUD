@@ -70,7 +70,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/menucomponentmanager" 
     function MenuComponentManager:_create_raid_menu_weapon_select_gui(node, component, ...)
         local result = _create_raid_menu_weapon_select_gui_original(self, node, component, ...)
 
-        if result._show_weapon_concealment then
+        if result._weapon_stats._show_weapon_concealment then
             result:_update_weapon_stats(true) -- force reload once more (fixes init weapon concealment as managers.menu_component is still nil when wghud_get_selected_weapon_concealment is called first time)
         end
 
