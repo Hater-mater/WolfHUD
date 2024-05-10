@@ -511,6 +511,7 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/huddriving" then
     end
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudturret" then
     local _create_heat_indicator_original = HUDTurret._create_heat_indicator
+    local _create_shell_original = HUDTurret._create_shell
 
     function HUDTurret:_create_heat_indicator(...)
         _create_heat_indicator_original(self, ...)
@@ -520,6 +521,18 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudturret" then
 
         self._heat_indicator_panel:set_bottom(self._object:h() - HUDTeammatePeer.DEFAULT_H -
             managers.hud.WOLFGANGHUD_PD2LAYOUT_PADDING)
+    end
+
+    function HUDTurret:_create_shell(...)
+        _create_shell_original(self, ...)
+        if not managers.hud or not managers.hud:wolfganghud_layout_is_pd2() then
+            return
+        end
+
+        self._shell_bg:set_bottom(self._object:h() - HUDTeammatePeer.DEFAULT_H -
+            managers.hud.WOLFGANGHUD_PD2LAYOUT_PADDING)
+        self._shell_fade:set_center_y(self._shell_bg:center_y())
+        self._shell:set_center_y(self._shell_bg:center_y())
     end
 elseif string.lower(RequiredScript) == "lib/managers/hud/hudsaveicon" then
     local offset_position_original = HUDSaveIcon.offset_position
