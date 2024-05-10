@@ -21,6 +21,10 @@
 	"wolfganghud_multiselect_left"									: "Links",
 	"wolfganghud_multiselect_right"									: "Rechts",
 
+	"wolfganghud_multiselect_1"										: "1",
+	"wolfganghud_multiselect_2"										: "2",
+	"wolfganghud_multiselect_3"										: "3",
+
 	"wolfganghud_int_locked"										: "DRÜCK $BTN_CANCEL; ZUM ABBRECHEN",
 	"wolfganghud_suspicion_detected"								: "Entdeckt",
 
@@ -30,6 +34,9 @@
 	"wolfganghud_options_name"										: "WolfgangHUD",
 
 	"wolfganghud_menu_joinonline"									: "Online beitreten",
+	"wolfganghud_menu_bots_amount_title"							: "Maximale Team-KI",
+	"wolfganghud_menu_weapons_stats_concealment"					: "Tarnung",
+	"wolfganghud_menu_weapons_detection_risk"						: "Entdeckungsrisiko",
 
 	"wolfganghud_hud_options_name"									:	"HUD",
 	"wolfganghud_hud_general_name"									:		"Allgemein",
@@ -59,7 +66,10 @@
 	"wolfganghud_interaction_bar_scale_title"						:				"Größe",
 	"wolfganghud_interaction_timer_name"							:			"Timer",
 	"wolfganghud_interaction_show_timer_title"						:				"Zeigen",
+	"wolfganghud_interaction_timer_hide_motion_dot_title"			:				"Bewegungspunkt ausblenden",
 	"wolfganghud_interaction_timer_scale_title"						:				"Größe",
+	"wolfganghud_interaction_timer_offset_x_title"					:				"Mitte X Versatz",
+	"wolfganghud_interaction_timer_offset_y_title"					:				"Mitte Y Versatz",
 	"wolfganghud_interaction_timer_color_start_title"				:				"Farbe (Start)",
 	"wolfganghud_interaction_timer_color_title"						:				"Farbe (Ende)",
 	"wolfganghud_hudlist_options_name"								:		"HUD Listen",
@@ -151,6 +161,10 @@
 
 	"wolfganghud_menu_missions_name"								:	"Missionen",
 	"wolfganghud_mark_stealthables_title"							:		"Markiere lautlose",
+
+	"wolfganghud_menu_weapons_name"									:	"Waffen",
+	"wolfganghud_show_weapon_concealment_title"						:		"Waffentarnung anzeigen",
+	"wolfganghud_show_detection_risk_title"							:		"Entdeckungsrisiko anzeigen",
 
 	"wolfganghud_gameplay_options_name"								:	"Gameplay",
 	"wolfganghud_gameplay_general_name"								:		"Allgemein",
