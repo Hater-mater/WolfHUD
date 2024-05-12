@@ -64,7 +64,8 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
     function MissionSelectionGui:_on_toggle_team_ai(button, control, value, ...)
         local result = _on_toggle_team_ai_original(self, button, control, value, ...)
 
-        local old_value = Global.game_settings.team_ai
+        local old_value = Global.game_settings.single_player and Global.game_settings.team_ai or
+            Global.game_settings.selected_team_ai
         if old_value ~= value then
             WolfgangHUD:setSetting({ "GAME_SETTINGS", "TEAM_AI" }, value)
             WolfgangHUD:Save()
@@ -81,7 +82,8 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
         for _, setting_control in pairs(self._settings_controls) do
             -- disable bots amount stepper if ai is off
             if setting_control and setting_control:name() == "bots_amount_stepper" then
-                setting_control:set_enabled(Global.game_settings.team_ai)
+                setting_control:set_enabled(Global.game_settings.single_player and Global.game_settings.team_ai or
+                    Global.game_settings.selected_team_ai)
             end
         end
     end
@@ -98,7 +100,8 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
                 left = "audio_button",
                 up = "team_ai_checkbox",
             },
-            enabled = Global.game_settings.team_ai
+            enabled = Global.game_settings.single_player and Global.game_settings.team_ai or
+                Global.game_settings.selected_team_ai
         })
         self._bots_amount_stepper:set_value_and_render(WolfgangHUD:getSetting({ "GAME_SETTINGS", "MAX_TEAM_AI" }, 3),
             true)
@@ -183,7 +186,11 @@ elseif string.lower(RequiredScript) == "lib/managers/criminalsmanager" then
 
     function CriminalsManager:on_mission_end_callback(...)
         on_mission_end_callback_original(self, ...)
-        Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+        if Global.game_settings.single_player then
+            Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+        else
+            Global.game_settings.selected_team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+        end
     end
 elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" then
     -- chose to hook this, only because it's pretty much the first call in Setup:init_managers, right after building Global.game_settings
@@ -193,10 +200,15 @@ elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" the
         if Network:is_server() and Global.game_settings.level_id == OperationsTweakData.ENTRY_POINT_LEVEL then
             Global.game_settings.difficulty = tweak_data.difficulties
                 [WolfgangHUD:getSetting({ "GAME_SETTINGS", "DIFFICULTY" }, 2)]
-            Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
-            Global.game_settings.permission = tweak_data.permissions
-                [WolfgangHUD:getSetting({ "GAME_SETTINGS", "PERMISSION" }, 1)]
-            Global.game_settings.drop_in_allowed = WolfgangHUD:getSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, true)
+            if not Global.game_settings.single_player then
+                Global.game_settings.permission = tweak_data.permissions
+                    [WolfgangHUD:getSetting({ "GAME_SETTINGS", "PERMISSION" }, 1)]
+                Global.game_settings.drop_in_allowed = WolfgangHUD:getSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" },
+                    true)
+                Global.game_settings.selected_team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+            else
+                Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+            end
         end
         return init_original(self, ...)
     end
