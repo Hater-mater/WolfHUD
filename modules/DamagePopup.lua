@@ -77,7 +77,7 @@ if string.lower(RequiredScript) == "lib/units/enemies/cop/copdamage" then
 						self:show_popup(damage, self._dead, headshot, data.critical_hit)
 					end
 				else
-					local color_id = managers.criminals:character_color_id_by_unit(killer)
+					local color_id = WolfgangHUD:character_color_id_by_unit(killer)
 					if color_id then
 						self:show_popup(damage, self._dead, headshot, false, color_id)
 					end

@@ -223,6 +223,20 @@ if not _G.WolfgangHUD then
 		return not managers.raid_job:is_camp_loaded() or self:getSetting({"HUD", "SHOW_IN_CAMP"}, false)
 	end
 
+	function WolfgangHUD:character_color_id_by_unit(unit)
+		local colorize_mode = self:getSetting({ "HUD", "COLORIZE_MODE" }, 1)
+
+		if colorize_mode == 2 then -- by panels (local)
+			local data = managers.criminals:character_data_by_unit(unit)
+			if data and data.panel_id then
+				return #tweak_data.chat_colors - data.panel_id
+			end
+		end
+
+		-- in sync (like outlines)
+		return managers.criminals:character_color_id_by_unit(unit)
+	end
+
 	function WolfgangHUD:getFilesR(root, sub, files)
 		local sub = sub or ''
 		local files = files or {}

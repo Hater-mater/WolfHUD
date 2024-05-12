@@ -27,7 +27,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/hudteammatebase" then
 
     function HUDTeammateBase:wh_set_unit(unit)
         if alive(unit) and managers.criminals and tweak_data.chat_colors and alive(self._player_name) then
-            local color_id = managers.criminals:character_color_id_by_unit(unit)
+            local color_id = WolfgangHUD:character_color_id_by_unit(unit)
             if color_id then
                 local color = tweak_data.chat_colors[color_id]
                 if color then

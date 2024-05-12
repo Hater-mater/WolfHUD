@@ -4,6 +4,7 @@ if WolfgangHUD then
 			LAYOUT								= 1,
 			SHOW_IN_CAMP						= false,
 			COLORIZE_NAMES						= true,
+			COLORIZE_MODE						= 1,
 			LEVELS_BEFORE_NAME					= true,
 			PLAYER = {
 				SHOW_ACCURACY					= true,

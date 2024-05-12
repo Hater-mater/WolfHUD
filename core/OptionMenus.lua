@@ -36,6 +36,17 @@ if WolfgangHUD then
 						enabled_reqs = {},
 					},
 					{
+						type = "multi_choice",
+						name_id = "wolfganghud_hud_colorize_mode_title",
+						value = {"HUD", "COLORIZE_MODE"},
+						visible_reqs = {},
+						enabled_reqs = {},
+						options = {
+							"wolfganghud_colorize_modes_by_net_synced_outlines",
+							"wolfganghud_colorize_modes_by_local_ui_panels"
+						},
+					},
+					{
 						type = "toggle",
 						name_id = "wolfganghud_levels_before_name_title",
 						value = {"HUD", "LEVELS_BEFORE_NAME"},
