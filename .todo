@@ -1,7 +1,8 @@
 # TODO
 
+- online/offline toggle (only if no clients)
+- composite loot (kelly gold, maybe more?)
 - hud-tab-stats (centered?)
-- host only coloring (always green)
 - review: realistic reload with all weapons
 - custom hud layout?
 - fix/finish: AutoApplyWeaponSkills?
