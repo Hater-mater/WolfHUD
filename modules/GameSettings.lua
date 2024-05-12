@@ -245,7 +245,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenu
         _layout_kick_mute_widget_original(self, ...)
 
         if self._settings_shown then
-            local offset = self._online_users_count and self._online_users_count:h() or 0
+            local offset = self._online_users_count and (self._online_users_count:h() + 77) or 0 -- [Player count instead of ad] compatibility
             self._widget_panel:set_bottom(self._root_panel:h() - 77 - offset)
         end
     end
