@@ -224,15 +224,29 @@ elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" the
     end
 elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/raidmainmenugui" then
     local _layout_original = RaidMainMenuGui._layout
+    local _layout_kick_mute_widget_original = RaidMainMenuGui._layout_kick_mute_widget
 
     function RaidMainMenuGui:_layout(...)
-        _layout_original(self, ...)
-
+        self._settings_shown = false
         if not (managers.raid_job and managers.raid_job:is_in_tutorial())
             and (managers.platform:rich_presence() == "MPPlaying" or managers.platform:rich_presence() == "MPLobby")
+            and Network:is_server()
             and not Global.game_settings.single_player then
+            self._settings_shown = true
+        end
+        _layout_original(self, ...)
+        if self._settings_shown then
             self:wg_layout_right_panel()
             self:wg_layout_game_settings()
+        end
+    end
+
+    function RaidMainMenuGui:_layout_kick_mute_widget(...)
+        _layout_kick_mute_widget_original(self, ...)
+
+        if self._settings_shown then
+            local offset = self._online_users_count and self._online_users_count:h() or 0
+            self._widget_panel:set_bottom(self._root_panel:h() - 77 - offset)
         end
     end
 
