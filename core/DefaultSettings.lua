@@ -122,7 +122,14 @@ if WolfgangHUD then
 			AUTO_RELOAD_SINGLE					= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,
 			REALISTIC_RELOAD					= false,
-			BOTS_AMOUNT							= 3,
+		},
+		GAME_SETTINGS = {
+			DIFFICULTY							= 2,		-- Global.game_settings.difficulty [1-4] easy, normal, hard, very hard
+			PERMISSION							= 1,		-- Global.game_settings.permission [1-3] public, friends_only, private
+			DROP_IN_ALLOWED						= true,		-- Global.game_settings.drop_in_allowed
+			TEAM_AI								= true,		-- Global.game_settings.team_ai
+			MAX_TEAM_AI							= 3,		-- custom [1-3]
+			--AUTO_KICK							= true,		-- Global.game_settings.auto_kick TODO?
 		},
 		INTERACTION = {
 			LOCK_MODE							= 3,

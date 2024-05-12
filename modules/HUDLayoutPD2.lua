@@ -51,6 +51,11 @@ elseif string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
         if managers.savefile._save_icon then
             managers.savefile._save_icon:offset_position(0, 0)
         end
+
+        -- workaround for starting game with disabled ai
+        if not Global.game_settings.team_ai then
+            self:_layout_teammate_panels()
+        end
     end
 
     function HUDManager:_layout_teammate_panels()
