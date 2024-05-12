@@ -129,7 +129,6 @@ if WolfgangHUD then
 			DROP_IN_ALLOWED						= true,		-- Global.game_settings.drop_in_allowed
 			TEAM_AI								= true,		-- Global.game_settings.team_ai
 			MAX_TEAM_AI							= 3,		-- custom [1-3]
-			--AUTO_KICK							= true,		-- Global.game_settings.auto_kick TODO?
 		},
 		INTERACTION = {
 			LOCK_MODE							= 3,

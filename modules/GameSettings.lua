@@ -190,12 +190,14 @@ elseif string.lower(RequiredScript) == "lib/managers/dynamicresourcemanager" the
     local init_original = DynamicResourceManager.init
 
     function DynamicResourceManager:init(...)
-        Global.game_settings.difficulty = tweak_data.difficulties
-            [WolfgangHUD:getSetting({ "GAME_SETTINGS", "DIFFICULTY" }, 2)]
-        Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
-        Global.game_settings.permission = tweak_data.permissions
-            [WolfgangHUD:getSetting({ "GAME_SETTINGS", "PERMISSION" }, 1)]
-        Global.game_settings.drop_in_allowed = WolfgangHUD:getSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, true)
+        if Network:is_server() and Global.game_settings.level_id == OperationsTweakData.ENTRY_POINT_LEVEL then
+            Global.game_settings.difficulty = tweak_data.difficulties
+                [WolfgangHUD:getSetting({ "GAME_SETTINGS", "DIFFICULTY" }, 2)]
+            Global.game_settings.team_ai = WolfgangHUD:getSetting({ "GAME_SETTINGS", "TEAM_AI" }, true)
+            Global.game_settings.permission = tweak_data.permissions
+                [WolfgangHUD:getSetting({ "GAME_SETTINGS", "PERMISSION" }, 1)]
+            Global.game_settings.drop_in_allowed = WolfgangHUD:getSetting({ "GAME_SETTINGS", "DROP_IN_ALLOWED" }, true)
+        end
         return init_original(self, ...)
     end
 end
