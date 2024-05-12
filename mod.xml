@@ -153,6 +153,7 @@
 		<hook source_file="lib/managers/menu/raid_menu/missionselectiongui" 						file="modules/GameSettings.lua"				/>
 		<hook source_file="lib/managers/criminalsmanager"											file="modules/GameSettings.lua"				/>
 		<hook source_file="lib/managers/dynamicresourcemanager"										file="modules/GameSettings.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"								file="modules/GameSettings.lua"				/>
 
 		<!-- Stealthable Missions Icon -->
 		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids"		file="modules/StealthableMissions.lua"		/>
