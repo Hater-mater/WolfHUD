@@ -28,137 +28,139 @@
 
 		<!-- CORE -->
 
-		<hook source_file="lib/entry"											file="core/WolfgangHUD.lua"		type="pre"	/>
-		<hook source_file="lib/managers/menu/menucomponentmanager"				file="core/WolfgangHUDMenu.lua"				/>
+		<hook source_file="lib/entry"																file="core/WolfgangHUD.lua"		type="pre"	/>
+		<hook source_file="lib/managers/menu/menucomponentmanager"									file="core/WolfgangHUDMenu.lua"				/>
 
 		<!-- GameInfo Manager -->
-		<hook source_file="lib/setups/setup"									file="core/GameInfoManager.lua"				/>
-		<hook source_file="lib/managers/enemymanager"							file="core/GameInfoManager.lua"				/>
-		<hook source_file="lib/managers/objectinteractionmanager"				file="core/GameInfoManager.lua"				/>
-		<hook source_file="lib/units/interactions/interactionext"				file="core/GameInfoManager.lua"				/>
-		<hook source_file="lib/units/pickups/greedcacheitem"					file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/setups/setup"														file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/managers/enemymanager"												file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/managers/objectinteractionmanager"									file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/units/interactions/interactionext"									file="core/GameInfoManager.lua"				/>
+		<hook source_file="lib/units/pickups/greedcacheitem"										file="core/GameInfoManager.lua"				/>
 
 		<!-- Waypoints Manager -->
-		<hook source_file="lib/setups/setup"									file="core/WaypointsManager.lua"			/>
-		<hook source_file="lib/managers/hudmanagerpd2"							file="core/WaypointsManager.lua"			/>
+		<hook source_file="lib/setups/setup"														file="core/WaypointsManager.lua"			/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="core/WaypointsManager.lua"			/>
 
 		<!-- MODULES -->
 
 		<!-- HUD Tweaks -->
-		<hook source_file="lib/managers/hud/hudteammatebase"					file="modules/HUDTweaks.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammatepeer"					file="modules/HUDTweaks.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/HUDTweaks.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatebase"										file="modules/HUDTweaks.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatepeer"										file="modules/HUDTweaks.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"										file="modules/HUDTweaks.lua"				/>
 
 		<!-- PD2Layout -->
-		<hook source_file="lib/managers/hudmanager"								file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudcarry"							file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudobjectivebase"					file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudobjectivesub"					file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudobjectivemain"					file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudnotification"					file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/huddriving"							file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudturret"							file="modules/HUDLayoutPD2.lua"				/>
-		<hook source_file="lib/managers/hud/hudsaveicon"						file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hudmanager"													file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudcarry"												file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudobjectivebase"										file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudobjectivesub"										file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudobjectivemain"										file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudnotification"										file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/huddriving"												file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudturret"												file="modules/HUDLayoutPD2.lua"				/>
+		<hook source_file="lib/managers/hud/hudsaveicon"											file="modules/HUDLayoutPD2.lua"				/>
 
 		<!-- Custom Waypoints -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/CustomWaypoints.lua"			/>
-		<hook source_file="lib/units/vehicles/vehicledrivingext"				file="modules/CustomWaypoints.lua"			/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/CustomWaypoints.lua"			/>
+		<hook source_file="lib/units/vehicles/vehicledrivingext"									file="modules/CustomWaypoints.lua"			/>
 
 		<!-- Damage Popup -->
-		<hook source_file="lib/units/civilians/civiliandamage"					file="modules/DamagePopup.lua"				/>
-		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/DamagePopup.lua"				/>
+		<hook source_file="lib/units/civilians/civiliandamage"										file="modules/DamagePopup.lua"				/>
+		<hook source_file="lib/units/enemies/cop/copdamage"											file="modules/DamagePopup.lua"				/>
 
 		<!-- Straight To Main Menu -->
-		<hook source_file="lib/setups/menusetup"								file="modules/StraightToMainMenu.lua"		/>
-		<hook source_file="lib/states/menutitlescreenstate"						file="modules/StraightToMainMenu.lua"		/>
+		<hook source_file="lib/setups/menusetup"													file="modules/StraightToMainMenu.lua"		/>
+		<hook source_file="lib/states/menutitlescreenstate"											file="modules/StraightToMainMenu.lua"		/>
 
 		<!-- NoAds -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/NoAds.lua"					/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"								file="modules/NoAds.lua"					/>
 
 		<!-- NoDebriefing -->
-		<hook source_file="lib/states/eventcompletestate"						file="modules/NoDebriefing.lua"				/>
+		<hook source_file="lib/states/eventcompletestate"											file="modules/NoDebriefing.lua"				/>
 
 		<!-- Transparent Pause Menu -->
-		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"	file="modules/TransparentPauseMenu.lua"		/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmenuscenemanager"						file="modules/TransparentPauseMenu.lua"		/>
 
 		<!-- HUDList -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDList.lua"					/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/HUDList.lua"					/>
 
 		<!-- HUDSuspicion -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/HUDSuspicion.lua"				/>
-		<hook source_file="lib/managers/hud/hudsuspicion"						file="modules/HUDSuspicion.lua"				/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/HUDSuspicion.lua"				/>
+		<hook source_file="lib/managers/hud/hudsuspicion"											file="modules/HUDSuspicion.lua"				/>
 
 		<!-- KillCounter -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/managers/raidjobmanager"							file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammatebase"					file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammateai"						file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammatepeer"					file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/units/enemies/cop/copdamage"						file="modules/KillCounter.lua"				/>
-		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"		file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/raidjobmanager"												file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatebase"										file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammateai"											file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammatepeer"										file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"										file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/units/enemies/cop/copdamage"											file="modules/KillCounter.lua"				/>
+		<hook source_file="lib/units/equipment/sentry_gun/sentrygunbase"							file="modules/KillCounter.lua"				/>
 
 		<!-- Auto Apply Weapon Skills -->
-		<!--hook source_file="lib/managers/statisticsmanager"					file="modules/AutoApplyWeaponSkills.lua"	/-->
-		<!--hook source_file="lib/managers/weaponskillsmanager"					file="modules/AutoApplyWeaponSkills.lua"	/-->
+		<!--hook source_file="lib/managers/statisticsmanager"										file="modules/AutoApplyWeaponSkills.lua"	/-->
+		<!--hook source_file="lib/managers/weaponskillsmanager"										file="modules/AutoApplyWeaponSkills.lua"	/-->
 
 		<!-- Accuracy -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/Accuracy.lua"					/>
-		<hook source_file="lib/managers/raidjobmanager"							file="modules/Accuracy.lua"					/>
-		<hook source_file="lib/managers/statisticsmanager"						file="modules/Accuracy.lua"					/>
-		<hook source_file="lib/managers/hud/hudteammateplayer"					file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/raidjobmanager"												file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/statisticsmanager"											file="modules/Accuracy.lua"					/>
+		<hook source_file="lib/managers/hud/hudteammateplayer"										file="modules/Accuracy.lua"					/>
 
 		<!-- Interaction -->
-		<hook source_file="lib/managers/hudmanagerpd2"							file="modules/Interaction.lua"				/>
-		<hook source_file="lib/units/beings/player/states/playerstandard"		file="modules/Interaction.lua"				/>
-		<hook source_file="lib/units/beings/player/states/playerdriving"		file="modules/Interaction.lua"				/>
-		<hook source_file="lib/units/beings/player/states/playerfoxhole"		file="modules/Interaction.lua"				/>
-		<hook source_file="lib/managers/hud/hudinteraction"						file="modules/Interaction.lua"				/>
-		<hook source_file="lib/managers/menu/progressbarguiobject"				file="modules/Interaction.lua"				/>
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/Interaction.lua"				/>
+		<hook source_file="lib/units/beings/player/states/playerstandard"							file="modules/Interaction.lua"				/>
+		<hook source_file="lib/units/beings/player/states/playerdriving"							file="modules/Interaction.lua"				/>
+		<hook source_file="lib/units/beings/player/states/playerfoxhole"							file="modules/Interaction.lua"				/>
+		<hook source_file="lib/managers/hud/hudinteraction"											file="modules/Interaction.lua"				/>
+		<hook source_file="lib/managers/menu/progressbarguiobject"									file="modules/Interaction.lua"				/>
 
 		<!-- Ready On Num Enter -->
-		<hook source_file="lib/managers/hud/hudchat"							file="modules/ReadyOnNumEnter.lua"			/>
+		<hook source_file="lib/managers/hud/hudchat"												file="modules/ReadyOnNumEnter.lua"			/>
 
 		<!-- Floating Health Bars -->
-		<hook source_file="lib/setups/gamesetup"								file="modules/FloatingHealthBars.lua"		/>
+		<hook source_file="lib/setups/gamesetup"													file="modules/FloatingHealthBars.lua"		/>
 
 		<!-- NoSlowMo -->
-		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"				file="modules/NoSlowMo.lua"					/>
+		<hook source_file="lib/tweak_data/timespeedeffecttweakdata"									file="modules/NoSlowMo.lua"					/>
 
 		<!-- Auto Reload -->
-		<hook source_file="lib/units/beings/player/states/playerstandard"		file="modules/AutoReload.lua"				/>
+		<hook source_file="lib/units/beings/player/states/playerstandard"							file="modules/AutoReload.lua"				/>
 
 		<!-- Instant Restart -->
-		<hook source_file="lib/tweak_data/tweakdata"							file="modules/InstantRestart.lua"			/>
+		<hook source_file="lib/tweak_data/tweakdata"												file="modules/InstantRestart.lua"			/>
 
 		<!-- Kick a Friend -->
-		<hook source_file="lib/network/base/basenetworksession"					file="modules/KickAFriend.lua"				/>
+		<hook source_file="lib/network/base/basenetworksession"										file="modules/KickAFriend.lua"				/>
 
 		<!-- Realistic Reload -->
-		<hook source_file="lib/units/weapons/raycastweaponbase"					file="modules/RealisticReload.lua"			/>
+		<hook source_file="lib/units/weapons/raycastweaponbase"										file="modules/RealisticReload.lua"			/>
 
 		<!-- FOV based sensivity -->
-		<hook source_file="lib/managers/menumanager"							file="modules/FOVBasedSensitivity.lua"		/>
+		<hook source_file="lib/managers/menumanager"												file="modules/FOVBasedSensitivity.lua"		/>
 
 		<!-- Menu Tweaks -->
-		<hook source_file="lib/managers/menumanager"							file="modules/MenuTweaks.lua"				/>
-		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"			file="modules/MenuTweaks.lua"				/>
+		<hook source_file="lib/managers/menumanager"												file="modules/MenuTweaks.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/raidmainmenugui"								file="modules/MenuTweaks.lua"				/>
 
 		<!-- No Toast Sound -->
-		<hook source_file="lib/managers/hud/hudtoastnotification"				file="modules/NoToastSound.lua"				/>
+		<hook source_file="lib/managers/hud/hudtoastnotification"									file="modules/NoToastSound.lua"				/>
 
 		<!-- Bots Amount -->
-		<hook source_file="lib/managers/menu/raid_menu/missionselectiongui" 	file="modules/BotsAmount.lua"				/>
-		<hook source_file="lib/managers/criminalsmanager" 						file="modules/BotsAmount.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/missionselectiongui" 						file="modules/BotsAmount.lua"				/>
+		<hook source_file="lib/managers/criminalsmanager"											file="modules/BotsAmount.lua"				/>
 
 		<!-- Stealthable Missions Icon -->
-		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids" file="modules/StealthableMissions.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrollistitemraids"		file="modules/StealthableMissions.lua"		/>
 
-		<!-- Concealment -->
-		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrolweaponstats" file="modules/Concealment.lua"	/>
-		<hook source_file="lib/managers/menu/menucomponentmanager" 				file="modules/Concealment.lua"				/>
-		<hook source_file="lib/managers/menu/raid_menu/weaponselectiongui" 		file="modules/Concealment.lua"				/>
+		<!-- Hidden Weapon Stats & Overall Detection Risk -->
+		<hook source_file="lib/managers/menu/menucomponentmanager" 									file="modules/HiddenStats.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/weaponselectiongui" 							file="modules/HiddenStats.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrolweaponstats"			file="modules/HiddenStats.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrolmeleeweaponstats"		file="modules/HiddenStats.lua"				/>
+		<hook source_file="lib/managers/menu/raid_menu/controls/raidguicontrolgrenadeweaponstats"	file="modules/HiddenStats.lua"				/>
 	</hooks>
 
 	<keybinds>

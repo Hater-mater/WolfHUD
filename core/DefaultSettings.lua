@@ -76,7 +76,7 @@ if WolfgangHUD then
 			READY_UP_ON_NUM_ENTER				= true,
 			NO_DEBRIEFING						= false,
 			MARK_STEALTHABLES					= true,
-			SHOW_WEAPON_CONCEALMENT				= true,
+			SHOW_HIDDEN_WEAPON_STATS			= true,
 			SHOW_DETECTION_RISK					= true,
 		},
 		HUDList = {

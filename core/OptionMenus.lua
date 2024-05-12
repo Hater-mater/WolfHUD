@@ -1156,8 +1156,8 @@ if WolfgangHUD then
 					},
 					{
 						type = "toggle",
-						name_id = "wolfganghud_show_weapon_concealment_title",
-						value = {"MENU", "SHOW_WEAPON_CONCEALMENT"},
+						name_id = "wolfganghud_show_hidden_weapon_stats_title",
+						value = {"MENU", "SHOW_HIDDEN_WEAPON_STATS"},
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
