@@ -28,6 +28,8 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/missionselection
             WolfgangHUD:Save()
 
             Global.player_manager.game_settings_difficulty = data.value
+
+            managers.network:update_matchmake_attributes()
         end
 
         return result
