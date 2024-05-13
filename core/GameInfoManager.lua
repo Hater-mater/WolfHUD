@@ -136,6 +136,16 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		INTERACTION_TO_CARRY = {
 			corpse_dispose =					"dead_body", -- fresh corpse
 		},
+		COMPOSITE_LOOT_UNITS = {
+			[3141918] = 4, [3141917] = 3, [3141916] = 2, --[3141932] = 1, -- Kelly vault gold
+			[3141938] = 4, [3141937] = 3, [3141933] = 2, --[3141919] = 1, -- Kelly vault gold
+			[3141942] = 4, [3141941] = 3, [3141940] = 2, --[3141939] = 1, -- Kelly vault gold
+			[3141946] = 4, [3141945] = 3, [3141944] = 2, --[3141943] = 1, -- Kelly vault gold
+			[3141950] = 4, [3141949] = 3, [3141948] = 2, --[3141947] = 1, -- Kelly vault gold
+			[3141954] = 4, [3141953] = 3, [3141952] = 2, --[3141951] = 1, -- Kelly vault gold
+			[3141958] = 4, [3141957] = 3, [3141956] = 2, --[3141955] = 1, -- Kelly vault gold
+			[3141962] = 4, [3141961] = 3, [3141960] = 2, --[3141959] = 1, -- Kelly vault gold
+		},
 	}
 
 	function GameInfoManager:init()
@@ -305,9 +315,12 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 	function GameInfoManager:_loot_interaction_handler(event, key, data)
 		if event == "add" then
 			if not self._loot[key] then
-				self._loot[key] = {unit = data.unit, carry_id = data.carry_id, count = 1}
+				local composite_lookup = GameInfoManager._INTERACTIONS.COMPOSITE_LOOT_UNITS
+				local count = composite_lookup[data.editor_id] or composite_lookup[data.interact_id] or 1
+
+				self._loot[key] = {unit = data.unit, carry_id = data.carry_id, count = count }
 				self:_listener_callback("loot", "add", key, self._loot[key])
-				self:_loot_count_event("change", data.carry_id, 1, self._loot[key])
+				self:_loot_count_event("change", data.carry_id, count, self._loot[key])
 			end
 		elseif self._loot[key] then
 			if event == "remove"then
@@ -315,7 +328,13 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 				self:_loot_count_event("change", data.carry_id, -self._loot[key].count, self._loot[key])
 				self._loot[key] = nil
 			elseif event == "interact" then
+				local composite_lookup = GameInfoManager._INTERACTIONS.COMPOSITE_LOOT_UNITS
+				local count = composite_lookup[data.editor_id] or composite_lookup[data.interact_id] or 1
+				local change = count - self._loot[key].count
+
+				self._loot[key].count = count
 				self:_listener_callback("loot", "interact", key, self._loot[key])
+				self:_loot_count_event("change", data.carry_id, change, self._loot[key])
 			end
 		end
 	end
