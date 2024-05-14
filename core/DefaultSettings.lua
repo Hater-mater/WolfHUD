@@ -124,6 +124,11 @@ if WolfgangHUD then
 			AUTO_RELOAD_SINGLE					= true,
 			--AUTO_APPLY_WEAPON_SKILLS			= true,
 			REALISTIC_RELOAD					= false,
+			INTERACTION = {
+				TURRETS_STEALTH_DISABLED			= true,
+				REVIVE_ALLOW_FULL_HEALTH			= true,
+				REVIVE_BLOCK_MAX_REVIVES			= true,
+			}
 		},
 		GAME_SETTINGS = {
 			DIFFICULTY							= 2,		-- Global.game_settings.difficulty [1-4] easy, normal, hard, very hard

@@ -109,13 +109,16 @@
 		<hook source_file="lib/managers/statisticsmanager"											file="modules/Accuracy.lua"					/>
 		<hook source_file="lib/managers/hud/hudteammateplayer"										file="modules/Accuracy.lua"					/>
 
-		<!-- Interaction -->
-		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/Interaction.lua"				/>
-		<hook source_file="lib/units/beings/player/states/playerstandard"							file="modules/Interaction.lua"				/>
-		<hook source_file="lib/units/beings/player/states/playerdriving"							file="modules/Interaction.lua"				/>
-		<hook source_file="lib/units/beings/player/states/playerfoxhole"							file="modules/Interaction.lua"				/>
-		<hook source_file="lib/managers/hud/hudinteraction"											file="modules/Interaction.lua"				/>
-		<hook source_file="lib/managers/menu/progressbarguiobject"									file="modules/Interaction.lua"				/>
+		<!-- Interaction Timer -->
+		<hook source_file="lib/managers/hudmanagerpd2"												file="modules/InteractionTimer.lua"			/>
+		<hook source_file="lib/units/beings/player/states/playerstandard"							file="modules/InteractionTimer.lua"			/>
+		<hook source_file="lib/units/beings/player/states/playerdriving"							file="modules/InteractionTimer.lua"			/>
+		<hook source_file="lib/units/beings/player/states/playerfoxhole"							file="modules/InteractionTimer.lua"			/>
+		<hook source_file="lib/managers/hud/hudinteraction"											file="modules/InteractionTimer.lua"			/>
+		<hook source_file="lib/managers/menu/progressbarguiobject"									file="modules/InteractionTimer.lua"			/>
+
+		<!-- Interaction Tweaks -->
+		<hook source_file="lib/units/interactions/interactionext"									file="modules/InteractionTweaks.lua"		/>
 
 		<!-- Ready On Num Enter -->
 		<hook source_file="lib/managers/hud/hudchat"												file="modules/ReadyOnNumEnter.lua"			/>

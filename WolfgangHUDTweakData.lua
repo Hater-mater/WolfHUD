@@ -17,6 +17,9 @@ function WolfgangHUDTweakData:init()
 		info = false, -- log infos
 	}
 
+	-- Time within 2 presses of the interact button, to enter a turret/flak in stealth.
+	self.STEALTH_TURRETS_TIMEOUT = 0.25
+
 	-- Color table
 	--		Add or remove any color you want
 	--		'color' needs to be that colors hexadecimal code

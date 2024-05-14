@@ -1323,6 +1323,36 @@ if WolfgangHUD then
 							{setting = {"INTERACTION", "LOCK_MODE"}, min = 2, max = 3},
 						},
 					},
+					{
+						type = "divider",
+						y_offset = 100, -- shift for next header
+					},
+					{ -- Interaction Tweaks
+						y_offset = 320,
+						type = "header",
+						text_id = "wolfganghud_interaction_tweaks_name",
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_interaction_turrets_stealth_disabled_title",
+						value = {"GAMEPLAY", "INTERACTION", "TURRETS_STEALTH_DISABLED"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_interaction_revive_allow_full_health_title",
+						value = {"GAMEPLAY", "INTERACTION", "REVIVE_ALLOW_FULL_HEALTH"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_interaction_revive_block_max_revives_title",
+						value = {"GAMEPLAY", "INTERACTION", "REVIVE_BLOCK_MAX_REVIVES"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
 				},
 			},
 			{	-- Hosting

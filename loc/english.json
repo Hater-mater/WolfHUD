@@ -28,6 +28,8 @@
 	"wolfganghud_int_locked"										: "PRESS $BTN_CANCEL; TO INTERRUPT",
 	"wolfganghud_suspicion_detected"								: "Detected",
 
+	"wolfganghud_hint_maximum_revives"								: "You already have maximum revives",
+
 	"wolfganghud_reset_options_title"								: "Default options",
 	"wolfganghud_reset_options_confirm"								: "Are you sure, you want to reset all WolfgangHUD options to their default value?",
 
@@ -193,6 +195,10 @@
 	"wolfganghud_press2hold_show_lockindicator_title"				:			"Show Lock Indicator",
 	"wolfganghud_press2hold_equipment_cancel_title"					:			"Equipment Interrupt",
 	"wolfganghud_press2hold_interrupt_hint_title"					:			"Show Interrupt Hint",
+	"wolfganghud_interaction_tweaks_name"							:		"Interaction Tweaks",
+	"wolfganghud_interaction_turrets_stealth_disabled_title"		:			"Double-Tap turrets in stealth",
+	"wolfganghud_interaction_revive_allow_full_health_title"		:			"Pickup Revive on full health, but revives < max",
+	"wolfganghud_interaction_revive_block_max_revives_title"		:			"Block Revive pickup on revives = max",
 
 	"wolfganghud_sound_options_name"								:	"Sound",
 	"wolfganghud_sound_general_name"								:		"General",
