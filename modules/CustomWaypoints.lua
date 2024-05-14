@@ -28,7 +28,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				hold_take_gas_can =					{std_icon = "equipment_panel_fuel_full"}, -- untested
 				press_take_gas_can =				{std_icon = "equipment_panel_fuel_full"}, -- untested
 				take_gas_tank =						{std_icon = "equipment_panel_fuel_full"}, -- untested
-				mine_pku =							{std_icon = "equipment_panel_cvy_landimine"}, -- untested
+				--mine_pku =						{std_icon = "equipment_panel_cvy_landimine"},
 				take_portable_radio =				{std_icon = "equipment_panel_recording_device"}, -- untested
 				take_tools =						{std_icon = "equipment_panel_tools"},
 				take_safe_key =						{std_icon = "equipment_panel_sto_safe_key"}, -- untested

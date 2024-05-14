@@ -248,7 +248,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--hold_take_gas_can =				"gas",
 		--press_take_gas_can =				"gas",
 		--take_gas_tank =					"gas_tank",
-		mine_pku =							"landmine",
+		--mine_pku =						"landmine",
 		--take_portable_radio =				"portable_radio",
 		--take_tools =						"repair_tools",
 		--take_safe_key =					"safe_key",
