@@ -6,7 +6,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	local update_original = HUDManager.update
 	local show_stats_screen_original = HUDManager.show_stats_screen
 	local hide_stats_screen_original = HUDManager.hide_stats_screen
-	local _create_objectives_original = HUDManager._create_objectives
 
 	function HUDManager:_setup_ingame_hud_saferect(...)
 		_setup_ingame_hud_saferect_original(self, ...)

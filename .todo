@@ -1,10 +1,13 @@
 # TODO
 
-- online/offline toggle (only if no clients)
-- composite loot (kelly gold, maybe more?)
-- hud-tab-stats (centered?)
-- warcry buffbar?
-- map timers?
-- review: realistic reload with all weapons
-- custom hud layout?
-- fix/finish: AutoApplyWeaponSkills?
+- respect "hide ui stuff in camp" also for hudlist! (noticable due to combat pickups)
+- divide diameter, throw, alert size by 100 to make them m, not cm
+- tab stats
+- colorize above-head names
+- synced revive pickup block?
+-? warcry buffbar
+-? online/offline toggle (only if no clients)
+-? map timers
+-? review: realistic reload with all weapons
+-? custom hud layout
+-? fix/finish: AutoApplyWeaponSkills
