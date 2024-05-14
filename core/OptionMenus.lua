@@ -590,13 +590,31 @@ if WolfgangHUD then
 								add_rainbow = false,
 							},
 							{
-								type = "toggle",
-								name_id = "wolfganghud_hudlist_show_pickups_title",
-								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"},
+								type = "multi_choice",
+								name_id = "wolfganghud_hudlist_show_pickups_mode_title",
+								value = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"},
 								visible_reqs = {},
 								enabled_reqs = {
 									{setting = {"HUDList", "ENABLED"}, invert = false},
 								},
+								options = {
+									"wolfganghud_multiselect_disabled",
+									"wolfganghud_combat_pickups_revives_only",
+									"wolfganghud_combat_pickups_all"
+								},
+							},
+							{
+								type = "multi_choice",
+								name_id = "wolfganghud_hudlist_pickupcolor_revives_title",
+								value = {"HUDList", "revive_pickup_color"},
+								visible_reqs = {},
+								enabled_reqs = {
+									{setting = {"HUDList", "ENABLED"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, min = 2},
+								},
+								options = {},
+								add_color_options = true,
+								add_rainbow = false,
 							},
 							{
 								type = "multi_choice",
@@ -605,7 +623,7 @@ if WolfgangHUD then
 								visible_reqs = {},
 								enabled_reqs = {
 									{setting = {"HUDList", "ENABLED"}, invert = false},
-									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, invert = false},
+									{setting = {"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, min = 3},
 								},
 								options = {},
 								add_color_options = true,

@@ -94,7 +94,7 @@
 	"wolfganghud_hudlist_valuablecolor_title"						:				"Color objetos de valor",
 	"wolfganghud_hudlist_show_equipment_title"						:				"Mostrar equipamiento",
 	"wolfganghud_hudlist_equipmentcolor_title"						:				"Color equipamiento",
-	"wolfganghud_hudlist_show_pickups_title"						:				"Motrar objetos recogidos",
+	"wolfganghud_hudlist_show_pickups_mode_title"					:				"Motrar objetos recogidos",
 	"wolfganghud_hudlist_pickupcolor_title"							:				"Color objetos recogidos",
 	"wolfganghud_hudlist_show_flares_title"							:				"Motrar bengalas",
 	"wolfganghud_hudlist_flarecolor_title"							:				"Color bengalas",

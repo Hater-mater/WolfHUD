@@ -91,6 +91,7 @@ if WolfgangHUD then
 			objective_color						= "yellow",
 			valuable_color						= "orange",
 			mission_pickup_color				= "white",
+			revive_pickup_color					= "light_green",
 			combat_pickup_color					= "light_gray",
 			flare_color							= "red",
 			use_dogtag_values					= true,
@@ -102,7 +103,7 @@ if WolfgangHUD then
 				SHOW_PICKUP_CATEGORIES = {
 					valuables					= true,
 					mission_pickups				= true,
-					combat_pickups				= false,
+					combat_pickups_mode			= 2,
 					flares						= true,
 				},
 			},

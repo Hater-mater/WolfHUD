@@ -78,7 +78,7 @@
 	"wolfganghud_hudlist_valuablecolor_title"						:				"战利品显示颜色",
 	"wolfganghud_hudlist_show_equipment_title"						:				"显示可拾取工具",
 	"wolfganghud_hudlist_equipmentcolor_title"						:				"可拾取工具显示颜色",
-	"wolfganghud_hudlist_show_pickups_title"						:				"显示可拾取物品",
+	"wolfganghud_hudlist_show_pickups_mode_title"					:				"显示可拾取物品",
 	"wolfganghud_hudlist_pickupcolor_title"							:				"可拾取物品显示颜色",
 	"wolfganghud_hudlist_show_flares_title"							:				"显示标记信号弹",
 	"wolfganghud_hudlist_flarecolor_title"							:				"标记信号弹显示颜色",

@@ -100,7 +100,7 @@
 	"wolfganghud_hudlist_valuablecolor_title"						:				"Wertgegenstandsfarbe",
 	"wolfganghud_hudlist_show_equipment_title"						:				"Zeige Ausrüstung",
 	"wolfganghud_hudlist_equipmentcolor_title"						:				"Ausrüstungsfarbe",
-	"wolfganghud_hudlist_show_pickups_title"						:				"Zeige Aufhebbares",
+	"wolfganghud_hudlist_show_pickups_mode_title"					:				"Zeige Aufhebbares",
 	"wolfganghud_hudlist_pickupcolor_title"							:				"Aufhebbares-Farbe",
 	"wolfganghud_hudlist_show_flares_title"							:				"Zeige Leuchtsignale",
 	"wolfganghud_hudlist_flarecolor_title"							:				"Leuchtsignalfarbe",

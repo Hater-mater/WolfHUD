@@ -81,6 +81,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		valuable_color					= WolfgangHUD:getColorSetting({"HUDList", "valuable_color"}, "orange"),
 		mission_pickup_color			= WolfgangHUD:getColorSetting({"HUDList", "mission_pickup_color"}, "white"),
 		combat_pickup_color				= WolfgangHUD:getColorSetting({"HUDList", "combat_pickup_color"}, "light_gray"),
+		revive_pickup_color				= WolfgangHUD:getColorSetting({"HUDList", "revive_pickup_color"}, "light_green"),
 		flare_color						= WolfgangHUD:getColorSetting({"HUDList", "flare_color"}, "red"),
 
 		-- Right side list
@@ -259,7 +260,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 
 		-- pickups
 		health_bag =						"health_bag",
-		health_bag_big =					"health_bag",
+		health_bag_big =					"health_bag_big",
 		health_bag_small =					"health_bag",
 		ammo_bag =							"ammo_bag",
 		ammo_bag_big =						"ammo_bag",
@@ -298,9 +299,10 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		--thermite =			{class = "PickupItem",	texture = "ui/atlas/raid_atlas_hud", texture_rect = {557, 1165, 32, 32},		color_id = "mission_pickup_color",	priority = 10,	category = "mission_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "mission_pickups"}, true)	},
 
 		-- pickups
-		health_bag =			{class = "PickupItem",	skills = {5, 2},																color_id = "combat_pickup_color",	priority = 21,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
-		ammo_bag =				{class = "PickupItem",	skills = {4, 2},																color_id = "combat_pickup_color",	priority = 20,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
-		grenade_crate =			{class = "PickupItem",	skills = {1, 8},																color_id = "combat_pickup_color",	priority = 22,	category = "combat_pickups",	ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups"}, true)	},
+		health_bag_big =		{class = "PickupItem",	skills = {2, 9},																color_id = "revive_pickup_color",	priority = 23,	category = "combat_pickups",	ignore = WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, 2) < 2	},
+		health_bag =			{class = "PickupItem",	skills = {5, 2},																color_id = "combat_pickup_color",	priority = 22,	category = "combat_pickups",	ignore = WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, 2) < 3	},
+		ammo_bag =				{class = "PickupItem",	skills = {4, 2},																color_id = "combat_pickup_color",	priority = 21,	category = "combat_pickups",	ignore = WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, 2) < 3	},
+		grenade_crate =			{class = "PickupItem",	skills = {1, 8},																color_id = "combat_pickup_color",	priority = 20,	category = "combat_pickups",	ignore = WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "combat_pickups_mode"}, 2) < 3	},
 
 		-- flares
 		flare =					{class = "PickupItem",	skills = {0, 2},																color_id = "flare_color",			priority = 30,	category = "flares",			ignore = not WolfgangHUD:getSetting({"HUDList", "RIGHT_LIST", "SHOW_PICKUP_CATEGORIES", "flares"}, true)			},
