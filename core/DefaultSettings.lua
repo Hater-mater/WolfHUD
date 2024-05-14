@@ -109,12 +109,22 @@ if WolfgangHUD then
 			},
 		},
 		CustomWaypoints = {
-			SHOW_PICKUPS						= true,
+			PICKUPS = {
+				SHOW							= true,
+				OFFSET							= 15,
+				ANGLE							= 35,
+				DISTANCE						= 3000,
+				COLOR							= "white",
+				REVIVES							= true,
+				REVIVES_COLOR					= "light_green",
+			},
 			LOOT = {
 				SHOW							= true,
 				ICON							= true,
 				OFFSET							= 15,
 				ANGLE							= 20,
+				DISTANCE						= 2000,
+				COLOR							= "white",
 			},
 		},
 		GAMEPLAY = {

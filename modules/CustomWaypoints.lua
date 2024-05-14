@@ -40,19 +40,18 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				hold_pku_intelligence =				{texture = "ui/atlas/raid_atlas_hud", texture_rect = {963, 753, 56, 56}},
 
 				-- PICKUPS
-				--health_bag =						{std_icon = ""},
-				--health_bag_big =					{std_icon = ""},
-				--health_bag_small =				{std_icon = ""},
-				--ammo_bag =						{std_icon = ""},
-				--ammo_bag_big =					{std_icon = ""},
-				--ammo_bag_small =					{std_icon = ""},
-				--grenade_crate =					{std_icon = ""},
-				--grenade_crate_big =				{std_icon = ""},
-				--grenade_crate_small =				{std_icon = ""},
+				--health_bag_small =				{skills = {5, 2}},
+				--health_bag =						{skills = {5, 2}},
+				health_bag_big =					{skills = {2, 9}, color = WolfgangHUD:getColorSetting({"CustomWaypoints", "PICKUPS", "REVIVES_COLOR"}, "light_green"), ignore = not WolfgangHUD:getSetting({"CustomWaypoints", "PICKUPS", "REVIVES"}, true)},
+				--ammo_bag_small =					{skills = {4, 2}},
+				--ammo_bag =						{skills = {4, 2}},
+				--ammo_bag_big =					{skills = {4, 2}},
+				--grenade_crate_small =				{skills = {1, 8}},
+				--grenade_crate =					{skills = {1, 8}},
+				--grenade_crate_big =				{skills = {1, 8}},
 
 				-- FLARES
-				--extinguish_flare =				{texture = "ui/atlas/raid_atlas_skills", texture_rect = {2, 152, 76, 76}},
-
+				--extinguish_flare =				{skills = {0, 2}},
 			},
 		}
 	}
@@ -71,7 +70,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 				managers.gameinfo:register_listener("loot_waypoint_listener", "loot", "interact", callback(self, self, "custom_waypoint_loot_clbk"))
 			end
 
-			if WolfgangHUD:getSetting({"CustomWaypoints", "SHOW_PICKUPS"}, true) then
+			if WolfgangHUD:getSetting({"CustomWaypoints", "PICKUPS", "SHOW"}, true) then
 				managers.gameinfo:register_listener("equipment_waypoint_listener", "pickup", "add", callback(self, self, "custom_waypoint_pickup_clbk"))
 				managers.gameinfo:register_listener("equipment_waypoint_listener", "pickup", "remove", callback(self, self, "custom_waypoint_pickup_clbk"))
 			end
@@ -95,7 +94,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 						visible_through_walls = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING,
 						alpha = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 1 or 0.1,
 						visible_angle = {max = angle},
-						visible_distance = {max = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 99999 or 2000},
+						visible_distance = {max = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 99999 or WolfgangHUD:getSetting({"CustomWaypoints", "LOOT", "DISTANCE"}, 2000)},
 						fade_angle = {start_angle = angle, end_angle = angle - 5, final_scale = 8},
 						scale = 1.5,
 						icon = {
@@ -104,7 +103,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 							texture = "ui/ingame/textures/hud/hud_waypoint_icons_01",
 							texture_rect = {96, 0, 32, 32},
 							alpha = 0.5,
-							color = Color.white,
+							color = WolfgangHUD:getColorSetting({"CustomWaypoints", "LOOT", "COLOR"}, "white"),
 						},
 						amount = {
 							type = "label",
@@ -144,18 +143,27 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 		if event == "add" then
 			local icon_table = HUDManager.CUSTOM_WAYPOINTS.PICKUPS.ICON_MAP
 			local icon_data = icon_table[data.interact_id]
-			if icon_data then
+			if icon_data and not icon_data.ignore then
+				if icon_data.skills then
+					icon_data.texture = "ui/atlas/raid_atlas_skills"
+					local x, y = unpack(icon_data.skills)
+					icon_data.texture_rect = {x * 78 + 2, y * 78 + 2, 76, 76}
+				--elseif ... then
+					-- TODO
+				end
+				--local visible_angle = WolfgangHUD:getSetting({"CustomWaypoints", "PICKUPS", "ANGLE"}, 35)
+				local angle = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or WolfgangHUD:getSetting({"CustomWaypoints", "LOOT", "ANGLE"}, 20)
 				local params = {
 					unit = data.unit,
-					offset = icon_data.offset or Vector3(0, 0, 15),
+					offset = icon_data.offset or Vector3(0, 0, WolfgangHUD:getSetting({"CustomWaypoints", "PICKUPS", "OFFSET"}, 15)),
 					hide_on_uninteractable = true,
 					visible_through_walls = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING or icon_data.x_ray or false,
 					scale = 1.25,
 					alpha = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 1 or 0.1,
-					fade_angle = {start_angle = 35, end_angle = 25, final_scale = 8},
-					visible_angle = {max = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 180 or 35},
-					visible_distance = {max = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 99999 or 3000},
-					color = icon_data.color,
+					fade_angle = {start_angle = angle, end_angle = angle - 5, final_scale = 8},
+					visible_angle = {max = angle},
+					visible_distance = {max = HUDManager.CUSTOM_WAYPOINTS.DEBUGGING and 99999 or WolfgangHUD:getSetting({"CustomWaypoints", "PICKUPS", "DISTANCE"}, 3000)},
+					color = icon_data.color or WolfgangHUD:getColorSetting({"CustomWaypoints", "PICKUPS", "COLOR"}, "white"),
 					icon = {
 						type = "icon",
 						show = true,
