@@ -1292,6 +1292,13 @@ if WolfgangHUD then
 						visible_reqs = {},
 						enabled_reqs = {},
 					},
+					{
+						type = "toggle",
+						name_id = "wolfganghud_convert_sizes_meters_title",
+						value = {"MENU", "CONVERT_SIZES_TO_METERS"},
+						visible_reqs = {},
+						enabled_reqs = {},
+					},
 				},
 			},
 			{	-- Gameplay

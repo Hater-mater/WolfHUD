@@ -91,6 +91,7 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
     function RaidGUIControlWeaponStats:init(parent, params, ...)
         self._wg_flag = self._wg_flag or RaidGUIControlWeaponStats.WGFLAG_WEAPONS
         self._wg_show_hidden_stats = WolfgangHUD:getSetting({ "MENU", "SHOW_HIDDEN_WEAPON_STATS" }, true)
+        self._wg_convert_sizes_to_meters = WolfgangHUD:getSetting({ "MENU", "CONVERT_SIZES_TO_METERS" }, true)
 
         if self._wg_show_hidden_stats and (self._wg_flag == RaidGUIControlWeaponStats.WGFLAG_WEAPONS) then
             params.tab_width = 120
@@ -233,8 +234,12 @@ if string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidgui
                     end
 
                     for _, stat in ipairs(shown_stats) do
-                        result[stat.name] = stat.getter(base_stats, parts_stats, mods_stats, skill_stats, tweak_stats,
+                        local value = stat.getter(base_stats, parts_stats, mods_stats, skill_stats, tweak_stats,
                             tweak_weapon) or 0
+                        if self._wg_convert_sizes_to_meters and stat.name == "alert_size" and tonumber(value) then
+                            value = tonumber(value) / 100
+                        end
+                        result[stat.name] = value
                     end
 
                     return result
@@ -253,6 +258,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/rai
     function RaidGUIControlGrenadeWeaponStats:init(parent, params, ...)
         self._wg_flag = RaidGUIControlWeaponStats.WGFLAG_GRENADES
         self._wg_show_hidden_stats = WolfgangHUD:getSetting({ "MENU", "SHOW_HIDDEN_WEAPON_STATS" }, true)
+        self._wg_convert_sizes_to_meters = WolfgangHUD:getSetting({ "MENU", "CONVERT_SIZES_TO_METERS" }, true)
         return init_original(self, parent, params, ...)
     end
 
@@ -283,6 +289,11 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/rai
             end
         end
 
+        if self._wg_convert_sizes_to_meters then
+            range = range / 100
+            distance = distance / 100
+        end
+
         return set_stats_original(self, damage, range, distance, ...)
     end
 elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/raidguicontrolmeleeweaponstats" then
@@ -294,6 +305,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/raid_menu/controls/rai
     function RaidGUIControlMeleeWeaponStats:init(parent, params, ...)
         self._wg_flag = RaidGUIControlWeaponStats.WGFLAG_MELEE
         self._wg_show_hidden_stats = WolfgangHUD:getSetting({ "MENU", "SHOW_HIDDEN_WEAPON_STATS" }, true)
+        self._wg_convert_sizes_to_meters = WolfgangHUD:getSetting({ "MENU", "CONVERT_SIZES_TO_METERS" }, true)
         return init_original(self, parent, params, ...)
     end
 

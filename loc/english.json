@@ -184,6 +184,7 @@
 	"wolfganghud_menu_weapons_name"									:	"Weapons",
 	"wolfganghud_show_hidden_weapon_stats_title"					:		"Show hidden weapon stats",
 	"wolfganghud_show_detection_risk_title"							:		"Show detection risk",
+	"wolfganghud_convert_sizes_meters_title"						:		"Convert sizes to meters",
 
 	"wolfganghud_gameplay_options_name"								:	"Gameplay",
 	"wolfganghud_gameplay_general_name"								:		"General",
