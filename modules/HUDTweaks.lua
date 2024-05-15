@@ -90,4 +90,22 @@ elseif string.lower(RequiredScript) == "lib/managers/hud/hudteammateplayer" then
             self:wh_refresh_level(true)
         end
     end
+elseif string.lower(RequiredScript) == "lib/units/beings/player/huskplayermovement" then
+    local set_character_anim_variables_original = HuskPlayerMovement.set_character_anim_variables
+
+    function HuskPlayerMovement:set_character_anim_variables(...)
+        set_character_anim_variables_original(self, ...)
+
+        local char_name = managers.criminals:character_name_by_unit(self._unit)
+
+        if not char_name then
+            return
+        end
+
+        local color_id = WolfgangHUD:character_color_id(self._unit)
+
+        if color_id then
+            self._unit:contour():change_color("teammate", tweak_data.peer_vector_colors[color_id])
+        end
+    end
 end
