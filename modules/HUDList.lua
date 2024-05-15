@@ -1,11 +1,8 @@
 if not (WolfgangHUD and WolfgangHUD:getSetting({"HUDList", "ENABLED"}, true)) then return end
 
 if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
-
 	local _setup_ingame_hud_saferect_original = HUDManager._setup_ingame_hud_saferect
 	local update_original = HUDManager.update
-	local show_stats_screen_original = HUDManager.show_stats_screen
-	local hide_stats_screen_original = HUDManager.hide_stats_screen
 
 	function HUDManager:_setup_ingame_hud_saferect(...)
 		_setup_ingame_hud_saferect_original(self, ...)
@@ -31,20 +28,6 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 			HUDListManager.ListOptions[setting] = value
 			return true
 		end
-	end
-
-	function HUDManager:show_stats_screen(...)
-		if managers.hudlist then
-			managers.hudlist:fade_lists(0.4)
-		end
-		return show_stats_screen_original(self, ...)
-	end
-
-	function HUDManager:hide_stats_screen(...)
-		if managers.hudlist then
-			managers.hudlist:fade_lists(1)
-		end
-		return hide_stats_screen_original(self, ...)
 	end
 
 	-- HUDList --
@@ -804,7 +787,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 	end
 
 	function HUDList.ItemBase:set_active(status)
-		if status then
+		if status and WolfgangHUD:ShowHudElements() then
 			self:activate()
 		else
 			self:deactivate()
