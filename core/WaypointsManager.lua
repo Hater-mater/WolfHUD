@@ -267,7 +267,6 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		self._id = id
 		self._unit = data.unit
 		self._position = data.position
-		self._visible_through_walls = (data.visible_through_walls ~= false)
 		self._slot_mask = data.mask and (type(data.mask) == "string" and managers.slot:get_mask(data.mask) or data.mask) or (managers.slot:get_mask('bullet_impact_targets', 'pickups') - managers.slot:get_mask('criminals'))
 		self._hide_on_uninteractable = data.hide_on_uninteractable
 		self._offset = data.offset or Vector3(0, 0, 0)
@@ -293,6 +292,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			fade_angle = data.fade_angle or {},
 			--rescale_distance = data.rescale_distance or {},	--Don't use this for main panel or things get ugly
 			base_values = {alpha = data.alpha or 1},
+			visible_through_walls = (data.visible_through_walls ~= false)
 		}
 
 		for component_name, component_data in pairs(data) do
@@ -506,7 +506,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 		local is_enabled = true
 		local dot = 0
 
-		if not self._visible_through_walls then
+		if not self._settings.visible_through_walls then
 			local raycast_position = self._position + self._offset / 2
 			local r = World:raycast("ray", cam:position(), raycast_position, "slot_mask", self._slot_mask or managers.slot:get_mask('explosion_targets'))
 			is_enabled = (not r or not r.unit or type(r.unit) ~= "userdata" or self._unit and (self._unit:key() == r.unit:key()))
@@ -773,6 +773,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			visible_distance = data[name].visible_distance or {},
 			fade_angle = data[name].fade_angle or {},
 			rescale_distance = data[name].rescale_distance or {},
+			visible_through_walls = (data[name].visible_through_walls ~= false) or false,
 		}
 
 		self._components[name] = (base_panel or self._panel):bitmap({
@@ -823,6 +824,7 @@ if string.lower(RequiredScript) == "lib/setups/setup" then
 			visible_distance = component_data.visible_distance or {},
 			fade_angle = component_data.fade_angle or {},
 			rescale_distance = component_data.rescale_distance or {},
+			visible_through_walls = (component_data.visible_through_walls ~= false) or false,
 		}
 
 		local font_size = size * 0.95
